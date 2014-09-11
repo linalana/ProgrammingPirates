@@ -75,7 +75,7 @@ public class PlayerConfigurationController implements Initializable {
     @FXML
     private int UpdatePoints(Slider slider, int pastVal) {
         int diff = (int)slider.getValue() - pastVal;
-        if (pointTotal + diff <= 15 && pastVal + diff < 10) {
+        if (pointTotal - diff <= 15 && pastVal + diff < 10) {
             pointTotal -= diff;
             pointLabel.setText("" + pointTotal);
             pastVal = (int)slider.getValue();
