@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 public class SpaceTrader extends Application {
 
-    private Stage primaryStage;
+    private static Stage primaryStage;
     private AnchorPane rootLayout;
 
     @Override
@@ -52,7 +52,7 @@ public class SpaceTrader extends Application {
      * Returns the main stage.
      * @return
      */
-    public Stage getPrimaryStage() {
+    public static Stage getPrimaryStage() {
         return primaryStage;
     }
 
