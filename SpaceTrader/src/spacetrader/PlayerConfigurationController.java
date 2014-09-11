@@ -6,15 +6,20 @@
 
 package spacetrader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -85,12 +90,25 @@ public class PlayerConfigurationController implements Initializable {
         
         System.out.println("Accept button");
        
-        Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
+        //Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
     }
 
     @FXML
     private void returnToStart(ActionEvent event) {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SpaceTrader.class.getResource("WelcomeScreen.fxml"));
+            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
 
+            // Show the scene containing the root layout.
+            Stage playerStage = SpaceTrader.getPrimaryStage();
+            Scene scene = new Scene(ConfigurationLayout);
+            playerStage.setScene(scene);
+            playerStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
 }
