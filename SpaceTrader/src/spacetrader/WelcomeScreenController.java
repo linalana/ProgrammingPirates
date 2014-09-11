@@ -24,7 +24,6 @@ import javafx.stage.Stage;
  */
 public class WelcomeScreenController implements Initializable {
     
-    private SpaceTrader spacetrader;
     
     @FXML
     private Label label;
@@ -38,7 +37,7 @@ public class WelcomeScreenController implements Initializable {
             AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
 
             // Show the scene containing the root layout.
-            Stage playerStage = new Stage();
+            Stage playerStage = SpaceTrader.getPrimaryStage();
             Scene scene = new Scene(ConfigurationLayout);
             playerStage.setScene(scene);
             playerStage.show();
