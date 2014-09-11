@@ -82,7 +82,10 @@ public class PlayerConfigurationController implements Initializable {
     
     @FXML
     private void submitButtonCreatePlayer(ActionEvent event) {
-        Player player = new Player("", fighterPoint, traderPoint, engineerPoint, investorPoint);
+        
+        System.out.println("Accept button");
+       
+        Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
     }
 
     @FXML
