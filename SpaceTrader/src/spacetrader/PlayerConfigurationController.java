@@ -9,15 +9,12 @@ package spacetrader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -34,24 +31,22 @@ public class PlayerConfigurationController implements Initializable {
     @FXML 
     private Slider fighterSlider;
     @FXML 
-    private int fighterPoint;
-    @FXML 
     private Slider traderSlider;
-    @FXML 
-    private int traderPoint;
     @FXML 
     private Slider engineerSlider;
     @FXML 
-    private int engineerPoint;
-    @FXML 
     private Slider investorSlider;
-    @FXML 
-    private int investorPoint;
     @FXML 
     private Label pointLabel;
     @FXML 
     private TextField nameText;
+    
+    private int traderPoint;
+    private int fighterPoint;
+    private int engineerPoint;
+    private int investorPoint;
     private int pointTotal;
+
     /**
      * Initializes the controller class.
      */
@@ -62,7 +57,6 @@ public class PlayerConfigurationController implements Initializable {
         traderPoint = 0;
         engineerPoint = 0;
         investorPoint = 0;
-
     }
     @FXML
     private void FighterSliderUpdate(ActionEvent event) {
