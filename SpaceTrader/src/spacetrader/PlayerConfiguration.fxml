@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.PlayerConfigurationController">
    <children>
-      <Slider fx:id="fighterSlider" blockIncrement="1.0" layoutX="213.0" layoutY="196.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" onDragDropped="#UpdatePoints" prefHeight="26.0" prefWidth="346.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@playerconfiguration.css" />
+      <Slider fx:id="fighterSlider" blockIncrement="1.0" layoutX="213.0" layoutY="196.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" onDragDropped="#FighterSliderUpdate" prefHeight="26.0" prefWidth="346.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@playerconfiguration.css" />
       <Button id="acceptButton" fx:id="acceptButton" layoutX="440.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#createPlayer" prefHeight="31.0" prefWidth="115.0" text="Accept" />
       <Button fx:id="cancelButton" layoutX="309.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#returnToStart" prefHeight="31.0" prefWidth="115.0" text="Cancel" />
       <TextField layoutX="52.0" layoutY="103.0" prefHeight="27.0" prefWidth="506.0" promptText="Arg! What's yer pirate name?" />
@@ -20,9 +20,9 @@
             <Font name="System Font Regular" size="24.0" />
          </font>
       </Label>
-      <Slider fx:id="traderSlider" blockIncrement="1.0" layoutX="213.0" layoutY="238.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" onDragDropped="#UpdatePoints" prefHeight="26.0" prefWidth="346.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@playerconfiguration.css" />
-      <Slider fx:id="engineerSlider" blockIncrement="1.0" layoutX="213.0" layoutY="276.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" onDragDropped="#UpdatePoints" prefHeight="26.0" prefWidth="346.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@playerconfiguration.css" />
-      <Slider blockIncrement="1.0" layoutX="213.0" layoutY="318.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" onDragDropped="#UpdatePoints" prefHeight="26.0" prefWidth="346.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@playerconfiguration.css" />
+      <Slider fx:id="traderSlider" blockIncrement="1.0" layoutX="213.0" layoutY="238.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" onDragDropped="#TraderSliderUpdate" prefHeight="26.0" prefWidth="346.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@playerconfiguration.css" />
+      <Slider fx:id="engineerSlider" blockIncrement="1.0" layoutX="213.0" layoutY="276.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" onDragDropped="#EngineerSliderUpdate" prefHeight="26.0" prefWidth="346.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@playerconfiguration.css" />
+      <Slider fx:id="investorSlider" blockIncrement="1.0" layoutX="213.0" layoutY="318.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" onDragDropped="#InvestorSliderUpdate" prefHeight="26.0" prefWidth="346.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@playerconfiguration.css" />
       <Label layoutX="52.0" layoutY="190.0" prefHeight="26.0" prefWidth="146.0" styleClass="label-plain" text="Fighter" />
       <Label layoutX="53.0" layoutY="144.0" styleClass="label-subtitle" text="Distribute Yer Skill Points!">
          <font>
@@ -33,6 +33,6 @@
       <Label layoutX="52.0" layoutY="270.0" prefHeight="26.0" prefWidth="146.0" styleClass="label-plain" text="Engineer" />
       <Label layoutX="53.0" layoutY="312.0" prefHeight="26.0" prefWidth="146.0" styleClass="label-plain" text="Investor" />
       <Label layoutX="398.0" layoutY="150.0" prefHeight="24.0" prefWidth="133.0" styleClass="label-plain" text="Pts. Remaining:" />
-      <Label layoutX="533.0" layoutY="151.0" prefHeight="24.0" prefWidth="24.0" styleClass="label-plain" text="15" />
+      <Label fx:id="pointLabel" layoutX="533.0" layoutY="151.0" prefHeight="24.0" prefWidth="24.0" styleClass="label-plain" text="15" />
    </children>
 </AnchorPane>
