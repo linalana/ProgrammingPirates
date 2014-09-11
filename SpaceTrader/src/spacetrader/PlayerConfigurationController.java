@@ -9,6 +9,8 @@ package spacetrader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,36 +59,46 @@ public class PlayerConfigurationController implements Initializable {
         traderPoint = 0;
         engineerPoint = 0;
         investorPoint = 0;
-    }
-    @FXML
-    private void FighterSliderUpdate(ActionEvent event) {
-        fighterPoint = UpdatePoints(fighterSlider, fighterPoint);
-    }
-    
-    @FXML
-    private void TraderSliderUpdate(ActionEvent event) {
-        traderPoint = UpdatePoints(traderSlider, traderPoint);
-    }
-    
-    @FXML
-    private void EngineerSliderUpdate(ActionEvent event) {
-        engineerPoint = UpdatePoints(engineerSlider, engineerPoint);
-    }
-    
-    @FXML
-    private void InvestorSliderUpdate(ActionEvent event) {
-        investorPoint = UpdatePoints(investorSlider, investorPoint);
+
+        fighterSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) {
+                    fighterPoint = UpdatePoints(fighterSlider, fighterPoint);
+                }
+        });
+        traderSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) {
+                    traderPoint = UpdatePoints(traderSlider, traderPoint);
+                }
+        });
+        engineerSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) {
+                    engineerPoint = UpdatePoints(engineerSlider, engineerPoint);
+                }
+        });  
+        investorSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) {
+                    investorPoint = UpdatePoints(investorSlider, investorPoint);
+                }
+        });         
     }
     
     @FXML
     private int UpdatePoints(Slider slider, int pastVal) {
         int diff = (int)slider.getValue() - pastVal;
-        if (pointTotal - diff <= 15 && pastVal + diff < 10) {
+        if (pointTotal - diff >= 0) {
             pointTotal -= diff;
             pointLabel.setText("" + pointTotal);
             pastVal = (int)slider.getValue();
         } else {
-            slider.setValue(pastVal);
+            slider.setValue(pastVal); //in future, set to max value possible without going over limit
         }
         return pastVal;
     }
