@@ -1,3 +1,7 @@
+.anchor-pane {
+    -fx-background-color: black;
+}
+
 .label {
     -fx-font-size: 45pt;
     -fx-font-family: "Impact";
@@ -12,13 +16,27 @@
     -fx-opacity: 1;
 }
 
-/* 
+.label-plain {
+    -fx-font-size: 15pt;
+    -fx-font-family: "Impact";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.text-field {
+    -fx-font-size: 10pt;
+    -fx-font-family: "Impact";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+/*
  * Metro style Push Button
  * Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
 .button {
-    -fx-padding: 5 22 5 22;   
+    -fx-padding: 5 22 5 22;
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
     -fx-background-radius: 0;
