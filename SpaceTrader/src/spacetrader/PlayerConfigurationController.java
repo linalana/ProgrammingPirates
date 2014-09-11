@@ -80,8 +80,8 @@ public class PlayerConfigurationController implements Initializable {
     }
     
     @FXML
-    private void createPlayer(ActionEvent event) {
-
+    private void submitButtonCreatePlayer(ActionEvent event) {
+        
     }
 
     @FXML
