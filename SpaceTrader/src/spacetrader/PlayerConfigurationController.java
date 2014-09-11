@@ -34,6 +34,7 @@ public class PlayerConfigurationController implements Initializable {
     private Slider investorSlider;
     private int investorPoint;
     private Label pointLabel;
+    private TextField nameText;
     private int pointTotal;
     /**
      * Initializes the controller class.
