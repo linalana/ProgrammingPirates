@@ -1,5 +1,5 @@
 .anchor-pane {
-    -fx-background-color: black;
+    -fx-background-color: #4b2c0f;
 }
 
 .label {
@@ -40,10 +40,10 @@
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
     -fx-background-radius: 0;
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #4b2c0f;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
-    -fx-text-fill: #d8d8d8;
+    -fx-text-fill: whitesmoke;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
@@ -53,5 +53,5 @@
 
 .button:pressed, .button:default:hover:pressed {
   -fx-background-color: white;
-  -fx-text-fill: #1d1d1d;
+  -fx-text-fill: #4b2c0f;
 }
