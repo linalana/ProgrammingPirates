@@ -6,12 +6,17 @@
 
 package spacetrader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -19,13 +24,27 @@ import javafx.scene.control.Label;
  */
 public class WelcomeScreenController implements Initializable {
     
+    private SpaceTrader spacetrader;
+    
     @FXML
     private Label label;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private void handleStartButtonAction(ActionEvent event) {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SpaceTrader.class.getResource("PlayerConfiguration.fxml"));
+            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
+
+            // Show the scene containing the root layout.
+            Stage playerStage = new Stage();
+            Scene scene = new Scene(ConfigurationLayout);
+            playerStage.setScene(scene);
+            playerStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     @Override

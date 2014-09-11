@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class SpaceTrader extends Application {
 
     private Stage primaryStage;
-    private BorderPane rootLayout;
+    private AnchorPane rootLayout;
 
     @Override
     public void start(Stage primaryStage) {
@@ -27,7 +27,6 @@ public class SpaceTrader extends Application {
 
         initRootLayout();
 
-        showPersonOverview();
     }
 
     /**
@@ -37,30 +36,13 @@ public class SpaceTrader extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            loader.setLocation(SpaceTrader.class.getResource("WelcomeScreen.fxml"));
+            rootLayout = (AnchorPane) loader.load();
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Shows the person overview inside the root layout.
-     */
-    public void showPersonOverview() {
-        try {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("WelcomeScreen.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
-
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
         } catch (IOException e) {
             e.printStackTrace();
         }
