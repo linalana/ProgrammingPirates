@@ -14,7 +14,7 @@
       <Slider fx:id="fighterSlider" blockIncrement="1.0" layoutX="213.0" layoutY="196.0" majorTickUnit="5.0" max="10.0" minorTickCount="4" onDragDropped="#FighterSliderUpdate" prefHeight="26.0" prefWidth="346.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@playerconfiguration.css" />
       <Button id="acceptButton" fx:id="acceptButton" layoutX="440.0" layoutY="355.0" mnemonicParsing="false" onAction="#submitButtonCreatePlayer" prefHeight="31.0" prefWidth="115.0" text="Accept" />
       <Button fx:id="cancelButton" layoutX="309.0" layoutY="355.0" mnemonicParsing="false" onAction="#returnToStart" prefHeight="31.0" prefWidth="115.0" text="Cancel" />
-      <TextField fx:id="nameText" layoutX="52.0" layoutY="103.0" prefHeight="27.0" prefWidth="506.0" promptText="Arg! What's yer pirate name?" />
+      <TextField fx:id="nameText" layoutX="52.0" layoutY="103.0" prefHeight="24.0" prefWidth="506.0" promptText="Arg! What's yer pirate name?" />
       <Label layoutX="52.0" layoutY="21.0" prefHeight="74.0" prefWidth="540.0" text="Player Configuration">
          <font>
             <Font name="System Font Regular" size="24.0" />

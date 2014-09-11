@@ -29,16 +29,27 @@ import javafx.stage.Stage;
 public class PlayerConfigurationController implements Initializable {
     @FXML 
     private Button cancelButton;
+    @FXML 
     private Button acceptButton;
+    @FXML 
     private Slider fighterSlider;
+    @FXML 
     private int fighterPoint;
+    @FXML 
     private Slider traderSlider;
+    @FXML 
     private int traderPoint;
+    @FXML 
     private Slider engineerSlider;
+    @FXML 
     private int engineerPoint;
+    @FXML 
     private Slider investorSlider;
+    @FXML 
     private int investorPoint;
+    @FXML 
     private Label pointLabel;
+    @FXML 
     private TextField nameText;
     private int pointTotal;
     /**
@@ -51,6 +62,7 @@ public class PlayerConfigurationController implements Initializable {
         traderPoint = 0;
         engineerPoint = 0;
         investorPoint = 0;
+
     }
     @FXML
     private void FighterSliderUpdate(ActionEvent event) {
@@ -88,9 +100,11 @@ public class PlayerConfigurationController implements Initializable {
     @FXML
     private void submitButtonCreatePlayer(ActionEvent event) {
         
-        System.out.println("Accept button");
-       
-        //Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
+        //System.out.println("Accept Button");
+        if (nameText.getText() != null && !nameText.getText().isEmpty()) {
+            Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
+            System.out.println(player.toString());
+       }
     }
 
     @FXML
