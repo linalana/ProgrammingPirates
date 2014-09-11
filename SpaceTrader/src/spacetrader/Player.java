@@ -38,19 +38,19 @@ public class Player {
         return fighter;
     }
     public void setTrader(int newTrader) {
-        fighter = newTrader;
+       trader = newTrader;
     }
     public int getTrader() {
         return trader;
     }
     public void setEngineer(int newEngineer) {
-        fighter = newEngineer;
+        engineer = newEngineer;
     }
     public int getEngineer() {
         return engineer;
     }
     public void setInvestor(int newInvestor) {
-        fighter = newInvestor;
+        investor = newInvestor;
     }
     public int getInvestor() {
         return investor;
