@@ -11,5 +11,17 @@ package spacetrader;
  * @author Michael
  */
 public class Player {
-    
+    private String name;
+    public Player() {
+        name = "";
+    }
+
+
+    public void setName(String newName) {
+        name = newName;
+    }
+    public String getName() {
+        return name;
+    }
 }
+ 
