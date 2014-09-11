@@ -23,7 +23,9 @@ public class Player {
         engineer = aEngineer;
         investor = aInvestor;
     }
-
+    public String toString() {
+        return "Player name: " + name + ". Fighter: " + fighter + ". Trader: " + trader + ". Engineer: " + engineer + ". Investor: " + investor;
+    }
     //Getters and setters
     public void setName(String newName) {
         name = newName;
