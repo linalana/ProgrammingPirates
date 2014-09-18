@@ -32,6 +32,15 @@ public class World {
             systems[i] = politicalSystems.remove(generator.nextInt(17));
         }
         continents[0] = new Continent("Zaofu", systems[0]);
+        continents[1] = new Continent("Tortuga", systems[1]);
+        continents[2] = new Continent("Istantinople", systems[2]);
+        continents[3] = new Continent("Westeros", systems[3]);
+        continents[4] = new Continent("Alabasta", systems[4]);
+        continents[5] = new Continent("Booty Island", systems[5]);
+        continents[6] = new Continent("Johto", systems[6]);
+        continents[7] = new Continent("Fraxos", systems[7]);
+        continents[8] = new Continent("Dynatopia", systems[8]);
+        continents[9] = new Continent("Caspiar", systems[9]);
     }
     
     public ArrayList<String> createPoliticalSystems() {
