@@ -13,7 +13,18 @@ import java.util.Random;
  * @version 1.0
  */
 public class Continent {
+    
+    private String[] techLevels = new String[] {"Pre-Agriculture", "Agriculture", "Medieval",
+        "Renaissance", "Early Industrial", "Industrial", "Post-Industrial",
+        "Hi-Tech"};
+    private String[] resources = new String[] {"No Special Resources", "Mineral Rich",
+        "Mineral Poor", "Desert", "Lots of Water", "Rich Soil", "Poor Soil","Rich Fauna",
+        "Lifeless", "Weird Mushrooms", " Lots of Herbs", "Artistic", "Warlike"};
+    
     private String name;
+    private int x;
+    private int y;
+    
     private String politicalSystem;
     private int techLevel;
     private int resource;
@@ -22,8 +33,20 @@ public class Continent {
     private Port mainPort;
     private int maxPorts = 10;
     
-    public Continent(String name, String politicalSystem) {
+    /**
+     *
+     * The constructor for a continent, randomly generates details
+     * 
+     * @param name the name of the continent
+     * @param politicalSystem the political system
+     * @param x position
+     * @param y position
+     */
+    public Continent(String name, String politicalSystem, int x, int y) {
         ports = new Port[maxPorts];
+        
+        this.x = x;
+        this.y = y;
         this.name = name;
         this.politicalSystem = politicalSystem;
         setTechLevel();
@@ -37,6 +60,9 @@ public class Continent {
         
     }
     
+    /**
+     * Sets the tech level based on the current political system
+     */
     private void setTechLevel() {
         Random rand = new Random();
         switch (politicalSystem) {
@@ -82,12 +108,12 @@ public class Continent {
         int i = 0;
         while ( i < maxPorts && ports[i] != null) {
             portString += ports[i].toString();
-            if (i != maxPorts - 1) {
+            if (i != maxPorts - 1 && ports[i + 1] != null) {
                 portString += ", ";
             }
             i++;
         }
-        return name + ": " + politicalSystem + " Tech: " + techLevel + " Primary Resource: " + resource + " Ports: " + portString;
+        return name + " @ (" + x + ", " + y + ") : " + politicalSystem + ", Tech: " + techLevels[techLevel] + ", Primary Resource: " + resources[resource] + ", Ports: " + portString;
     }
     
 }
