@@ -11,10 +11,12 @@ package spacetrader;
  * @author Danny
  */
 public class Bazaar {
+    private int techLevel;
     /**
-     * This is the constructor for a Bazaar. 
+     * This is the constructor for a Bazaar.
+     * @param newTechLevel
      */
-    public Bazaar() {
-        
+    public Bazaar(int newTechLevel) {
+        techLevel = newTechLevel;
     }
 }
