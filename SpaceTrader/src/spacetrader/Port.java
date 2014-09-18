@@ -10,6 +10,6 @@ package spacetrader;
  *
  * @author Michael
  */
-public class Universe {
+public class Port {
     
 }
