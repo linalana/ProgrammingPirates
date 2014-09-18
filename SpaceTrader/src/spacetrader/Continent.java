@@ -14,10 +14,10 @@ import java.util.Random;
  */
 public class Continent {
     
-    private String[] techLevels = new String[] {"Pre-Agriculture", "Agriculture", "Medieval",
+    private static String[] techLevels = new String[] {"Pre-Agriculture", "Agriculture", "Medieval",
         "Renaissance", "Early Industrial", "Industrial", "Post-Industrial",
         "Hi-Tech"};
-    private String[] resources = new String[] {"No Special Resources", "Mineral Rich",
+    private static String[] resources = new String[] {"No Special Resources", "Mineral Rich",
         "Mineral Poor", "Desert", "Lots of Water", "Rich Soil", "Poor Soil","Rich Fauna",
         "Lifeless", "Weird Mushrooms", " Lots of Herbs", "Artistic", "Warlike"};
     

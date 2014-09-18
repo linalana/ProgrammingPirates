@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
+ * handles the GUI for player creation
  *
  * @author Alana Lin
  */
@@ -50,7 +51,9 @@ public class PlayerConfigurationController implements Initializable {
     private int pointTotal;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. 
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -89,7 +92,14 @@ public class PlayerConfigurationController implements Initializable {
                 }
         });         
     }
-    
+    /**
+     * Checks to see if the slider's new position will go over the total points
+     * If it wont, updates the points remaining
+     * 
+     * @param slider the slider being modified
+     * @param pastVal the previous value of the slider
+     * @return 
+     */
     @FXML
     private int UpdatePoints(Slider slider, int pastVal) {
         int diff = (int)slider.getValue() - pastVal;
@@ -103,10 +113,15 @@ public class PlayerConfigurationController implements Initializable {
         return pastVal;
     }
     
+    
+    /**
+     * Creates a new player from the current set up on the UI when submit button pressed
+     * 
+     * @param event submit button pressed
+     */
     @FXML
     private void submitButtonCreatePlayer(ActionEvent event) {
         
-        //System.out.println("Accept Button");
         if (nameText.getText() != null && !nameText.getText().isEmpty()) {
             Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
             System.out.println(player.toString());
@@ -115,7 +130,11 @@ public class PlayerConfigurationController implements Initializable {
             System.out.println(gameWorld.toString());
        }
     }
-
+    /**
+     * Returns the screen to the start screen if canceled
+     * 
+     * @param event cancel button pressed
+     */
     @FXML
     private void returnToStart(ActionEvent event) {
         try {
@@ -133,7 +152,11 @@ public class PlayerConfigurationController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+    /**
+     * moves to next screen when finished making player
+     * 
+     * @author Michael
+     */
     @FXML
     private void showOpeningScreen() {
         try {
