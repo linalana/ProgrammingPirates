@@ -18,6 +18,11 @@ public class World {
     private Continent[] continents;
     private RangeChart rangeChart;
     
+    /**
+     * Initializes the World. Creates 10 continents, each with a randomly chosen
+     * political system - guaranteed to be different from the others by using an 
+     * ArrayList.
+     */
     public World() {
         continents = new Continent[10];
         rangeChart = new RangeChart();
@@ -29,7 +34,7 @@ public class World {
         Random generator = new Random();
         String[] systems = new String[10];
         for (int i = 0; i < 10; i++) {
-            systems[i] = politicalSystems.remove(generator.nextInt(17));
+            systems[i] = politicalSystems.remove(generator.nextInt(politicalSystems.size()));
         }
         continents[0] = new Continent("Zaofu", systems[0]);
         continents[1] = new Continent("Tortuga", systems[1]);
@@ -43,7 +48,7 @@ public class World {
         continents[9] = new Continent("Caspiar", systems[9]);
     }
     
-    public ArrayList<String> createPoliticalSystems() {
+    private ArrayList<String> createPoliticalSystems() {
         ArrayList<String> list = new ArrayList<>();
         list.add("anarchy");
         list.add("capitalist");
@@ -65,8 +70,17 @@ public class World {
         return list;
     }
     
+    /**
+     * Overrides the toString() method. Prints out each Continent as a String.
+     * @return String representation of the World
+     */
+    @Override
     public String toString() {
-        return "Not filled out yet";
+        String result = "The World contains: \n";
+        for (int i = 0; i < continents.length; i++) {
+            result += continents[i].toString() + "\n";
+        }
+        return result;
     }
     
 }
