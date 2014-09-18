@@ -111,6 +111,8 @@ public class PlayerConfigurationController implements Initializable {
             Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
             System.out.println(player.toString());
             showOpeningScreen();
+            World gameWorld = new World();
+            gameWorld.toString();
        }
     }
 

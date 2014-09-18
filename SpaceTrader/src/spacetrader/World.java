@@ -12,4 +12,11 @@ package spacetrader;
  */
 public class World {
     
+    private Continent[] continents;
+    private RangeChart rangeChart;
+    
+    public World() {
+        continents = new Continent[50];
+    }
+    
 }
