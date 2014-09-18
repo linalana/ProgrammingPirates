@@ -6,10 +6,14 @@
 package spacetrader;
 
 /**
- *
+ * This class represents a Ship Yard, where a Player can go to buy and upgrade
+ * ships.
  * @author Danny
  */
 public class ShipYard {
+    /**
+     * The constructor for ShipYard. 
+     */
     public ShipYard() {
         
     }

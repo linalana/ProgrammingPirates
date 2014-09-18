@@ -7,8 +7,8 @@
 package spacetrader;
 
 /**
- *
- * @author Michael
+ * This class represents a Port.
+ * @author Danny
  */
 public class Port {
     private String name;
@@ -17,6 +17,13 @@ public class Port {
     private int techLevel;
     private int resources;
     
+    /**
+     * This is the constructor for the Port, it sets all the necessary
+     * variables.
+     * @param newName
+     * @param newTechLevel
+     * @param newResources
+     */
     public Port(String newName, int newTechLevel, int newResources) {
         name = newName;
         techLevel = newTechLevel;
@@ -24,5 +31,17 @@ public class Port {
         shipYard = new ShipYard();
         bazaar = new Bazaar();
         
+    }
+
+    /**
+     * This is a getter method for the name of the Port.
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+    @Override
+    public String toString() {
+        return getName();
     }
 }
