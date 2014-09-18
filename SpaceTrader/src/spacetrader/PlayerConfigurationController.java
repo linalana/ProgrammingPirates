@@ -112,7 +112,7 @@ public class PlayerConfigurationController implements Initializable {
             System.out.println(player.toString());
             showOpeningScreen();
             World gameWorld = new World();
-            gameWorld.toString();
+            System.out.println(gameWorld.toString());
        }
     }
 

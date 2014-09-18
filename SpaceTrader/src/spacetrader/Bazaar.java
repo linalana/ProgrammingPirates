@@ -6,10 +6,14 @@
 package spacetrader;
 
 /**
- *
+ * This class represents a Bazaar, AKA a market place where the player can buy
+ * and sell goods.
  * @author Danny
  */
 public class Bazaar {
+    /**
+     * This is the constructor for a Bazaar. 
+     */
     public Bazaar() {
         
     }
