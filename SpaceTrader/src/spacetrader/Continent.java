@@ -79,13 +79,15 @@ public class Continent {
     @Override
     public String toString() {
         String portString = "";
-        for (int i = 0; i < maxPorts; i++) {
+        int i = 0;
+        while ( i < maxPorts && ports[i] != null) {
             portString += ports[i].toString();
             if (i != maxPorts - 1) {
                 portString += ", ";
             }
+            i++;
         }
-        return name + ": " + politicalSystem + "Tech: " + techLevel + "Primary Resource: " + resource + " Ports: " + portString;
+        return name + ": " + politicalSystem + " Tech: " + techLevel + " Primary Resource: " + resource + " Ports: " + portString;
     }
     
 }
