@@ -57,15 +57,23 @@ public enum TradeGood {
      * traded
      * @return the price
      */
-    public int CalculatePrice(int techLevel) {
+    public int CalculatePrice(Port port) {
         Random rand = new Random();
-        int result = BasePrice + IPL * (techLevel - MTLP) + BasePrice
+        int price = BasePrice + IPL * (port.getTechLevel() - MTLP) + BasePrice
                      * ((rand.nextInt(2*Var) - Var / 2) / 100);
-        if (result < 0) {
+        if (price < 0) {
             return 0;
-        } else {
-            return result;
+        } 
+        if (port.getEvent() == IE) {
+            price *= 5;
         }
+        if (port.getResources() == CR) {
+            price *= .5;
+        }
+        if (port.getResources() == ER) {
+            price *= 1.5;
+        }       
+        return price;
     }
 
 }

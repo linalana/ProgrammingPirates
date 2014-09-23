@@ -11,13 +11,17 @@ package spacetrader;
  * @author Danny
  */
 public class Port {
+    
+    private static final String[] events = new String[] {"DROUGHT", "COLD", 
+    "CROPFAIL", "WAR", "BOREDOM", "PLAGUE", "LACKOFWORKERS"};
+        
     private String name;
     private ShipYard shipYard;
     private Bazaar bazaar;
     private int techLevel;
-    private int resources;
-    private static String[] events = new String[] {"DROUGHT", "COLD", 
-        "CROPFAIL", "WAR", "BOREDOM", "PLAGUE", "LACKOFWORKERS"};
+    private String resources;
+    private int event;
+
     
     /**
      * This is the constructor for the Port, it sets all the necessary
@@ -26,12 +30,12 @@ public class Port {
      * @param newTechLevel
      * @param newResources
      */
-    public Port(String newName, int newTechLevel, int newResources) {
+    public Port(String newName, int newTechLevel, String newResources) {
         name = newName;
         techLevel = newTechLevel;
         resources = newResources;
         shipYard = new ShipYard();
-        bazaar = new Bazaar(techLevel);
+        bazaar = new Bazaar(getTechLevel());
         
     }
 
@@ -45,5 +49,40 @@ public class Port {
     @Override
     public String toString() {
         return getName();
+    }
+
+    /**
+     * @return the bazaar
+     */
+    public Bazaar getBazaar() {
+        return bazaar;
+    }
+
+    /**
+     * @return the techLevel
+     */
+    public int getTechLevel() {
+        return techLevel;
+    }
+
+    /**
+     * @return the resources
+     */
+    public String getResources() {
+        return resources;
+    }
+
+    /**
+     * @return the event
+     */
+    public String getEvent() {
+        return events[event];
+    }
+
+    /**
+     * @param event the event to set
+     */
+    public void setEvent(int event) {
+        this.event = event;
     }
 }

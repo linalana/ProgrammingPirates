@@ -56,7 +56,7 @@ public class Continent {
         resource = rand.nextInt(13);
         
         //create port(s)
-        mainPort = new Port(name, techLevel, resource);
+        mainPort = new Port(name, getTechLevel(), getResource());
         ports[0] = mainPort;
         
     }
@@ -123,7 +123,34 @@ public class Continent {
             }
             i++;
         }
-        return name + " @ (" + x + ", " + y + ") : " + politicalSystem + ", Tech: " + techLevels[techLevel] + ", Primary Resource: " + getResource() + ", Ports: " + portString;
+        return name + " @ (" + getX() + ", " + getY() + ") : " + politicalSystem + ", Tech: " + techLevels[getTechLevel()] + ", Primary Resource: " + getResource() + ", Ports: " + portString;
     }
-    
+
+    /**
+     * @return the x
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * @return the y
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * @return the techLevel
+     */
+    public int getTechLevel() {
+        return techLevel;
+    }
+
+    /**
+     * @return the mainPort
+     */
+    public Port getMainPort() {
+        return mainPort;
+    }
 }
