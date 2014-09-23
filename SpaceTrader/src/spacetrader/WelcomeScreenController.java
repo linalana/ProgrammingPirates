@@ -28,6 +28,11 @@ public class WelcomeScreenController implements Initializable {
     @FXML
     private Label label;
     
+    /**
+     * Starts a game, switches to the player configuration screen
+     * 
+     * @param event submit button pressed
+     */
     @FXML
     private void handleStartButtonAction(ActionEvent event) {
         try {

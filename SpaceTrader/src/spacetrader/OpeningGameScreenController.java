@@ -31,8 +31,12 @@ public class OpeningGameScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     } 
-    
-        @FXML
+    /**
+     * Opens the marketplace screen
+     * 
+     * @param event submit button pressed
+     */
+    @FXML
     private void handleMarketplaceButtonAction(ActionEvent event) {
         try {
             // Load root layout from fxml file.
