@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="spacetrader.MarketplaceScreenController">
+   <children>
+      <SplitPane dividerPositions="0.5" layoutX="-6.0" layoutY="-9.0" prefHeight="418.0" prefWidth="619.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ListView fx:id="marketGoodsList" fixedCellSize="1.0" layoutY="41.0" prefHeight="357.0" prefWidth="296.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                  <Label layoutX="14.0" layoutY="14.0" text="Market Goods" />
+                  <Button fx:id="buyButton" layoutX="246.0" layoutY="365.0" mnemonicParsing="false" onAction="#buyButtonPressed" text="Buy" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ListView fx:id="cargoGoodsList" layoutX="-25.0" layoutY="90.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                  <Label layoutX="14.0" layoutY="14.0" text="Cargo Goods" />
+                  <Button fx:id="sellButton" layoutX="247.0" layoutY="365.0" mnemonicParsing="false" onAction="#sellButtonPressed" text="Sell" />
+                  <Label fx:id="moneyLabel" layoutX="207.0" layoutY="14.0" text="Money:" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
