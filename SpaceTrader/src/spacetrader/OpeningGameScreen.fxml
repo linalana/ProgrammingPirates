@@ -10,5 +10,6 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.OpeningGameScreenController">
    <children>
       <Text fill="#f8f7f7" layoutX="196.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-plain" text="Your Journey Begins Here" />
+      <Button layoutX="234.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleMarketplaceButtonAction" text="Marketplace" />
    </children>
 </AnchorPane>
