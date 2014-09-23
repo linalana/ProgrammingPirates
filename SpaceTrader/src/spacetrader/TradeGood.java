@@ -53,7 +53,13 @@ public enum TradeGood {
     
     public int CalculatePrice(int techLevel) {
         Random rand = new Random();
-        return BasePrice + IPL * (techLevel - MTLP) + BasePrice * (rand.nextInt(Var) / 100);
+        int result = BasePrice + IPL * (techLevel - MTLP) + BasePrice
+                     * ((rand.nextInt(2*Var) - Var / 2) / 100);
+        if (result < 0) {
+            return 0;
+        } else {
+            return result;
+        }
     }
 
 }
