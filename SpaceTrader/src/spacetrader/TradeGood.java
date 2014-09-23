@@ -50,7 +50,13 @@ public enum TradeGood {
         this.MTL = MTL;
         this.MTH = MTH;
     }
-    
+    /**
+     * Calculates the price of the good at the tech level of the port
+     * 
+     * @param techLevel - the tech level of the port at which the good is being 
+     * traded
+     * @return the price
+     */
     public int CalculatePrice(int techLevel) {
         Random rand = new Random();
         int result = BasePrice + IPL * (techLevel - MTLP) + BasePrice
