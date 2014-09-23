@@ -16,6 +16,7 @@ public class Player {
     private int trader;
     private int engineer;
     private int investor;
+    private int money = 1000;
 
     /**
      *
@@ -135,6 +136,20 @@ public class Player {
      */
     public int getInvestor() {
         return investor;
+    }
+
+    /**
+     * @return the money
+     */
+    public int getMoney() {
+        return money;
+    }
+
+    /**
+     * @param money the money to set
+     */
+    public void setMoney(int money) {
+        this.money = money;
     }
 }
  

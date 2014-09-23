@@ -11,7 +11,26 @@ package spacetrader;
  * @author Murph
  */
 public class Game {
-    Player player;
-    public Game(){
+    
+    static Player player;
+    
+    /**
+     *
+     * Constructs a Game
+     * 
+     * @param p the player
+     */
+    public Game(Player p){
+        player = p;
+    }
+    
+    /**
+     *
+     * Getter for player
+     * 
+     * @return player
+     */
+    public static Player getPlayer() {
+        return player;
     }
 }

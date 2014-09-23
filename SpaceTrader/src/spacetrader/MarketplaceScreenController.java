@@ -38,6 +38,7 @@ public class MarketplaceScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }    
     
     @FXML
