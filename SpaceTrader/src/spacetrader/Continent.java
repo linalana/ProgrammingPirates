@@ -14,13 +14,14 @@ import java.util.Random;
  */
 public class Continent {
     
-    private static String[] techLevels = new String[] {"Pre-Agriculture", "Agriculture", "Medieval",
-        "Renaissance", "Early Industrial", "Industrial", "Post-Industrial",
-        "Hi-Tech"};
-    private static String[] resources = new String[] {"No Special Resources", "Mineral Rich",
-        "Mineral Poor", "Desert", "Lots of Water", "Rich Soil", "Poor Soil","Rich Fauna",
-        "Lifeless", "Weird Mushrooms", " Lots of Herbs", "Artistic", "Warlike"};
-    
+    private static String[] techLevels = new String[] {"PRE-AGRICULTURE", 
+        "AGRICULTURE", "MEDIEVAL", "RENAISSANCE", "EARLY INDUSTRIAL", 
+        "INDUSTRIAL", "POST-INDUSTRIAL", "HI-TECH"};
+    private static String[] resources = new String[] {"NO SPECIAL RESOURCES", 
+        "MINERAL RICH", "MINERAL POOR", "DESERT", "LOTS OF WATER", "RICH SOIL", 
+        "POOR SOIL", "RICH FAUNA", "LIFELESS", "WEIRD MUSHROOMS", 
+        "LOTS OF HERBS", "ARTISTIC", "WARLIKE"};
+
     private String name;
     private int x;
     private int y;
@@ -102,6 +103,15 @@ public class Continent {
                 break;
         }
     }
+    
+    /**
+     * @return the resource
+     */
+    public String getResource() {
+        return resources[resource];
+    }
+    
+    
     @Override
     public String toString() {
         String portString = "";
@@ -113,7 +123,7 @@ public class Continent {
             }
             i++;
         }
-        return name + " @ (" + x + ", " + y + ") : " + politicalSystem + ", Tech: " + techLevels[techLevel] + ", Primary Resource: " + resources[resource] + ", Ports: " + portString;
+        return name + " @ (" + x + ", " + y + ") : " + politicalSystem + ", Tech: " + techLevels[techLevel] + ", Primary Resource: " + getResource() + ", Ports: " + portString;
     }
     
 }
