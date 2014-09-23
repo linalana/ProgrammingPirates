@@ -21,7 +21,7 @@ public enum TradeGood {
     MEDICINE (4, 1, 6, 650, -20, 10, "PLAGUE", "LOTSOFHERBS", "NEVER", 400, 700),
     MACHINES (4, 3, 5, 900, -30, 5, "LACKOFWORKERS", "NEVER", "NEVER", 600, 800),
     NARCOTICS (5, 0, 5, 3500, -125, 150, "BOREDOM", "WEIRDMUSHROOMS", "NEVER", 2000, 3000),
-    ROBOTS (6, 4, 7, 5000, -150, 100, "LACKOFWORKERS", "NEVER", "NEVER", 3500, 5000);
+    MINIONS (6, 4, 7, 5000, -150, 100, "LACKOFWORKERS", "NEVER", "NEVER", 3500, 5000);
     
     private final int MTLP;       // Minimum Tech Level to Produce this resource (You can't buy on planets below this level)
     private final int MTLU;       // Minimum Tech Level to Use this resource (You can't sell on planets below this level)
