@@ -11,7 +11,10 @@ package spacetrader;
  * @author Murph
  */
 public class Game {
-    Player player;
-    public Game(){
+    
+    static Player player;
+    
+    public Game(Player p){
+        player = p;
     }
 }
