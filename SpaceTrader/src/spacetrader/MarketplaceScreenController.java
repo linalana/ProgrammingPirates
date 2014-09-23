@@ -48,5 +48,8 @@ public class MarketplaceScreenController implements Initializable {
     public void sellButtonPressed(ActionEvent event) {
         
     }
-    
+    @FXML
+    public void backButtonPressed(ActionEvent event) {
+        
+    }
 }
