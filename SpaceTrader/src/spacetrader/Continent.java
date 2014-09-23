@@ -22,17 +22,17 @@ public class Continent {
         "POOR SOIL", "RICH FAUNA", "LIFELESS", "WEIRD MUSHROOMS", 
         "LOTS OF HERBS", "ARTISTIC", "WARLIKE"};
 
-    private String name;
-    private int x;
-    private int y;
+    private final String name;
+    private final int x;
+    private final int y;
     
-    private String politicalSystem;
+    private final String politicalSystem;
     private int techLevel;
-    private int resource;
+    private final int resource;
     
-    private Port[] ports;
-    private Port mainPort;
-    private int maxPorts = 10;
+    private final Port[] ports;
+    private final Port mainPort;
+    private final int maxPorts = 10;
     
     /**
      *
