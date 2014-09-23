@@ -26,11 +26,13 @@ import javafx.stage.Stage;
  * @author Danny
  */
 public class MarketplaceScreenController implements Initializable {
-   @FXML
+    @FXML
     private Label moneyLabel;
-   @FXML
+    @FXML
+    private Label nameLabel;
+    @FXML
     private ListView marketGoodsList;
-   @FXML
+    @FXML
     private ListView cargoGoodsList;
     /**
      * Initializes the controller class.
@@ -39,6 +41,7 @@ public class MarketplaceScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
+        nameLabel.setText(Game.getCurrentPort().getName());
     }    
     
     @FXML
