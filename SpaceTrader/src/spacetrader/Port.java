@@ -16,6 +16,8 @@ public class Port {
     private Bazaar bazaar;
     private int techLevel;
     private int resources;
+    private static String[] events = new String[] {"DROUGHT", "COLD", 
+        "CROPFAIL", "WAR", "BOREDOM", "PLAGUE", "LACKOFWORKERS"};
     
     /**
      * This is the constructor for the Port, it sets all the necessary
