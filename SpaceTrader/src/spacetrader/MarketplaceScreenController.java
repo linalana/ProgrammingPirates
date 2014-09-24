@@ -10,6 +10,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,6 +46,8 @@ public class MarketplaceScreenController implements Initializable {
         Port port = Game.getCurrentPort();
         nameLabel.setText(port.getName());
         Bazaar bazaar = port.getBazaar();
+        ObservableList<TradeGood> goodsForSale = FXCollections
+                .observableArrayList(bazaar.getGoodsForSale());
     }    
     
     @FXML
