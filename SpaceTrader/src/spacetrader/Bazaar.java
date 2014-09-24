@@ -24,4 +24,18 @@ public class Bazaar {
         goodsForSale = new ArrayList<>();
         goodsForSale.add(TradeGood.WATER);
     }
+
+    /**
+     * @return the goodsForSale
+     */
+    public ArrayList<TradeGood> getGoodsForSale() {
+        return goodsForSale;
+    }
+
+    /**
+     * @param goodsForSale the goodsForSale to set
+     */
+    public void setGoodsForSale(ArrayList<TradeGood> goodsForSale) {
+        this.goodsForSale = goodsForSale;
+    }
 }
