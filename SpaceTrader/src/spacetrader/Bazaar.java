@@ -5,6 +5,8 @@
  */
 package spacetrader;
 
+import java.util.ArrayList;
+
 /**
  * This class represents a Bazaar, AKA a market place where the player can buy
  * and sell goods.
@@ -12,11 +14,14 @@ package spacetrader;
  */
 public class Bazaar {
     private int techLevel;
+    private ArrayList<TradeGood> goodsForSale;
     /**
      * This is the constructor for a Bazaar.
      * @param newTechLevel
      */
     public Bazaar(int newTechLevel) {
         techLevel = newTechLevel;
+        goodsForSale = new ArrayList<>();
+        goodsForSale.add(TradeGood.WATER);
     }
 }
