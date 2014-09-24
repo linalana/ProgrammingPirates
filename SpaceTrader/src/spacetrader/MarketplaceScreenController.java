@@ -41,7 +41,9 @@ public class MarketplaceScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
-        nameLabel.setText(Game.getCurrentPort().getName());
+        Port port = Game.getCurrentPort();
+        nameLabel.setText(port.getName());
+        Bazaar bazaar = port.getBazaar();
     }    
     
     @FXML
