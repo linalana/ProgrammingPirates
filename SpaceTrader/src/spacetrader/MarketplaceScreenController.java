@@ -10,6 +10,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,11 +28,13 @@ import javafx.stage.Stage;
  * @author Danny
  */
 public class MarketplaceScreenController implements Initializable {
-   @FXML
+    @FXML
     private Label moneyLabel;
-   @FXML
+    @FXML
+    private Label nameLabel;
+    @FXML
     private ListView marketGoodsList;
-   @FXML
+    @FXML
     private ListView cargoGoodsList;
     /**
      * Initializes the controller class.
@@ -38,6 +42,12 @@ public class MarketplaceScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
+        Port port = Game.getCurrentPort();
+        nameLabel.setText(port.getName());
+        Bazaar bazaar = port.getBazaar();
+        ObservableList<TradeGood> goodsForSale = FXCollections
+                .observableArrayList(bazaar.getGoodsForSale());
     }    
     
     @FXML

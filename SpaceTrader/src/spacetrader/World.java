@@ -82,4 +82,8 @@ public class World {
         }
         return result;
     }
+    
+    public Continent[] getContinents() {
+        return continents;
+    }
 }
