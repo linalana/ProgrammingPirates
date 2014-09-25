@@ -35,7 +35,7 @@ public class Port {
         techLevel = newTechLevel;
         resources = newResources;
         shipYard = new ShipYard();
-        bazaar = new Bazaar(getTechLevel());
+
         
     }
 
