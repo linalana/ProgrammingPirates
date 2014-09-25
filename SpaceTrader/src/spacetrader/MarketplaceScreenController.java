@@ -7,6 +7,7 @@ package spacetrader;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -48,6 +49,12 @@ public class MarketplaceScreenController implements Initializable {
         Bazaar bazaar = port.getBazaar();
         ObservableList<String> cargo = cargoGoodsList.getItems();
         ObservableList<String> market = marketGoodsList.getItems();
+        HashMap<TradeGood, int[]> goodsForSale = bazaar.getGoodsForSale();
+        for (TradeGood tg: goodsForSale.keySet()) {
+            int[] pq = goodsForSale.get(tg);
+            market.add(tg.toString() + " Price: " + pq[0] + " Quantity: " + 
+                       pq[1]);
+        }
     }    
     
     @FXML
