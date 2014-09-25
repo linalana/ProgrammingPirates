@@ -95,13 +95,13 @@ public enum TradeGood {
         if (price < 0) {
             return 0;
         } 
-        if (port.getEvent() == IE) {
+        if (port.getEvent().equals(IE)) {
             price *= 5;
         }
-        if (port.getResources() == CR) {
+        if (port.getResources().equals(CR)) {
             price *= .5;
         }
-        if (port.getResources() == ER) {
+        if (port.getResources().equals(ER)) {
             price *= 1.5;
         }       
         return price;
@@ -114,7 +114,7 @@ public enum TradeGood {
      * @return the suggested sale quantity
      */
     public int CalculateSellQuantity(int techLevel) {
-        int q = 0;
+        int q;
         if (techLevel < MTLP) {
             q = 0;
         } else if (techLevel == TTP) {
