@@ -5,7 +5,7 @@
  */
 package spacetrader;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * This class represents a Bazaar, AKA a market place where the player can buy
@@ -13,29 +13,41 @@ import java.util.ArrayList;
  * @author Danny
  */
 public class Bazaar {
-    private int techLevel;
-    private ArrayList<TradeGood> goodsForSale;
+    private final Port port;
+    //Key: name of good Value: (price, quantity)
+    private HashMap<TradeGood, int[]> goodsForSale;
     /**
      * This is the constructor for a Bazaar.
-     * @param newTechLevel
+     * @param port
      */
-    public Bazaar(int newTechLevel) {
-        techLevel = newTechLevel;
-        goodsForSale = new ArrayList<>();
-        goodsForSale.add(TradeGood.WATER);
+    public Bazaar(Port port) {
+        this.port = port;
+        goodsForSale = new HashMap<>();
     }
 
     /**
      * @return the goodsForSale
      */
-    public ArrayList<TradeGood> getGoodsForSale() {
+    public HashMap<TradeGood, int[]> getGoodsForSale() {
         return goodsForSale;
     }
 
     /**
-     * @param goodsForSale the goodsForSale to set
+     * Calculate price and quantity
      */
-    public void setGoodsForSale(ArrayList<TradeGood> goodsForSale) {
-        this.goodsForSale = goodsForSale;
+    public void setGoodsForSale() {
+        for (TradeGood g: TradeGood.values()) {
+            goodsForSale.put(g, new int[] {g.CalculatePrice(port), g.CalculateSellQuantity(port.getTechLevel())});
+        }   
+    }
+    
+    public boolean updateQuantity(TradeGood g, int q) {
+        
+        int[] oldVals = goodsForSale.get(g);
+        if (oldVals[1]- q > 1) {
+            goodsForSale.put(g, new int[]{oldVals[0], oldVals[1] - q});
+            return true;
+        }
+        return false;    
     }
 }
