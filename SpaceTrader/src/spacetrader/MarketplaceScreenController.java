@@ -47,7 +47,11 @@ public class MarketplaceScreenController implements Initializable {
         nameLabel.setText(port.getName());
         Bazaar bazaar = port.getBazaar();
         ObservableList<String> goodsForSale = FXCollections
-                .observableArrayList(bazaar.getGoodsForSale());
+                .observableArrayList();
+        for (TradeGood tg: bazaar.getGoodsForSale()) {
+            goodsForSale.add(tg.toString());
+            System.out.println(tg.toString());
+        }
         marketGoodsList = new ListView<String>(goodsForSale);
     }    
     
