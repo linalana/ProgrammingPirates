@@ -33,9 +33,9 @@ public class MarketplaceScreenController implements Initializable {
     @FXML
     private Label nameLabel;
     @FXML
-    private ListView marketGoodsList;
+    private ListView<String> marketGoodsList;
     @FXML
-    private ListView cargoGoodsList;
+    private ListView<String> cargoGoodsList;
     /**
      * Initializes the controller class.
      */
@@ -46,8 +46,9 @@ public class MarketplaceScreenController implements Initializable {
         Port port = Game.getCurrentPort();
         nameLabel.setText(port.getName());
         Bazaar bazaar = port.getBazaar();
-        ObservableList<TradeGood> goodsForSale = FXCollections
+        ObservableList<String> goodsForSale = FXCollections
                 .observableArrayList(bazaar.getGoodsForSale());
+        marketGoodsList = new ListView<String>(goodsForSale);
     }    
     
     @FXML
