@@ -37,6 +37,7 @@ public class MarketplaceScreenController implements Initializable {
     private ListView<String> marketGoodsList;
     @FXML
     private ListView<String> cargoGoodsList;
+    private HashMap<TradeGood, int[]> goodsForSale;
     /**
      * Initializes the controller class.
      */
@@ -49,7 +50,7 @@ public class MarketplaceScreenController implements Initializable {
         Bazaar bazaar = port.getBazaar();
         ObservableList<String> cargo = cargoGoodsList.getItems();
         ObservableList<String> market = marketGoodsList.getItems();
-        HashMap<TradeGood, int[]> goodsForSale = bazaar.getGoodsForSale();
+        goodsForSale = bazaar.getGoodsForSale();
         for (TradeGood tg: goodsForSale.keySet()) {
             int[] pq = goodsForSale.get(tg);
             market.add(tg.toString() + " Price: " + pq[0] + " Quantity: " + 
@@ -59,7 +60,12 @@ public class MarketplaceScreenController implements Initializable {
     
     @FXML
     public void buyButtonPressed(ActionEvent event) {
-        
+        String longString = marketGoodsList.getSelectionModel().getSelectedItem();
+        int spaceIndex = longString.indexOf(' ');
+        String goodToBuy = longString.substring(0, spaceIndex);
+        System.out.println(goodToBuy);
+        TradeGood good = TradeGood.valueOf(goodToBuy);
+        int[] pq = goodsForSale.get(good);
     }
     @FXML
     public void sellButtonPressed(ActionEvent event) {
