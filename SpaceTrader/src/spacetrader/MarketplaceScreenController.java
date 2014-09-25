@@ -48,7 +48,6 @@ public class MarketplaceScreenController implements Initializable {
         Bazaar bazaar = port.getBazaar();
         ObservableList<String> cargo = cargoGoodsList.getItems();
         ObservableList<String> market = marketGoodsList.getItems();
-
     }    
     
     @FXML

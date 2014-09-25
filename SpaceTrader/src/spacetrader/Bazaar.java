@@ -23,6 +23,7 @@ public class Bazaar {
     public Bazaar(Port port) {
         this.port = port;
         goodsForSale = new HashMap<>();
+        setGoodsForSale();
     }
 
     /**
