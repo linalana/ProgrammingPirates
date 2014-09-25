@@ -52,7 +52,7 @@ public class MarketplaceScreenController implements Initializable {
             goodsForSale.add(tg.toString());
             System.out.println(tg.toString());
         }
-        marketGoodsList = new ListView<String>(goodsForSale);
+            marketGoodsList.setItems(goodsForSale);
     }    
     
     @FXML

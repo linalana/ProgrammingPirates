@@ -12,10 +12,10 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView fx:id="marketGoodsList" fixedCellSize="1.0" layoutY="41.0" prefHeight="357.0" prefWidth="296.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
                   <Label layoutX="14.0" styleClass="label-subtitle" text="Market Goods" />
                   <Button fx:id="buyButton" layoutX="218.0" layoutY="323.0" mnemonicParsing="false" onAction="#buyButtonPressed" text="Buy" />
                   <Button layoutX="8.0" layoutY="323.0" mnemonicParsing="false" onAction="#backButtonPressed" text="Out!" />
+                  <ListView fx:id="marketGoodsList" layoutX="11.0" layoutY="30.0" prefHeight="279.0" prefWidth="298.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -27,8 +27,8 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <Label fx:id="moneyLabel" layoutX="300.0" styleClass="label-subtitle" text="Money:" />
-      <Label fx:id="nameLabel" layoutX="14.0" styleClass="label-subtitle" text="Bazaar Name" />
+      <Label fx:id="moneyLabel" layoutX="414.0" styleClass="label-subtitle" text="Money:" />
+      <Label fx:id="nameLabel" layoutX="242.0" styleClass="label-subtitle" text="Bazaar Name" />
       <Separator layoutY="37.0" prefHeight="4.0" prefWidth="604.0" />
    </children>
 </AnchorPane>
