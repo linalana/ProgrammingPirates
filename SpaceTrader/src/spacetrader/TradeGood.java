@@ -69,9 +69,6 @@ public enum TradeGood {
     private final int MTL;        // Min price offered in space trade with random trader (not on a planet)
     private final int MTH;        // Max price offered in space trade with random trader (not on a planet)
     
-    private int currentPrice;     // Current Price at market
-    private int quantity;         // Quantity of this resource
-    
     TradeGood(int MTLP, int MTLU, int TTP, int BasePrice, int IPL, int Var, String IE, String CR, String ER, int MTL, int MTH) {
         this.MTLP = MTLP;
         this.MTLU = MTLU;
@@ -121,11 +118,10 @@ public enum TradeGood {
         if (techLevel < MTLP) {
             q = 0;
         } else if (techLevel == TTP) {
-            q = 100;
+            q = 50;
         } else {
             q = 20 + 5 * (techLevel - MTLP);
         }
-        quantity = q;
         return q;
     }
 
