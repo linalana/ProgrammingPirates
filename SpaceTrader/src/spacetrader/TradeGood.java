@@ -114,13 +114,15 @@ public enum TradeGood {
      * @return the suggested sale quantity
      */
     public int CalculateSellQuantity(int techLevel) {
+        Random rand = new Random();
+        int random = rand.nextInt(8) - rand.nextInt(8);
         int q;
         if (techLevel < MTLP) {
             q = 0;
         } else if (techLevel == TTP) {
-            q = 50;
+            q = 50 + random;
         } else {
-            q = 20 + 5 * (techLevel - MTLP);
+            q = 20 + 5 * (techLevel - MTLP) + random;
         }
         return q;
     }
