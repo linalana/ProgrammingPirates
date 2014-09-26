@@ -42,11 +42,18 @@ public class Bazaar {
         }   
     }
     
+    /**
+     *
+     * Update the quantity (input positive quantity for adding, negative for subtracting)
+     * @param g the TradeGood in question
+     * @param q the quantity changed (postive or negative)
+     * @return
+     */
     public boolean updateQuantity(TradeGood g, int q) {
         
         int[] oldVals = goodsForSale.get(g);
-        if (oldVals[1]- q > 1) {
-            goodsForSale.put(g, new int[]{oldVals[0], oldVals[1] - q});
+        if (oldVals[1] + q > 1) {
+            goodsForSale.put(g, new int[]{oldVals[0], oldVals[1] + q});
             return true;
         }
         return false;    

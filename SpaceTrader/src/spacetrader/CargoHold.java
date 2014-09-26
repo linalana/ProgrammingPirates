@@ -50,10 +50,10 @@ public class CargoHold {
      * @param q the amount of cargo to be added
      */
     public boolean addCargo(TradeGood g, int q) {
-        int oldVal = getGoods().get(g);
+        int oldVal = goods.get(g);
         if (totalGoods + q <= (amount*10)){
-            getGoods().put(g, oldVal+q);
-            totalGoods+=q;
+            goods.put(g, oldVal + q);
+            totalGoods += q;
             return true;
         }
         return false;    
@@ -65,10 +65,10 @@ public class CargoHold {
      * @param q the amount of cargo to be subtracted
      */
     public boolean subtractCargo(TradeGood g, int q) {
-        int oldVal = getGoods().get(g);
+        int oldVal = goods.get(g);
         if (oldVal - q >= 0){
-            getGoods().put(g, oldVal-q);
-            totalGoods-=q;
+            goods.put(g, oldVal - q);
+            totalGoods -= q;
             return true;
         }
         return false;    

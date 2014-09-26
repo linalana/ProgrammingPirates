@@ -60,6 +60,10 @@ public class MarketplaceScreenController implements Initializable {
     @FXML
     public void buyButtonPressed(ActionEvent event) {
         String longString = marketGoodsList.getSelectionModel().getSelectedItem();
+        if (longString == null) {
+            marketGoodsList.getSelectionModel().selectFirst();
+            longString = marketGoodsList.getSelectionModel().getSelectedItem();
+        }
         int spaceIndex = longString.indexOf(' ');
         String goodToBuy = longString.substring(0, spaceIndex);
         System.out.println(goodToBuy);
@@ -68,7 +72,7 @@ public class MarketplaceScreenController implements Initializable {
         if (Game.getPlayer().getMoney() >= pq[0] && pq[1] > 0) {
             Game.getPlayer().setMoney(Game.getPlayer().getMoney() - pq[0]);
             updateMoneyLabel();
-            bazaar.updateQuantity(good, 1);
+            bazaar.updateQuantity(good, -1);
             cargoHold.addCargo(good, 1);
             updateLists();
         }
@@ -80,6 +84,13 @@ public class MarketplaceScreenController implements Initializable {
         String goodToSell = longString.substring(0, spaceIndex);
         System.out.println(goodToSell);
         TradeGood good = TradeGood.valueOf(goodToSell);
+        int[] pq = goodsForSale.get(good);
+        if (Game.getPlayer().getShip().getHold().subtractCargo(good, 1)) {
+            Game.getPlayer().setMoney(Game.getPlayer().getMoney() + pq[0]);
+            updateMoneyLabel();
+            bazaar.updateQuantity(good, 1);
+            updateLists();
+        }
     }
     @FXML
     public void backButtonPressed(ActionEvent event) {
