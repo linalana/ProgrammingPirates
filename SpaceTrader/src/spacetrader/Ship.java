@@ -126,6 +126,7 @@ public class Ship {
      * @param type the new ship type
      */
     public void updateShip(String type){
+        this.type = type;
         if(type.equals("flea")){
             setCargoBays(5);
             setHullStrength(1);
