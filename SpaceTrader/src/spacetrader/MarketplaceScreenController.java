@@ -53,8 +53,10 @@ public class MarketplaceScreenController implements Initializable {
         goodsForSale = bazaar.getGoodsForSale();
         for (TradeGood tg: goodsForSale.keySet()) {
             int[] pq = goodsForSale.get(tg);
-            market.add(tg.toString() + " Price: " + pq[0] + " Quantity: " + 
-                       pq[1]);
+            if (pq[1] != 0 ) {
+                market.add(tg.toString() + " Price: " + pq[0] + " Quantity: " + 
+                           pq[1]);
+            }
         }
     }    
     
