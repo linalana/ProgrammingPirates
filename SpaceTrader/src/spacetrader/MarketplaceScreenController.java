@@ -38,6 +38,8 @@ public class MarketplaceScreenController implements Initializable {
     @FXML
     private ListView<String> cargoGoodsList;
     private HashMap<TradeGood, int[]> goodsForSale;
+    private ObservableList<String> cargo;
+    private ObservableList<String> market;
     /**
      * Initializes the controller class.
      */
@@ -48,8 +50,8 @@ public class MarketplaceScreenController implements Initializable {
         Port port = Game.getCurrentPort();
         nameLabel.setText(port.getName());
         Bazaar bazaar = port.getBazaar();
-        ObservableList<String> cargo = cargoGoodsList.getItems();
-        ObservableList<String> market = marketGoodsList.getItems();
+        cargo = cargoGoodsList.getItems();
+        market = marketGoodsList.getItems();
         goodsForSale = bazaar.getGoodsForSale();
         for (TradeGood tg: goodsForSale.keySet()) {
             int[] pq = goodsForSale.get(tg);
