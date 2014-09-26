@@ -26,6 +26,7 @@ public class Ship {
      * @param type the type of ship
      */
     public Ship(String type){
+        this.type = type;
         if(type.equals("flea")){
             this.cargoBays = 5;
             this.hullStrength = 1;
