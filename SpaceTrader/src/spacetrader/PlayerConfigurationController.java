@@ -108,7 +108,8 @@ public class PlayerConfigurationController implements Initializable {
             pointLabel.setText("" + pointTotal);
             pastVal = (int)slider.getValue();
         } else {
-            slider.setValue(pastVal); //in future, set to max value possible without going over limit
+            int maxPossible = (15 - pointTotal) + pastVal;
+            slider.setValue(pointTotal);
         }
         return pastVal;
     }

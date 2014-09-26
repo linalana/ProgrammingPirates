@@ -59,6 +59,7 @@ public class MarketplaceScreenController implements Initializable {
     
     @FXML
     public void buyButtonPressed(ActionEvent event) {
+        
         String longString = marketGoodsList.getSelectionModel().getSelectedItem();
         if (longString == null) {
             marketGoodsList.getSelectionModel().selectFirst();
