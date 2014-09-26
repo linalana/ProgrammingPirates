@@ -38,6 +38,8 @@ public class MarketplaceScreenController implements Initializable {
     @FXML
     private ListView<String> cargoGoodsList;
     private HashMap<TradeGood, int[]> goodsForSale;
+    private HashMap<TradeGood, Integer> cargoGoods;
+    private CargoHold cargoHold;
     private ObservableList<String> cargo;
     private ObservableList<String> market;
     private Bazaar bazaar;
@@ -51,8 +53,9 @@ public class MarketplaceScreenController implements Initializable {
         Port port = Game.getCurrentPort();
         nameLabel.setText(port.getName());
         bazaar = port.getBazaar();
+        cargoHold = Game.getPlayer().getShip().getHold();
         updateLists();
-    }    
+    }
     
     @FXML
     public void buyButtonPressed(ActionEvent event) {
@@ -65,13 +68,18 @@ public class MarketplaceScreenController implements Initializable {
         if (Game.getPlayer().getMoney() >= pq[0] && pq[1] > 0) {
             Game.getPlayer().setMoney(Game.getPlayer().getMoney() - pq[0]);
             updateMoneyLabel();
-            Game.getCurrentPort().getBazaar().updateQuantity(good, 1);
+            bazaar.updateQuantity(good, 1);
+            cargoHold.addCargo(good, 1);
             updateLists();
         }
     }
     @FXML
     public void sellButtonPressed(ActionEvent event) {
-        
+        String longString = cargoGoodsList.getSelectionModel().getSelectedItem();
+        int spaceIndex = longString.indexOf(' ');
+        String goodToSell = longString.substring(0, spaceIndex);
+        System.out.println(goodToSell);
+        TradeGood good = TradeGood.valueOf(goodToSell);
     }
     @FXML
     public void backButtonPressed(ActionEvent event) {
@@ -97,12 +105,20 @@ public class MarketplaceScreenController implements Initializable {
         cargo = cargoGoodsList.getItems();
         market = marketGoodsList.getItems();
         goodsForSale = bazaar.getGoodsForSale();
+        cargoGoods = Game.getPlayer().getShip().getHold().getGoods();
         market.clear();
+        cargo.clear();
         for (TradeGood tg: goodsForSale.keySet()) {
             int[] pq = goodsForSale.get(tg);
             if (pq[1] != 0 ) {
                 market.add(tg.toString() + " Price: " + pq[0] + " Quantity: " + 
                     pq[1]);
+            }
+        }
+        for (TradeGood tg: cargoGoods.keySet()) {
+            int q = cargoGoods.get(tg);
+            if (q > 0) {
+                cargo.add(tg.toString() + " Quantity: " + q);
             }
         }
     }
