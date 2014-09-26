@@ -38,18 +38,20 @@ public class MarketplaceScreenController implements Initializable {
     @FXML
     private ListView<String> cargoGoodsList;
     private HashMap<TradeGood, int[]> goodsForSale;
+    private ObservableList<String> cargo;
+    private ObservableList<String> market;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
+        updateMoneyLabel();
         Port port = Game.getCurrentPort();
         nameLabel.setText(port.getName());
         Bazaar bazaar = port.getBazaar();
-        ObservableList<String> cargo = cargoGoodsList.getItems();
-        ObservableList<String> market = marketGoodsList.getItems();
+        cargo = cargoGoodsList.getItems();
+        market = marketGoodsList.getItems();
         goodsForSale = bazaar.getGoodsForSale();
         for (TradeGood tg: goodsForSale.keySet()) {
             int[] pq = goodsForSale.get(tg);
@@ -68,6 +70,10 @@ public class MarketplaceScreenController implements Initializable {
         System.out.println(goodToBuy);
         TradeGood good = TradeGood.valueOf(goodToBuy);
         int[] pq = goodsForSale.get(good);
+        if (Game.getPlayer().getMoney() >= pq[0] && pq[1] > 0) {
+            Game.getPlayer().setMoney(Game.getPlayer().getMoney() - pq[0]);
+            updateMoneyLabel();
+        }
     }
     @FXML
     public void sellButtonPressed(ActionEvent event) {
@@ -89,5 +95,8 @@ public class MarketplaceScreenController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void updateMoneyLabel() {
+         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }
 }
