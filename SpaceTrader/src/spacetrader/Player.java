@@ -12,6 +12,7 @@ package spacetrader;
  */
 public class Player {
     private String name;
+    private Ship ship;
     private int fighter;
     private int trader;
     private int engineer;
@@ -32,6 +33,7 @@ public class Player {
         trader = aTrader;
         engineer = aEngineer;
         investor = aInvestor;
+        this.ship = new Ship("gnat");
     }
     public String toString() {
         return "Player name: " + name + ". Fighter: " + fighter + ". Trader: " + trader + ". Engineer: " + engineer + ". Investor: " + investor;
@@ -150,6 +152,20 @@ public class Player {
      */
     public void setMoney(int money) {
         this.money = money;
+    }
+    
+    /**
+     * @return the ship
+     */
+    public Ship getShip() {
+        return ship;
+    }
+
+    /**
+     * @param type the ship to set
+     */
+    public void setShip(String type) {
+        ship.updateShip(type);
     }
 }
  
