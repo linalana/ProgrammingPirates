@@ -122,7 +122,7 @@ public class PlayerConfigurationController implements Initializable {
     @FXML
     private void submitButtonCreatePlayer(ActionEvent event) {
         
-        if (nameText.getText() != null && !nameText.getText().isEmpty()) {
+        if (nameText.getText() != null && !nameText.getText().isEmpty() && pointTotal == 0) {
             Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
             Game game = new Game(player);
             System.out.println(player.toString());
