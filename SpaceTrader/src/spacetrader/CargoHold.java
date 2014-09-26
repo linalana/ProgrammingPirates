@@ -40,7 +40,7 @@ public class CargoHold {
      */
     public void setGoods() {
         for (TradeGood g: TradeGood.values()) {
-            goods.put(g, 0);
+            getGoods().put(g, 0);
         }   
     }
     
@@ -50,9 +50,9 @@ public class CargoHold {
      * @param q the amount of cargo to be added
      */
     public boolean addCargo(TradeGood g, int q) {
-        int oldVal = goods.get(g);
+        int oldVal = getGoods().get(g);
         if (totalGoods + q <= (amount*10)){
-            goods.put(g, oldVal+q);
+            getGoods().put(g, oldVal+q);
             totalGoods+=q;
             return true;
         }
@@ -65,9 +65,9 @@ public class CargoHold {
      * @param q the amount of cargo to be subtracted
      */
     public boolean subtractCargo(TradeGood g, int q) {
-        int oldVal = goods.get(g);
+        int oldVal = getGoods().get(g);
         if (oldVal - q >= 0){
-            goods.put(g, oldVal-q);
+            getGoods().put(g, oldVal-q);
             totalGoods-=q;
             return true;
         }
