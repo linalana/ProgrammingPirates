@@ -40,6 +40,7 @@ public class MarketplaceScreenController implements Initializable {
     private HashMap<TradeGood, int[]> goodsForSale;
     private ObservableList<String> cargo;
     private ObservableList<String> market;
+    private Bazaar bazaar;
     /**
      * Initializes the controller class.
      */
@@ -49,17 +50,8 @@ public class MarketplaceScreenController implements Initializable {
         updateMoneyLabel();
         Port port = Game.getCurrentPort();
         nameLabel.setText(port.getName());
-        Bazaar bazaar = port.getBazaar();
-        cargo = cargoGoodsList.getItems();
-        market = marketGoodsList.getItems();
-        goodsForSale = bazaar.getGoodsForSale();
-        for (TradeGood tg: goodsForSale.keySet()) {
-            int[] pq = goodsForSale.get(tg);
-            if (pq[1] != 0 ) {
-                market.add(tg.toString() + " Price: " + pq[0] + " Quantity: " + 
-                           pq[1]);
-            }
-        }
+        bazaar = port.getBazaar();
+        updateLists();
     }    
     
     @FXML
@@ -73,6 +65,8 @@ public class MarketplaceScreenController implements Initializable {
         if (Game.getPlayer().getMoney() >= pq[0] && pq[1] > 0) {
             Game.getPlayer().setMoney(Game.getPlayer().getMoney() - pq[0]);
             updateMoneyLabel();
+            Game.getCurrentPort().getBazaar().updateQuantity(good, 1);
+            updateLists();
         }
     }
     @FXML
@@ -98,5 +92,18 @@ public class MarketplaceScreenController implements Initializable {
     }
     public void updateMoneyLabel() {
          moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
+    }
+    public void updateLists() {
+        cargo = cargoGoodsList.getItems();
+        market = marketGoodsList.getItems();
+        goodsForSale = bazaar.getGoodsForSale();
+        market.clear();
+        for (TradeGood tg: goodsForSale.keySet()) {
+            int[] pq = goodsForSale.get(tg);
+            if (pq[1] != 0 ) {
+                market.add(tg.toString() + " Price: " + pq[0] + " Quantity: " + 
+                    pq[1]);
+            }
+        }
     }
 }
