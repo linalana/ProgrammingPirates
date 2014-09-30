@@ -18,6 +18,8 @@ public class Player {
     private int engineer;
     private int investor;
     private int money = 1000;
+    private int posX;
+    private int posY;
 
     /**
      *
@@ -34,6 +36,8 @@ public class Player {
         engineer = aEngineer;
         investor = aInvestor;
         this.ship = new Ship("gnat");
+        posX = 0;
+        posY = 0;
     }
     public String toString() {
         return "Player name: " + name + ". Fighter: " + fighter + ". Trader: " + trader + ". Engineer: " + engineer + ". Investor: " + investor;
@@ -166,6 +170,23 @@ public class Player {
      */
     public void setShip(String type) {
         ship.updateShip(type);
+    }
+    
+    /**
+     * @param newPosX the new x position
+     * @param mewPosY the new y position
+     */
+    public void setLocation(int newPosX, int newPosY) {
+        posX = newPosX;
+        posY = newPosY;
+    }
+    /**
+     * 
+     * @return an array of ints, the first is the x position and the second is 
+     * the y position.
+     */
+    public int[] getLocation() {
+        return new int[] {posX, posY};
     }
 }
  

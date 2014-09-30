@@ -20,6 +20,7 @@ public class Ship {
     private int gadgets;
     private int quarters;
     private int maxRange;
+    private int fuel;
     
     /**
      * Creates a new ship
@@ -35,6 +36,7 @@ public class Ship {
             this.gadgets = 0;
             this.quarters = 0;
             this.maxRange = 20;
+            
         }
         else if(type.equals("gnat")){
             this.cargoBays = 15;
@@ -117,7 +119,7 @@ public class Ship {
             this.quarters = 3;
             this.maxRange = 14;
         }
-        
+        this.fuel = maxRange;
         this.hold = new CargoHold(getCargoBays());
     }
     
@@ -334,5 +336,21 @@ public class Ship {
         this.maxRange = maxRange;
     }
     
+
+    public void fillTank() {
+        fuel = maxRange;
+    }
+    public void setFuel(int change) {
+        fuel = fuel + change;
+        if (fuel > maxRange) {
+            fuel = maxRange;
+        }
+        if (fuel < 0) {
+            fuel = 0;
+        }
+    }
+    public int getFuel() {
+        return fuel;
+    }
     
 }

@@ -51,4 +51,12 @@ public class Game {
     public static Player getPlayer() {
         return player;
     }
+    
+    /**
+     * 
+     * @return the world
+     */
+    public static World getWorld() {
+        return world;
+    }
 }
