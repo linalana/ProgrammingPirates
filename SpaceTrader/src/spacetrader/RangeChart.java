@@ -43,7 +43,8 @@ public class RangeChart {
                 conts.add(Game.getWorld().getContinents()[i]);
             }
         }
-        continentsInRange = (Continent[])conts.toArray();
+        continentsInRange = new Continent[conts.size()];
+        continentsInRange = conts.toArray(continentsInRange);
     }
     public Continent[] getChart() {
         updateChart();
