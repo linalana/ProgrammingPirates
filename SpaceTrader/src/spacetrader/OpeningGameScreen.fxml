@@ -9,7 +9,29 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.OpeningGameScreenController">
    <children>
-      <Text fill="#f8f7f7" layoutX="196.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-plain" text="Your Journey Begins Here" />
-      <Button layoutX="252.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleMarketplaceButtonAction" text="Bazaar" />
+      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Current Port">
+              <content>
+                <fx:include fx:id="CurrentPortTabPage" source="CurrentPortTabPage.fxml"/>
+              </content>
+            </Tab>
+            <Tab text="Travel">
+              <content>
+                <fx:include fx:id="TravelTabPage" source="TravelTabPage.fxml"/>
+              </content>
+            </Tab>
+          <Tab text="Player">
+            <content>
+              <fx:include fx:id="PlayerTabPage" source="PlayerTabPage.fxml"/>
+            </content>
+          </Tab>
+          <Tab text="Ship">
+            <content>
+              <fx:include fx:id="ShipTabPage" source="ShipTabPage.fxml"/>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
