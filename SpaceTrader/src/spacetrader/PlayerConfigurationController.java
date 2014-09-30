@@ -126,6 +126,7 @@ public class PlayerConfigurationController implements Initializable {
         if (nameText.getText() != null && !nameText.getText().isEmpty() && pointTotal == 0) {
             Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
             Game game = new Game(player);
+            game.getWorld().setRangeChart();
             System.out.println(player.toString());
             showOpeningScreen();
             World gameWorld = new World();
