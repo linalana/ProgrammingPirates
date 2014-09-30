@@ -42,7 +42,7 @@ public class CurrentPortTabPageController implements Initializable {
         location.setText("Location: " + "(" + currentPort.getContinent().getX()
                          + ", " + currentPort.getContinent().getY() + ")");
         techLevel.setText("Tech Level: " + currentPort.getContinent().getTechLevel());
-        politicalSystem.setText("Political System: ");
+        politicalSystem.setText("Political System: " + currentPort.getContinent().getPoliticalSystem());
     }    
     
         /**
