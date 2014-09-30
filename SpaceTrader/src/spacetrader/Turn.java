@@ -20,6 +20,9 @@ public class Turn {
     //used to determine frequency of different types of random encounters
     private String politicalSystem;
     private int techlevel;
+    private int policeChance;
+    private int traderChance;
+    private int pirateChance;
     
     public Turn(Port newPort) {
         this.newPort = newPort;
@@ -30,7 +33,93 @@ public class Turn {
     }
     
     private void doRandomEncounters() {
-        
+        switch (politicalSystem) {
+            case "anarchy": 
+                policeChance = 0;
+                traderChance = 5;
+                pirateChance = 50;
+                break;
+            case "capitalist":
+                policeChance = 10;
+                traderChance = 50;
+                pirateChance = 10;
+                break;
+            case "communist":
+                policeChance = 50;
+                traderChance = 5;
+                pirateChance = 20;
+                break;
+            case "confederacy":
+                policeChance = 30;
+                traderChance = 25;
+                pirateChance = 20;
+                break;
+            case "corporate":
+                policeChance = 40;
+                traderChance = 35;
+                pirateChance = 15;
+                break;
+            case "cybernetic":
+                policeChance = 40;
+                traderChance = 5;
+                pirateChance = 40;
+                break;
+            case "democracy":
+                policeChance = 20;
+                traderChance = 35;
+                pirateChance = 20;
+                break;
+            case "dictatorship":
+                policeChance = 30;
+                traderChance = 15;
+                pirateChance = 30;
+                break;
+            case "fascist":
+                policeChance = 60;
+                traderChance = 5;
+                pirateChance = 5;
+                break;
+            case "feudal":
+                policeChance = 10;
+                traderChance = 10;
+                pirateChance = 50;
+                break;
+            case "military":
+                policeChance = 50;
+                traderChance = 25;
+                pirateChance = 0;
+                break;
+            case "monarchy":
+                policeChance = 25;
+                traderChance = 25;
+                pirateChance = 20;
+                break;
+            case "pacifist":
+                policeChance = 10;
+                traderChance = 40;
+                pirateChance = 5;
+                break;
+            case "socialist":
+                policeChance = 10;
+                traderChance = 15;
+                pirateChance = 40;
+                break;
+            case "satori":
+                policeChance = 5;
+                traderChance = 5;
+                pirateChance = 5;
+                break;
+            case "technocracy":
+                policeChance = 30;
+                traderChance = 35;
+                pirateChance = 10;
+                break;
+            case "theocracy":
+                policeChance = 40;
+                traderChance = 15;
+                pirateChance = 5;
+                break;
+        }
     }
     
     
