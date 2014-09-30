@@ -21,6 +21,7 @@ public class Port {
     private int techLevel;
     private String resources;
     private int event;
+    private Continent continent;
 
     
     /**
@@ -29,13 +30,16 @@ public class Port {
      * @param newName
      * @param newTechLevel
      * @param newResources
+     * @param continent in which the port is located
      */
-    public Port(String newName, int newTechLevel, String newResources) {
+    public Port(String newName, int newTechLevel, String newResources, 
+                Continent continent) {
         name = newName;
         techLevel = newTechLevel;
         resources = newResources;
         shipYard = new ShipYard();
         bazaar = new Bazaar(this);
+        this.continent = continent;
 
         
     }
@@ -85,5 +89,12 @@ public class Port {
      */
     public void setEvent(int event) {
         this.event = event;
+    }
+
+    /**
+     * @return the continent the port is in
+     */
+    public Continent getContinent() {
+        return continent;
     }
 }

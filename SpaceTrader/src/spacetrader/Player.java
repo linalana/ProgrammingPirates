@@ -18,8 +18,14 @@ public class Player {
     private int engineer;
     private int investor;
     private int money = 1000;
+
     private int posX;
     private int posY;
+
+    private int experience;
+    private boolean pirate;
+    private int policeRecord;
+
 
     /**
      *
@@ -36,8 +42,14 @@ public class Player {
         engineer = aEngineer;
         investor = aInvestor;
         this.ship = new Ship("gnat");
+
         posX = 0;
         posY = 0;
+
+        experience = 0;
+        pirate = false;
+        policeRecord = 0;
+
     }
     public String toString() {
         return "Player name: " + name + ". Fighter: " + fighter + ". Trader: " + trader + ". Engineer: " + engineer + ". Investor: " + investor;
@@ -171,6 +183,7 @@ public class Player {
     public void setShip(String type) {
         ship.updateShip(type);
     }
+
     
     /**
      * @param newPosX the new x position
@@ -187,6 +200,49 @@ public class Player {
      */
     public int[] getLocation() {
         return new int[] {posX, posY};
+    }
+
+    /**
+     * @return the experience
+     */
+    public int getExperience() {
+        return experience;
+    }
+    
+    /**
+     * @param exp experience to be added
+     */
+    public void addExperience(int exp) {
+        experience += exp;
+    }
+
+    /**
+     * @return the pirate
+     */
+    public boolean isPirate() {
+        return pirate;
+    }
+
+    /**
+     * @param pirate the pirate to set
+     */
+    public void setPirate(boolean pirate) {
+        this.pirate = pirate;
+    }
+
+    /**
+     * @return the policeRecord
+     */
+    public int getPoliceRecord() {
+        return policeRecord;
+    }
+
+    /**
+     * add arrest
+     */
+    public void incrementPoliceRecord() {
+        this.policeRecord++;
+
     }
 }
  
