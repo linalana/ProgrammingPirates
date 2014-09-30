@@ -41,7 +41,7 @@ public class Player {
         trader = aTrader;
         engineer = aEngineer;
         investor = aInvestor;
-        this.ship = new Ship("gnat");
+        this.ship = new Ship(0);
 
         posX = 0;
         posY = 0;
@@ -180,7 +180,7 @@ public class Player {
     /**
      * @param type the ship to set
      */
-    public void setShip(String type) {
+    public void setShip(int type) {
         ship.updateShip(type);
     }
 
