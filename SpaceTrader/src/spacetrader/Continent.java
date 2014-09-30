@@ -56,7 +56,7 @@ public class Continent {
         resource = rand.nextInt(13);
         
         //create port(s)
-        mainPort = new Port(name, getTechLevel(), getResource());
+        mainPort = new Port(name, getTechLevel(), getResource(), this);
         ports[0] = mainPort;
         
     }
