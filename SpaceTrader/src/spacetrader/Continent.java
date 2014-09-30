@@ -66,7 +66,7 @@ public class Continent {
      */
     private void setTechLevel() {
         Random rand = new Random();
-        switch (politicalSystem) {
+        switch (getPoliticalSystem()) {
             case "anarchy": techLevel = rand.nextInt(5);
                 break;
             case "capitalist": techLevel = rand.nextInt(3) + 5;
@@ -123,7 +123,7 @@ public class Continent {
             }
             i++;
         }
-        return name + " @ (" + getX() + ", " + getY() + ") : " + politicalSystem + ", Tech: " + techLevels[getTechLevel()] + ", Primary Resource: " + getResource() + ", Ports: " + portString;
+        return name + " @ (" + getX() + ", " + getY() + ") : " + getPoliticalSystem() + ", Tech: " + techLevels[getTechLevel()] + ", Primary Resource: " + getResource() + ", Ports: " + portString;
     }
 
     /**
@@ -152,5 +152,12 @@ public class Continent {
      */
     public Port getMainPort() {
         return mainPort;
+    }
+
+    /**
+     * @return the politicalSystem
+     */
+    public String getPoliticalSystem() {
+        return politicalSystem;
     }
 }
