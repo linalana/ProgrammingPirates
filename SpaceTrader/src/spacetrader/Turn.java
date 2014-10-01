@@ -29,10 +29,29 @@ public class Turn {
         newContinent = newPort.getContinent();
         politicalSystem = newContinent.getPoliticalSystem();
         techlevel = newPort.getTechLevel();
-        doRandomEncounters();
+        setChanceEncounters();
     }
     
-    private void doRandomEncounters() {
+    public void travel() {
+        Random rand = new Random();
+        int randInt = rand.nextInt(100);
+        if (randInt < policeChance) {
+            //police encounter
+        } else if (randInt > policeChance
+                   && randInt < (policeChance + traderChance)) {
+            //trader encounter
+        } else if (randInt > (policeChance + traderChance)
+                   && randInt < (policeChance + traderChance + pirateChance)) {
+            //pirate encounter
+        }
+        //set new current port
+        Game.setCurrentPort(newPort);
+        //deduct fuel from ship based on distance traveled
+        //update the market
+        //display new market
+    }
+    
+    private void setChanceEncounters() {
         switch (politicalSystem) {
             case "anarchy": 
                 policeChance = 0;
