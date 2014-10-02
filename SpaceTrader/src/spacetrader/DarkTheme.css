@@ -31,7 +31,7 @@
 }
 
 .tab-pane .tab-header-area .tab-header-background {
-    -fx-opacity: 0;
+    -fx-opacity: 0.15;
 }
 
 .tab-pane
