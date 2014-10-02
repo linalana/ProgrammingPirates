@@ -27,7 +27,7 @@ public class Ship {
         "Hammerhead","S.S. Bob Waters"};;
     
     public Ship() {
-        this(new Random().nextInt(11));
+        this(new Random().nextInt(10));
     }
     /**
      * Creates a new ship
