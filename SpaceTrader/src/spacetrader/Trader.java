@@ -15,7 +15,9 @@ public class Trader extends Encounterer {
     public Trader() {
         super();
     }
-    public boolean willFight(boolean playerIsPirate) {
+    
+    @Override
+    public boolean willFight(int playerXP, int fightpoints) {
         return false;
     }
     
