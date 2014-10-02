@@ -46,9 +46,13 @@ public class Player {
     }
     
     public void attack(Encounterer e) {
-        if (!e.getClass().equals(Pirate.class)) {
-            policeRecord.setIsPirate(true);
+        if (e.getClass().equals(Pirate.class)) {
+            //it's a pirate!
+            Pirate p = (Pirate) e;
         } else {
+            //it's a trader!
+            Trader t = (Trader) e;
+            policeRecord.setIsPirate(true);
             
         }
         

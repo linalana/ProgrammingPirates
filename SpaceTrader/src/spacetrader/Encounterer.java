@@ -13,8 +13,8 @@ import java.util.Random;
  * @author alanalin
  */
 public abstract class Encounterer {
-    private int reputation;
-    private Ship ship;
+    protected int reputation;
+    protected Ship ship;
     
     public Encounterer() {
     Random rand = new Random();
@@ -28,7 +28,7 @@ public abstract class Encounterer {
         for (TradeGood t: TradeGood.values()) {
             if (rand.nextBoolean()) {
                 int count = rand.nextInt(5);
-                ship.getHold().addCargo(t, count);
+                getShip().getHold().addCargo(t, count);
             }
         }
     }
@@ -40,13 +40,27 @@ public abstract class Encounterer {
      * @return true if will fight
      */
     public boolean willEncounter(int playerRep, int fightPoints) {
-        return (playerRep <= reputation);
+        return (playerRep <= getReputation());
         //take into account fighter skill points
     }
     
     public int attack() {
         Random rand = new Random();
-        return rand.nextInt(10) * reputation / 100;
+        return rand.nextInt(10) * getReputation() / 100;
+    }
+
+    /**
+     * @return the reputation
+     */
+    public int getReputation() {
+        return reputation;
+    }
+
+    /**
+     * @return the ship
+     */
+    public Ship getShip() {
+        return ship;
     }
     
     
