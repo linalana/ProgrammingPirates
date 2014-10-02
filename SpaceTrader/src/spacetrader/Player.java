@@ -18,10 +18,6 @@ public class Player {
     private int engineer;
     private int investor;
     private int money = 1000;
-
-    private int posX;
-    private int posY;
-
     private int reputation;
     private PoliceRecord policeRecord;
 
@@ -41,10 +37,6 @@ public class Player {
         engineer = aEngineer;
         investor = aInvestor;
         this.ship = new Ship(0);
-
-        posX = 0;
-        posY = 0;
-
         reputation = 0;
         policeRecord = new PoliceRecord();
 
@@ -189,24 +181,6 @@ public class Player {
      */
     public void setShip(int type) {
         ship.updateShip(type);
-    }
-
-    
-    /**
-     * @param newPosX the new x position
-     * @param mewPosY the new y position
-     */
-    public void setLocation(int newPosX, int newPosY) {
-        posX = newPosX;
-        posY = newPosY;
-    }
-    /**
-     * 
-     * @return an array of ints, the first is the x position and the second is 
-     * the y position.
-     */
-    public int[] getLocation() {
-        return new int[] {posX, posY};
     }
 
     /**
