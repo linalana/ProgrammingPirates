@@ -1,5 +1,6 @@
 package spacetrader;
 
+import org.controlsfx.dialog.Dialogs;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -49,6 +50,7 @@ public class Player {
         if (e.getClass().equals(Pirate.class)) {
             //it's a pirate!
             Pirate p = (Pirate) e;
+
         } else {
             //it's a trader!
             Trader t = (Trader) e;
