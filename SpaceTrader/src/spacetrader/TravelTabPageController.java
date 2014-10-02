@@ -34,6 +34,7 @@ public class TravelTabPageController implements Initializable {
     @FXML
     private Label available;
     private ObservableList<String> ports;
+    private Continent[] continents;
     
     /**
      * Initializes the controller class.
@@ -43,7 +44,7 @@ public class TravelTabPageController implements Initializable {
         available.setText("Fuel Available: " + Game.getPlayer().getShip().getFuel());
         ports = portsList.getItems();
         RangeChart range = new RangeChart();
-        Continent[] continents = range.getChart();
+        continents = range.getChart();
         for (Continent c: continents) {
             ports.add(c.getMainPort().toString());
         }
@@ -51,7 +52,8 @@ public class TravelTabPageController implements Initializable {
     
     @FXML
     private void travelButtonPressed(ActionEvent event) {
-        Game.setCurrentPort(Game.getWorld().getContinents()[1].getMainPort());
+        int index = portsList.getSelectionModel().getSelectedIndex();
+        Game.setCurrentPort(continents[index].getMainPort());
         try {
         // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
