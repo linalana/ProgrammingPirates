@@ -22,7 +22,7 @@ public class Ship {
     private int quarters;
     private int maxRange;
     private int fuel;
-    public String[] names = new String[] {"Guppy","Mino","Snapping Turtle",
+    public String[] names = new String[] {"Guppy","Minnow","Snapping Turtle",
         "Pufferfish","StingRay","S.S. Electric Eel","Dolphin Tales","SharkFin",
         "Hammerhead","S.S. Bob Waters"};;
     

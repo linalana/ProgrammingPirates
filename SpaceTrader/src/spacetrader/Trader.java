@@ -15,10 +15,10 @@ public class Trader extends Encounterer {
     public Trader() {
         super();
     }
-    public boolean willFight(boolean playerIsPirate) {
+    public boolean willEncounter(boolean playerIsPirate) {
         return !playerIsPirate;
     }
     
     
-    
+   
 }
