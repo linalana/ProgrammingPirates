@@ -5,16 +5,20 @@
  */
 
 package spacetrader;
-import java.util.Random;
+
 /**
  *
  * @author alanalin
  */
-public class Pirate extends Encounterer {
+public class Trader extends Encounterer {
     
-    public Pirate() {
+    public Trader() {
         super();
     }
+    public boolean willFight(boolean playerIsPirate) {
+        return false;
+    }
     
-
+    
+    
 }

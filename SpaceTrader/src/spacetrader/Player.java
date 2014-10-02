@@ -51,9 +51,15 @@ public class Player {
         policeRecord = 0;
 
     }
+    @Override
     public String toString() {
         return "Player name: " + name + ". Fighter: " + fighter + ". Trader: " + trader + ". Engineer: " + engineer + ". Investor: " + investor;
     }
+    
+    public void attack(Encounterer e) {
+        
+    }
+    
     //Getters and setters
 
     /**
