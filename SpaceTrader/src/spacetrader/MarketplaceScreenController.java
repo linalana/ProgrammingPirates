@@ -153,7 +153,7 @@ public class MarketplaceScreenController implements Initializable {
     private String getQuantityFromPlayer() {
         
         Optional<String> response = Dialogs.create()
-            .owner(new Stage())
+            .owner(SpaceTrader.getPrimaryStage())
             .title("Buying Stuff")
             .masthead("Arr, how much ye want to buy?")
             .message("Enter quantity:")
@@ -171,7 +171,7 @@ public class MarketplaceScreenController implements Initializable {
     private String getQuantitySellFromPlayer() {
         
         Optional<String> response = Dialogs.create()
-            .owner(new Stage())
+            .owner(SpaceTrader.getPrimaryStage())
             .title("Selling Stuff")
             .masthead("Arr, how much ye want to sell?")
             .message("Enter quantity:")

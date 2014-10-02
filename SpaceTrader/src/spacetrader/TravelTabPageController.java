@@ -49,14 +49,22 @@ public class TravelTabPageController implements Initializable {
         for (Continent c: continents) {
             ports.add(c.getMainPort().toString());
         }
+        
+        portsList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            int index = portsList.getSelectionModel().getSelectedIndex();
+            int fuelUsed = range.getDists(continents[index]);
+            needed.setText("Fuel Needed: " + fuelUsed);
+        });
+        
+        
     }    
     
     @FXML
     private void travelButtonPressed(ActionEvent event) {
         int index = portsList.getSelectionModel().getSelectedIndex();
-        Game.setCurrentPort(continents[index].getMainPort());
+        Turn turn = new Turn(continents[index].getMainPort());
         int fuelUsed = range.getDists(continents[index]);
-        Game.getPlayer().getShip().setFuel(-fuelUsed);
+        turn.travel(fuelUsed);
         try {
         // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();

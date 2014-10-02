@@ -32,7 +32,7 @@ public class Turn {
         setChanceEncounters();
     }
     
-    public void travel() {
+    public void travel(int fuelUsed) {
         Random rand = new Random();
         int randInt = rand.nextInt(100);
         if (randInt < policeChance) {
@@ -47,8 +47,7 @@ public class Turn {
         //set new current port
         Game.setCurrentPort(newPort);
         //deduct fuel from ship based on distance traveled
-        //update the market
-        //display new market
+        Game.getPlayer().getShip().setFuel(-fuelUsed);
     }
     
     private void setChanceEncounters() {
