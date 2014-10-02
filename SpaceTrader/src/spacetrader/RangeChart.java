@@ -13,12 +13,13 @@ import java.util.ArrayList;
  * @author Danny
  */
 public class RangeChart {
-    int playerX;
-    int playerY;
-    Point[] continents;
-    int fuel;
-    int[] dists;
-    Continent[] continentsInRange;
+    private int playerX;
+    private int playerY;
+    private Point[] continents;
+    private int fuel;
+    private int[] dists;
+    private int conversionFactor = 10;
+    private Continent[] continentsInRange;
     
     public RangeChart() {
         continents = new Point[Game.getWorld().getContinents().length];
@@ -38,7 +39,7 @@ public class RangeChart {
         System.out.println(playerX + "    " + playerY);
         for (int i = 0; i < dists.length; i++) {
             dists[i] = (int)(Math.sqrt((Math.pow(playerX - continents[i].getXPos(), 2)) +
-                    (Math.pow(playerY - continents[i].getYPos(), 2))) / 10);
+                    (Math.pow(playerY - continents[i].getYPos(), 2))) / conversionFactor);
             //System.out.println("Dist " + dists[i]);
         }
         for (int i = 0; i < continents.length; i++) {
@@ -57,8 +58,8 @@ public class RangeChart {
         }
         return continentsInRange;
     }
-    public int[] getDists() {
-        return dists;
+    public int getDists(Continent cont) {
+        return (int)(Math.sqrt((Math.pow(playerX - cont.getX(), 2)) +(Math.pow(playerY - cont.getY(), 2))) / conversionFactor);
     }
     private class Point {
         private int x;
