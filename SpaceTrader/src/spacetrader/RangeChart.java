@@ -26,7 +26,7 @@ public class RangeChart {
         for (int i = 0; i < continents.length; i++) {
             continents[i] = new Point(Game.getWorld().getContinents()[i].getX(),
                     Game.getWorld().getContinents()[i].getY());
-            System.out.println("x: " + continents[i].getXPos() + " y: " + continents[i].getYPos());
+            //System.out.println("x: " + continents[i].getXPos() + " y: " + continents[i].getYPos());
         }
         updateChart();
     }
@@ -36,7 +36,7 @@ public class RangeChart {
         fuel = Game.getPlayer().getShip().getFuel();
         ArrayList<Continent> conts = new ArrayList<Continent>();
         dists = new int[continents.length];
-        System.out.println(playerX + "    " + playerY);
+        //System.out.println(playerX + "    " + playerY);
         for (int i = 0; i < dists.length; i++) {
             dists[i] = (int)(Math.sqrt((Math.pow(playerX - continents[i].getXPos(), 2)) +
                     (Math.pow(playerY - continents[i].getYPos(), 2))) / conversionFactor);
