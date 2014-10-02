@@ -21,10 +21,9 @@ public abstract class Encounterer {
     int deviance = rand.nextInt(2 * 10);
     reputation = Game.getPlayer().getReputation() + (deviance - 10);
     ship = new Ship();
-    fillCargo();
     }
     
-    private void fillCargo() {
+    protected void fillCargo() {
         Random rand = new Random();
         for (TradeGood t: TradeGood.values()) {
             if (rand.nextBoolean()) {

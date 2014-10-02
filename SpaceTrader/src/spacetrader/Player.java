@@ -23,8 +23,7 @@ public class Player {
     private int posY;
 
     private int reputation;
-    private boolean pirate;
-    private int policeRecord;
+    private PoliceRecord policeRecord;
 
 
     /**
@@ -47,8 +46,7 @@ public class Player {
         posY = 0;
 
         reputation = 0;
-        pirate = false;
-        policeRecord = 0;
+        policeRecord = new PoliceRecord();
 
     }
     @Override
@@ -57,6 +55,9 @@ public class Player {
     }
     
     public void attack(Encounterer e) {
+        if (!e.getClass().equals(Pirate.class)) {
+            policeRecord.setIsPirate(true);
+        }
         
     }
     
@@ -221,34 +222,11 @@ public class Player {
     public void addExperience(int exp) {
         reputation += exp;
     }
-
-    /**
-     * @return the pirate
-     */
-    public boolean isPirate() {
-        return pirate;
-    }
-
-    /**
-     * @param pirate the pirate to set
-     */
-    public void setPirate(boolean pirate) {
-        this.pirate = pirate;
-    }
-
     /**
      * @return the policeRecord
      */
-    public int getPoliceRecord() {
+    public PoliceRecord getPoliceRecord() {
         return policeRecord;
-    }
-
-    /**
-     * add arrest
-     */
-    public void incrementPoliceRecord() {
-        this.policeRecord++;
-
     }
 }
  

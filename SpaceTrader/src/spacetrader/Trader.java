@@ -14,6 +14,7 @@ public class Trader extends Encounterer {
     
     public Trader() {
         super();
+        super.fillCargo();
     }
     public boolean willEncounter(boolean playerIsPirate) {
         return !playerIsPirate;
