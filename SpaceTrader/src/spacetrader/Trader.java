@@ -16,7 +16,7 @@ public class Trader extends Encounterer {
         super();
     }
     public boolean willFight(boolean playerIsPirate) {
-        return false;
+        return !playerIsPirate;
     }
     
     

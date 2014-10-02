@@ -12,14 +12,14 @@ import java.util.Random;
  *
  * @author alanalin
  */
-public class Encounterer {
-    private int experience;
+public abstract class Encounterer {
+    private int reputation;
     private Ship ship;
     
     public Encounterer() {
     Random rand = new Random();
     int deviance = rand.nextInt(2 * 10);
-    experience = Game.getPlayer().getExperience() + (deviance - 10);
+    reputation = Game.getPlayer().getReputation() + (deviance - 10);
     ship = new Ship();
     fillCargo();
     }
@@ -36,18 +36,18 @@ public class Encounterer {
     /**
      * Decide if Encounterer will fight or flee
      * 
-     * @param playerXP the exp of the player
+     * @param playerRep the exp of the player
      * @param fightPoints the fighter skill points of the player
      * @return true if will fight
      */
-    public boolean willFight(int playerXP, int fightPoints) {
-        return (playerXP <= experience);
+    public boolean willEncounter(int playerRep, int fightPoints) {
+        return (playerRep <= reputation);
         //take into account fighter skill points
     }
     
     public int attack() {
         Random rand = new Random();
-        return rand.nextInt(10) * experience / 100;
+        return rand.nextInt(10) * reputation / 100;
     }
     
     

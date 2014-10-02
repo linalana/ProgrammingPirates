@@ -22,7 +22,7 @@ public class Player {
     private int posX;
     private int posY;
 
-    private int experience;
+    private int reputation;
     private boolean pirate;
     private int policeRecord;
 
@@ -46,7 +46,7 @@ public class Player {
         posX = 0;
         posY = 0;
 
-        experience = 0;
+        reputation = 0;
         pirate = false;
         policeRecord = 0;
 
@@ -209,17 +209,17 @@ public class Player {
     }
 
     /**
-     * @return the experience
+     * @return the reputation
      */
-    public int getExperience() {
-        return experience;
+    public int getReputation() {
+        return reputation;
     }
     
     /**
-     * @param exp experience to be added
+     * @param exp reputation to be added
      */
     public void addExperience(int exp) {
-        experience += exp;
+        reputation += exp;
     }
 
     /**
