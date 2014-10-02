@@ -7,7 +7,10 @@ package spacetrader;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,8 +23,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
+import org.controlsfx.control.ButtonBar;
+import org.controlsfx.control.ButtonBar.ButtonType;
+import org.controlsfx.control.action.AbstractAction;
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
 
 /**
  * FXML Controller class
@@ -69,11 +78,23 @@ public class MarketplaceScreenController implements Initializable {
         String goodToBuy = longString.substring(0, spaceIndex);
         TradeGood good = TradeGood.valueOf(goodToBuy);
         int[] pq = goodsForSale.get(good);
-        if (Game.getPlayer().getMoney() >= pq[0] && pq[1] > 0) {
-            if (cargoHold.addCargo(good, 1)) {
-                Game.getPlayer().setMoney(Game.getPlayer().getMoney() - pq[0]);
+        //get quantity desired from player 
+            String q = getQuantityFromPlayer();
+            int quant = 0;
+            try {
+                quant = Integer.parseInt(q);
+            } catch (NumberFormatException e) {
+                quant = 0;
+            }
+            int moneySpent = quant * pq[0];
+            if (moneySpent > Game.getPlayer().getMoney()) {
+                
+            }
+        if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
+            if (cargoHold.addCargo(good, quant)) {
+                Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                 updateMoneyLabel();
-                bazaar.updateQuantity(good, -1);
+                bazaar.updateQuantity(good, -1 * quant);
                 updateLists();
             }
         }
@@ -132,5 +153,23 @@ public class MarketplaceScreenController implements Initializable {
                 cargo.add(tg.toString() + " Quantity: " + q);
             }
         }
+    }
+
+    private String getQuantityFromPlayer() {
+        
+        Optional<String> response = Dialogs.create()
+            .owner(new Stage())
+            .title("Quantity")
+            .masthead("How much ya want?")
+            .message("Enter quantity:")
+            .showTextInput("0");
+
+        if (response.isPresent()) {
+            String result = response.get();
+            return result;
+        } else {
+            return null;
+        }
+
     }
 }
