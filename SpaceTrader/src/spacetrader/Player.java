@@ -21,7 +21,6 @@ public class Player {
     private int reputation;
     private PoliceRecord policeRecord;
 
-
     /**
      *
      * @param aName
@@ -49,6 +48,8 @@ public class Player {
     public void attack(Encounterer e) {
         if (!e.getClass().equals(Pirate.class)) {
             policeRecord.setIsPirate(true);
+        } else {
+            
         }
         
     }

@@ -13,6 +13,7 @@ package spacetrader;
 public class PoliceRecord {
     private boolean isPirate;
     private int arrestCount;
+    
     //goes up with positive inspections and down with failed inspections
     //controls the likelyhood of an inspection
     private int inspectionHistory;
@@ -49,6 +50,20 @@ public class PoliceRecord {
      */
     public int getInspectionHistory() {
         return inspectionHistory;
+    }
+    
+    /**
+     * Increment InspectionHistory (good job!)
+     */
+    public void incrementInspectionHistory() {
+        inspectionHistory++;
+    }
+    
+    /**
+     * Decrement InspectionHistory (good job!)
+     */
+    public void decrementInspectionHistory() {
+        inspectionHistory--;
     }
     
 }
