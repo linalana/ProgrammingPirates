@@ -49,6 +49,14 @@ public class TravelTabPageController implements Initializable {
         for (Continent c: continents) {
             ports.add(c.getMainPort().toString());
         }
+        
+        portsList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            int index = portsList.getSelectionModel().getSelectedIndex();
+            int fuelUsed = range.getDists(continents[index]);
+            needed.setText("Fuel Needed: " + fuelUsed);
+        });
+        
+        
     }    
     
     @FXML
