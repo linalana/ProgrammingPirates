@@ -8,10 +8,8 @@ package spacetrader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
+import org.controlsfx.dialog.Dialogs;
 
 /**
  * FXML Controller class
@@ -69,11 +67,20 @@ public class MarketplaceScreenController implements Initializable {
         String goodToBuy = longString.substring(0, spaceIndex);
         TradeGood good = TradeGood.valueOf(goodToBuy);
         int[] pq = goodsForSale.get(good);
-        if (Game.getPlayer().getMoney() >= pq[0] && pq[1] > 0) {
-            if (cargoHold.addCargo(good, 1)) {
-                Game.getPlayer().setMoney(Game.getPlayer().getMoney() - pq[0]);
+        //get quantity desired from player 
+        String q = getQuantityFromPlayer();
+        int quant = 0;
+        try {
+            quant = Integer.parseInt(q);
+        } catch (NumberFormatException e) {
+            quant = 0;
+        }
+        int moneySpent = quant * pq[0];
+        if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
+            if (cargoHold.addCargo(good, quant)) {
+                Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                 updateMoneyLabel();
-                bazaar.updateQuantity(good, -1);
+                bazaar.updateQuantity(good, -1 * quant);
                 updateLists();
             }
         }
@@ -85,10 +92,19 @@ public class MarketplaceScreenController implements Initializable {
         String goodToSell = longString.substring(0, spaceIndex);
         TradeGood good = TradeGood.valueOf(goodToSell);
         int[] pq = goodsForSale.get(good);
-        if (Game.getPlayer().getShip().getHold().subtractCargo(good, 1)) {
-            Game.getPlayer().setMoney(Game.getPlayer().getMoney() + pq[0]);
+        //get quantity desired from player 
+        String q = getQuantitySellFromPlayer();
+        int quant = 0;
+        try {
+            quant = Integer.parseInt(q);
+        } catch (NumberFormatException e) {
+            quant = 0;
+        }
+        int moneySpent = quant * pq[0];
+        if (Game.getPlayer().getShip().getHold().subtractCargo(good, quant)) {
+            Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
             updateMoneyLabel();
-            bazaar.updateQuantity(good, 1);
+            bazaar.updateQuantity(good, quant);
             updateLists();
         }
     }
@@ -132,5 +148,41 @@ public class MarketplaceScreenController implements Initializable {
                 cargo.add(tg.toString() + " Quantity: " + q);
             }
         }
+    }
+
+    private String getQuantityFromPlayer() {
+        
+        Optional<String> response = Dialogs.create()
+            .owner(new Stage())
+            .title("Buying Stuff")
+            .masthead("Arr, how much ye want to buy?")
+            .message("Enter quantity:")
+            .showTextInput("0");
+
+        if (response.isPresent()) {
+            String result = response.get();
+            return result;
+        } else {
+            return null;
+        }
+
+    }
+    
+    private String getQuantitySellFromPlayer() {
+        
+        Optional<String> response = Dialogs.create()
+            .owner(new Stage())
+            .title("Selling Stuff")
+            .masthead("Arr, how much ye want to sell?")
+            .message("Enter quantity:")
+            .showTextInput("0");
+
+        if (response.isPresent()) {
+            String result = response.get();
+            return result;
+        } else {
+            return null;
+        }
+
     }
 }

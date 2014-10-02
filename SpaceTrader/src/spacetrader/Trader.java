@@ -6,18 +6,43 @@
 
 package spacetrader;
 
+import java.util.Random;
+
 /**
  *
  * @author alanalin
  */
 public class Trader extends Encounterer {
+    private int traderPoints;
+    private int fighterPoints;
     
     public Trader() {
         super();
         super.fillCargo();
+        allocateSkillPoints();
     }
     public boolean willEncounter(boolean playerIsPirate) {
         return !playerIsPirate;
+    }
+    
+    private void allocateSkillPoints() {
+        Random rand = new Random();
+        traderPoints = rand.nextInt(11);
+        fighterPoints = rand.nextInt(11);
+    }
+
+    /**
+     * @return the traderPoints
+     */
+    public int getTraderPoints() {
+        return traderPoints;
+    }
+
+    /**
+     * @return the fighterPoints
+     */
+    public int getFighterPoints() {
+        return fighterPoints;
     }
     
     
