@@ -18,13 +18,8 @@ public class Player {
     private int engineer;
     private int investor;
     private int money = 1000;
-
-    private int posX;
-    private int posY;
-
-    private int experience;
-    private boolean pirate;
-    private int policeRecord;
+    private int reputation;
+    private PoliceRecord policeRecord;
 
 
     /**
@@ -42,13 +37,8 @@ public class Player {
         engineer = aEngineer;
         investor = aInvestor;
         this.ship = new Ship(0);
-
-        posX = 0;
-        posY = 0;
-
-        experience = 0;
-        pirate = false;
-        policeRecord = 0;
+        reputation = 0;
+        policeRecord = new PoliceRecord();
 
     }
     @Override
@@ -57,6 +47,9 @@ public class Player {
     }
     
     public void attack(Encounterer e) {
+        if (!e.getClass().equals(Pirate.class)) {
+            policeRecord.setIsPirate(true);
+        }
         
     }
     
@@ -190,65 +183,24 @@ public class Player {
         ship.updateShip(type);
     }
 
-    
     /**
-     * @param newPosX the new x position
-     * @param mewPosY the new y position
+     * @return the reputation
      */
-    public void setLocation(int newPosX, int newPosY) {
-        posX = newPosX;
-        posY = newPosY;
-    }
-    /**
-     * 
-     * @return an array of ints, the first is the x position and the second is 
-     * the y position.
-     */
-    public int[] getLocation() {
-        return new int[] {posX, posY};
-    }
-
-    /**
-     * @return the experience
-     */
-    public int getExperience() {
-        return experience;
+    public int getReputation() {
+        return reputation;
     }
     
     /**
-     * @param exp experience to be added
+     * @param exp reputation to be added
      */
     public void addExperience(int exp) {
-        experience += exp;
+        reputation += exp;
     }
-
-    /**
-     * @return the pirate
-     */
-    public boolean isPirate() {
-        return pirate;
-    }
-
-    /**
-     * @param pirate the pirate to set
-     */
-    public void setPirate(boolean pirate) {
-        this.pirate = pirate;
-    }
-
     /**
      * @return the policeRecord
      */
-    public int getPoliceRecord() {
+    public PoliceRecord getPoliceRecord() {
         return policeRecord;
-    }
-
-    /**
-     * add arrest
-     */
-    public void incrementPoliceRecord() {
-        this.policeRecord++;
-
     }
 }
  

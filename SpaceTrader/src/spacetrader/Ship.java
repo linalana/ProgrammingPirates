@@ -137,94 +137,94 @@ public class Ship {
     public void updateShip(int typeInd){
         this.type = names[typeInd];
         if(type.equals(names[0])){
-            setCargoBays(5);
-            setHullStrength(1);
+            cargoBays = 5;
+            hullStrength = 1;
             setWeapons(0);
             setShields(0);
             setGadgets(0);
-            setQuarters(0);
-            setMaxRange(20);
+            quarters = 0;
+            maxRange = 20;
         }
         else if(type.equals(names[1])){
-            setCargoBays(15);
-            setHullStrength(1);
+            cargoBays = 15;
+            hullStrength = 1;
             setWeapons(1);
             setShields(0);
             setGadgets(1);
-            setQuarters(0);
-            setMaxRange(14);
+            quarters = 0;
+            maxRange = 14;
         }
         else if(type.equals(names[2])){
-            setCargoBays(20);
-            setHullStrength(2);
+            cargoBays = 20;
+            hullStrength = 2;
             setWeapons(1);
             setShields(1);
             setGadgets(1);
-            setQuarters(0);
-            setMaxRange(17);
+            quarters = (0);
+            maxRange = (17);
         }
         else if(type.equals(names[3])){
-            setCargoBays(15);
-            setHullStrength(3);
+            cargoBays = 15;
+            hullStrength = 3;
             setWeapons(2);
             setShields(1);
             setGadgets(1);
-            setQuarters(0);
-            setMaxRange(13);
+            quarters = (0);
+            maxRange = (13);
         }
         else if(type.equals(names[4])){
-            setCargoBays(20);
-            setHullStrength(2);
+            cargoBays = 20;
+            hullStrength = 2;
             setWeapons(1);
             setShields(2);
             setGadgets(2);
-            setQuarters(1);
-            setMaxRange(15);
+            quarters = (1);
+            maxRange = (15);
         }
         else if(type.equals(names[5])){
-            setCargoBays(50);
-            setHullStrength(2);
+            cargoBays = 50;
+            hullStrength = 2;
             setWeapons(0);
             setShields(1);
             setGadgets(1);
-            setQuarters(3);
-            setMaxRange(14);
+            quarters = (3);
+            maxRange = (14);
         }
         else if(type.equals(names[6])){
-            setCargoBays(20);
-            setHullStrength(3);
+            cargoBays = 20;
+            hullStrength = 3;
             setWeapons(3);
             setShields(2);
             setGadgets(1);
-            setQuarters(2);
-            setMaxRange(16);
+            quarters = (2);
+            maxRange = (16);
         }
         else if(type.equals(names[7])){
-            setCargoBays(30);
-            setHullStrength(4);
+            cargoBays = 30;
+            hullStrength = 4;
             setWeapons(2);
             setShields(2);
             setGadgets(3);
-            setQuarters(3);
-            setMaxRange(15);
+            quarters = (3);
+            maxRange = (15);
         }
         else if(type.equals(names[8])){
-            setCargoBays(60);
-            setHullStrength(5);
+            cargoBays = 60;
+            hullStrength = 5;
             setWeapons(1);
             setShields(3);
             setGadgets(2);
-            setQuarters(3);
-            setMaxRange(13);
+            quarters = (3);
+            maxRange = (13);
         }
         else{
-            setCargoBays(35);
-            setHullStrength(5);
+            cargoBays = 35;
+            hullStrength = 5;
             setWeapons(3);
             setShields(2);
             setGadgets(2);
-            setQuarters(3);
-            setMaxRange(14);
+            quarters = (3);
+            maxRange = (14);
         }
         
         hold = new CargoHold(getCargoBays());
@@ -252,25 +252,10 @@ public class Ship {
     }
 
     /**
-     * @param cargoBays the cargoBays to set
-     */
-    public void setCargoBays(int cargoBays) {
-        this.cargoBays = cargoBays;
-        hold.setAmount(cargoBays);
-    }
-
-    /**
      * @return the hullStrength
      */
     public int getHullStrength() {
         return hullStrength;
-    }
-
-    /**
-     * @param hullStrength the hullStrength to set
-     */
-    public void setHullStrength(int hullStrength) {
-        this.hullStrength = hullStrength;
     }
 
     /**
@@ -323,26 +308,11 @@ public class Ship {
     }
 
     /**
-     * @param quarters the quarters to set
-     */
-    public void setQuarters(int quarters) {
-        this.quarters = quarters;
-    }
-
-    /**
      * @return the maxRange
      */
     public int getMaxRange() {
         return maxRange;
     }
-
-    /**
-     * @param maxRange the maxRange to set
-     */
-    public void setMaxRange(int maxRange) {
-        this.maxRange = maxRange;
-    }
-    
 
     public void fillTank() {
         fuel = maxRange;

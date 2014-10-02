@@ -14,6 +14,7 @@ public class Pirate extends Encounterer {
     
     public Pirate() {
         super();
+        super.fillCargo();
     }
     
 
