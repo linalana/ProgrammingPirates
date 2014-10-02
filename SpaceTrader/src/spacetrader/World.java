@@ -25,7 +25,6 @@ public class World {
      */
     public World() {
         continents = new Continent[10];
-        rangeChart = new RangeChart();
         initializeContinents();
     }
     
@@ -85,5 +84,20 @@ public class World {
     
     public Continent[] getContinents() {
         return continents;
+    }
+
+    /**
+     * @return the rangeChart
+     */
+    public RangeChart getRangeChart() {
+        return rangeChart;
+    }
+
+    /**
+     */
+    public void setRangeChart() {
+        if (rangeChart == null) {
+            this.rangeChart = new RangeChart();
+        }
     }
 }

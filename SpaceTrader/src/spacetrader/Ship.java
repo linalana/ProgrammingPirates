@@ -5,6 +5,7 @@
  */
 
 package spacetrader;
+import java.util.Random;
 
 /**
  * A ship class that creates ships
@@ -21,14 +22,21 @@ public class Ship {
     private int quarters;
     private int maxRange;
     private int fuel;
+    public String[] names = new String[] {"Guppy","Mino","Snapping Turtle",
+        "Pufferfish","StingRay","S.S. Electric Eel","Dolphin Tales","SharkFin",
+        "Hammerhead","S.S. Bob Waters"};;
     
+    public Ship() {
+        this(new Random().nextInt(11));
+    }
     /**
      * Creates a new ship
      * @param type the type of ship
      */
-    public Ship(String type){
-        this.type = type;
-        if(type.equals("flea")){
+    public Ship(int typeind){
+        
+        this.type = names[typeind];
+        if(type.equals(names[0])){
             this.cargoBays = 5;
             this.hullStrength = 1;
             this.weapons = 0;
@@ -38,7 +46,7 @@ public class Ship {
             this.maxRange = 20;
             
         }
-        else if(type.equals("gnat")){
+        else if(type.equals(names[1])){
             this.cargoBays = 15;
             this.hullStrength = 1;
             this.weapons = 1;
@@ -47,7 +55,7 @@ public class Ship {
             this.quarters = 0;
             this.maxRange = 14;
         }
-        else if(type.equals("firefly")){
+        else if(type.equals(names[2])){
             this.cargoBays = 20;
             this.hullStrength = 2;
             this.weapons = 1;
@@ -56,7 +64,7 @@ public class Ship {
             this.quarters = 0;
             this.maxRange = 17;
         }
-        else if(type.equals("mosquito")){
+        else if(type.equals(names[3])){
             this.cargoBays = 15;
             this.hullStrength = 3;
             this.weapons = 2;
@@ -65,7 +73,7 @@ public class Ship {
             this.quarters = 0;
             this.maxRange = 13;
         }
-        else if(type.equals("bumblebee")){
+        else if(type.equals(names[4])){
             this.cargoBays = 20;
             this.hullStrength = 2;
             this.weapons = 1;
@@ -74,7 +82,7 @@ public class Ship {
             this.quarters = 1;
             this.maxRange = 15;
         }
-        else if(type.equals("beetle")){
+        else if(type.equals(names[5])){
             this.cargoBays = 50;
             this.hullStrength = 2;
             this.weapons = 0;
@@ -83,7 +91,7 @@ public class Ship {
             this.quarters = 3;
             this.maxRange = 14;
         }
-        else if(type.equals("hornet")){
+        else if(type.equals(names[6])){
             this.cargoBays = 20;
             this.hullStrength = 3;
             this.weapons = 3;
@@ -92,7 +100,7 @@ public class Ship {
             this.quarters = 2;
             this.maxRange = 16;
         }
-        else if(type.equals("grasshopper")){
+        else if(type.equals(names[7])){
             this.cargoBays = 30;
             this.hullStrength = 4;
             this.weapons = 2;
@@ -101,7 +109,7 @@ public class Ship {
             this.quarters = 3;
             this.maxRange = 15;
         }
-        else if(type.equals("termite")){
+        else if(type.equals(names[8])){
             this.cargoBays = 60;
             this.hullStrength = 5;
             this.weapons = 1;
@@ -122,14 +130,13 @@ public class Ship {
         this.fuel = maxRange;
         this.hold = new CargoHold(getCargoBays());
     }
-    
     /**
      * Changes the ship type, for when you want to upgrade or downgrade
      * @param type the new ship type
      */
-    public void updateShip(String type){
-        this.type = type;
-        if(type.equals("flea")){
+    public void updateShip(int typeInd){
+        this.type = names[typeInd];
+        if(type.equals(names[0])){
             setCargoBays(5);
             setHullStrength(1);
             setWeapons(0);
@@ -138,7 +145,7 @@ public class Ship {
             setQuarters(0);
             setMaxRange(20);
         }
-        else if(type.equals("gnat")){
+        else if(type.equals(names[1])){
             setCargoBays(15);
             setHullStrength(1);
             setWeapons(1);
@@ -147,7 +154,7 @@ public class Ship {
             setQuarters(0);
             setMaxRange(14);
         }
-        else if(type.equals("firefly")){
+        else if(type.equals(names[2])){
             setCargoBays(20);
             setHullStrength(2);
             setWeapons(1);
@@ -156,7 +163,7 @@ public class Ship {
             setQuarters(0);
             setMaxRange(17);
         }
-        else if(type.equals("mosquito")){
+        else if(type.equals(names[3])){
             setCargoBays(15);
             setHullStrength(3);
             setWeapons(2);
@@ -165,7 +172,7 @@ public class Ship {
             setQuarters(0);
             setMaxRange(13);
         }
-        else if(type.equals("bumblebee")){
+        else if(type.equals(names[4])){
             setCargoBays(20);
             setHullStrength(2);
             setWeapons(1);
@@ -174,7 +181,7 @@ public class Ship {
             setQuarters(1);
             setMaxRange(15);
         }
-        else if(type.equals("beetle")){
+        else if(type.equals(names[5])){
             setCargoBays(50);
             setHullStrength(2);
             setWeapons(0);
@@ -183,7 +190,7 @@ public class Ship {
             setQuarters(3);
             setMaxRange(14);
         }
-        else if(type.equals("hornet")){
+        else if(type.equals(names[6])){
             setCargoBays(20);
             setHullStrength(3);
             setWeapons(3);
@@ -192,7 +199,7 @@ public class Ship {
             setQuarters(2);
             setMaxRange(16);
         }
-        else if(type.equals("grasshopper")){
+        else if(type.equals(names[7])){
             setCargoBays(30);
             setHullStrength(4);
             setWeapons(2);
@@ -201,7 +208,7 @@ public class Ship {
             setQuarters(3);
             setMaxRange(15);
         }
-        else if(type.equals("termite")){
+        else if(type.equals(names[8])){
             setCargoBays(60);
             setHullStrength(5);
             setWeapons(1);

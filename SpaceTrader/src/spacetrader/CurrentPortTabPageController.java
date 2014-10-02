@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -23,13 +24,25 @@ import javafx.stage.Stage;
  * @author Michael
  */
 public class CurrentPortTabPageController implements Initializable {
-
+    @FXML
+    private Label portName;
+    @FXML
+    private Label location;
+    @FXML
+    private Label techLevel;
+    @FXML
+    private Label politicalSystem;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Port currentPort = Game.getCurrentPort();
+        portName.setText(currentPort.getName());
+        location.setText("Location: " + "(" + currentPort.getContinent().getX()
+                         + ", " + currentPort.getContinent().getY() + ")");
+        techLevel.setText("Tech Level: " + currentPort.getContinent().getTechLevel());
+        politicalSystem.setText("Political System: " + currentPort.getContinent().getPoliticalSystem());
     }    
     
         /**
