@@ -22,6 +22,14 @@ public class PlayerTabPageController implements Initializable {
     private Label moneyLabel;
     @FXML
     private Label nameLabel;
+    @FXML
+    private Label fighter;
+    @FXML
+    private Label investor;
+    @FXML
+    private Label trader;
+    @FXML
+    private Label engineer;
     
     /**
      * Initializes the controller class.
@@ -30,6 +38,10 @@ public class PlayerTabPageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
         nameLabel.setText("Name: " + Game.getPlayer().getName());
+        fighter.setText("Fighter: " + Game.getPlayer().getFighter());
+        investor.setText("Investor: " + Game.getPlayer().getInvestor());
+        trader.setText("Trader: " + Game.getPlayer().getTrader());
+        engineer.setText("Engineer: " + Game.getPlayer().getEngineer());
     }    
     
 }
