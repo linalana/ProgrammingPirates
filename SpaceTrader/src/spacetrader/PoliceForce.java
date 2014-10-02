@@ -12,7 +12,7 @@ import java.util.Random;
  * A police force that will be assigned to each continent
  * @author Murph
  */
-public class PoliceForce extends Encounterer{
+public class PoliceForce{
     int strength;
     int bribe;
     
@@ -92,5 +92,22 @@ public class PoliceForce extends Encounterer{
             bribe = rand.nextInt((30000 - 10000) + 1) + 10000;
         }
         return bribe;
+    }
+    
+    /**
+     * Inspect a player
+     * @param player the player being inspected
+     * @return true if they pass the inspection, false otherwise
+     */
+    private boolean inspect(Player player){
+        if(player.getShip().getHold().getGoods().get(TradeGood.FIREARMS)!=0 || 
+                player.getShip().getHold().getGoods().get(TradeGood.NARCOTICS)!=0){
+            player.getPoliceRecord().decrementInspectionHistory();
+            return false;
+        }
+        else{
+            player.getPoliceRecord().incrementInspectionHistory();
+            return true;
+        }
     }
 }

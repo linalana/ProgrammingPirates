@@ -63,7 +63,9 @@ public class PoliceRecord {
      * Decrement InspectionHistory (good job!)
      */
     public void decrementInspectionHistory() {
-        inspectionHistory--;
+        if(inspectionHistory > 0){
+            inspectionHistory--;
+        }
     }
     
 }
