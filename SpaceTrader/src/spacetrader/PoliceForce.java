@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class PoliceForce extends Encounterer{
     int strength;
-    int bribeLevel;
+    int bribe;
     
     /**
      * Constructor for PoliceForce
@@ -22,7 +22,7 @@ public class PoliceForce extends Encounterer{
      */
     public PoliceForce(String system){
         this.strength = calculateStrength(system);
-        this.bribeLevel = calculateBribe(system);
+        this.bribe = calculateBribe(system);
     }
     
     /**

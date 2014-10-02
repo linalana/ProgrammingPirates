@@ -22,6 +22,7 @@ public class Port {
     private String resources;
     private int event;
     private Continent continent;
+    private PoliceForce policeForce;
 
     
     /**
@@ -40,6 +41,7 @@ public class Port {
         shipYard = new ShipYard();
         bazaar = new Bazaar(this);
         this.continent = continent;
+        policeForce = new PoliceForce(continent.getPoliticalSystem());
 
         
     }
@@ -96,5 +98,19 @@ public class Port {
      */
     public Continent getContinent() {
         return continent;
+    }
+
+    /**
+     * @return the policeForce
+     */
+    public PoliceForce getPoliceForce() {
+        return policeForce;
+    }
+
+    /**
+     * @param policeForce the policeForce to set
+     */
+    public void setPoliceForce(PoliceForce policeForce) {
+        this.policeForce = policeForce;
     }
 }
