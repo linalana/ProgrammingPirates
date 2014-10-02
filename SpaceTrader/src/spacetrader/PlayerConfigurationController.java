@@ -110,6 +110,7 @@ public class PlayerConfigurationController implements Initializable {
         } else {
             int maxPossible = (15 - pointTotal) + pastVal;
             slider.setValue(pointTotal);
+            pastVal = (int)slider.getValue();
         }
         return pastVal;
     }
