@@ -30,6 +30,9 @@ public class RangeChart {
         }
         updateChart();
     }
+    /**
+     * This updates the list of continents that you can trave to.
+     */
     public void updateChart() {
         playerX = Game.getCurrentPort().getContinent().getX();
         playerY = Game.getCurrentPort().getContinent().getY();
@@ -51,6 +54,10 @@ public class RangeChart {
         continentsInRange = new Continent[conts.size()];
         continentsInRange = conts.toArray(continentsInRange);
     }
+    /**
+     * 
+     * @return an array of continents that you can travel to
+     */
     public Continent[] getChart() {
         updateChart();
         for (int i = 0; i < continentsInRange.length; i++) {
@@ -61,6 +68,10 @@ public class RangeChart {
     public int getDists(Continent cont) {
         return (int)(Math.sqrt((Math.pow(playerX - cont.getX(), 2)) +(Math.pow(playerY - cont.getY(), 2))) / conversionFactor);
     }
+    
+    /**
+     * This represents a point with an X and Y coordinate
+     */
     private class Point {
         private int x;
         private int y;
@@ -68,9 +79,17 @@ public class RangeChart {
             x = xPos;
             y = yPos;
         }
+        /**
+         * 
+         * @return the x coordinate of a point
+         */
         public int getXPos() {
             return x;
         }
+        /**
+         * 
+         * @return the y coordinate of a point
+         */
         public int getYPos() {
             return y;
         }
