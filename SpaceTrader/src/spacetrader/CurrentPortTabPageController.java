@@ -13,7 +13,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -24,6 +26,9 @@ import javafx.stage.Stage;
  * @author Michael
  */
 public class CurrentPortTabPageController implements Initializable {
+   
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private Label portName;
     @FXML

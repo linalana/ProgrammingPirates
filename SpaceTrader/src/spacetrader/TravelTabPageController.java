@@ -6,14 +6,19 @@
 
 package spacetrader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -29,6 +34,8 @@ public class TravelTabPageController implements Initializable {
     @FXML
     private Label available;
     private ObservableList<String> ports;
+    private Continent[] continents;
+    private RangeChart range;
     
     /**
      * Initializes the controller class.
@@ -37,8 +44,8 @@ public class TravelTabPageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         available.setText("Fuel Available: " + Game.getPlayer().getShip().getFuel());
         ports = portsList.getItems();
-        RangeChart range = new RangeChart();
-        Continent[] continents = range.getChart();
+        range = new RangeChart();
+        continents = range.getChart();
         for (Continent c: continents) {
             ports.add(c.getMainPort().toString());
         }
@@ -46,6 +53,23 @@ public class TravelTabPageController implements Initializable {
     
     @FXML
     private void travelButtonPressed(ActionEvent event) {
+        int index = portsList.getSelectionModel().getSelectedIndex();
+        Game.setCurrentPort(continents[index].getMainPort());
+        int fuelUsed = range.getDists(continents[index]);
+        Game.getPlayer().getShip().setFuel(-fuelUsed);
+        try {
+        // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SpaceTrader.class.getResource("OpeningGameScreen.fxml"));
+            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
 
+            // Show the scene containing the root layout.
+            Stage playerStage = SpaceTrader.getPrimaryStage();
+            Scene scene = new Scene(ConfigurationLayout);
+            playerStage.setScene(scene);
+            playerStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

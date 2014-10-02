@@ -107,7 +107,7 @@ public class MarketplaceScreenController implements Initializable {
         TradeGood good = TradeGood.valueOf(goodToSell);
         int[] pq = goodsForSale.get(good);
         if (Game.getPlayer().getShip().getHold().subtractCargo(good, 1)) {
-            Game.getPlayer().setMoney(Game.getPlayer().getMoney() + pq[0]);
+            Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8));
             updateMoneyLabel();
             bazaar.updateQuantity(good, 1);
             updateLists();

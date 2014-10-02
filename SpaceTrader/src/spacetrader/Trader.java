@@ -14,13 +14,12 @@ public class Trader extends Encounterer {
     
     public Trader() {
         super();
+        super.fillCargo();
+    }
+    public boolean willEncounter(boolean playerIsPirate) {
+        return !playerIsPirate;
     }
     
-    @Override
-    public boolean willFight(int playerXP, int fightpoints) {
-        return false;
-    }
     
-    
-    
+   
 }
