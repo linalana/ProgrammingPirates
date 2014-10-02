@@ -79,17 +79,14 @@ public class MarketplaceScreenController implements Initializable {
         TradeGood good = TradeGood.valueOf(goodToBuy);
         int[] pq = goodsForSale.get(good);
         //get quantity desired from player 
-            String q = getQuantityFromPlayer();
-            int quant = 0;
-            try {
-                quant = Integer.parseInt(q);
-            } catch (NumberFormatException e) {
-                quant = 0;
-            }
-            int moneySpent = quant * pq[0];
-            if (moneySpent > Game.getPlayer().getMoney()) {
-                
-            }
+        String q = getQuantityFromPlayer();
+        int quant = 0;
+        try {
+            quant = Integer.parseInt(q);
+        } catch (NumberFormatException e) {
+            quant = 0;
+        }
+        int moneySpent = quant * pq[0];
         if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
             if (cargoHold.addCargo(good, quant)) {
                 Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
@@ -106,10 +103,19 @@ public class MarketplaceScreenController implements Initializable {
         String goodToSell = longString.substring(0, spaceIndex);
         TradeGood good = TradeGood.valueOf(goodToSell);
         int[] pq = goodsForSale.get(good);
-        if (Game.getPlayer().getShip().getHold().subtractCargo(good, 1)) {
-            Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8));
+        //get quantity desired from player 
+        String q = getQuantitySellFromPlayer();
+        int quant = 0;
+        try {
+            quant = Integer.parseInt(q);
+        } catch (NumberFormatException e) {
+            quant = 0;
+        }
+        int moneySpent = quant * pq[0];
+        if (Game.getPlayer().getShip().getHold().subtractCargo(good, quant)) {
+            Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
             updateMoneyLabel();
-            bazaar.updateQuantity(good, 1);
+            bazaar.updateQuantity(good, quant);
             updateLists();
         }
     }
@@ -159,8 +165,26 @@ public class MarketplaceScreenController implements Initializable {
         
         Optional<String> response = Dialogs.create()
             .owner(new Stage())
-            .title("Quantity")
-            .masthead("How much ya want?")
+            .title("Buying Stuff")
+            .masthead("Arr, how much ye want to buy?")
+            .message("Enter quantity:")
+            .showTextInput("0");
+
+        if (response.isPresent()) {
+            String result = response.get();
+            return result;
+        } else {
+            return null;
+        }
+
+    }
+    
+    private String getQuantitySellFromPlayer() {
+        
+        Optional<String> response = Dialogs.create()
+            .owner(new Stage())
+            .title("Selling Stuff")
+            .masthead("Arr, how much ye want to sell?")
             .message("Enter quantity:")
             .showTextInput("0");
 
