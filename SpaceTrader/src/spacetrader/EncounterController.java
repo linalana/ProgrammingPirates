@@ -6,14 +6,19 @@
 
 package spacetrader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -60,7 +65,20 @@ public class EncounterController implements Initializable {
     
     @FXML
     private void handleFleeButtonAction(ActionEvent event) {
-    
+        try {
+        // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SpaceTrader.class.getResource("OpeningGameScreen.fxml"));
+            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
+
+            // Show the scene containing the root layout.
+            Stage playerStage = SpaceTrader.getPrimaryStage();
+            Scene scene = new Scene(ConfigurationLayout);
+            playerStage.setScene(scene);
+            playerStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     @FXML
