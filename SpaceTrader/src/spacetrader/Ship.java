@@ -13,12 +13,13 @@ import java.util.Random;
  */
 public class Ship {
     private CargoHold hold;
+    private Weapons weapons;
     private String type;
     private int cargoBays;
     private int hullStrength; //from 1(weak) to 5(strong)
-    private int weapons;
-    private int shields;
-    private int gadgets;
+    private int weaponSlots;
+    private int shieldSlots;
+    private int gadgetSlots;
     private int quarters;
     private int maxRange;
     private int fuel;
@@ -34,14 +35,14 @@ public class Ship {
      * @param type the type of ship
      */
     public Ship(int typeind){
-        
+        this.weapons = new Weapons();
         this.type = names[typeind];
         if(type.equals(names[0])){
             this.cargoBays = 5;
             this.hullStrength = 1;
-            this.weapons = 0;
-            this.shields = 0;
-            this.gadgets = 0;
+            this.weaponSlots = 0;
+            this.shieldSlots = 0;
+            this.gadgetSlots = 0;
             this.quarters = 0;
             this.maxRange = 20;
             
@@ -49,81 +50,81 @@ public class Ship {
         else if(type.equals(names[1])){
             this.cargoBays = 15;
             this.hullStrength = 1;
-            this.weapons = 1;
-            this.shields = 0;
-            this.gadgets = 1;
+            this.weaponSlots = 1;
+            this.shieldSlots = 0;
+            this.gadgetSlots = 1;
             this.quarters = 0;
             this.maxRange = 14;
         }
         else if(type.equals(names[2])){
             this.cargoBays = 20;
             this.hullStrength = 2;
-            this.weapons = 1;
-            this.shields = 1;
-            this.gadgets = 1;
+            this.weaponSlots = 1;
+            this.shieldSlots = 1;
+            this.gadgetSlots = 1;
             this.quarters = 0;
             this.maxRange = 17;
         }
         else if(type.equals(names[3])){
             this.cargoBays = 15;
             this.hullStrength = 3;
-            this.weapons = 2;
-            this.shields = 1;
-            this.gadgets = 1;
+            this.weaponSlots = 2;
+            this.shieldSlots = 1;
+            this.gadgetSlots = 1;
             this.quarters = 0;
             this.maxRange = 13;
         }
         else if(type.equals(names[4])){
             this.cargoBays = 20;
             this.hullStrength = 2;
-            this.weapons = 1;
-            this.shields = 2;
-            this.gadgets = 2;
+            this.weaponSlots = 1;
+            this.shieldSlots = 2;
+            this.gadgetSlots = 2;
             this.quarters = 1;
             this.maxRange = 15;
         }
         else if(type.equals(names[5])){
             this.cargoBays = 50;
             this.hullStrength = 2;
-            this.weapons = 0;
-            this.shields = 1;
-            this.gadgets = 1;
+            this.weaponSlots = 0;
+            this.shieldSlots = 1;
+            this.gadgetSlots = 1;
             this.quarters = 3;
             this.maxRange = 14;
         }
         else if(type.equals(names[6])){
             this.cargoBays = 20;
             this.hullStrength = 3;
-            this.weapons = 3;
-            this.shields = 2;
-            this.gadgets = 1;
+            this.weaponSlots = 3;
+            this.shieldSlots = 2;
+            this.gadgetSlots = 1;
             this.quarters = 2;
             this.maxRange = 16;
         }
         else if(type.equals(names[7])){
             this.cargoBays = 30;
             this.hullStrength = 4;
-            this.weapons = 2;
-            this.shields = 2;
-            this.gadgets = 3;
+            this.weaponSlots = 2;
+            this.shieldSlots = 2;
+            this.gadgetSlots = 3;
             this.quarters = 3;
             this.maxRange = 15;
         }
         else if(type.equals(names[8])){
             this.cargoBays = 60;
             this.hullStrength = 5;
-            this.weapons = 1;
-            this.shields = 3;
-            this.gadgets = 2;
+            this.weaponSlots = 1;
+            this.shieldSlots = 3;
+            this.gadgetSlots = 2;
             this.quarters = 3;
             this.maxRange = 13;
         }
         else{
             this.cargoBays = 35;
             this.hullStrength = 5;
-            this.weapons = 3;
-            this.shields = 2;
-            this.gadgets = 2;
+            this.weaponSlots = 3;
+            this.shieldSlots = 2;
+            this.gadgetSlots = 2;
             this.quarters = 3;
             this.maxRange = 14;
         }
@@ -139,90 +140,90 @@ public class Ship {
         if(type.equals(names[0])){
             cargoBays = 5;
             hullStrength = 1;
-            setWeapons(0);
-            setShields(0);
-            setGadgets(0);
+            setWeaponSlots(0);
+            setShieldSlots(0);
+            setGadgetSlots(0);
             quarters = 0;
             maxRange = 20;
         }
         else if(type.equals(names[1])){
             cargoBays = 15;
             hullStrength = 1;
-            setWeapons(1);
-            setShields(0);
-            setGadgets(1);
+            setWeaponSlots(1);
+            setShieldSlots(0);
+            setGadgetSlots(1);
             quarters = 0;
             maxRange = 14;
         }
         else if(type.equals(names[2])){
             cargoBays = 20;
             hullStrength = 2;
-            setWeapons(1);
-            setShields(1);
-            setGadgets(1);
+            setWeaponSlots(1);
+            setShieldSlots(1);
+            setGadgetSlots(1);
             quarters = (0);
             maxRange = (17);
         }
         else if(type.equals(names[3])){
             cargoBays = 15;
             hullStrength = 3;
-            setWeapons(2);
-            setShields(1);
-            setGadgets(1);
+            setWeaponSlots(2);
+            setShieldSlots(1);
+            setGadgetSlots(1);
             quarters = (0);
             maxRange = (13);
         }
         else if(type.equals(names[4])){
             cargoBays = 20;
             hullStrength = 2;
-            setWeapons(1);
-            setShields(2);
-            setGadgets(2);
+            setWeaponSlots(1);
+            setShieldSlots(2);
+            setGadgetSlots(2);
             quarters = (1);
             maxRange = (15);
         }
         else if(type.equals(names[5])){
             cargoBays = 50;
             hullStrength = 2;
-            setWeapons(0);
-            setShields(1);
-            setGadgets(1);
+            setWeaponSlots(0);
+            setShieldSlots(1);
+            setGadgetSlots(1);
             quarters = (3);
             maxRange = (14);
         }
         else if(type.equals(names[6])){
             cargoBays = 20;
             hullStrength = 3;
-            setWeapons(3);
-            setShields(2);
-            setGadgets(1);
+            setWeaponSlots(3);
+            setShieldSlots(2);
+            setGadgetSlots(1);
             quarters = (2);
             maxRange = (16);
         }
         else if(type.equals(names[7])){
             cargoBays = 30;
             hullStrength = 4;
-            setWeapons(2);
-            setShields(2);
-            setGadgets(3);
+            setWeaponSlots(2);
+            setShieldSlots(2);
+            setGadgetSlots(3);
             quarters = (3);
             maxRange = (15);
         }
         else if(type.equals(names[8])){
             cargoBays = 60;
             hullStrength = 5;
-            setWeapons(1);
-            setShields(3);
-            setGadgets(2);
+            setWeaponSlots(1);
+            setShieldSlots(3);
+            setGadgetSlots(2);
             quarters = (3);
             maxRange = (13);
         }
         else{
             cargoBays = 35;
             hullStrength = 5;
-            setWeapons(3);
-            setShields(2);
-            setGadgets(2);
+            setWeaponSlots(3);
+            setShieldSlots(2);
+            setGadgetSlots(2);
             quarters = (3);
             maxRange = (14);
         }
@@ -259,45 +260,45 @@ public class Ship {
     }
 
     /**
-     * @return the weapons
+     * @return the weaponSlots
      */
-    public int getWeapons() {
-        return weapons;
+    public int getWeaponSlots() {
+        return weaponSlots;
     }
 
     /**
-     * @param weapons the weapons to set
+     * @param weaponSlots the weaponSlots to set
      */
-    public void setWeapons(int weapons) {
-        this.weapons = weapons;
+    public void setWeaponSlots(int weaponSlots) {
+        this.weaponSlots = weaponSlots;
     }
 
     /**
-     * @return the shields
+     * @return the shieldSlots
      */
-    public int getShields() {
-        return shields;
+    public int getShieldSlots() {
+        return shieldSlots;
     }
 
     /**
-     * @param shields the shields to set
+     * @param shieldSlots the shieldSlots to set
      */
-    public void setShields(int shields) {
-        this.shields = shields;
+    public void setShieldSlots(int shieldSlots) {
+        this.shieldSlots = shieldSlots;
     }
 
     /**
-     * @return the gadgets
+     * @return the gadgetSlots
      */
-    public int getGadgets() {
-        return gadgets;
+    public int getGadgetSlots() {
+        return gadgetSlots;
     }
 
     /**
-     * @param gadgets the gadgets to set
+     * @param gadgetSlots the gadgetSlots to set
      */
-    public void setGadgets(int gadgets) {
-        this.gadgets = gadgets;
+    public void setGadgetSlots(int gadgetSlots) {
+        this.gadgetSlots = gadgetSlots;
     }
 
     /**

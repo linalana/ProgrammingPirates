@@ -26,18 +26,23 @@ public class PoliceForce extends Encounterer{
         this.bribe = calculateBribe(system);
         if(strength==1){
             this.ship = new Ship(1);
+            this.fighterPoints = 2;
         }
         if(strength==2){
             this.ship = new Ship(2);
+            this.fighterPoints = 4;
         }
         if(strength==3){
             this.ship = new Ship(3);
+            this.fighterPoints = 6;
         }
         if(strength==4){
             this.ship = new Ship(6);
+            this.fighterPoints = 8;
         }
         if(strength==5){
             this.ship = new Ship(9);
+            this.fighterPoints = 10;
         }
     }
     
