@@ -36,6 +36,7 @@ public class Turn {
     public void travel(int fuelUsed) {
         Random rand = new Random();
         int randInt = rand.nextInt(100);
+//        testing to see if it works and it doesn't
 //        encounter = new Encounter(Game.getPlayer(), new Pirate());
 //        encounter.startEncounter();
         if (randInt < policeChance) {
