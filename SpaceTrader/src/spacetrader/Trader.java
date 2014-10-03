@@ -14,7 +14,6 @@ import java.util.Random;
  */
 public class Trader extends Encounterer {
     private int traderPoints;
-    private int fighterPoints;
     
     public Trader() {
         super();
@@ -28,7 +27,6 @@ public class Trader extends Encounterer {
     private void allocateSkillPoints() {
         Random rand = new Random();
         traderPoints = rand.nextInt(11);
-        fighterPoints = rand.nextInt(11);
     }
 
     /**
@@ -36,13 +34,6 @@ public class Trader extends Encounterer {
      */
     public int getTraderPoints() {
         return traderPoints;
-    }
-
-    /**
-     * @return the fighterPoints
-     */
-    public int getFighterPoints() {
-        return fighterPoints;
     }
     
     

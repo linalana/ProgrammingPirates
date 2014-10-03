@@ -15,12 +15,14 @@ import java.util.Random;
 public abstract class Encounterer {
     protected int reputation;
     protected Ship ship;
+    protected int fighterPoints;
     
     public Encounterer() {
         Random rand = new Random();
         int deviance = rand.nextInt(2 * 10);
         reputation = Game.getPlayer().getReputation() + (deviance - 10);
         ship = new Ship();
+        fighterPoints = rand.nextInt(11);
     }
     
     protected void fillCargo() {
@@ -61,6 +63,13 @@ public abstract class Encounterer {
      */
     public Ship getShip() {
         return ship;
+    }
+    
+    /**
+     * @return the fighterPoints
+     */
+    public int getFighterPoints() {
+        return fighterPoints;
     }
     
     

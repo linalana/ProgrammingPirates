@@ -11,25 +11,10 @@ import java.util.Random;
  * @author alanalin
  */
 public class Pirate extends Encounterer {
-    
-    private int fighterPoints;
+
     public Pirate() {
         super();
         super.fillCargo();
-        allocateSkillPoints();
-    }
-    
-    private void allocateSkillPoints() {
-        Random rand = new Random();
-        fighterPoints = rand.nextInt(11);
-    }
-
-    /**
-     * @return the fighterPoints
-     */
-    public int getFighterPoints() {
-        return fighterPoints;
-    }
-    
+    }   
 
 }

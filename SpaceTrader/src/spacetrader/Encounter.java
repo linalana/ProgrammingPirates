@@ -42,11 +42,24 @@ public class Encounter {
     }
     
     public void PlayerAttack() {
-        
+        //formula to figure out how much damage player does to the other ship
+        int totalDamage = 0;
+        //for each weapon type
+            //totalDamage += weapon.strength * weapon.count
+        totalDamage *= (p.getFighter() / 10);
+        //algorithm to decide where to do that damage on the encounterer's ship
     }
     
     public void EncountererAttack() {
+        //formula to figure out how much damage encounterer does to the other ship
+        int totalDamage = 0;
+        //for each weapon type
+            //totalDamage += weapon.strength * weapon.count
         
+        //getType()
+        //get appropriate fighter value from type
+        // totalDamage += (
+        //algorithm to decide where to do that damage on the players's ship
     }
     
     public String getType() {
