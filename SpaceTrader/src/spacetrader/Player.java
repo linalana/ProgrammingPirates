@@ -50,6 +50,7 @@ public class Player {
         if (e.getClass().equals(Pirate.class)) {
             //it's a pirate!
             Pirate p = (Pirate) e;
+            
 
         } else {
             //it's a trader!

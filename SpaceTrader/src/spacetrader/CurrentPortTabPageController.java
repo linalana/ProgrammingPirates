@@ -50,7 +50,7 @@ public class CurrentPortTabPageController implements Initializable {
         politicalSystem.setText("Political System: " + currentPort.getContinent().getPoliticalSystem());
     }    
     
-        /**
+    /**
      * Opens the marketplace screen
      * 
      * @param event submit button pressed

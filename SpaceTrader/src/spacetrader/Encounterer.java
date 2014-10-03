@@ -17,10 +17,10 @@ public abstract class Encounterer {
     protected Ship ship;
     
     public Encounterer() {
-    Random rand = new Random();
-    int deviance = rand.nextInt(2 * 10);
-    reputation = Game.getPlayer().getReputation() + (deviance - 10);
-    ship = new Ship();
+        Random rand = new Random();
+        int deviance = rand.nextInt(2 * 10);
+        reputation = Game.getPlayer().getReputation() + (deviance - 10);
+        ship = new Ship();
     }
     
     protected void fillCargo() {

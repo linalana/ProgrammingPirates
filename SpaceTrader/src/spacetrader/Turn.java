@@ -23,6 +23,7 @@ public class Turn {
     private int policeChance;
     private int traderChance;
     private int pirateChance;
+    private static Encounter encounter;
     
     public Turn(Port newPort) {
         this.newPort = newPort;
@@ -35,14 +36,19 @@ public class Turn {
     public void travel(int fuelUsed) {
         Random rand = new Random();
         int randInt = rand.nextInt(100);
+//        encounter = new Encounter(Game.getPlayer(), new Pirate());
+//        encounter.startEncounter();
         if (randInt < policeChance) {
-            //police encounter
+            //encounter = new Encounter(Game.getPlayer(), new PoliceForce(politcalSystem));
+            //encounter.startEncounter();
         } else if (randInt > policeChance
                    && randInt < (policeChance + traderChance)) {
-            //trader encounter
+            encounter = new Encounter(Game.getPlayer(), new Trader());
+            encounter.startEncounter();
         } else if (randInt > (policeChance + traderChance)
                    && randInt < (policeChance + traderChance + pirateChance)) {
-            //pirate encounter
+            encounter = new Encounter(Game.getPlayer(), new Pirate());
+            encounter.startEncounter();
         }
         //set new current port
         Game.setCurrentPort(newPort);
@@ -138,6 +144,13 @@ public class Turn {
                 pirateChance = 5;
                 break;
         }
+    }
+
+    /**
+     * @return the encounter
+     */
+    public static Encounter getEncounter() {
+        return encounter;
     }
     
     
