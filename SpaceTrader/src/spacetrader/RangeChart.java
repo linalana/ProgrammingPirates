@@ -18,7 +18,7 @@ public class RangeChart {
     private Point[] continents;
     private int fuel;
     private int[] dists;
-    private int conversionFactor = 10;
+    private int conversionFactor = 40;
     private Continent[] continentsInRange;
     
     public RangeChart() {
