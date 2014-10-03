@@ -12,17 +12,33 @@ import java.util.Random;
  * A police force that will be assigned to each continent
  * @author Murph
  */
-public class PoliceForce{
-    int strength;
-    int bribe;
+public class PoliceForce extends Encounterer{
+    private int strength;
+    private int bribe;
     
     /**
      * Constructor for PoliceForce
      * @param system the political system of the continent
      */
     public PoliceForce(String system){
+        super();
         this.strength = calculateStrength(system);
         this.bribe = calculateBribe(system);
+        if(strength==1){
+            this.ship = new Ship(1);
+        }
+        if(strength==2){
+            this.ship = new Ship(2);
+        }
+        if(strength==3){
+            this.ship = new Ship(3);
+        }
+        if(strength==4){
+            this.ship = new Ship(6);
+        }
+        if(strength==5){
+            this.ship = new Ship(9);
+        }
     }
     
     /**
@@ -109,5 +125,19 @@ public class PoliceForce{
             player.getPoliceRecord().incrementInspectionHistory();
             return true;
         }
+    }
+
+    /**
+     * @return the strength
+     */
+    public int getStrength() {
+        return strength;
+    }
+
+    /**
+     * @return the bribe
+     */
+    public int getBribe() {
+        return bribe;
     }
 }
