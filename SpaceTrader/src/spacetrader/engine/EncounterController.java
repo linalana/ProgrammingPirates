@@ -85,7 +85,7 @@ public class EncounterController implements Initializable {
     
     @FXML
     private void handleOtherButtonAction(ActionEvent event) {
-    
+        
     }
     
 }
