@@ -43,8 +43,6 @@ public abstract class Encounterer {
      */
     public boolean willEncounter(int playerRep, int fightPoints) {
         return (playerRep <= getReputation());
-        //take into account fighter skill points
-        //NOTE: we might have to move this method into the individual trader/pirate/police classes
     }
     
     public int attack() {

@@ -40,7 +40,7 @@ public class ShipTabPageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         type.setText("Ship Type: " + Game.getPlayer().getShip().getType());
         fuel.setText("Fuel: " + Game.getPlayer().getShip().getFuel());
-        shield.setText("Shields: " + Game.getPlayer().getShip().getShields());
+        shield.setText("Shields: " + Game.getPlayer().getShip().getShieldSlots());
         cargoHold = Game.getPlayer().getShip().getHold();
         cargo = cargoGoodsList.getItems();
         cargoGoods = Game.getPlayer().getShip().getHold().getGoods();
