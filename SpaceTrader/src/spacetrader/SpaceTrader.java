@@ -36,7 +36,7 @@ public class SpaceTrader extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("WelcomeScreen.fxml"));
+            loader.setLocation(SpaceTrader.class.getResource("GUI/WelcomeScreen.fxml"));
             rootLayout = (AnchorPane) loader.load();
 
             // Show the scene containing the root layout.
