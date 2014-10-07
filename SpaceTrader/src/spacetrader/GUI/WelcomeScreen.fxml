@@ -12,7 +12,7 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.WelcomeScreenController">
     <children>
         <Button fx:id="button" alignment="CENTER" layoutX="226.0" layoutY="265.0" onAction="#handleStartButtonAction" prefHeight="30.0" prefWidth="150.0" text="New Game" textAlignment="CENTER" />
-      <Button alignment="CENTER" disable="true" layoutX="226.0" layoutY="303.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Load Game" textAlignment="CENTER" />
+      <Button alignment="CENTER" layoutX="226.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleLoadButtonAction" prefHeight="30.0" prefWidth="150.0" text="Load Game" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="167.0" layoutY="43.0" text="Call of Booty:" textFill="WHITE">
          <font>
             <Font size="16.0" />
