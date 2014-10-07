@@ -72,6 +72,13 @@ public abstract class Encounterer {
     public int getFighterPoints() {
         return fighterPoints;
     }
+    /**
+     * @return the fighterPoints
+     */
+    public int getTraderPoints() {
+        return 0;
+    }
+    
     
     
 }

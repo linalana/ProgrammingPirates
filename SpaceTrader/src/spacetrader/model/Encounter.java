@@ -72,6 +72,18 @@ public class Encounter {
             return "Police Force";
         }
     }
+
+    public int[] getPlayerInfo() {
+        return new int[]{p.getTrader(), p.getFighter(), p.getReputation(),
+            p.getShip().getHullStrength(), p.getShip().getShieldSlots(),
+            p.getShip().getWeaponSlots()};
+    }
+
+    public int[] getEncountererInfo() {
+        return new int[]{e.getTraderPoints(), e.getFighterPoints(), e.getReputation(),
+            e.getShip().getHullStrength(), e.getShip().getShieldSlots(),
+            e.getShip().getWeaponSlots()};
+    }
     
     
 }
