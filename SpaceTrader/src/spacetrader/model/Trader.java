@@ -32,6 +32,7 @@ public class Trader extends Encounterer {
     /**
      * @return the traderPoints
      */
+    @Override
     public int getTraderPoints() {
         return traderPoints;
     }
