@@ -95,6 +95,9 @@ public enum TradeGood {
         if (price < 0) {
             return 0;
         } 
+        if (port.getEvent() == null) {
+            return price;
+        }
         if (port.getEvent().equals(IE)) {
             price *= 5;
         }

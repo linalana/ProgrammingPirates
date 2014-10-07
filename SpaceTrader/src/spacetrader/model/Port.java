@@ -20,7 +20,7 @@ public class Port {
     private Bazaar bazaar;
     private int techLevel;
     private String resources;
-    private int event;
+    private int event = -1;
     private Continent continent;
     private PoliceForce policeForce;
 
@@ -83,6 +83,9 @@ public class Port {
      * @return the event
      */
     public String getEvent() {
+        if (event == -1) {
+            return null;
+        }
         return events[event];
     }
 

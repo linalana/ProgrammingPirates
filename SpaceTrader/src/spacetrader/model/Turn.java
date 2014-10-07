@@ -31,6 +31,7 @@ public class Turn {
         politicalSystem = newContinent.getPoliticalSystem();
         techlevel = newPort.getTechLevel();
         setChanceEncounters();
+        randomPortEvents();
     }
     
     public String travel(int fuelUsed) {
@@ -154,6 +155,13 @@ public class Turn {
      */
     public static Encounter getEncounter() {
         return encounter;
+    }
+
+    private void randomPortEvents() {
+        Random rand = new Random();
+        if (rand.nextDouble() > 0.5) {
+            newPort.setEvent(rand.nextInt(7));
+        }
     }
     
     

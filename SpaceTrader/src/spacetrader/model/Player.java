@@ -17,7 +17,7 @@ public class Player {
     private int trader;
     private int engineer;
     private int investor;
-    private int money = 1000;
+    private int money = 10000;
     private int reputation;
     private PoliceRecord policeRecord;
 
