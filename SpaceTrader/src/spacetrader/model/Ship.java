@@ -1,0 +1,334 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package spacetrader.model;
+import java.util.Random;
+
+/**
+ * A ship class that creates ships
+ * @author Murph
+ */
+public class Ship {
+    private CargoHold hold;
+    private Weapons weapons;
+    private String type;
+    private int cargoBays;
+    private int hullStrength; //from 1(weak) to 5(strong)
+    private int weaponSlots;
+    private int shieldSlots;
+    private int gadgetSlots;
+    private int quarters;
+    private int maxRange;
+    private int fuel;
+    public String[] names = new String[] {"Guppy","Minnow","Snapping Turtle",
+        "Pufferfish","StingRay","S.S. Electric Eel","Dolphin Tales","SharkFin",
+        "Hammerhead","S.S. Bob Waters"};
+    
+    public Ship() {
+        this(new Random().nextInt(10));
+    }
+    /**
+     * Creates a new ship
+     * @param type the type of ship
+     */
+    public Ship(int typeind){
+        this.weapons = new Weapons();
+        this.type = names[typeind];
+        if(type.equals(names[0])){
+            this.cargoBays = 5;
+            this.hullStrength = 1;
+            this.weaponSlots = 0;
+            this.shieldSlots = 0;
+            this.gadgetSlots = 0;
+            this.quarters = 0;
+            this.maxRange = 20;
+            
+        }
+        else if(type.equals(names[1])){
+            this.cargoBays = 15;
+            this.hullStrength = 1;
+            this.weaponSlots = 1;
+            this.shieldSlots = 0;
+            this.gadgetSlots = 1;
+            this.quarters = 0;
+            this.maxRange = 14;
+        }
+        else if(type.equals(names[2])){
+            this.cargoBays = 20;
+            this.hullStrength = 2;
+            this.weaponSlots = 1;
+            this.shieldSlots = 1;
+            this.gadgetSlots = 1;
+            this.quarters = 0;
+            this.maxRange = 17;
+        }
+        else if(type.equals(names[3])){
+            this.cargoBays = 15;
+            this.hullStrength = 3;
+            this.weaponSlots = 2;
+            this.shieldSlots = 1;
+            this.gadgetSlots = 1;
+            this.quarters = 0;
+            this.maxRange = 13;
+        }
+        else if(type.equals(names[4])){
+            this.cargoBays = 20;
+            this.hullStrength = 2;
+            this.weaponSlots = 1;
+            this.shieldSlots = 2;
+            this.gadgetSlots = 2;
+            this.quarters = 1;
+            this.maxRange = 15;
+        }
+        else if(type.equals(names[5])){
+            this.cargoBays = 50;
+            this.hullStrength = 2;
+            this.weaponSlots = 0;
+            this.shieldSlots = 1;
+            this.gadgetSlots = 1;
+            this.quarters = 3;
+            this.maxRange = 14;
+        }
+        else if(type.equals(names[6])){
+            this.cargoBays = 20;
+            this.hullStrength = 3;
+            this.weaponSlots = 3;
+            this.shieldSlots = 2;
+            this.gadgetSlots = 1;
+            this.quarters = 2;
+            this.maxRange = 16;
+        }
+        else if(type.equals(names[7])){
+            this.cargoBays = 30;
+            this.hullStrength = 4;
+            this.weaponSlots = 2;
+            this.shieldSlots = 2;
+            this.gadgetSlots = 3;
+            this.quarters = 3;
+            this.maxRange = 15;
+        }
+        else if(type.equals(names[8])){
+            this.cargoBays = 60;
+            this.hullStrength = 5;
+            this.weaponSlots = 1;
+            this.shieldSlots = 3;
+            this.gadgetSlots = 2;
+            this.quarters = 3;
+            this.maxRange = 13;
+        }
+        else{
+            this.cargoBays = 35;
+            this.hullStrength = 5;
+            this.weaponSlots = 3;
+            this.shieldSlots = 2;
+            this.gadgetSlots = 2;
+            this.quarters = 3;
+            this.maxRange = 14;
+        }
+        this.fuel = maxRange;
+        this.hold = new CargoHold(getCargoBays());
+    }
+    /**
+     * Changes the ship type, for when you want to upgrade or downgrade
+     * @param type the new ship type
+     */
+    public void updateShip(int typeInd){
+        this.type = names[typeInd];
+        if(type.equals(names[0])){
+            cargoBays = 5;
+            hullStrength = 1;
+            setWeaponSlots(0);
+            setShieldSlots(0);
+            setGadgetSlots(0);
+            quarters = 0;
+            maxRange = 20;
+        }
+        else if(type.equals(names[1])){
+            cargoBays = 15;
+            hullStrength = 1;
+            setWeaponSlots(1);
+            setShieldSlots(0);
+            setGadgetSlots(1);
+            quarters = 0;
+            maxRange = 14;
+        }
+        else if(type.equals(names[2])){
+            cargoBays = 20;
+            hullStrength = 2;
+            setWeaponSlots(1);
+            setShieldSlots(1);
+            setGadgetSlots(1);
+            quarters = (0);
+            maxRange = (17);
+        }
+        else if(type.equals(names[3])){
+            cargoBays = 15;
+            hullStrength = 3;
+            setWeaponSlots(2);
+            setShieldSlots(1);
+            setGadgetSlots(1);
+            quarters = (0);
+            maxRange = (13);
+        }
+        else if(type.equals(names[4])){
+            cargoBays = 20;
+            hullStrength = 2;
+            setWeaponSlots(1);
+            setShieldSlots(2);
+            setGadgetSlots(2);
+            quarters = (1);
+            maxRange = (15);
+        }
+        else if(type.equals(names[5])){
+            cargoBays = 50;
+            hullStrength = 2;
+            setWeaponSlots(0);
+            setShieldSlots(1);
+            setGadgetSlots(1);
+            quarters = (3);
+            maxRange = (14);
+        }
+        else if(type.equals(names[6])){
+            cargoBays = 20;
+            hullStrength = 3;
+            setWeaponSlots(3);
+            setShieldSlots(2);
+            setGadgetSlots(1);
+            quarters = (2);
+            maxRange = (16);
+        }
+        else if(type.equals(names[7])){
+            cargoBays = 30;
+            hullStrength = 4;
+            setWeaponSlots(2);
+            setShieldSlots(2);
+            setGadgetSlots(3);
+            quarters = (3);
+            maxRange = (15);
+        }
+        else if(type.equals(names[8])){
+            cargoBays = 60;
+            hullStrength = 5;
+            setWeaponSlots(1);
+            setShieldSlots(3);
+            setGadgetSlots(2);
+            quarters = (3);
+            maxRange = (13);
+        }
+        else{
+            cargoBays = 35;
+            hullStrength = 5;
+            setWeaponSlots(3);
+            setShieldSlots(2);
+            setGadgetSlots(2);
+            quarters = (3);
+            maxRange = (14);
+        }
+        
+        hold = new CargoHold(getCargoBays());
+    }
+
+    /**
+     * @return the hold
+     */
+    public CargoHold getHold() {
+        return hold;
+    }
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @return the cargoBays
+     */
+    public int getCargoBays() {
+        return cargoBays;
+    }
+
+    /**
+     * @return the hullStrength
+     */
+    public int getHullStrength() {
+        return hullStrength;
+    }
+
+    /**
+     * @return the weaponSlots
+     */
+    public int getWeaponSlots() {
+        return weaponSlots;
+    }
+
+    /**
+     * @param weaponSlots the weaponSlots to set
+     */
+    public void setWeaponSlots(int weaponSlots) {
+        this.weaponSlots = weaponSlots;
+    }
+
+    /**
+     * @return the shieldSlots
+     */
+    public int getShieldSlots() {
+        return shieldSlots;
+    }
+
+    /**
+     * @param shieldSlots the shieldSlots to set
+     */
+    public void setShieldSlots(int shieldSlots) {
+        this.shieldSlots = shieldSlots;
+    }
+
+    /**
+     * @return the gadgetSlots
+     */
+    public int getGadgetSlots() {
+        return gadgetSlots;
+    }
+
+    /**
+     * @param gadgetSlots the gadgetSlots to set
+     */
+    public void setGadgetSlots(int gadgetSlots) {
+        this.gadgetSlots = gadgetSlots;
+    }
+
+    /**
+     * @return the quarters
+     */
+    public int getQuarters() {
+        return quarters;
+    }
+
+    /**
+     * @return the maxRange
+     */
+    public int getMaxRange() {
+        return maxRange;
+    }
+
+    public void fillTank() {
+        fuel = maxRange;
+    }
+    public void setFuel(int change) {
+        fuel = fuel + change;
+        if (fuel > maxRange) {
+            fuel = maxRange;
+        }
+        if (fuel < 0) {
+            fuel = 0;
+        }
+    }
+    public int getFuel() {
+        return fuel;
+    }
+    
+}
