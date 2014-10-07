@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.RandomEventController">
+    <stylesheets>
+        <URL value="@DarkTheme.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="titleLabel" layoutX="207.0" layoutY="14.0" styleClass="label-plain" text="Something Happened!!" textAlignment="CENTER" />
+      <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="47.0" prefHeight="329.0" prefWidth="569.0" styleClass="label-subtitle" text="Now this is what's up" />
+      <Button layoutX="482.0" layoutY="353.0" mnemonicParsing="false" onAction="#pressAcceptButton" styleClass="label-subtitle" text="Accept" />
+   </children>
+</AnchorPane>

@@ -23,7 +23,7 @@ public class SpaceTrader extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Space Trader");
+        this.primaryStage.setTitle("Call of Booty: Black Ships");
 
         initRootLayout();
 
