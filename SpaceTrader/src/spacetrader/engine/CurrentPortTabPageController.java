@@ -40,6 +40,8 @@ public class CurrentPortTabPageController implements Initializable {
     private Label techLevel;
     @FXML
     private Label politicalSystem;
+    @FXML
+    private Label randomEvent;
     /**
      * Initializes the controller class.
      */
@@ -51,6 +53,11 @@ public class CurrentPortTabPageController implements Initializable {
                          + ", " + currentPort.getContinent().getY() + ")");
         techLevel.setText("Tech Level: " + currentPort.getContinent().getTechLevel());
         politicalSystem.setText("Political System: " + currentPort.getContinent().getPoliticalSystem());
+        if (currentPort.getEvent() == null) {
+            randomEvent.setText("Normal Conditions");
+        } else {
+            randomEvent.setText(currentPort.getEvent());
+        }
     }    
     
     /**
