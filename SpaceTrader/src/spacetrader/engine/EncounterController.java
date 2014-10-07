@@ -35,6 +35,28 @@ public class EncounterController implements Initializable {
     private Button fightButton;
     @FXML
     private Button fleeButton;
+    @FXML
+    private Label pFightPtsLabel;
+    @FXML
+    private Label eFightPtsLabel;
+    @FXML
+    private Label pTradePtsLabel;
+    @FXML
+    private Label pExpLabel;
+    @FXML
+    private Label eExpLabel;
+    @FXML
+    private Label pHullHealthLabel;
+    @FXML
+    private Label eHullHealthLabel;
+    @FXML
+    private Label pShieldStrengthLabel;
+    @FXML
+    private Label eShieldStrengthLabel;
+    @FXML
+    private Label pWepStrengthLabel;
+    @FXML
+    private Label eWepStrengthLabel;
     
     //other button is either trade for traders or accept inspection for police
     //disapears for pirate
