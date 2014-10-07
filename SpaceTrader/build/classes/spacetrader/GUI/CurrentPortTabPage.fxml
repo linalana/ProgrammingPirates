@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.CurrentPortTabPageController">
+   <children>
+      <GridPane layoutX="13.0" layoutY="14.0" prefHeight="139.0" prefWidth="599.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="529.0" minWidth="10.0" prefWidth="529.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="0.0" prefWidth="0.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="79.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="79.0" minHeight="0.0" prefHeight="57.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="portName" alignment="CENTER" contentDisplay="CENTER" prefHeight="74.0" prefWidth="633.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Button layoutX="238.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleMarketplaceButtonAction" prefWidth="125.0" text="Bazaar" />
+      <Button disable="true" layoutX="100.0" layoutY="335.0" mnemonicParsing="false" prefWidth="125.0" text="Shipyard" />
+      <Button disable="true" layoutX="375.0" layoutY="335.0" mnemonicParsing="false" prefWidth="125.0" text="Bank" />
+      <Label fx:id="location" layoutX="33.0" layoutY="103.0" styleClass="label-subtitle" text="Label" />
+      <Label fx:id="politicalSystem" layoutX="33.0" layoutY="156.0" styleClass="label-subtitle" text="Label" />
+      <Label fx:id="techLevel" layoutX="33.0" layoutY="213.0" styleClass="label-subtitle" text="Label" />
+   </children>
+</AnchorPane>

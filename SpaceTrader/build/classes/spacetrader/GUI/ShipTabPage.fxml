@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.ShipTabPageController">
+   <children>
+      <ListView fx:id="cargoGoodsList" layoutX="343.0" layoutY="77.0" prefHeight="299.0" prefWidth="217.0" />
+      <Label layoutX="425.0" layoutY="27.0" styleClass="label-subtitle" text="Cargo" />
+      <Label fx:id="type" layoutX="30.0" layoutY="77.0" styleClass="label-subtitle" text="Ship Type:" />
+      <Label fx:id="fuel" layoutX="30.0" layoutY="131.0" styleClass="label-subtitle" text="Fuel:" />
+      <Label fx:id="shield" layoutX="30.0" layoutY="184.0" styleClass="label-subtitle" text="Shield:" />
+   </children>
+</AnchorPane>

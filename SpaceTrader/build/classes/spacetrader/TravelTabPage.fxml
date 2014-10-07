@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.TravelTabPageController">
+   <children>
+      <ListView fx:id="portsList" layoutX="36.0" layoutY="65.0" prefHeight="309.0" prefWidth="217.0" />
+      <Button layoutX="363.0" layoutY="343.0" mnemonicParsing="false" onAction="#travelButtonPressed" prefWidth="125.0" text="Travel" />
+      <Label fx:id="needed" layoutX="300.0" layoutY="65.0" styleClass="label-subtitle" text="Fuel Needed:" />
+      <Label layoutX="78.0" layoutY="14.0" styleClass="label-subtitle" text="Available Ports" />
+      <Label fx:id="available" layoutX="300.0" layoutY="120.0" styleClass="label-subtitle" text="Fuel Available: " />
+   </children>
+</AnchorPane>
