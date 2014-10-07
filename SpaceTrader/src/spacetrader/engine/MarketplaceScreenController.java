@@ -108,11 +108,13 @@ public class MarketplaceScreenController implements Initializable {
             quant = 0;
         }
         int moneySpent = quant * pq[0];
-        if (Game.getPlayer().getShip().getHold().subtractCargo(good, quant)) {
-            Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
-            updateMoneyLabel();
-            bazaar.updateQuantity(good, quant);
-            updateLists();
+        if (Game.getCurrentPort().getTechLevel() > good.getMTLU()) {
+            if (Game.getPlayer().getShip().getHold().subtractCargo(good, quant)) {
+                Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
+                updateMoneyLabel();
+                bazaar.updateQuantity(good, quant);
+                updateLists();
+            }
         }
     }
     @FXML
