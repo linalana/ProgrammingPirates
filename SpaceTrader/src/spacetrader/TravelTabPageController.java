@@ -36,6 +36,8 @@ public class TravelTabPageController implements Initializable {
     private ObservableList<String> ports;
     private Continent[] continents;
     private RangeChart range;
+    private Port newPort;
+    int fuelUsed;
     
     /**
      * Initializes the controller class.
@@ -62,9 +64,40 @@ public class TravelTabPageController implements Initializable {
     @FXML
     private void travelButtonPressed(ActionEvent event) {
         int index = portsList.getSelectionModel().getSelectedIndex();
+        newPort = continents[index].getMainPort();
         Turn turn = new Turn(continents[index].getMainPort());
-        int fuelUsed = range.getDists(continents[index]);
-        turn.travel(fuelUsed);
+        fuelUsed = range.getDists(continents[index]);
+        String result = turn.travel(fuelUsed);
+        //set new current port
+        Game.setCurrentPort(newPort);
+        //deduct fuel from ship based on distance traveled
+        Game.getPlayer().getShip().setFuel(-fuelUsed);
+        if (result != null) {
+            doEncounter();
+        } else {
+            doTravel();
+        }
+        
+    }
+
+    private void doEncounter() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SpaceTrader.class.getResource("Encounter.fxml"));
+            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
+
+            // Show the scene containing the root layout.
+            Stage playerStage = SpaceTrader.getPrimaryStage();
+            Scene scene = new Scene(ConfigurationLayout);
+            playerStage.setScene(scene);
+            playerStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void doTravel() {
         try {
         // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
