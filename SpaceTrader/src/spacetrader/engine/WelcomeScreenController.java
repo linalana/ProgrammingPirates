@@ -16,6 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import spacetrader.SpaceTrader;
 
@@ -36,6 +39,7 @@ public class WelcomeScreenController implements Initializable {
      */
     @FXML
     private void handleStartButtonAction(ActionEvent event) {
+        ApplicationController.playSound(getClass().getResource("yearr.wav").toString());
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
@@ -52,9 +56,10 @@ public class WelcomeScreenController implements Initializable {
         }
     }
     
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }   
     
 }

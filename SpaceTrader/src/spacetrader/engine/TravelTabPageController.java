@@ -69,6 +69,7 @@ public class TravelTabPageController implements Initializable {
     
     @FXML
     private void travelButtonPressed(ActionEvent event) {
+        ApplicationController.playSound(getClass().getResource("raisethesails.wav").toString());
         int index = portsList.getSelectionModel().getSelectedIndex();
         newPort = continents[index].getMainPort();
         Turn turn = new Turn(continents[index].getMainPort());
