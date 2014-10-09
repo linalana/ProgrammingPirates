@@ -94,7 +94,17 @@ public class PlayerConfigurationController implements Initializable {
                 Number old_val, Number new_val) {
                     investorPoint = UpdatePoints(investorSlider, investorPoint);
                 }
-        });         
+        });   
+        
+        nameText.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
+            if (nameText.getText().length() > 20) {
+                String s = nameText.getText().substring(0, 20);
+                nameText.setText(s);
+            }
+        }
+    });
     }
     /**
      * Checks to see if the slider's new position will go over the total points
