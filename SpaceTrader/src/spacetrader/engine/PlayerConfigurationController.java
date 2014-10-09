@@ -142,7 +142,6 @@ public class PlayerConfigurationController implements Initializable {
      */
     @FXML
     private void submitButtonCreatePlayer(ActionEvent event) {
-        ApplicationController.playSound(getClass().getResource("ayeayecapn.wav").toString());
         if (nameText.getText() != null && !nameText.getText().isEmpty() && pointTotal == 0) {
             Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
             Game game = new Game(player);
@@ -151,6 +150,7 @@ public class PlayerConfigurationController implements Initializable {
             showOpeningScreen();
             World gameWorld = new World();
             System.out.println(gameWorld.toString());
+            ApplicationController.playSound(getClass().getResource("ayeayecapn.wav").toString());
        }
     }
     /**
