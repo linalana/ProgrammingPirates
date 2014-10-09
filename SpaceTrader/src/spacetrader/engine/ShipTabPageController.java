@@ -44,9 +44,9 @@ public class ShipTabPageController implements Initializable {
         type.setText("Ship Type: " + Game.getPlayer().getShip().getType());
         fuel.setText("Fuel: " + Game.getPlayer().getShip().getFuel());
         shield.setText("Shields: " + Game.getPlayer().getShip().getShieldSlots());
-        cargoHold = Game.getPlayer().getShip().getHold();
+        cargoHold = Game.getPlayer().getShip().getCargoHold();
         cargo = cargoGoodsList.getItems();
-        cargoGoods = Game.getPlayer().getShip().getHold().getGoods();
+        cargoGoods = Game.getPlayer().getShip().getCargoHold().getGoods();
         cargo.clear();
         for (TradeGood tg: cargoGoods.keySet()) {
             int q = cargoGoods.get(tg);

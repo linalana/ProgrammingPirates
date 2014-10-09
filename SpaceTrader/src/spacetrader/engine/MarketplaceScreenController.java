@@ -57,7 +57,7 @@ public class MarketplaceScreenController implements Initializable {
         Port port = Game.getCurrentPort();
         nameLabel.setText(port.getName());
         bazaar = port.getBazaar();
-        cargoHold = Game.getPlayer().getShip().getHold();
+        cargoHold = Game.getPlayer().getShip().getCargoHold();
         updateLists();
     }
     
@@ -109,7 +109,7 @@ public class MarketplaceScreenController implements Initializable {
         }
         int moneySpent = quant * pq[0];
         if (Game.getCurrentPort().getTechLevel() > good.getMTLU()) {
-            if (Game.getPlayer().getShip().getHold().subtractCargo(good, quant)) {
+            if (Game.getPlayer().getShip().getCargoHold().subtractCargo(good, quant)) {
                 Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
                 updateMoneyLabel();
                 bazaar.updateQuantity(good, quant);
@@ -141,7 +141,7 @@ public class MarketplaceScreenController implements Initializable {
         cargo = cargoGoodsList.getItems();
         market = marketGoodsList.getItems();
         goodsForSale = bazaar.getGoodsForSale();
-        cargoGoods = Game.getPlayer().getShip().getHold().getGoods();
+        cargoGoods = Game.getPlayer().getShip().getCargoHold().getGoods();
         market.clear();
         cargo.clear();
         for (TradeGood tg: goodsForSale.keySet()) {
