@@ -94,7 +94,17 @@ public class PlayerConfigurationController implements Initializable {
                 Number old_val, Number new_val) {
                     investorPoint = UpdatePoints(investorSlider, investorPoint);
                 }
-        });         
+        });   
+        
+        nameText.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
+            if (nameText.getText().length() > 20) {
+                String s = nameText.getText().substring(0, 20);
+                nameText.setText(s);
+            }
+        }
+    });
     }
     /**
      * Checks to see if the slider's new position will go over the total points
@@ -132,7 +142,6 @@ public class PlayerConfigurationController implements Initializable {
      */
     @FXML
     private void submitButtonCreatePlayer(ActionEvent event) {
-        ApplicationController.playSound(getClass().getResource("ayeayecapn.wav").toString());
         if (nameText.getText() != null && !nameText.getText().isEmpty() && pointTotal == 0) {
             Player player = new Player(nameText.getText(), fighterPoint, traderPoint, engineerPoint, investorPoint);
             Game game = new Game(player);
@@ -141,6 +150,7 @@ public class PlayerConfigurationController implements Initializable {
             showOpeningScreen();
             World gameWorld = new World();
             System.out.println(gameWorld.toString());
+            ApplicationController.playSound(getClass().getResource("ayeayecapn.wav").toString());
        }
     }
     /**
@@ -150,20 +160,7 @@ public class PlayerConfigurationController implements Initializable {
      */
     @FXML
     private void returnToStart(ActionEvent event) {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/WelcomeScreen.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
-            playerStage.setScene(scene);
-            playerStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ApplicationController.changeScene("GUI/WelcomeScreen.fxml");
     }
     /**
      * moves to next screen when finished making player
@@ -172,20 +169,7 @@ public class PlayerConfigurationController implements Initializable {
      */
     @FXML
     private void showOpeningScreen() {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/OpeningGameScreen.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
-            playerStage.setScene(scene);
-            playerStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
     
 }

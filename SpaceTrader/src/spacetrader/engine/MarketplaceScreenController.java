@@ -68,71 +68,66 @@ public class MarketplaceScreenController implements Initializable {
             marketGoodsList.getSelectionModel().selectFirst();
             longString = marketGoodsList.getSelectionModel().getSelectedItem();
         }
-        int spaceIndex = longString.indexOf(' ');
-        String goodToBuy = longString.substring(0, spaceIndex);
-        TradeGood good = TradeGood.valueOf(goodToBuy);
-        int[] pq = goodsForSale.get(good);
-        //get quantity desired from player 
-        String q = getQuantityFromPlayer();
-        int quant = 0;
-        try {
-            quant = Integer.parseInt(q);
-        } catch (NumberFormatException e) {
-            quant = 0;
-        }
-        int moneySpent = quant * pq[0];
-        if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
-            if (cargoHold.addCargo(good, quant)) {
-                ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
-                Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
-                updateMoneyLabel();
-                bazaar.updateQuantity(good, -1 * quant);
-                updateLists();
+        if (longString != null) {
+            int spaceIndex = longString.indexOf(' ');
+            String goodToBuy = longString.substring(0, spaceIndex);
+            TradeGood good = TradeGood.valueOf(goodToBuy);
+            int[] pq = goodsForSale.get(good);
+            //get quantity desired from player 
+            String q = getQuantityFromPlayer();
+            int quant = 0;
+            try {
+                quant = Integer.parseInt(q);
+            } catch (NumberFormatException e) {
+                quant = 0;
             }
-            
+            int moneySpent = quant * pq[0];
+            if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
+                if (cargoHold.addCargo(good, quant)) {
+                    ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
+                    updateMoneyLabel();
+                    bazaar.updateQuantity(good, -1 * quant);
+                    updateLists();
+                }
+
+            }
         }
     }
     @FXML
     public void sellButtonPressed(ActionEvent event) {
         String longString = cargoGoodsList.getSelectionModel().getSelectedItem();
-        int spaceIndex = longString.indexOf(' ');
-        String goodToSell = longString.substring(0, spaceIndex);
-        TradeGood good = TradeGood.valueOf(goodToSell);
-        int[] pq = goodsForSale.get(good);
-        //get quantity desired from player 
-        String q = getQuantitySellFromPlayer();
-        int quant = 0;
-        try {
-            quant = Integer.parseInt(q);
-        } catch (NumberFormatException e) {
-            quant = 0;
+        if (longString == null) {
+            cargoGoodsList.getSelectionModel().selectFirst();
+            longString = cargoGoodsList.getSelectionModel().getSelectedItem();
         }
-        int moneySpent = quant * pq[0];
-        if (Game.getCurrentPort().getTechLevel() > good.getMTLU()) {
-            if (Game.getPlayer().getShip().getCargoHold().subtractCargo(good, quant)) {
-                Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
-                updateMoneyLabel();
-                bazaar.updateQuantity(good, quant);
-                updateLists();
+        if (longString != null) {
+            int spaceIndex = longString.indexOf(' ');
+            String goodToSell = longString.substring(0, spaceIndex);
+            TradeGood good = TradeGood.valueOf(goodToSell);
+            int[] pq = goodsForSale.get(good);
+            //get quantity desired from player 
+            String q = getQuantitySellFromPlayer();
+            int quant = 0;
+            try {
+                quant = Integer.parseInt(q);
+            } catch (NumberFormatException e) {
+                quant = 0;
+            }
+            int moneySpent = quant * pq[0];
+            if (Game.getCurrentPort().getTechLevel() > good.getMTLU()) {
+                if (Game.getPlayer().getShip().getCargoHold().subtractCargo(good, quant)) {
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
+                    updateMoneyLabel();
+                    bazaar.updateQuantity(good, quant);
+                    updateLists();
+                }
             }
         }
     }
     @FXML
     public void backButtonPressed(ActionEvent event) {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/OpeningGameScreen.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
-            playerStage.setScene(scene);
-            playerStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
     public void updateMoneyLabel() {
          moneyLabel.setText("Money: " + Game.getPlayer().getMoney());

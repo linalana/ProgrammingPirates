@@ -19,19 +19,21 @@ public class Ship implements Serializable {
     private GadgetHold gadgetHold;
     private String type;
     private int cargoBays;
-    private int hullStrength; //from 1(weak) to 5(strong)
+    private int hullStrength; //from 5(weak) to 25(strong)
     private int weaponSlots;
     private int shieldSlots;
     private int gadgetSlots;
     private int quarters;
     private int maxRange;
     private int fuel;
+    private boolean lifeBoat;
     public String[] names = new String[] {"Guppy","Minnow","Snapping Turtle",
         "Pufferfish","StingRay","S.S. Electric Eel","Dolphin Tales","SharkFin",
         "Hammerhead","S.S. Bob Waters"};
     
     public Ship() {
         this(new Random().nextInt(10));
+        lifeBoat = false;
     }
     /**
      * Creates a new ship
@@ -41,7 +43,7 @@ public class Ship implements Serializable {
         this.type = names[typeind];
         if(type.equals(names[0])){
             this.cargoBays = 5;
-            this.hullStrength = 1;
+            this.hullStrength = 5;
             this.weaponSlots = 0;
             this.shieldSlots = 0;
             this.gadgetSlots = 0;
@@ -51,7 +53,7 @@ public class Ship implements Serializable {
         }
         else if(type.equals(names[1])){
             this.cargoBays = 15;
-            this.hullStrength = 1;
+            this.hullStrength = 5;
             this.weaponSlots = 1;
             this.shieldSlots = 0;
             this.gadgetSlots = 1;
@@ -60,7 +62,7 @@ public class Ship implements Serializable {
         }
         else if(type.equals(names[2])){
             this.cargoBays = 20;
-            this.hullStrength = 2;
+            this.hullStrength = 10;
             this.weaponSlots = 1;
             this.shieldSlots = 1;
             this.gadgetSlots = 1;
@@ -69,7 +71,7 @@ public class Ship implements Serializable {
         }
         else if(type.equals(names[3])){
             this.cargoBays = 15;
-            this.hullStrength = 3;
+            this.hullStrength = 15;
             this.weaponSlots = 2;
             this.shieldSlots = 1;
             this.gadgetSlots = 1;
@@ -78,7 +80,7 @@ public class Ship implements Serializable {
         }
         else if(type.equals(names[4])){
             this.cargoBays = 20;
-            this.hullStrength = 2;
+            this.hullStrength = 10;
             this.weaponSlots = 1;
             this.shieldSlots = 2;
             this.gadgetSlots = 2;
@@ -87,7 +89,7 @@ public class Ship implements Serializable {
         }
         else if(type.equals(names[5])){
             this.cargoBays = 50;
-            this.hullStrength = 2;
+            this.hullStrength = 10;
             this.weaponSlots = 0;
             this.shieldSlots = 1;
             this.gadgetSlots = 1;
@@ -96,7 +98,7 @@ public class Ship implements Serializable {
         }
         else if(type.equals(names[6])){
             this.cargoBays = 20;
-            this.hullStrength = 3;
+            this.hullStrength = 15;
             this.weaponSlots = 3;
             this.shieldSlots = 2;
             this.gadgetSlots = 1;
@@ -105,7 +107,7 @@ public class Ship implements Serializable {
         }
         else if(type.equals(names[7])){
             this.cargoBays = 30;
-            this.hullStrength = 4;
+            this.hullStrength = 20;
             this.weaponSlots = 2;
             this.shieldSlots = 2;
             this.gadgetSlots = 3;
@@ -114,7 +116,7 @@ public class Ship implements Serializable {
         }
         else if(type.equals(names[8])){
             this.cargoBays = 60;
-            this.hullStrength = 5;
+            this.hullStrength = 25;
             this.weaponSlots = 1;
             this.shieldSlots = 3;
             this.gadgetSlots = 2;
@@ -123,7 +125,7 @@ public class Ship implements Serializable {
         }
         else{
             this.cargoBays = 35;
-            this.hullStrength = 5;
+            this.hullStrength = 25;
             this.weaponSlots = 3;
             this.shieldSlots = 2;
             this.gadgetSlots = 2;
@@ -358,6 +360,43 @@ public class Ship implements Serializable {
     }
     public int getFuel() {
         return fuel;
+    }
+    /**
+     * Gets the damage capable
+     * @return int damage
+     */
+    public int getDamage() {
+        return weaponHold.calcTotalDamage();
+    }
+    /**
+     * distributes damage
+     * 
+     * @param totalDamage, damage to be allocated to parts of ship
+     * @return true if ship lives
+     */
+    boolean distributeDamage(int totalDamage) {
+        int remainingDamage = shieldHold.distributeDamage();
+        if (remainingDamage != 0) {
+            hullStrength -= remainingDamage;
+            if (hullStrength > 0) {
+                return true;
+            }
+        }    
+        return false;
+    }
+
+    /**
+     * @return if has a lifeBoat
+     */
+    public boolean hasLifeBoat() {
+        return lifeBoat;
+    }
+
+    /**
+     * @param lifeBoat the lifeBoat to set
+     */
+    public void setLifeBoat(boolean lifeBoat) {
+        this.lifeBoat = lifeBoat;
     }
     
 }

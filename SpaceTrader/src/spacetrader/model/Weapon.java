@@ -84,4 +84,11 @@ public enum Weapon {
         return MTLU;
     }
 
+    /**
+     * @return the strength
+     */
+    public int getStrength() {
+        return strength;
+    }
+
 }

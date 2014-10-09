@@ -22,9 +22,9 @@ import javafx.event.ActionEvent;
  */
 public class RandomEventController implements Initializable {
     @FXML
-    private Label descriptitonLabel;
+    private Label descriptionLabel;
     @FXML
-    private Label titleLable;
+    private Label titleLabel;
     /**
      * Initializes the controller class.
      */
@@ -35,5 +35,11 @@ public class RandomEventController implements Initializable {
     @FXML 
     public void pressAcceptButton(ActionEvent e) {
         
+    }
+    public void setDescription(String newDescription) {
+        descriptionLabel.setText(newDescription);
+    }
+    public void setTitle(String newTitle) {
+        titleLabel.setText(newTitle);
     }
 }

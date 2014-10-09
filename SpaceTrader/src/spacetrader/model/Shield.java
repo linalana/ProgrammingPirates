@@ -11,12 +11,12 @@ public enum Shield implements Serializable {
     /**
      * Energy Shield
      */
-    ENERGY (0, 0, 3, 500 ,50, 10, 10),
+    ENERGY (0, 0, 3, 500 ,50, 10, 25),
 
     /**
      * Reflective Shield
      */
-    REFLECTIVE (4, 4, 7, 1000, 100, 10, 15);
+    REFLECTIVE (4, 4, 7, 1000, 100, 10, 50);
     
     private final int MTLP;       // Minimum Tech Level to Produce this resource (You can't buy on planets below this level)
     private final int MTLU;       // Minimum Tech Level to Use this resource (You can't sell on planets below this level)
