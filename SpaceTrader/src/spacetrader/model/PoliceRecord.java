@@ -6,11 +6,13 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alanalin
  */
-public class PoliceRecord {
+public class PoliceRecord implements Serializable {
     private boolean isPirate;
     private int arrestCount;
     

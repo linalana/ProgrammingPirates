@@ -6,6 +6,7 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,7 +14,7 @@ import java.util.Random;
  *
  * @author Michael
  */
-public class World {
+public class World implements Serializable {
     
     private Continent[] continents;
     private RangeChart rangeChart;

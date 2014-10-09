@@ -6,6 +6,7 @@ package spacetrader.model;
  * and open the template in the editor.
  */
 import java.io.IOException;
+import java.io.Serializable;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -18,7 +19,7 @@ import spacetrader.model.Player;
  *
  * @author Danny
  */
-public abstract class RandomEvent {
+public class RandomEvent implements Serializable {
     private Player player;
     
     public RandomEvent() {

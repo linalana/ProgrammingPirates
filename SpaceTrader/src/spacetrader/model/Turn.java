@@ -6,13 +6,14 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author James
  */
-public class Turn {
+public class Turn implements Serializable {
     
     private Continent newContinent;
     private Port newPort;

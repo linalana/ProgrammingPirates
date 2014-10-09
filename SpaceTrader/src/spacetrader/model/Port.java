@@ -6,11 +6,13 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
+
 /**
  * This class represents a Port.
  * @author Danny
  */
-public class Port {
+public class Port implements Serializable {
     
     private static final String[] events = new String[] {"DROUGHT", "COLD", 
     "CROPFAIL", "WAR", "BOREDOM", "PLAGUE", "LACKOFWORKERS"};

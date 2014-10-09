@@ -1,11 +1,12 @@
 package spacetrader.model;
+import java.io.Serializable;
 import java.util.Random;
 /**
  * TradeGood enum storing info on each type of trade good and calculating prices
  * 
  * @author alanalin
  */
-public enum TradeGood {
+public enum TradeGood implements Serializable {
 
     /**
      * Water Good

@@ -6,11 +6,13 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Murph
  */
-public class Game {
+public class Game implements Serializable {
     
     private static Player player;
     private static World world;

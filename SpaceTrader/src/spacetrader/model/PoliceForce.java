@@ -6,13 +6,14 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * A police force that will be assigned to each continent
  * @author Murph
  */
-public class PoliceForce extends Encounterer{
+public class PoliceForce extends Encounterer implements Serializable {
     private int strength;
     private int bribe;
     

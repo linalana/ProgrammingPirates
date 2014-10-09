@@ -5,12 +5,13 @@
  */
 
 package spacetrader.model;
+import java.io.Serializable;
 import java.util.Random;
 /**
  *
  * @author alanalin
  */
-public class Pirate extends Encounterer {
+public class Pirate extends Encounterer implements Serializable {
 
     public Pirate() {
         super();

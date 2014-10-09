@@ -1,11 +1,12 @@
 package spacetrader.model;
+import java.io.Serializable;
 import java.util.Random;
 /**
  * Shield enum storing info on each type of shield and calculating prices
  * 
  * @author Murph
  */
-public enum Shield {
+public enum Shield implements Serializable {
 
     /**
      * Energy Shield

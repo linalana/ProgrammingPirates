@@ -6,13 +6,14 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * A weapon hold to hold weapons
  * @author Murph
  */
-public class WeaponHold {
+public class WeaponHold implements Serializable {
     private int amount;
     private int totalWeapons;
     private HashMap<Weapon, Integer> weapons;

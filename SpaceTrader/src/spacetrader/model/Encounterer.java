@@ -6,13 +6,14 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author alanalin
  */
-public abstract class Encounterer {
+public abstract class Encounterer implements Serializable {
     protected int reputation;
     protected Ship ship;
     protected int fighterPoints;

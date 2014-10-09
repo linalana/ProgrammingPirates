@@ -1,5 +1,7 @@
 package spacetrader.model;
 
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,7 +12,7 @@ package spacetrader.model;
  *
  * @author Michael
  */
-public class Player {
+public class Player implements Serializable {
     private String name;
     private Ship ship;
     private int fighter;

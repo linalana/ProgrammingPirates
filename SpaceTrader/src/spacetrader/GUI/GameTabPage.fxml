@@ -12,6 +12,6 @@
         <URL value="@DarkTheme.css" />
     </stylesheets>
    <children>
-      <Button layoutX="237.0" layoutY="185.0" mnemonicParsing="false" text="Save Game" />
+      <Button layoutX="237.0" layoutY="185.0" mnemonicParsing="false" onAction="#saveButtonPressed" text="Save Game" />
    </children>
 </AnchorPane>

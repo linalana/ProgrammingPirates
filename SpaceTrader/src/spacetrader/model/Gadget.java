@@ -1,11 +1,12 @@
 package spacetrader.model;
+import java.io.Serializable;
 import java.util.Random;
 /**
  * Gadget enum storing info on each type of gadget and calculating prices
  * 
  * @author Murph
  */
-public enum Gadget {
+public enum Gadget implements Serializable {
 
     /**
      * 5 extra cargo bays

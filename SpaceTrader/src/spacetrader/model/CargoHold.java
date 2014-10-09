@@ -6,13 +6,14 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * A cargo hold to hold cargo so that you can cargo while you cargo
  * @author Murph
  */
-public class CargoHold {
+public class CargoHold implements Serializable {
     private int amount;
     private int totalGoods;
     private HashMap<TradeGood, Integer> goods;

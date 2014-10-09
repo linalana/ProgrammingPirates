@@ -5,6 +5,7 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Random;
  * @author alanalin
  * @version 1.0
  */
-public class Continent {
+public class Continent implements Serializable {
     
     private static String[] techLevels = new String[] {"PRE-AGRICULTURE", 
         "AGRICULTURE", "MEDIEVAL", "RENAISSANCE", "EARLY INDUSTRIAL", 

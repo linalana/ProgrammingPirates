@@ -5,6 +5,7 @@
  */
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
@@ -12,7 +13,7 @@ import java.util.HashMap;
  * and sell goods.
  * @author Danny
  */
-public class Bazaar {
+public class Bazaar implements Serializable {
     private final Port port;
     //Key: name of good Value: (price, quantity)
     private HashMap<TradeGood, int[]> goodsForSale;

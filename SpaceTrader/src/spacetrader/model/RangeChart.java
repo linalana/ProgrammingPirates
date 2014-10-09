@@ -5,6 +5,7 @@
  */
 
 package spacetrader.model;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author Danny
  */
-public class RangeChart {
+public class RangeChart implements Serializable {
     private int playerX;
     private int playerY;
     private Point[] continents;
@@ -72,7 +73,7 @@ public class RangeChart {
     /**
      * This represents a point with an X and Y coordinate
      */
-    private class Point {
+    private class Point implements Serializable {
         private int x;
         private int y;
         public Point(int xPos, int yPos) {

@@ -23,6 +23,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import spacetrader.SpaceTrader;
+import spacetrader.model.Game;
+import spacetrader.model.ModelFacade;
 
 /**
  *
@@ -65,7 +67,25 @@ public class WelcomeScreenController implements Initializable {
      */
     @FXML
     private void handleLoadButtonAction(ActionEvent event) {
+        final FileChooser fc = new FileChooser();
+        fc.setTitle("Select stored JSON file");
+        File file = fc.showOpenDialog(new Stage());
+        ModelFacade.getInstance().loadModelBinary(file);
+//        System.out.println(Game.getPlayer());
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(SpaceTrader.class.getResource("GUI/OpeningGameScreen.fxml"));
+            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
 
+            // Show the scene containing the root layout.
+            Stage playerStage = SpaceTrader.getPrimaryStage();
+            Scene scene = new Scene(ConfigurationLayout);
+            playerStage.setScene(scene);
+            playerStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     

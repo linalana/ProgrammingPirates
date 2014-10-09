@@ -6,13 +6,14 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * A gadget hold to hold gadgets
  * @author Murph
  */
-public class GadgetHold {
+public class GadgetHold implements Serializable {
     private int amount;
     private int totalGadgets;
     private HashMap<Gadget, Integer> gadgets;

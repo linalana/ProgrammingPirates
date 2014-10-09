@@ -5,12 +5,14 @@
  */
 package spacetrader.model;
 
+import java.io.Serializable;
+
 /**
  * This class represents a Ship Yard, where a Player can go to buy and upgrade
  * ships.
  * @author Danny
  */
-public class ShipYard {
+public class ShipYard implements Serializable {
     /**
      * The constructor for ShipYard. 
      */

@@ -5,13 +5,14 @@
  */
 
 package spacetrader.model;
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  * A ship class that creates ships
  * @author Murph
  */
-public class Ship {
+public class Ship implements Serializable {
     private CargoHold cargoHold;
     private WeaponHold weaponHold;
     private ShieldHold shieldHold;
