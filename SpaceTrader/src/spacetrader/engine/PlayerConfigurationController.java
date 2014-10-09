@@ -109,13 +109,18 @@ public class PlayerConfigurationController implements Initializable {
         int diff = (int)slider.getValue() - pastVal;
         if (pointTotal - diff >= 0) {
             pointTotal -= diff;
-            pointLabel.setText("" + pointTotal);
-            pastVal = (int)slider.getValue();
         } else {
-            int maxPossible = (15 - pointTotal) + pastVal;
-            slider.setValue(pointTotal);
-            pastVal = (int)slider.getValue();
+            int maxPossible = pointTotal + pastVal;
+            if (maxPossible < 10) {
+                slider.setValue(maxPossible);
+                pointTotal = 0;
+            } else {
+                slider.setValue(10);
+                pointTotal = maxPossible - 10;
+            }
         }
+        pointLabel.setText("" + pointTotal);
+        pastVal = (int)slider.getValue();
         return pastVal;
     }
     
