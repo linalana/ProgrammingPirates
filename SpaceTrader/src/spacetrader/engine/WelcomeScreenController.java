@@ -42,20 +42,7 @@ public class WelcomeScreenController implements Initializable {
     @FXML
     private void handleStartButtonAction(ActionEvent event) {
         ApplicationController.playSound(getClass().getResource("yearr.wav").toString());
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/PlayerConfiguration.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
-            playerStage.setScene(scene);
-            playerStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ApplicationController.changeScene("GUI/PlayerConfiguration.fxml");
     }
     
     /**
