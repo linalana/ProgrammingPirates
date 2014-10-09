@@ -50,7 +50,7 @@ public class TravelTabPageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        available.setText("Fuel Available: " + Game.getPlayer().getShip().getFuel());
+        available.setText("Rum Available: " + Game.getPlayer().getShip().getFuel());
         ports = portsList.getItems();
         range = new RangeChart();
         continents = range.getChart();
@@ -61,7 +61,7 @@ public class TravelTabPageController implements Initializable {
         portsList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             int index = portsList.getSelectionModel().getSelectedIndex();
             int fuelUsed = range.getDists(continents[index]);
-            needed.setText("Fuel Needed: " + fuelUsed);
+            needed.setText("Rum Needed: " + fuelUsed);
         });
         
         
