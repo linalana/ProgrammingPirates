@@ -160,20 +160,7 @@ public class PlayerConfigurationController implements Initializable {
      */
     @FXML
     private void returnToStart(ActionEvent event) {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/WelcomeScreen.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
-            playerStage.setScene(scene);
-            playerStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ApplicationController.changeScene("GUI/WelcomeScreen.fxml");
     }
     /**
      * moves to next screen when finished making player
@@ -182,20 +169,7 @@ public class PlayerConfigurationController implements Initializable {
      */
     @FXML
     private void showOpeningScreen() {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/OpeningGameScreen.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
-            playerStage.setScene(scene);
-            playerStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
     
 }

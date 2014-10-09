@@ -127,20 +127,7 @@ public class MarketplaceScreenController implements Initializable {
     }
     @FXML
     public void backButtonPressed(ActionEvent event) {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/OpeningGameScreen.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
-            playerStage.setScene(scene);
-            playerStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
     public void updateMoneyLabel() {
          moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
