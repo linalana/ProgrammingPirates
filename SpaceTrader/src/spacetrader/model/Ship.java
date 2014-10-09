@@ -12,8 +12,10 @@ import java.util.Random;
  * @author Murph
  */
 public class Ship {
-    private CargoHold hold;
-    private Weapons weapons;
+    private CargoHold cargoHold;
+    private WeaponHold weaponHold;
+    private ShieldHold shieldHold;
+    private GadgetHold gadgetHold;
     private String type;
     private int cargoBays;
     private int hullStrength; //from 1(weak) to 5(strong)
@@ -35,7 +37,6 @@ public class Ship {
      * @param type the type of ship
      */
     public Ship(int typeind){
-        this.weapons = new Weapons();
         this.type = names[typeind];
         if(type.equals(names[0])){
             this.cargoBays = 5;
@@ -129,7 +130,10 @@ public class Ship {
             this.maxRange = 14;
         }
         this.fuel = maxRange;
-        this.hold = new CargoHold(getCargoBays());
+        this.cargoHold = new CargoHold(getCargoBays());
+        this.weaponHold = new WeaponHold(getWeaponSlots());
+        this.shieldHold = new ShieldHold(getShieldSlots());
+        this.gadgetHold = new GadgetHold(getGadgetSlots());
     }
     /**
      * Changes the ship type, for when you want to upgrade or downgrade
@@ -228,14 +232,38 @@ public class Ship {
             maxRange = (14);
         }
         
-        hold = new CargoHold(getCargoBays());
+        cargoHold = new CargoHold(getCargoBays());
+        weaponHold = new WeaponHold(getWeaponSlots());
+        shieldHold = new ShieldHold(getShieldSlots());
+        gadgetHold = new GadgetHold(getGadgetSlots());
     }
 
     /**
-     * @return the hold
+     * @return the cargo hold
      */
-    public CargoHold getHold() {
-        return hold;
+    public CargoHold getCargoHold() {
+        return cargoHold;
+    }
+    
+    /**
+     * @return the weapon hold
+     */
+    public WeaponHold getWeaponHold() {
+        return weaponHold;
+    }
+    
+    /**
+     * @return the shield hold
+     */
+    public ShieldHold getShieldHold() {
+        return shieldHold;
+    }
+    
+    /**
+     * @return the gadget hold
+     */
+    public GadgetHold getGadgetHold() {
+        return gadgetHold;
     }
 
     /**

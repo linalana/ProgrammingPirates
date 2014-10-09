@@ -30,7 +30,7 @@ public abstract class Encounterer {
         for (TradeGood t: TradeGood.values()) {
             if (rand.nextBoolean()) {
                 int count = rand.nextInt(5);
-                getShip().getHold().addCargo(t, count);
+                getShip().getCargoHold().addCargo(t, count);
             }
         }
     }

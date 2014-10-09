@@ -121,8 +121,8 @@ public class PoliceForce extends Encounterer{
      * @return true if they pass the inspection, false otherwise
      */
     private boolean inspect(Player player){
-        if(player.getShip().getHold().getGoods().get(TradeGood.FIREARMS)!=0 || 
-                player.getShip().getHold().getGoods().get(TradeGood.NARCOTICS)!=0){
+        if(player.getShip().getCargoHold().getGoods().get(TradeGood.FIREARMS)!=0 || 
+                player.getShip().getCargoHold().getGoods().get(TradeGood.NARCOTICS)!=0){
             player.getPoliceRecord().decrementInspectionHistory();
             return false;
         }
