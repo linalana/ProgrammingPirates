@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,6 +7,7 @@
 package spacetrader.model;
 
 import java.io.IOException;
+import java.io.Serializable;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -18,7 +18,7 @@ import spacetrader.SpaceTrader;
  *
  * @author alanalin
  */
-public class Encounter {
+public class Encounter implements Serializable {
     Player p;
     Encounterer e;
     public Encounter(Player p, Encounterer e) {
@@ -44,24 +44,29 @@ public class Encounter {
     }
     
     public void PlayerAttack() {
-        //formula to figure out how much damage player does to the other ship
-        int totalDamage = 0;
-        //for each weapon type
-            //totalDamage += weapon.strength * weapon.count
-        totalDamage *= (p.getFighter() / 10);
+        int totalDamage = p.calcDamage();
+        if (totalDamage == 0) {
+            //tell player they missed
+        }
         //algorithm to decide where to do that damage on the encounterer's ship
+        boolean result = e.distributeDamage(totalDamage);
+        if (result == false) {
+            //distributeBooty();
+            //you won
+        }
     }
     
     public void EncountererAttack() {
-        //formula to figure out how much damage encounterer does to the other ship
-        int totalDamage = 0;
-        //for each weapon type
-            //totalDamage += weapon.strength * weapon.count
-        
-        //getType()
-        //get appropriate fighter value from type
-        // totalDamage += (
+        int totalDamage = e.calcDamage();
         //algorithm to decide where to do that damage on the players's ship
+        int result = p.distributeDamage(totalDamage);
+        if (result == 0) { //D.E.D dead
+            //GAME OVER
+        } else if (result == 1) { //life boat escape
+            //transfer to nearest port with no ship but a lifeboat
+        } else if (result == 2) {
+            //continue
+        }
     }
     
     public String getType() {
