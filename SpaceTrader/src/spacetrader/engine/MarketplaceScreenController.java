@@ -95,6 +95,10 @@ public class MarketplaceScreenController implements Initializable {
     @FXML
     public void sellButtonPressed(ActionEvent event) {
         String longString = cargoGoodsList.getSelectionModel().getSelectedItem();
+        if (longString == null) {
+            cargoGoodsList.getSelectionModel().selectFirst();
+            longString = cargoGoodsList.getSelectionModel().getSelectedItem();
+        }
         int spaceIndex = longString.indexOf(' ');
         String goodToSell = longString.substring(0, spaceIndex);
         TradeGood good = TradeGood.valueOf(goodToSell);
