@@ -25,12 +25,14 @@ public class Ship {
     private int quarters;
     private int maxRange;
     private int fuel;
+    private boolean lifeBoat;
     public String[] names = new String[] {"Guppy","Minnow","Snapping Turtle",
         "Pufferfish","StingRay","S.S. Electric Eel","Dolphin Tales","SharkFin",
         "Hammerhead","S.S. Bob Waters"};
     
     public Ship() {
         this(new Random().nextInt(10));
+        lifeBoat = false;
     }
     /**
      * Creates a new ship
@@ -380,6 +382,20 @@ public class Ship {
             }
         }    
         return false;
+    }
+
+    /**
+     * @return if has a lifeBoat
+     */
+    public boolean hasLifeBoat() {
+        return lifeBoat;
+    }
+
+    /**
+     * @param lifeBoat the lifeBoat to set
+     */
+    public void setLifeBoat(boolean lifeBoat) {
+        this.lifeBoat = lifeBoat;
     }
     
 }

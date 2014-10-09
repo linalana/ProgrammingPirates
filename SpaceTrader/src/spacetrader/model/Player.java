@@ -1,5 +1,7 @@
 package spacetrader.model;
 
+import java.util.Random;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -213,7 +215,18 @@ public class Player {
      * @return total damage player is capable of
      */
     public int calcDamage() {
-        return ship.getDamage() * (fighter / 10);
+        int damage = ship.getDamage();       
+        //implement use of target system later
+        Random rand = new Random();
+        int r = rand.nextInt(101);
+        if (r <= fighter * 10) {
+            damage *= .9;
+        } else if (r <= fighter * 11) {
+            damage *= .5;
+        } else {
+            damage = 0;
+        }
+        return damage;
     }
     /**
      * distributes the damage
@@ -222,9 +235,9 @@ public class Player {
      */
     int distributeDamage(int totalDamage) {
         if (!ship.distributeDamage(totalDamage)) {
-//            if (ship.hasLifeBoat()) {
-//                return 1;
-//            }
+            if (ship.hasLifeBoat()) {
+                return 1;
+            }
             return 0;
         }
         return 2;

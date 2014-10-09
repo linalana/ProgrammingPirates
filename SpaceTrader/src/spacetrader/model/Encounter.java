@@ -43,15 +43,29 @@ public class Encounter {
     }
     
     public void PlayerAttack() {
-        int totalDamage = p.calcDamage();   
+        int totalDamage = p.calcDamage();
+        if (totalDamage == 0) {
+            //tell player they missed
+        }
         //algorithm to decide where to do that damage on the encounterer's ship
-        int result = p.distributeDamage(totalDamage);
+        boolean result = e.distributeDamage(totalDamage);
+        if (result == false) {
+            //distributeBooty();
+            //you won
+        }
     }
     
     public void EncountererAttack() {
         int totalDamage = e.calcDamage();
         //algorithm to decide where to do that damage on the players's ship
-        e.distributeDamage(totalDamage);
+        int result = p.distributeDamage(totalDamage);
+        if (result == 0) { //D.E.D dead
+            //GAME OVER
+        } else if (result == 1) { //life boat escape
+            //transfer to nearest port with no ship but a lifeboat
+        } else if (result == 2) {
+            //continue
+        }
     }
     
     public String getType() {
