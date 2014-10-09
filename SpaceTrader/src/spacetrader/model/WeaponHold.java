@@ -73,4 +73,16 @@ public class WeaponHold {
         }
         return false;    
     }
+    
+    /**
+     * Sum total possible damage of weapons in hold
+     * @return the total damage possible for the weapons in the hold
+     */
+    public int calcTotalDamage() {
+        int totalDamage = 0;
+        for(Weapon w: weapons.keySet()) {
+            totalDamage += w.getStrength() * weapons.get(w);
+        }
+        return totalDamage;
+    }
 }

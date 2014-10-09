@@ -78,6 +78,22 @@ public abstract class Encounterer {
     public int getTraderPoints() {
         return 0;
     }
+
+    /**
+     * @return total damage encounterer is capable of
+     */
+    public int calcDamage() {
+        return ship.getDamage() * (fighterPoints / 10);
+    }
+
+     /**
+     * distributes the damage
+     * @param totalDamage the damage done to the encounterer
+     * @return true if encounterer survives
+     */
+    boolean distributeDamage(int totalDamage) {
+        return ship.distributeDamage(totalDamage);
+    }
     
     
     

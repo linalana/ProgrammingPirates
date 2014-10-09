@@ -209,5 +209,25 @@ public class Player {
     public PoliceRecord getPoliceRecord() {
         return policeRecord;
     }
+    /**
+     * @return total damage player is capable of
+     */
+    public int calcDamage() {
+        return ship.getDamage() * (fighter / 10);
+    }
+    /**
+     * distributes the damage
+     * @param totalDamage the damage done to the player
+     * @return 0 if dead, 1 if survived on lifeboat, 2 if alive
+     */
+    int distributeDamage(int totalDamage) {
+        if (!ship.distributeDamage(totalDamage)) {
+//            if (ship.hasLifeBoat()) {
+//                return 1;
+//            }
+            return 0;
+        }
+        return 2;
+    }
 }
  
