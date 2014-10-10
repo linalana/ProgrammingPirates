@@ -6,6 +6,7 @@
 
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -13,7 +14,7 @@ import java.util.Random;
  * A shield hold to hold shields
  * @author Murph
  */
-public class ShieldHold {
+public class ShieldHold implements Serializable {
     private int amount;
     private int totalEnergyShields;
     private int energyStrength;
