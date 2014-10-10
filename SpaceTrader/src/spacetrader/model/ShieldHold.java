@@ -103,12 +103,24 @@ public class ShieldHold {
         Random rand = new Random();
         int num = rand.nextInt(1);
         if(num == 0){
-            energyStrength -= damage;
-            totalEnergyShields = energyStrength%25 + 1;
+            if(getEnergyStrength() <= damage){
+                energyStrength = 0;
+                totalEnergyShields = 0;
+            }
+            else{
+                energyStrength -= damage;
+                totalEnergyShields = getEnergyStrength()%25 + 1;
+            }
         }
         else{
-            reflectiveStrength -= damage;
-            totalReflectiveShields = reflectiveStrength%50 + 1;
+            if(getReflectiveStrength() <= damage){
+                reflectiveStrength = 0;
+                totalReflectiveShields = 0;
+            }
+            else{
+                reflectiveStrength -= damage;
+                totalReflectiveShields = getReflectiveStrength()%50 + 1;
+            }
         }
     }
     
@@ -122,5 +134,19 @@ public class ShieldHold {
 
     int distributeDamage() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * @return the energyStrength
+     */
+    public int getEnergyStrength() {
+        return energyStrength;
+    }
+
+    /**
+     * @return the reflectiveStrength
+     */
+    public int getReflectiveStrength() {
+        return reflectiveStrength;
     }
 }
