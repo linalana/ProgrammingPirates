@@ -375,7 +375,7 @@ public class Ship implements Serializable {
      * @return true if ship lives
      */
     boolean distributeDamage(int totalDamage) {
-        int remainingDamage = shieldHold.distributeDamage();
+        int remainingDamage = shieldHold.decreaseStrength(totalDamage);
         if (remainingDamage != 0) {
             hullStrength -= remainingDamage;
             if (hullStrength > 0) {
@@ -397,6 +397,14 @@ public class Ship implements Serializable {
      */
     public void setLifeBoat(boolean lifeBoat) {
         this.lifeBoat = lifeBoat;
+    }
+
+    public int getShieldStrength() {
+        return shieldHold.getEnergyStrength() + shieldHold.getReflectiveStrength();
+    }
+
+    public int getWeaponStrength() {
+        return weaponHold.calcTotalDamage();
     }
     
 }

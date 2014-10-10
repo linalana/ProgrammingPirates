@@ -26,24 +26,17 @@ public class Encounter implements Serializable {
         this.e = e;
     }
     
-    public void startEncounter() {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/Encounter.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
-            playerStage.setScene(scene);
-            playerStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    /**
+     * Runs a "fight" offering choices to the user
+     */
+    public void engageFight() {
+        
     }
     
-    public void PlayerAttack() {
+    /**
+     * Plays out the choice of the player attacking it's encounterer
+     */
+    private void PlayerAttack() {
         int totalDamage = p.calcDamage();
         if (totalDamage == 0) {
             //tell player they missed
@@ -56,7 +49,10 @@ public class Encounter implements Serializable {
         }
     }
     
-    public void EncountererAttack() {
+    /**
+     * Plays out the choice of the encoutnerer attacking player
+     */
+    private void EncountererAttack() {
         int totalDamage = e.calcDamage();
         //algorithm to decide where to do that damage on the players's ship
         int result = p.distributeDamage(totalDamage);
@@ -69,6 +65,10 @@ public class Encounter implements Serializable {
         }
     }
     
+    /**
+     * Finds the what type the encounterer is
+     * @return the string type of the encounterer
+     */
     public String getType() {
         if (e.getClass().equals(Pirate.class)) {
             return "Pirate";
@@ -79,16 +79,22 @@ public class Encounter implements Serializable {
         }
     }
 
-    public int[] getPlayerInfo() {
-        return new int[]{p.getTrader(), p.getFighter(), p.getReputation(),
-            p.getShip().getHullStrength(), p.getShip().getShieldSlots(),
-            p.getShip().getWeaponSlots()};
-    }
-
-    public int[] getEncountererInfo() {
-        return new int[]{e.getTraderPoints(), e.getFighterPoints(), e.getReputation(),
-            e.getShip().getHullStrength(), e.getShip().getShieldSlots(),
-            e.getShip().getWeaponSlots()};
+    /**
+     * Gets the info from the player and encounterer
+     * @return the int array containing all the stats required for fight screen
+     */
+    public int[] getInfo() {
+       int[] info = new int[12];
+       int[] pInfo = p.getPlayerInfo();
+       int[] otherInfo = e.getEncountererInfo();
+       for (int i = 0; i < 12; i++) {
+           if (i < 6) {
+               info[i] = pInfo[i];
+           } else {
+               info[i] = otherInfo[i-6];
+           }    
+       }
+       return info;
     }
     
     

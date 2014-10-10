@@ -213,6 +213,15 @@ public class Player implements Serializable {
         return policeRecord;
     }
     /**
+     * Returns the player info required to assess a fight
+     * @return int array of stats for fight
+     */
+    public int[] getPlayerInfo() {
+        return new int[]{trader, fighter, reputation,
+            ship.getHullStrength(), ship.getShieldStrength(),
+            ship.getWeaponStrength()};
+    }
+    /**
      * @return total damage player is capable of
      */
     public int calcDamage() {

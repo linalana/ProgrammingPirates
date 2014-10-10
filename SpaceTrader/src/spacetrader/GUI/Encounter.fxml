@@ -37,7 +37,7 @@
       <Label layoutX="306.0" layoutY="248.0" styleClass="label-small" text="Weapon Strength" />
       <Label fx:id="pExpLabel" layoutX="143.0" layoutY="174.0" styleClass="label-text" text="Label" />
       <Label fx:id="pHullHealthLabel" layoutX="143.0" layoutY="199.0" styleClass="label-text" text="Label" />
-      <Label fx:id="pShieldStregthLabel" layoutX="177.0" layoutY="224.0" styleClass="label-text" text="Label" />
+      <Label fx:id="pShieldStrengthLabel" layoutX="177.0" layoutY="224.0" styleClass="label-text" text="Label" />
       <Label fx:id="pWepStrengthLabel" layoutX="191.0" layoutY="248.0" styleClass="label-text" text="Label" />
       <Label fx:id="eWepStrengthLabel" layoutX="449.0" layoutY="248.0" styleClass="label-text" text="Label" />
       <Label fx:id="eShieldStrengthLabel" layoutX="435.0" layoutY="224.0" styleClass="label-text" text="Label" />

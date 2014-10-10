@@ -79,7 +79,16 @@ public abstract class Encounterer implements Serializable {
     public int getTraderPoints() {
         return 0;
     }
-
+    /**
+     * Returns the encounterer info required to assess a fight
+     * @return int array of stats for fight
+     */
+    public int[] getEncountererInfo() {
+        return new int[]{0, fighterPoints, reputation,
+            ship.getHullStrength(), ship.getShieldStrength(),
+            ship.getWeaponStrength()};
+    }
+    
     /**
      * @return total damage encounterer is capable of
      */

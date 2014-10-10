@@ -38,6 +38,17 @@ public class Trader extends Encounterer implements Serializable {
         return traderPoints;
     }
     
+    /**
+     * Returns the trader info required to assess a fight
+     * @return int array of stats for fight
+     */
+    @Override
+    public int[] getEncountererInfo() {
+        return new int[]{traderPoints, fighterPoints, reputation,
+            ship.getHullStrength(), ship.getShieldStrength(),
+            ship.getWeaponStrength()};
+    }
+    
     
    
 }

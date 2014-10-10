@@ -8,6 +8,7 @@ package spacetrader.engine;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -84,13 +85,14 @@ public class EncounterController implements Initializable {
                 break;
             default:
                 otherButton.setText("Accept Inspection");
+                otherButton.relocate(210, 349);
                 break;
         }
     }
     
     @FXML
     private void handleFightButtonAction(ActionEvent event) {
-        
+        Turn.getEncounter().engageFight();
     }
     
     @FXML
@@ -100,25 +102,30 @@ public class EncounterController implements Initializable {
     
     @FXML
     private void handleOtherButtonAction(ActionEvent event) {
-    
+        String type = Turn.getEncounter().getType();
+        if (type.equals("Trader")) {
+            //trading window
+        } else if (type.equals("PoliceForce")) {
+            //perform search
+        }
+        
     }
     
     private void fillStats() {
-        int[] playerInfo = Turn.getEncounter().getPlayerInfo();
-        pTradePtsLabel.setText(Integer.toString(playerInfo[0]));
-        pFightPtsLabel.setText(Integer.toString(playerInfo[1]));
-        pExpLabel.setText(Integer.toString(playerInfo[2]));
-        pHullHealthLabel.setText(Integer.toString(playerInfo[3]));
-        pShieldStrengthLabel.setText(Integer.toString(playerInfo[4]));
-        pWepStrengthLabel.setText(Integer.toString(playerInfo[5]));
-        
-        int[] otherInfo = Turn.getEncounter().getEncountererInfo();
-        eTradePtsLabel.setText(Integer.toString(otherInfo[0]));
-        eFightPtsLabel.setText(Integer.toString(otherInfo[1]));
-        eExpLabel.setText(Integer.toString(otherInfo[2]));
-        eHullHealthLabel.setText(Integer.toString(otherInfo[3]));
-        eShieldStrengthLabel.setText(Integer.toString(otherInfo[4]));
-        eWepStrengthLabel.setText(Integer.toString(otherInfo[5]));
+        int[] info = Turn.getEncounter().getInfo();        
+        System.out.println("This is the array:" + Arrays.toString(info));
+        pTradePtsLabel.setText(Integer.toString(info[0]));
+        pFightPtsLabel.setText(Integer.toString(info[1]));
+        pExpLabel.setText(Integer.toString(info[2]));
+        pHullHealthLabel.setText(Integer.toString(info[3]));
+        pShieldStrengthLabel.setText(Integer.toString(info[4]));
+        pWepStrengthLabel.setText(Integer.toString(info[5]));
+        eTradePtsLabel.setText(Integer.toString(info[6]));
+        eFightPtsLabel.setText(Integer.toString(info[7]));
+        eExpLabel.setText(Integer.toString(info[8]));
+        eHullHealthLabel.setText(Integer.toString(info[9]));
+        eShieldStrengthLabel.setText(Integer.toString(info[10]));
+        eWepStrengthLabel.setText(Integer.toString(info[11]));
     }
     
 }

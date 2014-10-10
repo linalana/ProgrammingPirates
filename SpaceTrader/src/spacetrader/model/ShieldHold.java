@@ -99,14 +99,17 @@ public class ShieldHold implements Serializable {
     /**
      * Damage the shields
      * @param damage the amount of damage
+     * @return remaining damage
      */
-    public void decreaseStrength(int damage){
+    public int decreaseStrength(int damage){
         Random rand = new Random();
         int num = rand.nextInt(1);
         if(num == 0){
-            if(getEnergyStrength() <= damage){
+            int strength = getEnergyStrength();
+            if( strength <= damage){
                 energyStrength = 0;
                 totalEnergyShields = 0;
+                return damage - strength;
             }
             else{
                 energyStrength -= damage;
@@ -114,15 +117,18 @@ public class ShieldHold implements Serializable {
             }
         }
         else{
+            int strength = getReflectiveStrength();
             if(getReflectiveStrength() <= damage){
                 reflectiveStrength = 0;
                 totalReflectiveShields = 0;
+                return damage - strength;
             }
             else{
                 reflectiveStrength -= damage;
                 totalReflectiveShields = getReflectiveStrength()%50 + 1;
             }
         }
+        return 0;
     }
     
     /**
@@ -131,10 +137,6 @@ public class ShieldHold implements Serializable {
     public void recharge(){
         energyStrength = totalEnergyShields*25;
         reflectiveStrength = totalReflectiveShields*50;
-    }
-
-    int distributeDamage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
