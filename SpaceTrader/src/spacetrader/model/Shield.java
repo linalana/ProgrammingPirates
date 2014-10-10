@@ -1,12 +1,11 @@
 package spacetrader.model;
-import java.io.Serializable;
 import java.util.Random;
 /**
  * Shield enum storing info on each type of shield and calculating prices
  * 
  * @author Murph
  */
-public enum Shield implements Serializable {
+public enum Shield {
 
     /**
      * Energy Shield
@@ -24,7 +23,7 @@ public enum Shield implements Serializable {
     private final int BasePrice;
     private final int IPL;        // Price increase per tech level
     private final int Var;        // variance is the maximum percentage that the price can vary above or below the base
-    private final int strength;   // strength of the shield
+    protected final int strength;   // strength of the shield
     
     Shield(int MTLP, int MTLU, int TTP, int BasePrice, int IPL, int Var, int strength) {
         this.MTLP = MTLP;

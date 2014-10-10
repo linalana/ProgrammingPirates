@@ -6,16 +6,19 @@
 
 package spacetrader.model;
 
-import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * A shield hold to hold shields
  * @author Murph
  */
-public class ShieldHold implements Serializable  {
+public class ShieldHold {
     private int amount;
-    private int totalShields;
+    private int totalEnergyShields;
+    private int energyStrength;
+    private int totalReflectiveShields;
+    private int reflectiveStrength;
     private HashMap<Shield, Integer> shields;
     
     /**
@@ -24,7 +27,10 @@ public class ShieldHold implements Serializable  {
      */
     public ShieldHold(int amount){
         this.amount = amount;
-        totalShields = 0;
+        this.totalEnergyShields = 0;
+        this.totalReflectiveShields = 0;
+        this.energyStrength = 0;
+        this.reflectiveStrength = 0;
         shields = new HashMap<>();
         setShields();
     }
@@ -52,9 +58,16 @@ public class ShieldHold implements Serializable  {
      */
     public boolean addShield(Shield s, int q) {
         int oldVal = shields.get(s);
-        if (totalShields + q <= (amount)){
+        if (totalEnergyShields + totalReflectiveShields + q <= (amount)){
             shields.put(s, oldVal + q);
-            totalShields += q;
+            switch(s){
+                case ENERGY:
+                    totalEnergyShields += q;
+                    energyStrength += Shield.ENERGY.strength;
+                case REFLECTIVE:
+                    totalReflectiveShields += q;
+                    reflectiveStrength += Shield.REFLECTIVE.strength;
+            }
             return true;
         }
         return false;    
@@ -69,10 +82,42 @@ public class ShieldHold implements Serializable  {
         int oldVal = shields.get(s);
         if (oldVal - q >= 0){
             shields.put(s, oldVal - q);
-            totalShields -= q;
+            switch(s){
+                case ENERGY:
+                    totalEnergyShields -= q;
+                    energyStrength -= Shield.ENERGY.strength;
+                case REFLECTIVE:
+                    totalReflectiveShields -= q;
+                    reflectiveStrength -= Shield.REFLECTIVE.strength;
+            }
             return true;
         }
         return false;    
+    }
+    
+    /**
+     * Damage the shields
+     * @param damage the amount of damage
+     */
+    public void decreaseStrength(int damage){
+        Random rand = new Random();
+        int num = rand.nextInt(1);
+        if(num == 0){
+            energyStrength -= damage;
+            totalEnergyShields = energyStrength%25 + 1;
+        }
+        else{
+            reflectiveStrength -= damage;
+            totalReflectiveShields = reflectiveStrength%50 + 1;
+        }
+    }
+    
+    /**
+     * Recharge the shields to full power
+     */
+    public void recharge(){
+        energyStrength = totalEnergyShields*25;
+        reflectiveStrength = totalReflectiveShields*50;
     }
 
     int distributeDamage() {
