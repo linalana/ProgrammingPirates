@@ -5,16 +5,14 @@ package spacetrader.model;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.io.IOException;
+
 import java.io.Serializable;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import spacetrader.SpaceTrader;
+
 //import spacetrader.model.Game;
 //import spacetrader.model.Player;
 import java.util.Random;
+
+
 /**
  *
  * @author Danny
@@ -26,25 +24,9 @@ public class RandomEvent implements Serializable {
 
     public RandomEvent() {
         player = Game.getPlayer();
-        startEvent();
+        initialize();
     }
     
-    public void startEvent() {
-            try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/RandomEvent.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
-            playerStage.setScene(scene);
-            playerStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
     public void initialize() {
         events = new Event[]{new Event("Kraken Attackin'!",  
@@ -60,6 +42,21 @@ public class RandomEvent implements Serializable {
         Game.getPlayer().setMoney(Game.getPlayer().getMoney() + event.getMoney());
         Game.getPlayer().getShip().setFuel(event.getFuel());
     }
+        public int getMoney() {
+            return event.getMoney();
+        }
+        public int getFuel() {
+            return event.getFuel();
+        }
+        public int getShield() {
+            return event.getShield();
+        }
+        public String getTitle() {
+            return event.getTitle();
+        }
+        public String getDescription() {
+            return event.getDescription();
+        }
     private class Event{
         private String title;
         private String description;
@@ -79,7 +76,7 @@ public class RandomEvent implements Serializable {
         public int getFuel() {
             return fuelChange;
         }
-        public int getsShield() {
+        public int getShield() {
             return shieldChange;
         }
         public String getTitle() {
