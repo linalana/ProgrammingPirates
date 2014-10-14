@@ -11,15 +11,15 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.WelcomeScreenController">
     <children>
-        <Button fx:id="button" alignment="CENTER" layoutX="226.0" layoutY="265.0" onAction="#handleStartButtonAction" prefHeight="30.0" prefWidth="150.0" text="New Game" textAlignment="CENTER" />
-      <Button alignment="CENTER" layoutX="226.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleLoadButtonAction" prefHeight="30.0" prefWidth="150.0" text="Load Game" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="167.0" layoutY="43.0" text="Call of Booty:" textFill="WHITE">
+        <Button fx:id="button" alignment="CENTER" layoutX="226.0" layoutY="253.0" onAction="#handleStartButtonAction" prefHeight="30.0" prefWidth="150.0" text="New Game" textAlignment="CENTER" />
+      <Button alignment="CENTER" layoutX="226.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleLoadButtonAction" prefHeight="30.0" prefWidth="150.0" text="Load Game" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="178.0" layoutY="43.0" text="Call of Booty:" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="78.0" layoutY="168.0" styleClass="label-subtitle" text="A Journey Through The Seven Seas" />
-      <Label alignment="CENTER" layoutX="173.0" layoutY="100.0" text="Black Ships" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="85.0" layoutY="172.0" styleClass="label-subtitle" text="A Journey Through The Seven Seas" />
+      <Label alignment="CENTER" layoutX="190.0" layoutY="94.0" text="Black Ships" textAlignment="CENTER" />
     </children>
    <stylesheets>
       <URL value="@DarkTheme.css" />
