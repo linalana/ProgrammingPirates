@@ -148,7 +148,7 @@ public class MarketplaceScreenController implements Initializable {
         }
         for (TradeGood tg: cargoGoods.keySet()) {
             int q = cargoGoods.get(tg);
-            int sellPrice = (int) Math.round(0.8 * goodsForSale.get(tg)[1]);
+            int sellPrice = (int) Math.round(0.8 * goodsForSale.get(tg)[0]);
             if (q > 0) {
                 cargo.add(tg.toString() + " Quantity: " + q + " Sell Price: " +
                         sellPrice);
