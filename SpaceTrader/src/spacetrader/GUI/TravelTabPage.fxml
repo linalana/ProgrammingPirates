@@ -11,10 +11,10 @@
    <children>
       <ListView fx:id="portsList" layoutX="36.0" layoutY="65.0" prefHeight="309.0" prefWidth="217.0" />
       <Button layoutX="363.0" layoutY="343.0" mnemonicParsing="false" onAction="#travelButtonPressed" prefWidth="125.0" text="Travel" />
-      <Label fx:id="needed" layoutX="285.0" layoutY="65.0" styleClass="label-subtitle" text="Rum Needed:" />
-      <Label layoutX="78.0" layoutY="14.0" styleClass="label-subtitle" text="Available Ports" />
-      <Label fx:id="available" layoutX="285.0" layoutY="120.0" styleClass="label-subtitle" text="Rum Available: " />
-      <Label fx:id="techLabel" layoutX="285.0" layoutY="185.0" styleClass="label-travel" text="Tech Level: " />
-      <Label fx:id="politicalLabel" layoutX="285.0" layoutY="220.0" styleClass="label-travel" text="Political System: " />
+      <Label fx:id="needed" layoutX="285.0" layoutY="72.0" styleClass="label-subtitle" text="Rum Needed:" />
+      <Label layoutX="54.0" layoutY="14.0" styleClass="label-subtitle" text="Available Ports" />
+      <Label fx:id="available" layoutX="285.0" layoutY="109.0" styleClass="label-subtitle" text="Rum Available: " />
+      <Label fx:id="techLabel" layoutX="285.0" layoutY="168.0" styleClass="label-travel" text="Tech Level: " />
+      <Label fx:id="politicalLabel" layoutX="285.0" layoutY="199.0" styleClass="label-travel" text="Political System: " />
    </children>
 </AnchorPane>
