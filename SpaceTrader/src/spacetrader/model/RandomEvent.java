@@ -30,9 +30,9 @@ public class RandomEvent implements Serializable {
     
     public void initialize() {
         events = new Event[]{new Event("Kraken Attackin'!",  
-        "Your ship was attacked be a Kraken! Your fuel and shields as severly depleted",
+        "Your ship was attacked by a Kraken! Your fuel and shields are severly depleted",
         0, -100, -5),
-        new Event("A Storm!","You encountered a wicked storm! All you lost a little of everything in the struggle",
+        new Event("A Storm!","You encountered a wicked storm! You lost a little of everything in the struggle",
         -100, -10, -5),
         new Event("Sirens","Beautiful sirens lured you off course! They stole your money and badly damaged your ship! Typical...",
         -200, -10, -10), 
