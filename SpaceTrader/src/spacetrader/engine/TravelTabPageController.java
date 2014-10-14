@@ -90,7 +90,7 @@ public class TravelTabPageController implements Initializable {
         if (result != null) {
             doEncounter();
         } else {
-            doTravel();
+            doEvent();
         }
         
     }
@@ -98,7 +98,10 @@ public class TravelTabPageController implements Initializable {
     private void doEncounter() {
         ApplicationController.changeScene("GUI/Encounter.fxml");
     }
+    private void doEvent() {
+        ApplicationController.changeScene("GUI/RandomEvent.fxml");
 
+    }
     private void doTravel() {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
 
