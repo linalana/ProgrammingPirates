@@ -76,7 +76,7 @@ public class EncounterController implements Initializable {
         fillStats();
         switch (type) {
             case "Pirate":       
-                otherButton.setVisible(false);
+                otherButton.setText("Surrender");
                 pTradePtsLabel.setVisible(false);
                 eTradePtsLabel.setVisible(false);
                 break;
@@ -106,7 +106,7 @@ public class EncounterController implements Initializable {
         if (type.equals("Trader")) {
             //trading window
         } else if (type.equals("PoliceForce")) {
-            //perform search
+            Turn.getEncounter().Inspection();
         }
         
     }

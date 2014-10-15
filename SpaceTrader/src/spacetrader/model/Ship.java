@@ -402,9 +402,17 @@ public class Ship implements Serializable {
     public int getShieldStrength() {
         return shieldHold.getEnergyStrength() + shieldHold.getReflectiveStrength();
     }
-
+    
     public int getWeaponStrength() {
         return weaponHold.calcTotalDamage();
+    }
+
+    public boolean checkHoldForIllegal() {
+        return cargoHold.findIllegal();
+    }
+
+    void removeIllegalGoods() {
+        cargoHold.removeIllegal();
     }
     
 }

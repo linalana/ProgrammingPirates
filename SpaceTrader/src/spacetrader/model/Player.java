@@ -243,7 +243,7 @@ public class Player implements Serializable {
      * @param totalDamage the damage done to the player
      * @return 0 if dead, 1 if survived on lifeboat, 2 if alive
      */
-    int distributeDamage(int totalDamage) {
+    public int distributeDamage(int totalDamage) {
         if (!ship.distributeDamage(totalDamage)) {
             if (ship.hasLifeBoat()) {
                 return 1;
@@ -251,6 +251,30 @@ public class Player implements Serializable {
             return 0;
         }
         return 2;
+    }
+    /**
+     * Checks ship for illegal goods
+     * @return true if contains illegal goods
+     */
+    public boolean checkCargo() {
+        return ship.checkHoldForIllegal();
+    }
+    /**
+     * Lower Inspection History, fine player, confiscate illegal goods
+     * @return amount of fine based on inspection history
+     */
+    public int failInspection() {      
+        policeRecord.decrementInspectionHistory();
+        //fine
+        int fine = (int) (money * .05);
+        if (policeRecord.getInspectionHistory() < 0) {
+            fine = (int) (money * .1);
+        }
+        setMoney(getMoney() - fine);
+        //confiscate
+        ship.removeIllegalGoods();
+        
+        return fine;
     }
 }
  
