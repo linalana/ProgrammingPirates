@@ -8,10 +8,10 @@
 
 <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.CurrentPortTabPageController">
    <children>
-      <GridPane layoutX="13.0" layoutY="14.0" prefHeight="139.0" prefWidth="599.0">
+      <GridPane layoutY="14.0" prefHeight="139.0" prefWidth="599.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="0.0" prefWidth="0.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="529.0" minWidth="10.0" prefWidth="529.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="591.0" minWidth="10.0" prefWidth="591.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="0.0" prefWidth="0.0" />
         </columnConstraints>
         <rowConstraints>

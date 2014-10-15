@@ -39,6 +39,10 @@ public class TravelTabPageController implements Initializable {
     private Label needed;
     @FXML
     private Label available;
+    @FXML
+    private Label techLabel;
+    @FXML
+    private Label politicalLabel;
     private ObservableList<String> ports;
     private Continent[] continents;
     private RangeChart range;
@@ -61,7 +65,11 @@ public class TravelTabPageController implements Initializable {
         portsList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             int index = portsList.getSelectionModel().getSelectedIndex();
             int fuelUsed = range.getDists(continents[index]);
+            int techlevel = continents[index].getTechLevel();
+            String politicalSystem = continents[index].getPoliticalSystem();
             needed.setText("Rum Needed: " + fuelUsed);
+            techLabel.setText("Tech Level: " + techlevel);
+            politicalLabel.setText("Political System: " + politicalSystem);
         });
         
         
@@ -82,7 +90,7 @@ public class TravelTabPageController implements Initializable {
         if (result != null) {
             doEncounter();
         } else {
-            doTravel();
+            doEvent();
         }
         
     }
@@ -90,7 +98,10 @@ public class TravelTabPageController implements Initializable {
     private void doEncounter() {
         ApplicationController.changeScene("GUI/Encounter.fxml");
     }
+    private void doEvent() {
+        ApplicationController.changeScene("GUI/RandomEvent.fxml");
 
+    }
     private void doTravel() {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
 

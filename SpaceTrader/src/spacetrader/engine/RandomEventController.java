@@ -6,14 +6,14 @@
 package spacetrader.engine;
 
 
+
+import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.event.ActionEvent;
-
-
+import spacetrader.model.Turn;
 
 /**
  * FXML Controller class
@@ -31,15 +31,12 @@ public class RandomEventController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        descriptionLabel.setText(Turn.getEventDescription());
+        titleLabel.setText(Turn.getEventTitle());
     }    
     @FXML 
-    public void pressAcceptButton(ActionEvent e) {
-        
+    public void acceptButtonPressed(ActionEvent e) {
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
-    public void setDescription(String newDescription) {
-        descriptionLabel.setText(newDescription);
-    }
-    public void setTitle(String newTitle) {
-        titleLabel.setText(newTitle);
-    }
+
 }

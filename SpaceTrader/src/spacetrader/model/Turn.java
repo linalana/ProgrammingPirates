@@ -25,6 +25,7 @@ public class Turn implements Serializable {
     private int traderChance;
     private int pirateChance;
     private static Encounter encounter;
+    private static RandomEvent randomEvent;
     
     public Turn(Port newPort) {
         this.newPort = newPort;
@@ -33,6 +34,7 @@ public class Turn implements Serializable {
         techlevel = newPort.getTechLevel();
         setChanceEncounters();
         randomPortEvents();
+        
     }
     
     public String travel(int fuelUsed) {
@@ -51,6 +53,7 @@ public class Turn implements Serializable {
             encounter = new Encounter(Game.getPlayer(), new Pirate());
             return "Pirate";
         }
+        randomEvent = new RandomEvent();
         return null;
     }
     
@@ -157,7 +160,12 @@ public class Turn implements Serializable {
             newPort.setEvent(rand.nextInt(7));
         }
     }
-    
+    public static String getEventTitle() {
+        return randomEvent.getTitle();
+    }
+    public static String getEventDescription() {
+        return randomEvent.getDescription();
+    }
     
     
 }

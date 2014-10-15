@@ -65,9 +65,11 @@ public class ShieldHold implements Serializable {
                 case ENERGY:
                     totalEnergyShields += q;
                     energyStrength += Shield.ENERGY.strength;
+                    break;
                 case REFLECTIVE:
                     totalReflectiveShields += q;
                     reflectiveStrength += Shield.REFLECTIVE.strength;
+                    break;
             }
             return true;
         }
@@ -87,9 +89,11 @@ public class ShieldHold implements Serializable {
                 case ENERGY:
                     totalEnergyShields -= q;
                     energyStrength -= Shield.ENERGY.strength;
+                    break;
                 case REFLECTIVE:
                     totalReflectiveShields -= q;
                     reflectiveStrength -= Shield.REFLECTIVE.strength;
+                    break;
             }
             return true;
         }
