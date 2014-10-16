@@ -69,4 +69,9 @@ public class CurrentPortTabPageController implements Initializable {
     private void handleMarketplaceButtonAction(ActionEvent event) {
         ApplicationController.changeScene("GUI/MarketplaceScreen.fxml");
     }
+    
+    @FXML
+    private void handleTravelButtonAction(ActionEvent event) {
+        ApplicationController.changeScene("GUI/Map.fxml");
+    }
 }

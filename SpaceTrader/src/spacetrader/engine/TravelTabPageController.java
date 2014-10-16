@@ -78,20 +78,21 @@ public class TravelTabPageController implements Initializable {
     @FXML
     private void travelButtonPressed(ActionEvent event) {
         ApplicationController.playSound(getClass().getResource("raisethesails.wav").toString());
-        int index = portsList.getSelectionModel().getSelectedIndex();
-        newPort = continents[index].getMainPort();
-        Turn turn = new Turn(continents[index].getMainPort());
-        fuelUsed = range.getDists(continents[index]);
-        String result = turn.travel(fuelUsed);
-        //set new current port
-        Game.setCurrentPort(newPort);
-        //deduct fuel from ship based on distance traveled
-        Game.getPlayer().getShip().setFuel(-fuelUsed);
-        if (result != null) {
-            doEncounter();
-        } else {
-            doEvent();
-        }
+        ApplicationController.changeScene("GUI/Map.fxml");
+//        int index = portsList.getSelectionModel().getSelectedIndex();
+//        newPort = continents[index].getMainPort();
+//        Turn turn = new Turn(continents[index].getMainPort());
+//        fuelUsed = range.getDists(continents[index]);
+//        String result = turn.travel(fuelUsed);
+//        //set new current port
+//        Game.setCurrentPort(newPort);
+//        //deduct fuel from ship based on distance traveled
+//        Game.getPlayer().getShip().setFuel(-fuelUsed);
+//        if (result != null) {
+//            doEncounter();
+//        } else {
+//            doEvent();
+//        }
         
     }
 

@@ -11,7 +11,7 @@ public enum Shield {
      * Energy Shield
      */
     ENERGY (0, 0, 3, 500 ,50, 10, 25),
-
+    
     /**
      * Reflective Shield
      */
