@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -42,6 +43,8 @@ public class CurrentPortTabPageController implements Initializable {
     private Label politicalSystem;
     @FXML
     private Label randomEvent;
+    @FXML
+    private Button shipyard;
     /**
      * Initializes the controller class.
      */
@@ -57,6 +60,9 @@ public class CurrentPortTabPageController implements Initializable {
             randomEvent.setText("Normal Conditions");
         } else {
             randomEvent.setText(currentPort.getEvent());
+        }
+        if (currentPort.getTechLevel() < 5) {
+            shipyard.setDisable(true);
         }
     }    
     
