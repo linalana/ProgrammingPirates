@@ -80,4 +80,9 @@ public class CurrentPortTabPageController implements Initializable {
     private void handleTravelButtonAction(ActionEvent event) {
         ApplicationController.changeScene("GUI/Map.fxml");
     }
+    
+    @FXML
+    private void handleShipYardButtonAction(ActionEvent event) {
+        ApplicationController.changeScene("GUI/ShipYardScreen.fxml");
+    }
 }
