@@ -32,7 +32,7 @@ public class ShipMarketController implements Initializable {
     @FXML
     private ListView shipList;
     private ObservableList<String> ships;
-    private ShipYard shipyard = new ShipYard();
+    private ShipYard shipyard = Game.getCurrentPort().getShipyard();
     private Ship[] s = shipyard.getShips();
     
     /**
@@ -41,7 +41,7 @@ public class ShipMarketController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ships = shipList.getItems();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < (Game.getCurrentPort().getTechLevel() + 1); i++) {
             ships.add(s[i].getType());
         }
         currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());

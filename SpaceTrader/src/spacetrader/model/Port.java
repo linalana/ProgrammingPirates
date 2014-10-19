@@ -40,7 +40,7 @@ public class Port implements Serializable {
         name = newName;
         techLevel = newTechLevel;
         resources = newResources;
-        shipYard = new ShipYard();
+        shipYard = new ShipYard(newTechLevel);
         bazaar = new Bazaar(this);
         this.continent = continent;
         policeForce = new PoliceForce(continent.getPoliticalSystem());
@@ -79,6 +79,13 @@ public class Port implements Serializable {
      */
     public String getResources() {
         return resources;
+    }
+    
+    /**
+     * @return the resources
+     */
+    public ShipYard getShipyard() {
+        return shipYard;
     }
 
     /**

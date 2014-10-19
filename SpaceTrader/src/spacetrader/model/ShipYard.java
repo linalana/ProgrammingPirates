@@ -19,8 +19,8 @@ public class ShipYard implements Serializable {
     /**
      * The constructor for ShipYard. 
      */
-    public ShipYard() {
-        for (int i = 0; i < 10; i++) {
+    public ShipYard(int techLevel) {
+        for (int i = 0; i < (techLevel + 1); i++) {
             ships[i] = new Ship(i);
         }
     }
