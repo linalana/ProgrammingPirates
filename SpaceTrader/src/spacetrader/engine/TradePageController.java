@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -32,7 +33,8 @@ public class TradePageController implements Initializable {
     private HashMap<TradeGood, Integer> cargoGoods;
     private CargoHold traderHold;
     private CargoHold cargoHold;
-    private ObservableList<String> traderCargo;
+    private ObservableList<String> traderHasCargo;
+    private ObservableList<String> traderWantsCargo;
 
     /**
      * Initializes the controller class.
@@ -41,28 +43,41 @@ public class TradePageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Turn.getEncounter().getE().fillCargo();
         traderHold = Turn.getEncounter().getE().getShip().getCargoHold();
+        
+        updateLists();
     }    
     
     public void updateLists() {
-        cargo = cargoGoodsList.getItems();
-        market = marketGoodsList.getItems();
-        goodsForSale = bazaar.getGoodsForSale();
+        traderHasCargo = traderHasList.getItems();
+        traderWantsCargo = traderWantsList.getItems();
+        //goodsForSale = bazaar.getGoodsForSale();
         cargoGoods = Game.getPlayer().getShip().getCargoHold().getGoods();
-        market.clear();
-        cargo.clear();
-        for (TradeGood tg: goodsForSale.keySet()) {
-            int[] pq = goodsForSale.get(tg);
-            if (pq[1] != 0 ) {
-                market.add(tg.toString() + " Price: " + pq[0] + " Quantity: " + 
-                    pq[1]);
+        traderGoods = Turn.getEncounter().getE().getShip().getCargoHold().getGoods();
+        traderHasCargo.clear();
+        traderWantsCargo.clear();
+        for (TradeGood tg: traderGoods.keySet()) {
+            int q = traderGoods.get(tg);
+            if (q != 0 ) {
+                traderHasCargo.add(tg.toString() + " Quantity: " + 
+                    q);
             }
         }
+        /*
         for (TradeGood tg: cargoGoods.keySet()) {
             int q = cargoGoods.get(tg);
             if (q > 0) {
                 cargo.add(tg.toString() + " Quantity: " + q);
             }
         }
+        */
     }
     
+    @FXML
+    public void tradeButtonPressed(ActionEvent event) {
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
+    }
+    @FXML
+    public void backButtonPressed(ActionEvent event) {
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
+    }
 }
