@@ -39,6 +39,7 @@ public class Turn implements Serializable {
         String result = "";
         Random rand = new Random();
         int randInt = rand.nextInt(100);
+        /*
         if (randInt < policeChance) {
             encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
             return "PoliceForce";
@@ -52,6 +53,9 @@ public class Turn implements Serializable {
             return "Pirate";
         }
         return null;
+        */
+        encounter = new Encounter(Game.getPlayer(), new Trader());
+        return "Trader";
     }
     
     private void setChanceEncounters() {

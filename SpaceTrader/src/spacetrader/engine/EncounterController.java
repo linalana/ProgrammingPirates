@@ -104,7 +104,7 @@ public class EncounterController implements Initializable {
     private void handleOtherButtonAction(ActionEvent event) {
         String type = Turn.getEncounter().getType();
         if (type.equals("Trader")) {
-            //trading window
+            ApplicationController.changeScene("GUI/TradePage.fxml");
         } else if (type.equals("PoliceForce")) {
             Turn.getEncounter().Inspection();
         }

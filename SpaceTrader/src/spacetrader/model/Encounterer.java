@@ -26,7 +26,7 @@ public abstract class Encounterer implements Serializable {
         fighterPoints = rand.nextInt(11);
     }
     
-    protected void fillCargo() {
+    public void fillCargo() {
         Random rand = new Random();
         for (TradeGood t: TradeGood.values()) {
             if (rand.nextBoolean()) {

@@ -48,7 +48,7 @@ public class Ship implements Serializable {
             this.shieldSlots = 0;
             this.gadgetSlots = 0;
             this.quarters = 0;
-            this.maxRange = 20;
+            this.maxRange = 20; //20
             
         }
         else if(type.equals(names[1])){

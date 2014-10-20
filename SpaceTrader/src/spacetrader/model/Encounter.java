@@ -20,7 +20,7 @@ import spacetrader.SpaceTrader;
  */
 public class Encounter implements Serializable {
     Player p;
-    Encounterer e;
+    private Encounterer e;
     public Encounter(Player p, Encounterer e) {
         this.p = p;
         this.e = e;
@@ -42,7 +42,7 @@ public class Encounter implements Serializable {
             //tell player they missed
         }
         //algorithm to decide where to do that damage on the encounterer's ship
-        boolean result = e.distributeDamage(totalDamage);
+        boolean result = getE().distributeDamage(totalDamage);
         if (result == false) {
             //distributeBooty();
             //you won
@@ -53,7 +53,7 @@ public class Encounter implements Serializable {
      * Plays out the choice of the encoutnerer attacking player
      */
     private void EncountererAttack() {
-        int totalDamage = e.calcDamage();
+        int totalDamage = getE().calcDamage();
         //algorithm to decide where to do that damage on the players's ship
         int result = p.distributeDamage(totalDamage);
         if (result == 0) { //D.E.D dead
@@ -70,9 +70,9 @@ public class Encounter implements Serializable {
      * @return the string type of the encounterer
      */
     public String getType() {
-        if (e.getClass().equals(Pirate.class)) {
+        if (getE().getClass().equals(Pirate.class)) {
             return "Pirate";
-        } else if (e.getClass().equals(Trader.class)) {
+        } else if (getE().getClass().equals(Trader.class)) {
             return "Trader";
         } else {
             return "Police Force";
@@ -106,6 +106,13 @@ public class Encounter implements Serializable {
             p.failInspection();
         }
         return false;
+    }
+
+    /**
+     * @return the e
+     */
+    public Encounterer getE() {
+        return e;
     }
     
     
