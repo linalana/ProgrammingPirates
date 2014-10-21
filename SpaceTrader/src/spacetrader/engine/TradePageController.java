@@ -8,12 +8,17 @@ package spacetrader.engine;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.Collections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import org.controlsfx.dialog.Dialogs;
+import spacetrader.SpaceTrader;
 import spacetrader.model.CargoHold;
 import spacetrader.model.Game;
 import spacetrader.model.TradeGood;
@@ -73,11 +78,98 @@ public class TradePageController implements Initializable {
     }
     
     @FXML
+    public void askButtonPressed(ActionEvent event) {
+        String longString = traderHasList.getSelectionModel().getSelectedItem();
+        if (longString == null) {
+            traderHasList.getSelectionModel().selectFirst();
+            longString = traderHasList.getSelectionModel().getSelectedItem();
+        }
+        else{
+            int spaceIndex = longString.indexOf(' ');
+            String goodToBuy = longString.substring(0, spaceIndex);
+            TradeGood good = TradeGood.valueOf(goodToBuy);
+            int maxGoodQ = traderGoods.get(good);
+            //get quantity desired from player 
+            String q = getQuantityFromPlayer();
+            int quant = 0;
+            try {
+                quant = Integer.parseInt(q);
+            } catch (NumberFormatException e) {
+                quant = 0;
+            }
+            if(quant <= maxGoodQ){
+                calculateTrade(good, quant);
+            }
+        }
+    }
+    @FXML
     public void tradeButtonPressed(ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
     @FXML
     public void backButtonPressed(ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
+    }
+    
+    private String getQuantityFromPlayer() {
+        
+        Optional<String> response = Dialogs.create()
+            .owner(SpaceTrader.getPrimaryStage())
+            .title("Trading Stuff")
+            .masthead("Arr, how much ye want?")
+            .message("Enter quantity:")
+            .showTextInput("0");
+
+        if (response.isPresent()) {
+            String result = response.get();
+            return result;
+        } else {
+            return null;
+        }
+
+    }
+    
+    private void calculateTrade(TradeGood good, int quant){
+        int price = quant*good.getMTL();
+        int priceMatch = 0;
+        HashMap<TradeGood, Integer> goodMatch = new HashMap<TradeGood, Integer>();
+        int arrayNum = 0;
+        ArrayList<TradeGood> playerGoods = new ArrayList(cargoGoods.keySet());
+        Collections.shuffle(playerGoods); //randomize the 
+        for(TradeGood g: playerGoods){
+            if(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2))){
+                break;
+            }
+            if(g.getMTL() <= (price+(price/2)) && !g.equals(good)){
+                for(int i=0; i<cargoGoods.get(g); i++){
+                    priceMatch += g.getMTL();
+                    goodMatch.put(g, i+1);
+                    if(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2))){
+                        break;
+                    }
+                }
+            }
+        }
+        if(priceMatch < (price-(price/2))){
+            for(TradeGood g: playerGoods){
+                if(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2))){
+                    break;
+                }
+                if(g.getMTL() < price && !g.equals(good)){
+                    for(int i=0; i<cargoGoods.get(g); i++){
+                        priceMatch += g.getMTL();
+                        goodMatch.put(g, i+1);
+                        if(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2))){
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        traderWantsCargo.clear();
+        for(TradeGood g: goodMatch.keySet()){
+            traderWantsCargo.add(goodMatch.get(g) + " " + g.name());
+        }
+        traderWantsCargo.add("for " + quant + " " + good.name());
     }
 }
