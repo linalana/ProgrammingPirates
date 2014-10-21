@@ -163,6 +163,7 @@ public class Ship implements Serializable {
             setGadgetSlots(0);
             quarters = 0;
             maxRange = 20;
+            price = 500;
         }
         else if(type.equals(names[1])){
             cargoBays = 15;
@@ -172,6 +173,7 @@ public class Ship implements Serializable {
             setGadgetSlots(1);
             quarters = 0;
             maxRange = 14;
+            price = 1000;
         }
         else if(type.equals(names[2])){
             cargoBays = 20;
@@ -181,6 +183,7 @@ public class Ship implements Serializable {
             setGadgetSlots(1);
             quarters = (0);
             maxRange = (17);
+            price = 1500;
         }
         else if(type.equals(names[3])){
             cargoBays = 15;
@@ -190,6 +193,7 @@ public class Ship implements Serializable {
             setGadgetSlots(1);
             quarters = (0);
             maxRange = (13);
+            price = 2000;
         }
         else if(type.equals(names[4])){
             cargoBays = 20;
@@ -199,6 +203,7 @@ public class Ship implements Serializable {
             setGadgetSlots(2);
             quarters = (1);
             maxRange = (15);
+            price = 2500;
         }
         else if(type.equals(names[5])){
             cargoBays = 50;
@@ -208,6 +213,7 @@ public class Ship implements Serializable {
             setGadgetSlots(1);
             quarters = (3);
             maxRange = (14);
+            price = 3000;
         }
         else if(type.equals(names[6])){
             cargoBays = 20;
@@ -217,6 +223,7 @@ public class Ship implements Serializable {
             setGadgetSlots(1);
             quarters = (2);
             maxRange = (16);
+            price = 3500;
         }
         else if(type.equals(names[7])){
             cargoBays = 30;
@@ -226,6 +233,7 @@ public class Ship implements Serializable {
             setGadgetSlots(3);
             quarters = (3);
             maxRange = (15);
+            price = 4000;
         }
         else if(type.equals(names[8])){
             cargoBays = 60;
@@ -235,6 +243,7 @@ public class Ship implements Serializable {
             setGadgetSlots(2);
             quarters = (3);
             maxRange = (13);
+            price = 4500;
         }
         else{
             cargoBays = 35;
@@ -244,6 +253,7 @@ public class Ship implements Serializable {
             setGadgetSlots(2);
             quarters = (3);
             maxRange = (14);
+            price = 5000;
         }
         
         cargoHold = new CargoHold(getCargoBays());

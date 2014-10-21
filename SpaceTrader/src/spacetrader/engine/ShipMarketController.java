@@ -69,7 +69,16 @@ public class ShipMarketController implements Initializable {
     
     @FXML
     private void buyButtonPressed(ActionEvent event) {
-
+        int index = shipList.getSelectionModel().getSelectedIndex();
+        if (Game.getPlayer().getMoney() >= (s[index].getPrice() - Game.getPlayer().getShip().calculateValue())) {
+            int v = Game.getPlayer().getShip().calculateValue();
+            Game.getPlayer().setShip(index);
+            currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());
+            value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
+            int newMoney = Game.getPlayer().getMoney() - s[index].getPrice() + v;
+            Game.getPlayer().setMoney(newMoney);
+            money.setText("Money: " + Game.getPlayer().getMoney());
+        }
     }
     
 }
