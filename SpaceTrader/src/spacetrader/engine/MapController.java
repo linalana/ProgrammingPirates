@@ -17,6 +17,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import spacetrader.model.Continent;
 import spacetrader.model.Game;
 import spacetrader.model.Port;
@@ -52,6 +53,9 @@ public class MapController implements Initializable {
         for (Continent cont: continents) {
             g2d.fillOval(cont.getX(), cont.getY(), 15, 15);
         }
+        g2d.setFill(Color.RED);
+        Continent cur = Game.getCurrentPort().getContinent();
+        g2d.fillOval(cur.getX(), cur.getY(), 15, 15);
         continentLabel.setVisible(false);
         neededLabel.setVisible(false);
         availableLabel.setVisible(false);
