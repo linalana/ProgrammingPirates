@@ -2,6 +2,7 @@ package spacetrader.model;
 
 import java.io.Serializable;
 import java.util.Random;
+import spacetrader.model.Ship;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -190,7 +191,7 @@ public class Player implements Serializable {
      * @param type the ship to set
      */
     public void setShip(int type) {
-        ship.updateShip(type);
+        ship = new Ship(type);
     }
 
     /**
