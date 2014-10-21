@@ -426,4 +426,9 @@ public class Ship implements Serializable {
         return weaponHold.calcTotalDamage();
     }
     
+    public int calculateValue() {
+        
+        return price;
+    }
+    
 }

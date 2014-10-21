@@ -57,6 +57,7 @@ public class ShipMarketController implements Initializable {
             int index = shipList.getSelectionModel().getSelectedIndex();
             selectedLabel.setText("Selected: " + s[index].getType());
             price.setText("Price: " + s[index].getPrice());
+            value.setText("Value: " + s[index].calculateValue());
         });
     }    
  
