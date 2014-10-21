@@ -30,6 +30,12 @@ public class ShipMarketController implements Initializable {
     @FXML
     private Label currentLabel;
     @FXML
+    private Label money;
+    @FXML
+    private Label price;
+    @FXML
+    private Label value;
+    @FXML
     private ListView shipList;
     private ObservableList<String> ships;
     private ShipYard shipyard = Game.getCurrentPort().getShipyard();
@@ -40,8 +46,9 @@ public class ShipMarketController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        money.setText("Money: " + Game.getPlayer().getMoney());
         ships = shipList.getItems();
-        for (int i = 0; i < (Game.getCurrentPort().getTechLevel() + 1); i++) {
+        for (int i = 0; i < (Game.getCurrentPort().getTechLevel() + 3); i++) {
             ships.add(s[i].getType());
         }
         currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());
@@ -49,6 +56,7 @@ public class ShipMarketController implements Initializable {
         shipList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             int index = shipList.getSelectionModel().getSelectedIndex();
             selectedLabel.setText("Selected: " + s[index].getType());
+            price.setText("Price: " + s[index].getPrice());
         });
     }    
  

@@ -26,6 +26,7 @@ public class Ship implements Serializable {
     private int quarters;
     private int maxRange;
     private int fuel;
+    private int price;
     private boolean lifeBoat;
     public String[] names = new String[] {"Guppy","Minnow","Snapping Turtle",
         "Pufferfish","StingRay","S.S. Electric Eel","Dolphin Tales","SharkFin",
@@ -49,6 +50,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 0;
             this.quarters = 0;
             this.maxRange = 20;
+            this.price = 500;
             
         }
         else if(type.equals(names[1])){
@@ -59,6 +61,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 1;
             this.quarters = 0;
             this.maxRange = 14;
+            this.price = 1000;
         }
         else if(type.equals(names[2])){
             this.cargoBays = 20;
@@ -68,6 +71,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 1;
             this.quarters = 0;
             this.maxRange = 17;
+            this.price = 1500;
         }
         else if(type.equals(names[3])){
             this.cargoBays = 15;
@@ -77,6 +81,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 1;
             this.quarters = 0;
             this.maxRange = 13;
+            this.price = 2000;
         }
         else if(type.equals(names[4])){
             this.cargoBays = 20;
@@ -86,6 +91,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 2;
             this.quarters = 1;
             this.maxRange = 15;
+            this.price = 2500;
         }
         else if(type.equals(names[5])){
             this.cargoBays = 50;
@@ -95,6 +101,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 1;
             this.quarters = 3;
             this.maxRange = 14;
+            this.price = 3000;
         }
         else if(type.equals(names[6])){
             this.cargoBays = 20;
@@ -104,6 +111,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 1;
             this.quarters = 2;
             this.maxRange = 16;
+            this.price = 3500;
         }
         else if(type.equals(names[7])){
             this.cargoBays = 30;
@@ -113,6 +121,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 3;
             this.quarters = 3;
             this.maxRange = 15;
+            this.price = 4000;
         }
         else if(type.equals(names[8])){
             this.cargoBays = 60;
@@ -122,6 +131,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 2;
             this.quarters = 3;
             this.maxRange = 13;
+            this.price = 4500;
         }
         else{
             this.cargoBays = 35;
@@ -131,6 +141,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 2;
             this.quarters = 3;
             this.maxRange = 14;
+            this.price = 5000;
         }
         this.fuel = maxRange;
         this.cargoHold = new CargoHold(getCargoBays());
@@ -261,6 +272,14 @@ public class Ship implements Serializable {
     public ShieldHold getShieldHold() {
         return shieldHold;
     }
+    
+    /**
+     * @return the weapon hold
+     */
+    public int getPrice() {
+        return price;
+    }
+    
     
     /**
      * @return the gadget hold
