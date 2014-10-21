@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="spacetrader.engine.ShipUpgradeController">
+    <stylesheets>
+        <URL value="@DarkTheme.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="rumLabel" layoutX="35.0" layoutY="161.0" styleClass="label-subtitle" text="Rum on ship: " />
+      <Button fx:id="buyButton" layoutX="35.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleRumButtonAction" prefHeight="33.0" prefWidth="187.0" text="Refuel for: $1000" />
+      <Label fx:id="moneyLabel" layoutX="35.0" layoutY="347.0" styleClass="label-subtitle" text="Money: " />
+   </children>
+</AnchorPane>
