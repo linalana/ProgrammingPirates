@@ -256,6 +256,7 @@ public class Ship implements Serializable {
             price = 5000;
         }
         
+        this.fuel = maxRange;
         cargoHold = new CargoHold(getCargoBays());
         weaponHold = new WeaponHold(getWeaponSlots());
         shieldHold = new ShieldHold(getShieldSlots());
