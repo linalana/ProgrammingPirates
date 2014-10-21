@@ -6,13 +6,10 @@
 
 package spacetrader.model;
 
-import java.io.IOException;
 import java.io.Serializable;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import spacetrader.SpaceTrader;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,46 +22,42 @@ public class Encounter implements Serializable {
         this.p = p;
         this.e = e;
     }
-    
-    /**
-     * Runs a "fight" offering choices to the user
-     */
-    public void engageFight() {
-        
-    }
-    
+
     /**
      * Plays out the choice of the player attacking it's encounterer
      */
-    private void PlayerAttack() {
+    public int PlayerAttack() {
         int totalDamage = p.calcDamage();
-        if (totalDamage == 0) {
-            //tell player they missed
-        }
         //algorithm to decide where to do that damage on the encounterer's ship
         boolean result = getE().distributeDamage(totalDamage);
         if (result == false) {
             //distributeBooty();
             //you won
         }
+        return totalDamage;
     }
-    
+
     /**
      * Plays out the choice of the encoutnerer attacking player
+     * @return whether or not encounter attacks
      */
-    private void EncountererAttack() {
-        int totalDamage = getE().calcDamage();
-        //algorithm to decide where to do that damage on the players's ship
-        int result = p.distributeDamage(totalDamage);
-        if (result == 0) { //D.E.D dead
-            //GAME OVER
-        } else if (result == 1) { //life boat escape
-            //transfer to nearest port with no ship but a lifeboat
-        } else if (result == 2) {
-            //continue
+    public boolean EncountererAttack() {
+        if (e.willFight(p.getReputation())) {
+            int totalDamage = getE().calcDamage();
+            //algorithm to decide where to do that damage on the players's ship
+            int result = p.distributeDamage(totalDamage);
+            if (result == 0) { //D.E.D dead
+                //GAME OVER
+            } else if (result == 1) { //life boat escape
+                //transfer to nearest port with no ship but a lifeboat
+            } else if (result == 2) {
+                //continue
+            }
+            return true;
         }
+        return false;
     }
-    
+
     /**
      * Finds the what type the encounterer is
      * @return the string type of the encounterer
@@ -92,7 +85,7 @@ public class Encounter implements Serializable {
                info[i] = pInfo[i];
            } else {
                info[i] = otherInfo[i-6];
-           }    
+           }
        }
        return info;
     }
@@ -114,6 +107,16 @@ public class Encounter implements Serializable {
     public Encounterer getE() {
         return e;
     }
-    
-    
+
+    public double[][] calculateHealth() {
+        double[][] healths = new double[2][2];
+        healths[0] = p.checkShipHealth();
+        healths[1] = e.checkShipHealth();
+        return healths;
+    }
+
+    private void EncountererFlee() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

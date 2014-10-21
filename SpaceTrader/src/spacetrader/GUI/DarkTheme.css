@@ -9,6 +9,13 @@
     -fx-opacity: 0.8;
 }
 
+.label-black {
+    -fx-font-size: 15pt;
+    -fx-font-family: "Helvetica";
+    -fx-text-fill: black;
+    -fx-opacity: 0.8;
+}
+
 .label-subtitle {
     -fx-font-size: 20pt;
     -fx-font-family: "cursive";
@@ -65,14 +72,14 @@
     -fx-background-color: whitesmoke;
 }
 
-.tab .tab-label { 
+.tab .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: whitesmoke;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
 }
 
-.tab:selected .tab-label { 
+.tab:selected .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: #4b2c0f;
 }

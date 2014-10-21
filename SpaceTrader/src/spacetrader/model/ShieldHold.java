@@ -21,12 +21,12 @@ public class ShieldHold implements Serializable {
     private int totalReflectiveShields;
     private int reflectiveStrength;
     private HashMap<Shield, Integer> shields;
-    
+
     /**
      * This is the constructor for ShieldHold.
      * @param amount the amount of shield slots available
      */
-    public ShieldHold(int amount){
+    public ShieldHold(int amount) {
         this.amount = amount;
         this.totalEnergyShields = 0;
         this.totalReflectiveShields = 0;
@@ -35,23 +35,23 @@ public class ShieldHold implements Serializable {
         shields = new HashMap<>();
         setShields();
     }
-    
+
     /**
      * @return shields
      */
     public HashMap<Shield, Integer> getShields() {
         return shields;
     }
-    
+
     /**
      * Set amount of shields in shield hold
      */
     public void setShields() {
         for (Shield s: Shield.values()) {
             getShields().put(s, 0);
-        }   
+        }
     }
-    
+
     /**
      * Add shield to your ship
      * @param s the shield type to be added
@@ -71,9 +71,9 @@ public class ShieldHold implements Serializable {
             }
             return true;
         }
-        return false;    
+        return false;
     }
-    
+
     /**
      * Subtract shield from your ship
      * @param s the shield type to be subtracted
@@ -93,9 +93,9 @@ public class ShieldHold implements Serializable {
             }
             return true;
         }
-        return false;    
+        return false;
     }
-    
+
     /**
      * Damage the shields
      * @param damage the amount of damage
@@ -130,7 +130,7 @@ public class ShieldHold implements Serializable {
         }
         return 0;
     }
-    
+
     /**
      * Recharge the shields to full power
      */
@@ -151,5 +151,11 @@ public class ShieldHold implements Serializable {
      */
     public int getReflectiveStrength() {
         return reflectiveStrength;
+    }
+
+    public double percentShield() {
+        double totalPossible = totalEnergyShields * Shield.ENERGY.strength
+                + totalReflectiveShields * Shield.REFLECTIVE.strength;
+        return ((energyStrength + reflectiveStrength) / totalPossible);
     }
 }

@@ -20,6 +20,7 @@ public class Ship implements Serializable {
     private String type;
     private int cargoBays;
     private int hullStrength; //from 5(weak) to 25(strong)
+    private int originalHullStrength;
     private int weaponSlots;
     private int shieldSlots;
     private int gadgetSlots;
@@ -30,7 +31,7 @@ public class Ship implements Serializable {
     public String[] names = new String[] {"Guppy","Minnow","Snapping Turtle",
         "Pufferfish","StingRay","S.S. Electric Eel","Dolphin Tales","SharkFin",
         "Hammerhead","S.S. Bob Waters"};
-    
+
     public Ship() {
         this(new Random().nextInt(10));
         lifeBoat = false;
@@ -49,7 +50,7 @@ public class Ship implements Serializable {
             this.gadgetSlots = 0;
             this.quarters = 0;
             this.maxRange = 20; //20
-            
+
         }
         else if(type.equals(names[1])){
             this.cargoBays = 15;
@@ -132,6 +133,7 @@ public class Ship implements Serializable {
             this.quarters = 3;
             this.maxRange = 14;
         }
+        this.originalHullStrength = hullStrength;
         this.fuel = maxRange;
         this.cargoHold = new CargoHold(getCargoBays());
         this.weaponHold = new WeaponHold(getWeaponSlots());
@@ -234,7 +236,8 @@ public class Ship implements Serializable {
             quarters = (3);
             maxRange = (14);
         }
-        
+
+        this.originalHullStrength = hullStrength;
         cargoHold = new CargoHold(getCargoBays());
         weaponHold = new WeaponHold(getWeaponSlots());
         shieldHold = new ShieldHold(getShieldSlots());
@@ -247,21 +250,21 @@ public class Ship implements Serializable {
     public CargoHold getCargoHold() {
         return cargoHold;
     }
-    
+
     /**
      * @return the weapon hold
      */
     public WeaponHold getWeaponHold() {
         return weaponHold;
     }
-    
+
     /**
      * @return the shield hold
      */
     public ShieldHold getShieldHold() {
         return shieldHold;
     }
-    
+
     /**
      * @return the gadget hold
      */
@@ -370,7 +373,7 @@ public class Ship implements Serializable {
     }
     /**
      * distributes damage
-     * 
+     *
      * @param totalDamage, damage to be allocated to parts of ship
      * @return true if ship lives
      */
@@ -381,7 +384,7 @@ public class Ship implements Serializable {
             if (hullStrength > 0) {
                 return true;
             }
-        }    
+        }
         return false;
     }
 
@@ -402,7 +405,7 @@ public class Ship implements Serializable {
     public int getShieldStrength() {
         return shieldHold.getEnergyStrength() + shieldHold.getReflectiveStrength();
     }
-    
+
     public int getWeaponStrength() {
         return weaponHold.calcTotalDamage();
     }
@@ -414,5 +417,10 @@ public class Ship implements Serializable {
     void removeIllegalGoods() {
         cargoHold.removeIllegal();
     }
-    
+    public double[] getHealthPercentages() {
+        double[] healths = new double[2];
+        healths[0] = hullStrength / originalHullStrength;
+        healths[1] = shieldHold.percentShield();
+        return healths;
+    }
 }

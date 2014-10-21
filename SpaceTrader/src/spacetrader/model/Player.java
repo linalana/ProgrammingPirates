@@ -47,28 +47,28 @@ public class Player implements Serializable {
     public String toString() {
         return "Player name: " + name + ". Fighter: " + fighter + ". Trader: " + trader + ". Engineer: " + engineer + ". Investor: " + investor;
     }
-    
+
     public void attack(Encounterer e) {
         if (e.getClass().equals(Pirate.class)) {
             //it's a pirate!
             Pirate p = (Pirate) e;
-            
+
 
         } else {
             //it's a trader!
             Trader t = (Trader) e;
             policeRecord.setIsPirate(true);
-            
+
         }
-        
+
     }
-    
+
     //Getters and setters
 
     /**
      *
      * Setter for name
-     * 
+     *
      * @param newName
      */
         public void setName(String newName) {
@@ -78,7 +78,7 @@ public class Player implements Serializable {
     /**
      *
      * Getter for name
-     * 
+     *
      * @return String name
      */
     public String getName() {
@@ -88,7 +88,7 @@ public class Player implements Serializable {
     /**
      *
      * Setter for Fighter skill points
-     * 
+     *
      * @param newFighter
      */
     public void setFighter(int newFighter) {
@@ -98,7 +98,7 @@ public class Player implements Serializable {
     /**
      *
      * Getter for Fighter skill points
-     * 
+     *
      * @return int fighter
      */
     public int getFighter() {
@@ -108,7 +108,7 @@ public class Player implements Serializable {
     /**
      *
      * Setter for Trader skill points
-     * 
+     *
      * @param newTrader
      */
     public void setTrader(int newTrader) {
@@ -118,7 +118,7 @@ public class Player implements Serializable {
     /**
      *
      * Getter for Trader skill points
-     * 
+     *
      * @return int trader
      */
     public int getTrader() {
@@ -128,7 +128,7 @@ public class Player implements Serializable {
     /**
      *
      * Setter for Engineer skill points
-     * 
+     *
      * @param newEngineer
      */
     public void setEngineer(int newEngineer) {
@@ -138,7 +138,7 @@ public class Player implements Serializable {
     /**
      *
      * Getter for Engineer skill points
-     * 
+     *
      * @return int engineer
      */
     public int getEngineer() {
@@ -148,7 +148,7 @@ public class Player implements Serializable {
     /**
      *
      * Setter for Investor skill points
-     * 
+     *
      * @param newInvestor
      */
     public void setInvestor(int newInvestor) {
@@ -158,7 +158,7 @@ public class Player implements Serializable {
     /**
      *
      * Getter for Investor skill points
-     * 
+     *
      * @return int investor
      */
     public int getInvestor() {
@@ -178,7 +178,7 @@ public class Player implements Serializable {
     public void setMoney(int money) {
         this.money = money;
     }
-    
+
     /**
      * @return the ship
      */
@@ -199,7 +199,7 @@ public class Player implements Serializable {
     public int getReputation() {
         return reputation;
     }
-    
+
     /**
      * @param exp reputation to be added
      */
@@ -225,7 +225,7 @@ public class Player implements Serializable {
      * @return total damage player is capable of
      */
     public int calcDamage() {
-        int damage = ship.getDamage();       
+        int damage = ship.getDamage();
         //implement use of target system later
         Random rand = new Random();
         int r = rand.nextInt(101);
@@ -263,7 +263,7 @@ public class Player implements Serializable {
      * Lower Inspection History, fine player, confiscate illegal goods
      * @return amount of fine based on inspection history
      */
-    public int failInspection() {      
+    public int failInspection() {
         policeRecord.decrementInspectionHistory();
         //fine
         int fine = (int) (money * .05);
@@ -273,8 +273,12 @@ public class Player implements Serializable {
         setMoney(getMoney() - fine);
         //confiscate
         ship.removeIllegalGoods();
-        
+
         return fine;
     }
+
+    public double[] checkShipHealth() {
+        return ship.getHealthPercentages();
+    }
 }
- 
+
