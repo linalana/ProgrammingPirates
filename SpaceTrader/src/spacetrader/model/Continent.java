@@ -161,7 +161,7 @@ public class Continent implements Serializable {
      * @return techLevel as a string
      */
     public String getTechLevelString() {
-        return techLevels[techLevel];
+        return techLevels[techLevel].toLowerCase();
     }
 
     /**
