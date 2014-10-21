@@ -155,6 +155,14 @@ public class Continent implements Serializable {
     public int getTechLevel() {
         return techLevel;
     }
+    
+    /**
+     * 
+     * @return techLevel as a string
+     */
+    public String getTechLevelString() {
+        return techLevels[techLevel];
+    }
 
     /**
      * @return the mainPort
