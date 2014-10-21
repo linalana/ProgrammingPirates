@@ -16,5 +16,6 @@
       <Label fx:id="available" layoutX="285.0" layoutY="109.0" styleClass="label-subtitle" text="Rum Available: " />
       <Label fx:id="techLabel" layoutX="285.0" layoutY="168.0" styleClass="label-travel" text="Tech Level: " />
       <Label fx:id="politicalLabel" layoutX="285.0" layoutY="199.0" styleClass="label-travel" text="Political System: " />
+      <Button layoutX="363.0" layoutY="310.0" mnemonicParsing="false" onAction="#mapButtonPressed" prefWidth="125.0" text="Map" />
    </children>
 </AnchorPane>
