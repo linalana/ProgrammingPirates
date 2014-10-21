@@ -46,6 +46,7 @@ public class ShipMarketController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
         money.setText("Money: " + Game.getPlayer().getMoney());
         ships = shipList.getItems();
         for (int i = 0; i < (Game.getCurrentPort().getTechLevel() + 3); i++) {
@@ -57,7 +58,6 @@ public class ShipMarketController implements Initializable {
             int index = shipList.getSelectionModel().getSelectedIndex();
             selectedLabel.setText("Selected: " + s[index].getType());
             price.setText("Price: " + s[index].getPrice());
-            value.setText("Value: " + s[index].calculateValue());
         });
     }    
  

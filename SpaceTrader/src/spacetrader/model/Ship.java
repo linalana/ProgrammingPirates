@@ -427,8 +427,16 @@ public class Ship implements Serializable {
     }
     
     public int calculateValue() {
-        
-        return price;
+        int v = price;
+        for (TradeGood g: cargoHold.getGoods().keySet()) {
+            int quantity = cargoHold.getGoods().get(g);
+            if (Game.getCurrentPort().getTechLevel() > g.getMTLU()) {
+                double p = 0.8 * quantity * g.CalculatePrice(Game.getCurrentPort());
+                v = v + (int) p;
+            }
+        }
+
+        return v;
     }
     
 }
