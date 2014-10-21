@@ -36,7 +36,8 @@ public class World implements Serializable {
         for (int i = 0; i < 10; i++) {
             systems[i] = politicalSystems.remove(generator.nextInt(politicalSystems.size()));
         }
-        continents[0] = new Continent("Zaofu", systems[0], 300, 20);
+        continents[0] = new Continent("America", "capitalist", 300, 20);
+        continents[0].setTechLevel(7);
         continents[1] = new Continent("Tortuga", systems[1], 130, 330);
         continents[2] = new Continent("Istantinople", systems[2], 420, 150);
         continents[3] = new Continent("Westeros", systems[3], 100, 150);

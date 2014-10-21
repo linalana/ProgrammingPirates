@@ -106,6 +106,14 @@ public class Continent implements Serializable {
     }
     
     /**
+     * Only to be used to ensure home port has tech level 7
+     * @param techLevel 
+     */
+    protected void setTechLevel(int techLevel) {
+        this.techLevel = techLevel;
+    }
+    
+    /**
      * @return the resource
      */
     public String getResource() {
