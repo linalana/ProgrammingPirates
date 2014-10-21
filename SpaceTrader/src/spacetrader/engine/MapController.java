@@ -77,7 +77,7 @@ public class MapController implements Initializable {
                                 neededLabel.setText("Rum needed: " +
                                         range.getDists(cont));
                                 techLabel.setText("Tech level: " +
-                                        cont.getTechLevel());
+                                        cont.getTechLevelString());
                                 politicalLabel.setText("Political system: " +
                                         cont.getPoliticalSystem());
                                 continentLabel.setVisible(true);

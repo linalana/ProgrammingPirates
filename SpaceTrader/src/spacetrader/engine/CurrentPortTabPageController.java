@@ -54,7 +54,7 @@ public class CurrentPortTabPageController implements Initializable {
         portName.setText(currentPort.getName());
         location.setText("Location: " + "(" + currentPort.getContinent().getX()
                          + ", " + currentPort.getContinent().getY() + ")");
-        techLevel.setText("Tech Level: " + currentPort.getContinent().getTechLevel());
+        techLevel.setText("Tech Level: " + currentPort.getContinent().getTechLevelString());
         politicalSystem.setText("Political System: " + currentPort.getContinent().getPoliticalSystem());
         if (currentPort.getEvent() == null) {
             randomEvent.setText("Normal Conditions");
