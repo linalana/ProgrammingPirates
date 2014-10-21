@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.GUI.FightController">
+    <stylesheets>
+        <URL value="@DarkTheme.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="269.0" layoutY="67.0" text="vs." />
+      <Label layoutX="17.0" layoutY="168.0" styleClass="label-plain" text="Shields" />
+      <Label layoutX="500.0" layoutY="169.0" styleClass="label-plain" text="Shields" />
+      <Label layoutX="53.0" layoutY="201.0" styleClass="label-plain" text="Hull" />
+      <Label layoutX="500.0" layoutY="201.0" styleClass="label-plain" text="Hull" />
+      <ProgressBar fx:id="playerShieldBar" layoutX="109.0" layoutY="169.0" prefHeight="20.0" prefWidth="172.0" progress="1.0" />
+      <ProgressBar fx:id="playerHullBar" layoutX="109.0" layoutY="201.0" prefHeight="20.0" prefWidth="172.0" progress="1.0" />
+      <ProgressBar fx:id="otherHullBar" layoutX="304.0" layoutY="201.0" prefHeight="20.0" prefWidth="190.0" progress="1.0" />
+      <ProgressBar fx:id="otherShieldBar" layoutX="303.0" layoutY="169.0" prefHeight="20.0" prefWidth="190.0" progress="1.0" />
+      <Label layoutX="123.0" layoutY="67.0" prefHeight="57.0" prefWidth="138.0" text="Player" />
+      <Label layoutX="339.0" layoutY="67.0" prefHeight="57.0" prefWidth="126.0" text="Pirate" />
+      <Button fx:id="attackBtn" layoutX="141.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleAttackButtonAction" text="Attack" />
+      <Button fx:id="fleeBtn" layoutX="254.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleFleeActionButton" text="Flee" />
+      <Button fx:id="surrenderBtn" layoutX="347.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleSurrenderActionButton" text="Surrender" />
+   </children>
+</AnchorPane>

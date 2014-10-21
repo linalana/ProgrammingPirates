@@ -60,7 +60,7 @@ public class EncounterController implements Initializable {
     private Label pWepStrengthLabel;
     @FXML
     private Label eWepStrengthLabel;
-    
+
     //other button is either trade for traders or accept inspection for police
     //disapears for pirate
     @FXML
@@ -75,7 +75,7 @@ public class EncounterController implements Initializable {
         thingLabel.setText(type);
         fillStats();
         switch (type) {
-            case "Pirate":       
+            case "Pirate":
                 otherButton.setText("Surrender");
                 pTradePtsLabel.setVisible(false);
                 eTradePtsLabel.setVisible(false);
@@ -89,17 +89,17 @@ public class EncounterController implements Initializable {
                 break;
         }
     }
-    
+
     @FXML
     private void handleFightButtonAction(ActionEvent event) {
-        Turn.getEncounter().engageFight();
+        ApplicationController.changeScene("GUI/Fight.fxml");
     }
-    
+
     @FXML
     private void handleFleeButtonAction(ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
-    
+
     @FXML
     private void handleOtherButtonAction(ActionEvent event) {
         String type = Turn.getEncounter().getType();
@@ -108,11 +108,11 @@ public class EncounterController implements Initializable {
         } else if (type.equals("PoliceForce")) {
             Turn.getEncounter().Inspection();
         }
-        
+
     }
-    
+
     private void fillStats() {
-        int[] info = Turn.getEncounter().getInfo();        
+        int[] info = Turn.getEncounter().getInfo();
         System.out.println("This is the array:" + Arrays.toString(info));
         pTradePtsLabel.setText(Integer.toString(info[0]));
         pFightPtsLabel.setText(Integer.toString(info[1]));
@@ -127,5 +127,5 @@ public class EncounterController implements Initializable {
         eShieldStrengthLabel.setText(Integer.toString(info[10]));
         eWepStrengthLabel.setText(Integer.toString(info[11]));
     }
-    
+
 }
