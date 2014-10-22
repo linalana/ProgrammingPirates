@@ -40,6 +40,8 @@ public class TradePageController implements Initializable {
     private CargoHold cargoHold;
     private ObservableList<String> traderHasCargo;
     private ObservableList<String> traderWantsCargo;
+    private HashMap<TradeGood, Integer> traderSubtract;
+    private HashMap<TradeGood, Integer> playerSubtract;
 
     /**
      * Initializes the controller class.
@@ -48,6 +50,8 @@ public class TradePageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Turn.getEncounter().getE().fillCargo();
         traderHold = Turn.getEncounter().getE().getShip().getCargoHold();
+        playerSubtract = new HashMap<TradeGood, Integer>();
+        traderSubtract = new HashMap<TradeGood, Integer>();
         
         updateLists();
     }    
@@ -104,7 +108,27 @@ public class TradePageController implements Initializable {
     }
     @FXML
     public void tradeButtonPressed(ActionEvent event) {
-        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
+        CargoHold playerHold = Game.getPlayer().getShip().getCargoHold();
+        CargoHold traderHold = Turn.getEncounter().getE().getShip().getCargoHold();
+        for(TradeGood g: playerSubtract.keySet()){
+            if(playerHold.subtractCargo(g, playerSubtract.get(g))){
+                //do nothing
+            }
+        }
+        for(TradeGood g: traderSubtract.keySet()){
+            if(playerHold.addCargo(g, traderSubtract.get(g))){
+                //do nothing
+            }
+            else{
+                traderWantsCargo.clear();
+                traderWantsCargo.add("Yeh don't have enough space for these goods matey!");
+            }
+            
+            if(traderHold.subtractCargo(g, traderSubtract.get(g))){
+                //do nothing
+            }
+        }
+        updateLists();
     }
     @FXML
     public void backButtonPressed(ActionEvent event) {
@@ -130,9 +154,12 @@ public class TradePageController implements Initializable {
     }
     
     private void calculateTrade(TradeGood good, int quant){
+        playerSubtract.clear();
+        traderSubtract.clear();
+        traderSubtract.put(good, quant);
         int price = quant*good.getMTL();
         int priceMatch = 0;
-        HashMap<TradeGood, Integer> goodMatch = new HashMap<TradeGood, Integer>();
+        //HashMap<TradeGood, Integer> goodMatch = new HashMap<TradeGood, Integer>();
         int arrayNum = 0;
         ArrayList<TradeGood> playerGoods = new ArrayList(cargoGoods.keySet());
         Collections.shuffle(playerGoods); //randomize the 
@@ -143,33 +170,23 @@ public class TradePageController implements Initializable {
             if(g.getMTL() <= (price+(price/2)) && !g.equals(good)){
                 for(int i=0; i<cargoGoods.get(g); i++){
                     priceMatch += g.getMTL();
-                    goodMatch.put(g, i+1);
+                    playerSubtract.put(g, i+1);
                     if(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2))){
                         break;
                     }
                 }
             }
         }
-        if(priceMatch < (price-(price/2))){
-            for(TradeGood g: playerGoods){
-                if(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2))){
-                    break;
-                }
-                if(g.getMTL() < price && !g.equals(good)){
-                    for(int i=0; i<cargoGoods.get(g); i++){
-                        priceMatch += g.getMTL();
-                        goodMatch.put(g, i+1);
-                        if(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2))){
-                            break;
-                        }
-                    }
-                }
-            }
-        }
         traderWantsCargo.clear();
-        for(TradeGood g: goodMatch.keySet()){
-            traderWantsCargo.add(goodMatch.get(g) + " " + g.name());
+        if(!(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2)))){
+            traderWantsCargo.add("Yeh don't have anything I want for that one matey!");
         }
-        traderWantsCargo.add("for " + quant + " " + good.name());
+        else{
+            for(TradeGood g: playerSubtract.keySet()){
+                traderWantsCargo.add(playerSubtract.get(g) + " " + g.name());
+            }
+            traderWantsCargo.add("for " + quant + " " + good.name());
+            
+        }
     }
 }
