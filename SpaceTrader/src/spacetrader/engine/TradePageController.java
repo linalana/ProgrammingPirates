@@ -71,14 +71,6 @@ public class TradePageController implements Initializable {
                     q);
             }
         }
-        /*
-        for (TradeGood tg: cargoGoods.keySet()) {
-            int q = cargoGoods.get(tg);
-            if (q > 0) {
-                cargo.add(tg.toString() + " Quantity: " + q);
-            }
-        }
-        */
     }
     
     @FXML
@@ -154,31 +146,31 @@ public class TradePageController implements Initializable {
     }
     
     private void calculateTrade(TradeGood good, int quant){
+        int points = Game.getPlayer().getTrader();
         playerSubtract.clear();
         traderSubtract.clear();
         traderSubtract.put(good, quant);
         int price = quant*good.getMTL();
         int priceMatch = 0;
-        //HashMap<TradeGood, Integer> goodMatch = new HashMap<TradeGood, Integer>();
         int arrayNum = 0;
         ArrayList<TradeGood> playerGoods = new ArrayList(cargoGoods.keySet());
         Collections.shuffle(playerGoods); //randomize the 
         for(TradeGood g: playerGoods){
-            if(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2))){
+            if(priceMatch >= (price-(price/2)-(price/100 * points)) && priceMatch <= (price+(price/2))){
                 break;
             }
             if(g.getMTL() <= (price+(price/2)) && !g.equals(good)){
                 for(int i=0; i<cargoGoods.get(g); i++){
                     priceMatch += g.getMTL();
                     playerSubtract.put(g, i+1);
-                    if(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2))){
+                    if(priceMatch >= (price-(price/2)-(price/100 * points)) && priceMatch <= (price+(price/2))){
                         break;
                     }
                 }
             }
         }
         traderWantsCargo.clear();
-        if(!(priceMatch >= (price-(price/2)) && priceMatch <= (price+(price/2)))){
+        if(!(priceMatch >= (price-(price/2)-(price/100 * points)) && priceMatch <= (price+(price/2)))){
             traderWantsCargo.add("Yeh don't have anything I want for that one matey!");
         }
         else{
