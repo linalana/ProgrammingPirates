@@ -18,6 +18,7 @@ public class ShipYard implements Serializable {
     
     /**
      * The constructor for ShipYard. 
+     * @param techLevel
      */
     public ShipYard(int techLevel) {
         for (int i = 0; i < (techLevel + 3); i++) {
@@ -25,6 +26,12 @@ public class ShipYard implements Serializable {
         }
     }
     
+    /**
+     *
+     * Getter for ships in shipyard
+     * 
+     * @return Ship[] of ships
+     */
     public Ship[] getShips() {
         return ships;
     }
