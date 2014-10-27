@@ -56,7 +56,7 @@ public class EncounterController implements Initializable {
     private Label eWepStrengthLabel;
 
     //other button is either trade for traders or accept inspection for police
-    //disapears for pirate
+    //surrender for pirate
     @FXML
     private Button otherButton;
     /**
@@ -70,6 +70,7 @@ public class EncounterController implements Initializable {
         fillStats();
         switch (type) {
             case "Pirate":
+                otherButton.relocate(220, 349);
                 otherButton.setText("Surrender");
                 pTradePtsLabel.setVisible(false);
                 eTradePtsLabel.setVisible(false);

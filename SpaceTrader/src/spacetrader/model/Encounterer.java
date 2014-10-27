@@ -22,6 +22,9 @@ public abstract class Encounterer implements Serializable {
         Random rand = new Random();
         int deviance = rand.nextInt(2 * 10);
         reputation = Game.getPlayer().getReputation() + (deviance - 10);
+        if (reputation < 0) {
+            reputation = 0;
+        }
         ship = new Ship();
         fighterPoints = rand.nextInt(11);
     }

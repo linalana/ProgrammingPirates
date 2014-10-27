@@ -62,9 +62,10 @@ public class FightController implements Initializable {
         updateProgressBars();
 
     }
-
+    @FXML
     private void handleAttackButtonAction(ActionEvent event) {
         int attack = Turn.getEncounter().PlayerAttack();
+        System.out.println("attack is: " + attack);
         if (attack > 0) {
             try {
             otherImage.setVisible(true);
@@ -73,9 +74,12 @@ public class FightController implements Initializable {
             TimeUnit.SECONDS.sleep(2);
             otherImage.setVisible(false);
             damageToOther.setVisible(false);
+            System.out.println("in attack loop!!!!!");
             } catch (InterruptedException ex) {
                 Logger.getLogger(Encounter.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+        } else {
 
         }
         if (Turn.getEncounter().EncountererAttack()) {
@@ -85,11 +89,11 @@ public class FightController implements Initializable {
         }
         updateProgressBars();
     }
-
+    @FXML
     private void handleFleeButtonAction(ActionEvent event) {
 
     }
-
+    @FXML
     private void handleSurrenderButtonAction(ActionEvent event) {
 
     }

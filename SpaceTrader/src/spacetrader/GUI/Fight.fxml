@@ -11,7 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.GUI.FightController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.FightController">
     <stylesheets>
         <URL value="@DarkTheme.css" />
     </stylesheets>
@@ -28,8 +28,8 @@
       <Label layoutX="123.0" layoutY="67.0" prefHeight="57.0" prefWidth="138.0" text="Player" />
       <Label fx:id="opponent" layoutX="339.0" layoutY="67.0" prefHeight="57.0" prefWidth="126.0" text="Pirate" />
       <Button fx:id="attackBtn" layoutX="141.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleAttackButtonAction" text="Attack" />
-      <Button fx:id="fleeBtn" layoutX="254.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleFleeActionButton" text="Flee" />
-      <Button fx:id="surrenderBtn" layoutX="347.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleSurrenderActionButton" text="Surrender" />
+      <Button fx:id="fleeBtn" layoutX="254.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleFleeButtonAction" text="Flee" />
+      <Button fx:id="surrenderBtn" layoutX="347.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleSurrenderButtonAction" text="Surrender" />
       <ImageView fx:id="playerImage" fitHeight="120.0" fitWidth="165.0" layoutX="96.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../model/Explode.png" />
