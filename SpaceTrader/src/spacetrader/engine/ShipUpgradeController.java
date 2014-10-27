@@ -58,6 +58,10 @@ public class ShipUpgradeController implements Initializable {
     private void handleRumButtonAction(ActionEvent event) {
         player.getShip().setFuel(barrelsToBuy);
         player.setMoney(player.getMoney()-costToRefuel);
+        updateLabels();
+    }
+    
+    public void updateLabels() {
         rumLabel.setText("Rum on ship: " + player.getShip().getFuel());
         moneyLabel.setText("Money: " + player.getMoney());
     }

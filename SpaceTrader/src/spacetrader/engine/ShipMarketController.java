@@ -105,6 +105,7 @@ public class ShipMarketController implements Initializable {
             int newMoney = Game.getPlayer().getMoney() - s[index].getPrice() + v;
             Game.getPlayer().setMoney(newMoney);
             money.setText("Money: " + Game.getPlayer().getMoney());
+            ApplicationController.changeScene("GUI/ShipYardScreen.fxml");
         }
     }
     
