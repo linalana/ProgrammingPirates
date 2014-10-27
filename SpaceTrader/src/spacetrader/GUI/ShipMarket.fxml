@@ -21,5 +21,12 @@
       <Label fx:id="money" layoutX="459.0" layoutY="365.0" styleClass="label-small" text="Money: 100000" />
       <Label fx:id="price" layoutX="250.0" layoutY="55.0" styleClass="label-small" text="Price: " />
       <Label fx:id="value" layoutX="250.0" layoutY="230.0" styleClass="label-small" text="Value:" />
+      <Label fx:id="sCargo" layoutX="250.0" layoutY="78.0" styleClass="label-small" text="Cargo Bays:" />
+      <Label fx:id="sFuel" layoutX="250.0" layoutY="102.0" styleClass="label-small" text="Max Fuel:" />
+      <Label fx:id="sHull" layoutX="250.0" layoutY="125.0" styleClass="label-small" text="Hull Strength: " />
+      <Label fx:id="cCargo" layoutX="250.0" layoutY="252.0" styleClass="label-small" text="Cargo Bays:" />
+      <Label fx:id="cFuel" layoutX="250.0" layoutY="275.0" styleClass="label-small" text="Max Fuel:" />
+      <Label fx:id="cHull" layoutX="249.0" layoutY="298.0" styleClass="label-small" text="Hull Strength:" />
+      <Label fx:id="mNeeded" layoutX="397.0" layoutY="345.0" styleClass="label-small" text="Money Needed:" />
    </children>
 </AnchorPane>

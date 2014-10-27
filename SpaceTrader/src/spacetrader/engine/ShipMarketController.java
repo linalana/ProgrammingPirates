@@ -36,6 +36,20 @@ public class ShipMarketController implements Initializable {
     @FXML
     private Label value;
     @FXML
+    private Label sCargo;
+    @FXML
+    private Label sFuel;
+    @FXML
+    private Label sHull;
+    @FXML
+    private Label cCargo;
+    @FXML
+    private Label cFuel;
+    @FXML
+    private Label cHull;
+    @FXML
+    private Label mNeeded;
+    @FXML
     private ListView shipList;
     private ObservableList<String> ships;
     private ShipYard shipyard = Game.getCurrentPort().getShipyard();
@@ -48,6 +62,9 @@ public class ShipMarketController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
         money.setText("Money: " + Game.getPlayer().getMoney());
+        cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoBays());
+        cFuel.setText("Max Fuel: " + Game.getPlayer().getShip().getMaxRange());
+        cHull.setText("Hull Strength: " + Game.getPlayer().getShip().getHullStrength());
         ships = shipList.getItems();
         for (int i = 0; i < (Game.getCurrentPort().getTechLevel() + 3); i++) {
             ships.add(s[i].getType());
@@ -58,6 +75,10 @@ public class ShipMarketController implements Initializable {
             int index = shipList.getSelectionModel().getSelectedIndex();
             selectedLabel.setText("Selected: " + s[index].getType());
             price.setText("Price: " + s[index].getPrice());
+            sCargo.setText("Cargo Bays: " + s[index].getCargoBays());
+            sFuel.setText("Max Fuel: " + s[index].getMaxRange());
+            sHull.setText("Hull Strength: " + s[index].getHullStrength());
+            mNeeded.setText("Money Needed: " + (s[index].getPrice() - Game.getPlayer().getShip().calculateValue()));
         });
     }    
  
@@ -73,6 +94,10 @@ public class ShipMarketController implements Initializable {
         if (Game.getPlayer().getMoney() >= (s[index].getPrice() - Game.getPlayer().getShip().calculateValue())) {
             int v = Game.getPlayer().getShip().calculateValue();
             Game.getPlayer().setShip(index);
+            cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoBays());
+            cFuel.setText("Max Fuel: " + Game.getPlayer().getShip().getMaxRange());
+            cHull.setText("Hull Strength: " + Game.getPlayer().getShip().getHullStrength());
+            mNeeded.setText("Money Needed: " + (s[index].getPrice() - Game.getPlayer().getShip().calculateValue()));
             currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());
             value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
             int newMoney = Game.getPlayer().getMoney() - s[index].getPrice() + v;
