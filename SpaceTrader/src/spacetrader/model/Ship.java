@@ -7,6 +7,7 @@
 package spacetrader.model;
 import java.io.Serializable;
 import java.util.Random;
+import spacetrader.model.Player;
 
 /**
  * A ship class that creates ships
@@ -140,110 +141,6 @@ public class Ship implements Serializable {
         this.shieldHold = new ShieldHold(getShieldSlots());
         this.gadgetHold = new GadgetHold(getGadgetSlots());
     }
-    /**
-     * Changes the ship type, for when you want to upgrade or downgrade
-     * @param type the new ship type
-     */
-    public void updateShip(int typeInd){
-        this.type = names[typeInd];
-        if(type.equals(names[0])){
-            cargoBays = 5;
-            hullStrength = 1;
-            setWeaponSlots(0);
-            setShieldSlots(0);
-            setGadgetSlots(0);
-            quarters = 0;
-            maxRange = 20;
-        }
-        else if(type.equals(names[1])){
-            cargoBays = 15;
-            hullStrength = 1;
-            setWeaponSlots(1);
-            setShieldSlots(0);
-            setGadgetSlots(1);
-            quarters = 0;
-            maxRange = 14;
-        }
-        else if(type.equals(names[2])){
-            cargoBays = 20;
-            hullStrength = 2;
-            setWeaponSlots(1);
-            setShieldSlots(1);
-            setGadgetSlots(1);
-            quarters = (0);
-            maxRange = (17);
-        }
-        else if(type.equals(names[3])){
-            cargoBays = 15;
-            hullStrength = 3;
-            setWeaponSlots(2);
-            setShieldSlots(1);
-            setGadgetSlots(1);
-            quarters = (0);
-            maxRange = (13);
-        }
-        else if(type.equals(names[4])){
-            cargoBays = 20;
-            hullStrength = 2;
-            setWeaponSlots(1);
-            setShieldSlots(2);
-            setGadgetSlots(2);
-            quarters = (1);
-            maxRange = (15);
-        }
-        else if(type.equals(names[5])){
-            cargoBays = 50;
-            hullStrength = 2;
-            setWeaponSlots(0);
-            setShieldSlots(1);
-            setGadgetSlots(1);
-            quarters = (3);
-            maxRange = (14);
-        }
-        else if(type.equals(names[6])){
-            cargoBays = 20;
-            hullStrength = 3;
-            setWeaponSlots(3);
-            setShieldSlots(2);
-            setGadgetSlots(1);
-            quarters = (2);
-            maxRange = (16);
-        }
-        else if(type.equals(names[7])){
-            cargoBays = 30;
-            hullStrength = 4;
-            setWeaponSlots(2);
-            setShieldSlots(2);
-            setGadgetSlots(3);
-            quarters = (3);
-            maxRange = (15);
-        }
-        else if(type.equals(names[8])){
-            cargoBays = 60;
-            hullStrength = 5;
-            setWeaponSlots(1);
-            setShieldSlots(3);
-            setGadgetSlots(2);
-            quarters = (3);
-            maxRange = (13);
-        }
-        else{
-            cargoBays = 35;
-            hullStrength = 5;
-            setWeaponSlots(3);
-            setShieldSlots(2);
-            setGadgetSlots(2);
-            quarters = (3);
-            maxRange = (14);
-        }
-
-        this.originalHullStrength = hullStrength;
-        cargoHold = new CargoHold(getCargoBays());
-        weaponHold = new WeaponHold(getWeaponSlots());
-        shieldHold = new ShieldHold(getShieldSlots());
-        gadgetHold = new GadgetHold(getGadgetSlots());
-    }
-
     /**
      * @return the cargo hold
      */

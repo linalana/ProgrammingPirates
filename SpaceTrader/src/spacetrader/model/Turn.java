@@ -14,7 +14,7 @@ import java.util.Random;
  * @author James
  */
 public class Turn implements Serializable {
-    
+
     private Continent newContinent;
     private Port newPort;
     private int distance;
@@ -25,7 +25,7 @@ public class Turn implements Serializable {
     private int traderChance;
     private int pirateChance;
     private static Encounter encounter;
-    
+
     public Turn(Port newPort) {
         this.newPort = newPort;
         newContinent = newPort.getContinent();
@@ -34,33 +34,32 @@ public class Turn implements Serializable {
         setChanceEncounters();
         randomPortEvents();
     }
-    
+
     public String travel(int fuelUsed) {
         String result = "";
         Random rand = new Random();
         int randInt = rand.nextInt(100);
-        /*
-        if (randInt < policeChance) {
-            encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
-            return "PoliceForce";
-        } else if (randInt > policeChance
-                   && randInt < (policeChance + traderChance)) {
-            encounter = new Encounter(Game.getPlayer(), new Trader());
-            return "Trader";
-        } else if (randInt > (policeChance + traderChance)
-                   && randInt < (policeChance + traderChance + pirateChance)) {
-            encounter = new Encounter(Game.getPlayer(), new Pirate());
-            return "Pirate";
-        }
-        return null;
-        */
-        encounter = new Encounter(Game.getPlayer(), new Trader());
-        return "Trader";
+        
+        encounter = new Encounter(Game.getPlayer(), new Pirate());
+        return "Pirate";
+//        if (randInt < policeChance) {
+//            encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
+//            return "PoliceForce";
+//        } else if (randInt > policeChance
+//                   && randInt < (policeChance + traderChance)) {
+//            encounter = new Encounter(Game.getPlayer(), new Trader());
+//            return "Trader";
+//        } else if (randInt > (policeChance + traderChance)
+//                   && randInt < (policeChance + traderChance + pirateChance)) {
+//            encounter = new Encounter(Game.getPlayer(), new Pirate());
+//            return "Pirate";
+//        }
+//        return null;
     }
-    
+
     private void setChanceEncounters() {
         switch (politicalSystem) {
-            case "anarchy": 
+            case "anarchy":
                 policeChance = 0;
                 traderChance = 5;
                 pirateChance = 50;
@@ -161,7 +160,7 @@ public class Turn implements Serializable {
             newPort.setEvent(rand.nextInt(7));
         }
     }
-    
-    
-    
+
+
+
 }

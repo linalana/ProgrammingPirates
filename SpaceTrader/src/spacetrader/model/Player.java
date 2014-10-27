@@ -190,7 +190,7 @@ public class Player implements Serializable {
      * @param type the ship to set
      */
     public void setShip(int type) {
-        ship.updateShip(type);
+        ship = new Ship(type);
     }
 
     /**
@@ -290,4 +290,3 @@ public class Player implements Serializable {
         policeRecord.incrementInspectionHistory();
     }
 }
-
