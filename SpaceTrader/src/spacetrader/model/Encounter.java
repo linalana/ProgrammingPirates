@@ -10,14 +10,17 @@ import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import spacetrader.engine.ApplicationController;
 
 /**
  *
  * @author alanalin
  */
 public class Encounter implements Serializable {
-    Player p;
+    private Player p;
     private Encounterer e;
+    private int[] inspectionRecord;
+
     public Encounter(Player p, Encounterer e) {
         this.p = p;
         this.e = e;
@@ -93,30 +96,46 @@ public class Encounter implements Serializable {
      * Performs inspection by police on player
      * @return true if passes
      */
-    public boolean Inspection() {
+    public void Inspection() {
+        inspectionRecord = new int[2];
         boolean illegalGoods = p.checkCargo();
         if (illegalGoods){
-            p.failInspection();
+            inspectionRecord[0] = 1; //true
+            inspectionRecord[1] = p.failInspection();
+        } else {
+            p.passInspection();
         }
-        return false;
+        ApplicationController.changeScene("Inspection.fxml");
     }
 
     /**
-     * @return the e
+     * @return the encounterer
      */
     public Encounterer getE() {
         return e;
     }
-
+    /**
+     * collects the health info
+     * @return the healths of hull and shields of the player and encounterer
+     */
     public double[][] calculateHealth() {
         double[][] healths = new double[2][2];
         healths[0] = p.checkShipHealth();
         healths[1] = e.checkShipHealth();
         return healths;
     }
-
+    /**
+     * Determines outcome of encounterer's flee
+     */
     private void EncountererFlee() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    /**
+     *
+     * @return the inspection record, null if not an inspection
+     */
+    public int[] getInspection() {
+        return inspectionRecord;
     }
 
 }

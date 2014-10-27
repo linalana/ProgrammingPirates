@@ -276,9 +276,18 @@ public class Player implements Serializable {
 
         return fine;
     }
-
+    /**
+     * checks the health of the hull and shields
+     * @return a double array of numbers 0 to 1 indicating percent health
+     */
     public double[] checkShipHealth() {
         return ship.getHealthPercentages();
+    }
+    /**
+     * increments the inspection history due to a passed inspection
+     */
+    void passInspection() {
+        policeRecord.incrementInspectionHistory();
     }
 }
 

@@ -106,14 +106,8 @@ public class EncounterController implements Initializable {
         if (type.equals("Trader")) {
             ApplicationController.changeScene("GUI/TradePage.fxml");
         } else if (type.equals("PoliceForce")) {
-            boolean passed = Turn.getEncounter().Inspection();
-            if (passed) {
-                //sorry go on your way
-            } else {
-                //I had to confiscate your illegal goods. This is going on your record!
-            }
+            Turn.getEncounter().Inspection();
         }
-
     }
 
     private void fillStats() {
