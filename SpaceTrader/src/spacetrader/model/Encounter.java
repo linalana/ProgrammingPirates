@@ -7,9 +7,6 @@
 package spacetrader.model;
 
 import java.io.Serializable;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import spacetrader.engine.ApplicationController;
 
 /**
@@ -17,8 +14,8 @@ import spacetrader.engine.ApplicationController;
  * @author alanalin
  */
 public class Encounter implements Serializable {
-    private Player p;
-    private Encounterer e;
+    private final Player p;
+    private final Encounterer e;
     private int[] inspectionRecord;
 
     public Encounter(Player p, Encounterer e) {
@@ -28,37 +25,47 @@ public class Encounter implements Serializable {
 
     /**
      * Plays out the choice of the player attacking it's encounterer
+     * @return the damage the player does
      */
     public int PlayerAttack() {
-        int totalDamage = p.calcDamage();
-        //algorithm to decide where to do that damage on the encounterer's ship
-        boolean result = getE().distributeDamage(totalDamage);
+        return p.calcDamage();
+    }
+    /**
+     * Damages the encounterer
+     * @param damage the damage to do
+     * @return true if they live
+     */
+    public boolean DamageEncounterer(int damage) {
+        boolean result = getE().distributeDamage(damage);
         if (result == false) {
             //distributeBooty();
             //you won
         }
-        return totalDamage;
+        return result;
     }
-
     /**
-     * Plays out the choice of the encoutnerer attacking player
+     * Plays out the choice of the encouterer attacking player
      * @return whether or not encounter attacks
      */
-    public boolean EncountererAttack() {
-        if (e.willFight(p.getReputation())) {
-            int totalDamage = getE().calcDamage();
-            //algorithm to decide where to do that damage on the players's ship
-            int result = p.distributeDamage(totalDamage);
-            if (result == 0) { //D.E.D dead
-                //GAME OVER
-            } else if (result == 1) { //life boat escape
-                //transfer to nearest port with no ship but a lifeboat
-            } else if (result == 2) {
-                //continue
-            }
-            return true;
-        }
-        return false;
+    public boolean eWillAttack() {
+        return e.willFight(p.getReputation());
+    }
+    /**
+     * calculates the damage done by the encounterer
+     * @return
+     */
+    public int EncountererAttack() {
+        return getE().calcDamage();
+
+    }
+    /**
+     * damages the player the given amount
+     * @param damage amount of damage
+     * @return 0 if player dies, 1 if escaped on lifeboat, and 2 if still living
+     */
+    public int DamagePlayer(int damage) {
+        //algorithm to decide where to do that damage on the players's ship
+        return p.distributeDamage(damage);
     }
 
     /**

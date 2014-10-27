@@ -53,6 +53,8 @@ public class FightController implements Initializable {
     @FXML
     private Label damageToOther;
 
+    private Encounter encounter;
+
     /**
      * Initializes the controller class.
      */
@@ -60,13 +62,14 @@ public class FightController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         opponent.setText(Turn.getEncounter().getType());
         updateProgressBars();
+        encounter = Turn.getEncounter();
 
     }
     @FXML
     private void handleAttackButtonAction(ActionEvent event) {
-        int attack = Turn.getEncounter().PlayerAttack();
-        System.out.println("attack is: " + attack);
+        int attack = encounter.PlayerAttack();
         if (attack > 0) {
+            //display attack image and damage for 2 seconds
             try {
             otherImage.setVisible(true);
             damageToOther.setText(Integer.toString(attack));
@@ -74,34 +77,63 @@ public class FightController implements Initializable {
             TimeUnit.SECONDS.sleep(2);
             otherImage.setVisible(false);
             damageToOther.setVisible(false);
-            System.out.println("in attack loop!!!!!");
             } catch (InterruptedException ex) {
                 Logger.getLogger(Encounter.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         } else {
-
+            //you missed
         }
-        if (Turn.getEncounter().EncountererAttack()) {
-
-        } else {
-
-        }
+        boolean otherLiving = encounter.DamageEncounterer(attack);
         updateProgressBars();
+        if (otherLiving) {
+            if (encounter.eWillAttack()) {
+                //display encounterer's damage
+                int damage = encounter.EncountererAttack();
+                    if (damage > 0) {
+                        //display attack image and damage for 2 seconds
+                        try {
+                        playerImage.setVisible(true);
+                        damageToPlayer.setText(Integer.toString(damage));
+                        damageToPlayer.setVisible(true);
+                        TimeUnit.SECONDS.sleep(2);
+                        playerImage.setVisible(false);
+                        damageToPlayer.setVisible(false);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Encounter.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        //they missed
+                    }
+                int result = encounter.DamagePlayer(damage);
+                if (result == 0) { //D.E.D dead
+                    //GAME OVER
+                } else if (result == 1) { //life boat escape
+                    //transfer to nearest port with no ship but a lifeboat
+                } else if (result == 2) {
+                    //continue
+                }
+                updateProgressBars();
+            } else {
+                //they flee?
+            }
+        } else {
+            //you won! distribute booty
+        }
+
     }
     @FXML
     private void handleFleeButtonAction(ActionEvent event) {
-
+        //flee in encounter
     }
     @FXML
     private void handleSurrenderButtonAction(ActionEvent event) {
-
+        //surrender in encounter
     }
     /**
      * Updates the percent health of the respective items in the UI
      */
     private void updateProgressBars() {
-        double[][] healths = Turn.getEncounter().calculateHealth();
+        double[][] healths = encounter.calculateHealth();
         playerShieldBar.setProgress(healths[0][1]);
         playerHullBar.setProgress(healths[0][0]);
         otherShieldBar.setProgress(healths[1][1]);
