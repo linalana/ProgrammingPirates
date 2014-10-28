@@ -16,11 +16,29 @@
               <fx:include fx:id="ShipMarket" source="ShipMarket.fxml" />
             </content>
           </Tab>
-          <Tab text="Upgrades">
+          <Tab text="Refuel">
             <content>
               <fx:include fx:id="ShipUpgrade" source="ShipUpgrade.fxml" />
             </content>
           </Tab>
+            <Tab text="Gadgets">
+              <content>
+                 <fx:include fx:id="Gadgets" source="Gadgets.fxml" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Shields">
+              <content>
+                  <fx:include fx:id="Shields" source="Shields.fxml" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Weapons">
+              <content>
+                  <fx:include fx:id="Weapons" source="Weapons.fxml" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>
