@@ -49,6 +49,7 @@ public class CargoHold implements Serializable {
      * Add cargo to your ship
      * @param g the cargo type to be added
      * @param q the amount of cargo to be added
+     * @return true if completed
      */
     public boolean addCargo(TradeGood g, int q) {
         int oldVal = goods.get(g);
@@ -64,6 +65,7 @@ public class CargoHold implements Serializable {
      * Subtract cargo from your ship
      * @param g the cargo type to be subtracted
      * @param q the amount of cargo to be subtracted
+     * @return true if completed
      */
     public boolean subtractCargo(TradeGood g, int q) {
         int oldVal = goods.get(g);
@@ -81,5 +83,18 @@ public class CargoHold implements Serializable {
      */
     public void setAmount(int newAmount){
         amount = newAmount;
+    }
+    /**
+     * Checks for illegal goods
+     * @return true if found
+     */
+    public boolean findIllegal() {
+        return goods.get(TradeGood.NARCOTICS) != 0
+                || goods.get(TradeGood.FIREARMS) != 0;
+    }
+
+    public void removeIllegal() {
+        goods.put(TradeGood.NARCOTICS, 0);
+        goods.put(TradeGood.FIREARMS, 0);
     }
 }

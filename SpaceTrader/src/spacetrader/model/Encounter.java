@@ -96,6 +96,17 @@ public class Encounter implements Serializable {
        }
        return info;
     }
+    /**
+     * Performs inspection by police on player
+     * @return true if passes
+     */
+    public boolean Inspection() {
+        boolean illegalGoods = p.checkCargo();
+        if (illegalGoods){
+            p.failInspection();
+        }
+        return false;
+    }
     
     
 }
