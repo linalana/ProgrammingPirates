@@ -13,10 +13,26 @@ import java.io.Serializable;
  * @author Danny
  */
 public class ShipYard implements Serializable {
+    
+    private Ship[] ships = new Ship[10];
+    
     /**
      * The constructor for ShipYard. 
+     * @param techLevel
      */
-    public ShipYard() {
-        
+    public ShipYard(int techLevel) {
+        for (int i = 0; i < (techLevel + 3); i++) {
+            ships[i] = new Ship(i);
+        }
+    }
+    
+    /**
+     *
+     * Getter for ships in shipyard
+     * 
+     * @return Ship[] of ships
+     */
+    public Ship[] getShips() {
+        return ships;
     }
 }

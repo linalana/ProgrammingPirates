@@ -55,10 +55,9 @@ public class WelcomeScreenController implements Initializable {
     @FXML
     private void handleLoadButtonAction(ActionEvent event) {
         final FileChooser fc = new FileChooser();
-        fc.setTitle("Select stored JSON file");
+        fc.setTitle("Select stored BIN file");
         File file = fc.showOpenDialog(new Stage());
         ModelFacade.getInstance().loadModelBinary(file);
-//        System.out.println(Game.getPlayer());
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();

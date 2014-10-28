@@ -23,9 +23,9 @@
             <Label fx:id="portName" alignment="CENTER" contentDisplay="CENTER" prefHeight="74.0" prefWidth="633.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button layoutX="238.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleMarketplaceButtonAction" prefWidth="125.0" text="Bazaar" />
-      <Button disable="true" layoutX="100.0" layoutY="335.0" mnemonicParsing="false" prefWidth="125.0" text="Shipyard" />
-      <Button disable="true" layoutX="375.0" layoutY="335.0" mnemonicParsing="false" prefWidth="125.0" text="Bank" />
+      <Button layoutX="237.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleMarketplaceButtonAction" prefWidth="125.0" text="Bazaar" />
+      <Button fx:id="shipyard" layoutX="106.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleShipYardButtonAction" prefWidth="125.0" text="Shipyard" />
+      <Button disable="true" layoutX="368.0" layoutY="335.0" mnemonicParsing="false" prefWidth="125.0" text="Bank" />
       <Label fx:id="location" layoutX="33.0" layoutY="103.0" styleClass="label-subtitle" text="Label" />
       <Label fx:id="politicalSystem" layoutX="33.0" layoutY="156.0" styleClass="label-subtitle" text="Label" />
       <Label fx:id="techLevel" layoutX="33.0" layoutY="213.0" styleClass="label-subtitle" text="Label" />

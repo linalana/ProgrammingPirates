@@ -159,6 +159,7 @@ public class Turn implements Serializable {
         if (rand.nextDouble() > 0.5) {
             newPort.setEvent(rand.nextInt(7));
         }
+        newPort.getBazaar().setGoodsForSale();
     }
     public static String getEventTitle() {
         return randomEvent.getTitle();

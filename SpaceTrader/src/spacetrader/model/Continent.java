@@ -106,6 +106,14 @@ public class Continent implements Serializable {
     }
     
     /**
+     * Only to be used to ensure home port has tech level 7
+     * @param techLevel 
+     */
+    protected void setTechLevel(int techLevel) {
+        this.techLevel = techLevel;
+    }
+    
+    /**
      * @return the resource
      */
     public String getResource() {
@@ -147,6 +155,14 @@ public class Continent implements Serializable {
     public int getTechLevel() {
         return techLevel;
     }
+    
+    /**
+     * 
+     * @return techLevel as a string
+     */
+    public String getTechLevelString() {
+        return techLevels[techLevel].toLowerCase();
+    }
 
     /**
      * @return the mainPort
@@ -160,5 +176,15 @@ public class Continent implements Serializable {
      */
     public String getPoliticalSystem() {
         return politicalSystem;
+    }
+
+    public boolean isClicked(double eventX, double eventY) {
+        double dx = eventX - x - 7.5;
+        double dy = eventY - y - 7.5;
+        return (Math.sqrt(dx*dx + dy*dy) < 7.5);
+    }
+
+    public String getName() {
+        return name;
     }
 }
