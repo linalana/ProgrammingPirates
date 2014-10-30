@@ -16,7 +16,7 @@ import java.util.Random;
 public class Player implements Serializable {
     private String name;
     private final Person p;
-    private int money = 10000;
+    private int money = 1000000;
     private PoliceRecord policeRecord;
 
     /**
