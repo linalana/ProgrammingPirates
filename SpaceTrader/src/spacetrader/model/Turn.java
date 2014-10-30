@@ -14,7 +14,7 @@ import java.util.Random;
  * @author James
  */
 public class Turn implements Serializable {
-    
+
     private Continent newContinent;
     private Port newPort;
     private int distance;
@@ -26,7 +26,7 @@ public class Turn implements Serializable {
     private int pirateChance;
     private static Encounter encounter;
     private static RandomEvent randomEvent;
-    
+
     public Turn(Port newPort) {
         this.newPort = newPort;
         newContinent = newPort.getContinent();
@@ -34,8 +34,8 @@ public class Turn implements Serializable {
         techlevel = newPort.getTechLevel();
         setChanceEncounters();
         randomPortEvents();
-        
     }
+
     
     public String travel(int fuelUsed) {
         String result = "";
