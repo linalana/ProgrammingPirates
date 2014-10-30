@@ -50,6 +50,22 @@ public class ShipMarketController implements Initializable {
     @FXML
     private Label mNeeded;
     @FXML
+    private Label sGadget;
+    @FXML
+    private Label sShield;
+    @FXML
+    private Label sWeapon;
+    @FXML
+    private Label sQuarter;
+    @FXML
+    private Label cGadget;
+    @FXML
+    private Label cShield;
+    @FXML
+    private Label cWeapon;
+    @FXML
+    private Label cQuarter;
+    @FXML
     private ListView shipList;
     private ObservableList<String> ships;
     private ShipYard shipyard = Game.getCurrentPort().getShipyard();
@@ -62,11 +78,7 @@ public class ShipMarketController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
-        money.setText("Money: " + Game.getPlayer().getMoney());
-        cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoBays());
-        cFuel.setText("Max Fuel: " + Game.getPlayer().getShip().getMaxRange());
-        cHull.setText("Hull Strength: " + Game.getPlayer().getShip().getHullStrength());
+        updateCurrentLabels();
         ships = shipList.getItems();
         for (int i = 0; i < (Game.getCurrentPort().getTechLevel() + 3); i++) {
             ships.add(s[i].getType());
@@ -80,10 +92,26 @@ public class ShipMarketController implements Initializable {
             sCargo.setText("Cargo Bays: " + s[index].getCargoBays());
             sFuel.setText("Max Fuel: " + s[index].getMaxRange());
             sHull.setText("Hull Strength: " + s[index].getHullStrength());
+            sGadget.setText("Gadget Slots: " + s[index].getGadgetSlots());
+            sWeapon.setText("Weapon Slots: " + s[index].getWeaponSlots());
+            sShield.setText("Shield Slots: " + s[index].getShieldSlots());
+            sQuarter.setText("Shield Slots: " + s[index].getQuarters());
             mNeeded.setText("Money Needed: " + (s[index].getPrice() - Game.getPlayer().getShip().calculateValue()));
         });
     }    
  
+   
+    private void updateCurrentLabels() {
+        value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
+        money.setText("Money: " + Game.getPlayer().getMoney());
+        cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoBays());
+        cFuel.setText("Max Fuel: " + Game.getPlayer().getShip().getMaxRange());
+        cHull.setText("Hull Strength: " + Game.getPlayer().getShip().getHullStrength());
+        cGadget.setText("Gadget Slots: " + Game.getPlayer().getShip().getGadgetSlots());
+        cWeapon.setText("Weapon Slots: " + Game.getPlayer().getShip().getWeaponSlots());
+        cShield.setText("Shield Slots: " + Game.getPlayer().getShip().getShieldSlots());
+        cQuarter.setText("Shield Slots: " + Game.getPlayer().getShip().getQuarters());
+    }
     
     @FXML
     private void outButtonPressed(ActionEvent event) {
@@ -105,7 +133,6 @@ public class ShipMarketController implements Initializable {
             int newMoney = Game.getPlayer().getMoney() - s[index].getPrice() + v;
             Game.getPlayer().setMoney(newMoney);
             money.setText("Money: " + Game.getPlayer().getMoney());
-            ApplicationController.changeScene("GUI/ShipYardScreen.fxml");
         }
     }
     

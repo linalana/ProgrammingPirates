@@ -17,6 +17,7 @@ public class ShipYard implements Serializable {
     
     private Ship[] ships = new Ship[10];
     private HashMap<Gadget, int[]> gadgetsForSale;
+    private HashMap<Weapon, int[]> weaponsForSale;
     private int techLevel;
     
     /**
@@ -30,6 +31,8 @@ public class ShipYard implements Serializable {
         }
         gadgetsForSale = new HashMap<>();
         setGadgetsForSale();
+        weaponsForSale = new HashMap<>();
+        setWeaponsForSale();
     }
     
     /**
@@ -48,6 +51,13 @@ public class ShipYard implements Serializable {
     public HashMap<Gadget, int[]> getGadgetsForSale() {
         return gadgetsForSale;
     }
+    
+    /**
+     * @return weapons for sale at this shipyard
+     */
+    public HashMap<Weapon, int[]> getWeaponsForSale() {
+        return weaponsForSale;
+    }
 
     /**
      * Calculate price and quantity
@@ -56,6 +66,15 @@ public class ShipYard implements Serializable {
         for (Gadget g: Gadget.values()) {
             gadgetsForSale.put(g, new int[] {g.CalculatePrice(techLevel), g.CalculateSellQuantity(techLevel)});
         }   
+    }
+    
+    /**
+     * Calculate price and quantity
+     */
+    public void setWeaponsForSale() {
+        for (Weapon w: Weapon.values()) {
+            weaponsForSale.put(w, new int[] {w.CalculatePrice(techLevel), w.CalculateSellQuantity(techLevel)});
+        }
     }
     
     /**
