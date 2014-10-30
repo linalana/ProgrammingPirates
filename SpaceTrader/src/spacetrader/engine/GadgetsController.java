@@ -47,12 +47,14 @@ public class GadgetsController implements Initializable {
     private ObservableList<String> cargo;
     private ObservableList<String> market;
     private ShipYard shipYard;
+    private int slots;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        slots = Game.getPlayer().getShip().getGadgetSlots();
         updateMoneyLabel();
         Port port = Game.getCurrentPort();
         shipYard = port.getShipyard();
@@ -87,6 +89,7 @@ public class GadgetsController implements Initializable {
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, -1 * quant);
+                    slots-=quant;
                     updateLists();
                 }
 
@@ -119,6 +122,7 @@ public class GadgetsController implements Initializable {
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, quant);
+                    slots+=quant;
                     updateLists();
                 }
             }
@@ -129,6 +133,7 @@ public class GadgetsController implements Initializable {
          moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }
     public void updateLists() {
+        slotLabel.setText("Slots available: " + slots);
         cargo = playerGadgetList.getItems();
         market = yardGadgetList.getItems();
         gadgetsForSale = shipYard.getGadgetsForSale();
