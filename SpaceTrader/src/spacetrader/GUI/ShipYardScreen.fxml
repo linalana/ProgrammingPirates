@@ -13,12 +13,12 @@
         <tabs>
           <Tab text="Market">
             <content>
-              <fx:include fx:id="ShipMarket" source="ShipMarket.fxml" />
+              <fx:include fx:id="ShipMarket" source="Market.fxml" />
             </content>
           </Tab>
           <Tab text="Refuel">
             <content>
-              <fx:include fx:id="ShipUpgrade" source="ShipUpgrade.fxml" />
+              <fx:include fx:id="ShipUpgrade" source="Refuel.fxml" />
             </content>
           </Tab>
             <Tab text="Gadgets">
