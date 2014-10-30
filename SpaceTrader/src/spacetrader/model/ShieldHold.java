@@ -156,7 +156,20 @@ public class ShieldHold implements Serializable {
     public int getReflectiveStrength() {
         return reflectiveStrength;
     }
-    
+    /**
+     * 
+     * @return amount of reflective shields
+     */
+    public int getTotalReflectiveShields() {
+        return totalReflectiveShields;
+    }
+    /**
+     * 
+     * @return amount of energy shields
+     */
+    public int getTotalEnergyShields() {
+        return totalEnergyShields;
+    }
     /**
      * @return the total number of shields the shieldhold can hold
      */
