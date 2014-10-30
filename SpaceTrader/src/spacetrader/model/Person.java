@@ -170,6 +170,12 @@ public class Person {
     public boolean hasLifeBoat() {
         return getShip().hasLifeBoat();
     }
-
+    /**
+     * 
+     * @return shieldhold
+     */
+    public ShieldHold getShieldHold() {
+        return ship.getShieldHold();
+    }
 
 }

@@ -213,5 +213,8 @@ public class Player implements Serializable {
 
         return fine;
     }
+    public ShieldHold getShieldHold(){
+        return p.getShieldHold();
+    }
 }
 

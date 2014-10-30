@@ -156,4 +156,17 @@ public class ShieldHold implements Serializable {
     public int getReflectiveStrength() {
         return reflectiveStrength;
     }
+    
+    /**
+     * @return the total number of shields the shieldhold can hold
+     */
+    public int getMaxCapacity() {
+        return amount;
+    }
+        /**
+     * @return the total number of shields the shieldhold is holding
+     */
+    public int getEmptySlots() {
+        return amount - (totalReflectiveShields + totalEnergyShields);
+    }
 }

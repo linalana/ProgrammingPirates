@@ -61,4 +61,18 @@ public class Game implements Serializable {
     public static World getWorld() {
         return world;
     }
+    /**
+     * 
+     * @return the player's ship
+     */
+    public static Ship getShip() {
+        return getPlayer().getShip();
+    }
+    /**
+     * 
+     * @return the ship's shieldhold 
+     */
+    public static ShieldHold getShieldHold() {
+        return getPlayer().getShieldHold();
+    }
 }
