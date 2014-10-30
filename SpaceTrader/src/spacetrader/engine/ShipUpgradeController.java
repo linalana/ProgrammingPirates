@@ -29,6 +29,8 @@ public class ShipUpgradeController implements Initializable {
     private Label moneyLabel;
     @FXML
     private Button buyButton;
+    @FXML
+    private Button escapeBuyButton;
     
     private Player player;
     private int costToRefuel;
@@ -51,7 +53,10 @@ public class ShipUpgradeController implements Initializable {
         } else {
             barrelsToBuy = fuelNeeded;
         }
-        buyButton.setText("Refuel for: $" + costToRefuel);
+        buyButton.setText("Refuel for $" + costToRefuel);
+        if (player.getShip().hasLifeBoat()) {
+            escapeBuyButton.setDisable(true);
+        }
     }    
     
     @FXML
@@ -64,6 +69,19 @@ public class ShipUpgradeController implements Initializable {
     public void updateLabels() {
         rumLabel.setText("Rum on ship: " + player.getShip().getFuel());
         moneyLabel.setText("Money: " + player.getMoney());
+    }
+    
+    @FXML
+    private void handleEscapeButtonAction(ActionEvent event) {
+        int money = Game.getPlayer().getMoney();
+        if (money >= 5000) {
+            Game.getPlayer().setMoney(money - 5000);
+            Game.getPlayer().getShip().setLifeBoat(true);
+            moneyLabel.setText("Money: " + (money - 5000));
+            escapeBuyButton.setDisable(true);
+            
+            ApplicationController.changeScene("GUI/ShipYardScreen.fxml");
+        }
     }
     
 }
