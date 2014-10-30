@@ -459,6 +459,16 @@ public class Ship implements Serializable {
             double gadgetPrice = 0.8 * gadgetQuantity * ga.CalculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) gadgetPrice;
         }
+        for (Shield s: shieldHold.getShields().keySet()) {
+            int shieldQuantity = shieldHold.getShields().get(s);
+            double shieldPrice = 0.8 * shieldQuantity * s.CalculatePrice(Game.getCurrentPort());
+            v = v + (int) shieldPrice;
+        }
+        for (Weapon w: weaponHold.getWeapons().keySet()) {
+            int weaponQuantity = weaponHold.getWeapons().get(w);
+            double weaponPrice = 0.8 * weaponQuantity * w.CalculatePrice(Game.getCurrentPort().getTechLevel());
+            v = v + (int) weaponPrice;
+        }
 
         return v;
     }
