@@ -24,7 +24,6 @@
             <Tab text="Gadgets">
               <content>
                  <fx:include fx:id="Gadgets" source="Gadgets.fxml" />
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
             </Tab>
             <Tab text="Shields">
