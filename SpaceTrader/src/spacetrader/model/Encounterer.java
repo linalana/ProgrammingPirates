@@ -14,18 +14,17 @@ import java.util.Random;
  * @author alanalin
  */
 public abstract class Encounterer implements Serializable {
-    protected int reputation;
-    protected Ship ship;
-    protected int fighterPoints;
-    
+    protected final Person p; //encounterer delegates to Person
+
     public Encounterer() {
         Random rand = new Random();
         int deviance = rand.nextInt(2 * 10);
-        reputation = Game.getPlayer().getReputation() + (deviance - 10);
-        ship = new Ship();
-        fighterPoints = rand.nextInt(11);
+        int reputation = Game.getPlayer().getReputation() + (deviance - 10);
+
+        p = new Person(rand.nextInt(11), rand.nextInt(11),
+                rand.nextInt(11), rand.nextInt(11), reputation, new Ship());
     }
-    
+
     protected void fillCargo() {
         Random rand = new Random();
         for (TradeGood t: TradeGood.values()) {
@@ -37,7 +36,7 @@ public abstract class Encounterer implements Serializable {
     }
     /**
      * Decide if Encounterer will fight or flee
-     * 
+     *
      * @param playerRep the exp of the player
      * @param fightPoints the fighter skill points of the player
      * @return true if will fight
@@ -47,7 +46,7 @@ public abstract class Encounterer implements Serializable {
         //take into account fighter skill points
         //NOTE: we might have to move this method into the individual trader/pirate/police classes
     }
-    
+
     public int attack() {
         Random rand = new Random();
         return rand.nextInt(10) * getReputation() / 100;
@@ -57,43 +56,41 @@ public abstract class Encounterer implements Serializable {
      * @return the reputation
      */
     public int getReputation() {
-        return reputation;
+        return p.getReputation();
     }
 
     /**
      * @return the ship
      */
     public Ship getShip() {
-        return ship;
+        return p.getShip();
     }
-    
+
     /**
      * @return the fighterPoints
      */
     public int getFighterPoints() {
-        return fighterPoints;
+        return p.getFighter();
     }
     /**
      * @return the fighterPoints
      */
     public int getTraderPoints() {
-        return 0;
+        return p.getTrader();
     }
     /**
      * Returns the encounterer info required to assess a fight
      * @return int array of stats for fight
      */
     public int[] getEncountererInfo() {
-        return new int[]{0, fighterPoints, reputation,
-            ship.getHullStrength(), ship.getShieldStrength(),
-            ship.getWeaponStrength()};
+        return p.getInfo();
     }
-    
+
     /**
      * @return total damage encounterer is capable of
      */
     public int calcDamage() {
-        return ship.getDamage() * (fighterPoints / 10);
+        return p.calcDamage();
     }
 
      /**
@@ -102,9 +99,9 @@ public abstract class Encounterer implements Serializable {
      * @return true if encounterer survives
      */
     boolean distributeDamage(int totalDamage) {
-        return ship.distributeDamage(totalDamage);
+        return p.distributeDamage(totalDamage);
     }
-    
-    
-    
+
+
+
 }

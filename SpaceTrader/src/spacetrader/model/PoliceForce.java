@@ -16,7 +16,7 @@ import java.util.Random;
 public class PoliceForce extends Encounterer implements Serializable {
     private int strength;
     private int bribe;
-    
+
     /**
      * Constructor for PoliceForce
      * @param system the political system of the continent
@@ -26,29 +26,29 @@ public class PoliceForce extends Encounterer implements Serializable {
         this.strength = calculateStrength(system);
         this.bribe = calculateBribe(system);
         if(strength==1){
-            this.ship = new Ship(1);
-            this.fighterPoints = 2;
+            p.setShip(new Ship(1));
+            p.setFighter(2);
         }
         if(strength==2){
-            this.ship = new Ship(2);
-            this.fighterPoints = 4;
+            p.setShip(new Ship(2));
+            p.setFighter(4);
         }
         if(strength==3){
-            this.ship = new Ship(3);
-            this.fighterPoints = 6;
+            p.setShip(new Ship(3));
+            p.setFighter(6);
         }
         if(strength==4){
-            this.ship = new Ship(6);
-            this.fighterPoints = 8;
+            p.setShip(new Ship(6));
+            p.setFighter(8);
         }
         if(strength==5){
-            this.ship = new Ship(9);
-            this.fighterPoints = 10;
+            p.setShip(new Ship(9));
+            p.setFighter(10);
         }
     }
-    
+
     /**
-     * 
+     *
      * @param system the political system of the continent
      * @return the strength
      */
@@ -83,9 +83,9 @@ public class PoliceForce extends Encounterer implements Serializable {
         }
         return strength;
     }
-    
+
     /**
-     * 
+     *
      * @param system the political system of the continent
      * @return the bribe level
      */
@@ -115,14 +115,14 @@ public class PoliceForce extends Encounterer implements Serializable {
         }
         return bribe;
     }
-    
+
     /**
      * Inspect a player
      * @param player the player being inspected
      * @return true if they pass the inspection, false otherwise
      */
     private boolean inspect(Player player){
-        if(player.getShip().getCargoHold().getGoods().get(TradeGood.FIREARMS)!=0 || 
+        if(player.getShip().getCargoHold().getGoods().get(TradeGood.FIREARMS)!=0 ||
                 player.getShip().getCargoHold().getGoods().get(TradeGood.NARCOTICS)!=0){
             player.getPoliceRecord().decrementInspectionHistory();
             return false;

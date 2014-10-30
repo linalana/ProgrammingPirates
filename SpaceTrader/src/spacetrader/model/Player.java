@@ -15,60 +15,50 @@ import java.util.Random;
  */
 public class Player implements Serializable {
     private String name;
-    private Ship ship;
-    private int fighter;
-    private int trader;
-    private int engineer;
-    private int investor;
+    private final Person p;
     private int money = 10000;
-    private int reputation;
     private PoliceRecord policeRecord;
 
     /**
-     *
-     * @param aName
-     * @param aFighter
-     * @param aTrader
-     * @param aEngineer
-     * @param aInvestor
+     * creates a new player
+     * @param name
+     * @param fighter
+     * @param trader
+     * @param engineer
+     * @param investor
      */
-    public Player(String aName, int aFighter, int aTrader, int aEngineer, int aInvestor) {
-        name = aName;
-        fighter = aFighter;
-        trader = aTrader;
-        engineer = aEngineer;
-        investor = aInvestor;
-        this.ship = new Ship(0);
-        reputation = 0;
+    public Player(String name, int fighter, int trader, int engineer, int investor) {
+        p = new Person(fighter, trader, engineer, investor, 0, new Ship(0));
+        this.name = name;
         policeRecord = new PoliceRecord();
 
     }
     @Override
     public String toString() {
-        return "Player name: " + name + ". Fighter: " + fighter + ". Trader: " + trader + ". Engineer: " + engineer + ". Investor: " + investor;
+        return "Player name: " + name + " " + p;
     }
-    
+
     public void attack(Encounterer e) {
         if (e.getClass().equals(Pirate.class)) {
             //it's a pirate!
             Pirate p = (Pirate) e;
-            
+
 
         } else {
             //it's a trader!
             Trader t = (Trader) e;
             policeRecord.setIsPirate(true);
-            
+
         }
-        
+
     }
-    
+
     //Getters and setters
 
     /**
      *
      * Setter for name
-     * 
+     *
      * @param newName
      */
         public void setName(String newName) {
@@ -78,7 +68,7 @@ public class Player implements Serializable {
     /**
      *
      * Getter for name
-     * 
+     *
      * @return String name
      */
     public String getName() {
@@ -87,82 +77,42 @@ public class Player implements Serializable {
 
     /**
      *
-     * Setter for Fighter skill points
-     * 
-     * @param newFighter
-     */
-    public void setFighter(int newFighter) {
-        fighter = newFighter;
-    }
-
-    /**
-     *
      * Getter for Fighter skill points
-     * 
+     *
      * @return int fighter
      */
     public int getFighter() {
-        return fighter;
-    }
-
-    /**
-     *
-     * Setter for Trader skill points
-     * 
-     * @param newTrader
-     */
-    public void setTrader(int newTrader) {
-       trader = newTrader;
+        return p.getFighter();
     }
 
     /**
      *
      * Getter for Trader skill points
-     * 
+     *
      * @return int trader
      */
     public int getTrader() {
-        return trader;
-    }
-
-    /**
-     *
-     * Setter for Engineer skill points
-     * 
-     * @param newEngineer
-     */
-    public void setEngineer(int newEngineer) {
-        engineer = newEngineer;
+        return p.getTrader();
     }
 
     /**
      *
      * Getter for Engineer skill points
-     * 
+     *
      * @return int engineer
      */
     public int getEngineer() {
-        return engineer;
-    }
-
-    /**
-     *
-     * Setter for Investor skill points
-     * 
-     * @param newInvestor
-     */
-    public void setInvestor(int newInvestor) {
-        investor = newInvestor;
+        return p.getEngineer();
     }
 
     /**
      *
      * Getter for Investor skill points
-     * 
+     *
      * @return int investor
      */
     public int getInvestor() {
-        return investor;
+        return p.getInvestor();
     }
 
     /**
@@ -178,33 +128,33 @@ public class Player implements Serializable {
     public void setMoney(int money) {
         this.money = money;
     }
-    
+
     /**
      * @return the ship
      */
     public Ship getShip() {
-        return ship;
+        return p.getShip();
     }
 
     /**
      * @param type the ship to set
      */
     public void setShip(int type) {
-        ship.updateShip(type);
+        p.updateShip(type);
     }
 
     /**
      * @return the reputation
      */
     public int getReputation() {
-        return reputation;
+        return p.getReputation();
     }
-    
+
     /**
      * @param exp reputation to be added
      */
     public void addExperience(int exp) {
-        reputation += exp;
+        p.addReputation(exp);
     }
     /**
      * @return the policeRecord
@@ -217,26 +167,13 @@ public class Player implements Serializable {
      * @return int array of stats for fight
      */
     public int[] getPlayerInfo() {
-        return new int[]{trader, fighter, reputation,
-            ship.getHullStrength(), ship.getShieldStrength(),
-            ship.getWeaponStrength()};
+        return p.getInfo();
     }
     /**
      * @return total damage player is capable of
      */
     public int calcDamage() {
-        int damage = ship.getDamage();       
-        //implement use of target system later
-        Random rand = new Random();
-        int r = rand.nextInt(101);
-        if (r <= fighter * 10) {
-            damage *= .9;
-        } else if (r <= fighter * 11) {
-            damage *= .5;
-        } else {
-            damage = 0;
-        }
-        return damage;
+        return p.calcDamage();
     }
     /**
      * distributes the damage
@@ -244,8 +181,8 @@ public class Player implements Serializable {
      * @return 0 if dead, 1 if survived on lifeboat, 2 if alive
      */
     public int distributeDamage(int totalDamage) {
-        if (!ship.distributeDamage(totalDamage)) {
-            if (ship.hasLifeBoat()) {
+        if (!p.distributeDamage(totalDamage)) {
+            if (p.hasLifeBoat()) {
                 return 1;
             }
             return 0;
@@ -257,13 +194,13 @@ public class Player implements Serializable {
      * @return true if contains illegal goods
      */
     public boolean checkCargo() {
-        return ship.checkHoldForIllegal();
+        return p.getShip().checkHoldForIllegal();
     }
     /**
      * Lower Inspection History, fine player, confiscate illegal goods
      * @return amount of fine based on inspection history
      */
-    public int failInspection() {      
+    public int failInspection() {
         policeRecord.decrementInspectionHistory();
         //fine
         int fine = (int) (money * .05);
@@ -272,9 +209,9 @@ public class Player implements Serializable {
         }
         setMoney(getMoney() - fine);
         //confiscate
-        ship.removeIllegalGoods();
-        
+        p.getShip().removeIllegalGoods();
+
         return fine;
     }
 }
- 
+

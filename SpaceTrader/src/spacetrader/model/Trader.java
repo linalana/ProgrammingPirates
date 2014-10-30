@@ -15,7 +15,7 @@ import java.util.Random;
  */
 public class Trader extends Encounterer implements Serializable {
     private int traderPoints;
-    
+
     public Trader() {
         super();
         super.fillCargo();
@@ -24,7 +24,7 @@ public class Trader extends Encounterer implements Serializable {
     public boolean willEncounter(boolean playerIsPirate) {
         return !playerIsPirate;
     }
-    
+
     private void allocateSkillPoints() {
         Random rand = new Random();
         traderPoints = rand.nextInt(11);
@@ -37,18 +37,16 @@ public class Trader extends Encounterer implements Serializable {
     public int getTraderPoints() {
         return traderPoints;
     }
-    
+
     /**
      * Returns the trader info required to assess a fight
      * @return int array of stats for fight
      */
     @Override
     public int[] getEncountererInfo() {
-        return new int[]{traderPoints, fighterPoints, reputation,
-            ship.getHullStrength(), ship.getShieldStrength(),
-            ship.getWeaponStrength()};
+        return p.getInfo();
     }
-    
-    
-   
+
+
+
 }
