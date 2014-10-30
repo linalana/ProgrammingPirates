@@ -79,8 +79,6 @@ public class ShipUpgradeController implements Initializable {
             Game.getPlayer().getShip().setLifeBoat(true);
             moneyLabel.setText("Money: " + (money - 5000));
             escapeBuyButton.setDisable(true);
-            
-            ApplicationController.changeScene("GUI/ShipYardScreen.fxml");
         }
     }
     

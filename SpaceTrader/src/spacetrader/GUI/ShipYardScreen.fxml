@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.ShipYardScreenController">
    <children>
-      <TabPane prefHeight="420.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="20.0">
+      <TabPane fx:id="yardPane" prefHeight="420.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="20.0">
         <tabs>
           <Tab text="Market">
             <content>
