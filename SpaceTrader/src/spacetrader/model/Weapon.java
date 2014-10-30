@@ -47,9 +47,9 @@ public enum Weapon {
      * @param port
      * @return the price
      */
-    public int CalculatePrice(Port port) {
+    public int CalculatePrice(int techLevel) {
         Random rand = new Random();
-        int price = BasePrice + IPL * (port.getTechLevel() - MTLP) + BasePrice
+        int price = BasePrice + IPL * (techLevel - MTLP) + BasePrice
                      * ((rand.nextInt(2*Var) - Var / 2) / 100);
         if (price < 0) {
             return 0;
