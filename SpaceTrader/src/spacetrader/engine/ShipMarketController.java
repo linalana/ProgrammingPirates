@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package spacetrader.engine;
 
 import java.net.URL;
@@ -70,9 +64,10 @@ public class ShipMarketController implements Initializable {
     private ObservableList<String> ships;
     private ShipYard shipyard = Game.getCurrentPort().getShipyard();
     private Ship[] s = shipyard.getShips();
-    
+
     /**
-     * Initializes the controller class.
+     * Initializes the controller class.fills out UI
+     *
      * @param url
      * @param rb
      */
@@ -84,7 +79,7 @@ public class ShipMarketController implements Initializable {
             ships.add(s[i].getType());
         }
         currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());
-        
+
         shipList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             int index = shipList.getSelectionModel().getSelectedIndex();
             selectedLabel.setText("Selected: " + s[index].getType());
@@ -98,9 +93,11 @@ public class ShipMarketController implements Initializable {
             sQuarter.setText("Shield Slots: " + s[index].getQuarters());
             mNeeded.setText("Money Needed: " + (s[index].getPrice() - Game.getPlayer().getShip().calculateValue()));
         });
-    }    
- 
-   
+    }
+
+    /**
+     * updates the information in the UI on the labels
+     */
     private void updateCurrentLabels() {
         value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
         money.setText("Money: " + Game.getPlayer().getMoney());
@@ -112,12 +109,23 @@ public class ShipMarketController implements Initializable {
         cShield.setText("Shield Slots: " + Game.getPlayer().getShip().getShieldSlots());
         cQuarter.setText("Shield Slots: " + Game.getPlayer().getShip().getQuarters());
     }
-    
+
+    /**
+     * returns to the main game screen
+     *
+     * @param event out button pressed
+     */
     @FXML
     private void outButtonPressed(ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
-    
+
+    /**
+     * purchases the selected ship, updates the labels to values after purchase
+     * returns to the shipyard from the ship market
+     *
+     * @param event buy button pressed
+     */
     @FXML
     private void buyButtonPressed(ActionEvent event) {
         int index = shipList.getSelectionModel().getSelectedIndex();
@@ -135,5 +143,5 @@ public class ShipMarketController implements Initializable {
             money.setText("Money: " + Game.getPlayer().getMoney());
         }
     }
-    
+
 }

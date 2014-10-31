@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package spacetrader.engine;
-
-
 
 import javafx.scene.control.*;
 import java.net.URL;
@@ -21,20 +14,29 @@ import spacetrader.model.Turn;
  * @author Danny
  */
 public class RandomEventController implements Initializable {
+
     @FXML
     private Label descriptionLabel;
     @FXML
     private Label titleLabel;
+
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. Sets the labels to show the title and
+     * description of the event
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         descriptionLabel.setText(Turn.getEventDescription());
         titleLabel.setText(Turn.getEventTitle());
-    }    
-    @FXML 
+    }
+
+    /**
+     * accepts the event by continuing to the main screen
+     *
+     * @param e accept button pressed
+     */
+    @FXML
     public void acceptButtonPressed(ActionEvent e) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }

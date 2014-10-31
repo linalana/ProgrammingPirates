@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package spacetrader.model;
 
 import java.io.Serializable;
@@ -15,20 +9,23 @@ import java.util.Random;
  * @author Michael
  */
 public class World implements Serializable {
-    
+
     private Continent[] continents;
     private RangeChart rangeChart;
-    
+
     /**
      * Initializes the World. Creates 10 continents, each with a randomly chosen
-     * political system - guaranteed to be different from the others by using an 
+     * political system - guaranteed to be different from the others by using an
      * ArrayList.
      */
     public World() {
         continents = new Continent[10];
         initializeContinents();
     }
-    
+
+    /**
+     * sets up the continents with appropriate names
+     */
     private void initializeContinents() {
         ArrayList<String> politicalSystems = createPoliticalSystems();
         Random generator = new Random();
@@ -44,11 +41,16 @@ public class World implements Serializable {
         continents[4] = new Continent("Alabasta", systems[4], 480, 320);
         continents[5] = new Continent("Booty Island", systems[5], 310, 320);
         continents[6] = new Continent("Johto", systems[6], 470, 60);
-        continents[7] = new Continent("Fraxos", systems[7],210, 160);
+        continents[7] = new Continent("Zaofu", systems[7], 210, 160);
         continents[8] = new Continent("Dynatopia", systems[8], 170, 150);
         continents[9] = new Continent("Kraken Kove", systems[9], 30, 260);
     }
-    
+
+    /**
+     * creates the list of political systems
+     *
+     * @return the list of political systems
+     */
     private ArrayList<String> createPoliticalSystems() {
         ArrayList<String> list = new ArrayList<>();
         list.add("anarchy");
@@ -70,9 +72,10 @@ public class World implements Serializable {
         list.add("theocracy");
         return list;
     }
-    
+
     /**
      * Overrides the toString() method. Prints out each Continent as a String.
+     *
      * @return String representation of the World
      */
     @Override
@@ -83,7 +86,11 @@ public class World implements Serializable {
         }
         return result;
     }
-    
+
+    /**
+     *
+     * @return the array of continents
+     */
     public Continent[] getContinents() {
         return continents;
     }
@@ -96,6 +103,7 @@ public class World implements Serializable {
     }
 
     /**
+     * initializes range chart
      */
     public void setRangeChart() {
         if (rangeChart == null) {

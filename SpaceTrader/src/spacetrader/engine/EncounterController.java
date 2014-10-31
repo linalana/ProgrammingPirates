@@ -1,24 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package spacetrader.engine;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import spacetrader.SpaceTrader;
 import spacetrader.model.Turn;
 
 /**
@@ -60,11 +48,12 @@ public class EncounterController implements Initializable {
     private Label pWepStrengthLabel;
     @FXML
     private Label eWepStrengthLabel;
-    
+
     //other button is either trade for traders or accept inspection for police
     //disapears for pirate
     @FXML
     private Button otherButton;
+
     /**
      * Initializes the controller class.
      */
@@ -75,7 +64,7 @@ public class EncounterController implements Initializable {
         thingLabel.setText(type);
         fillStats();
         switch (type) {
-            case "Pirate":       
+            case "Pirate":
                 otherButton.setText("Surrender");
                 pTradePtsLabel.setVisible(false);
                 eTradePtsLabel.setVisible(false);
@@ -89,17 +78,32 @@ public class EncounterController implements Initializable {
                 break;
         }
     }
-    
+
+    /**
+     * starts the fight in encounter
+     *
+     * @param event fight button pressed
+     */
     @FXML
     private void handleFightButtonAction(ActionEvent event) {
         Turn.getEncounter().engageFight();
     }
-    
+
+    /**
+     * escapes the encounter
+     *
+     * @param event flee button pressed
+     */
     @FXML
     private void handleFleeButtonAction(ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
-    
+
+    /**
+     * completes "other" action for each type of encounter
+     *
+     * @param event the 3rd button is pressed
+     */
     @FXML
     private void handleOtherButtonAction(ActionEvent event) {
         String type = Turn.getEncounter().getType();
@@ -108,11 +112,15 @@ public class EncounterController implements Initializable {
         } else if (type.equals("PoliceForce")) {
             Turn.getEncounter().Inspection();
         }
-        
+
     }
-    
+
+    /**
+     * get's all the data from the player and encounterer and fills the UI to
+     * display to player
+     */
     private void fillStats() {
-        int[] info = Turn.getEncounter().getInfo();        
+        int[] info = Turn.getEncounter().getInfo();
         System.out.println("This is the array:" + Arrays.toString(info));
         pTradePtsLabel.setText(Integer.toString(info[0]));
         pFightPtsLabel.setText(Integer.toString(info[1]));
@@ -127,5 +135,5 @@ public class EncounterController implements Initializable {
         eShieldStrengthLabel.setText(Integer.toString(info[10]));
         eWepStrengthLabel.setText(Integer.toString(info[11]));
     }
-    
+
 }

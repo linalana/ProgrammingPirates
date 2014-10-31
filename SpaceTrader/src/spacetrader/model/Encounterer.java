@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package spacetrader.model;
 
 import java.io.Serializable;
@@ -14,8 +8,12 @@ import java.util.Random;
  * @author alanalin
  */
 public abstract class Encounterer implements Serializable {
+
     protected final Person p; //encounterer delegates to Person
 
+    /**
+     * creates encounterer, and backing person
+     */
     public Encounterer() {
         Random rand = new Random();
         int deviance = rand.nextInt(2 * 10);
@@ -25,15 +23,19 @@ public abstract class Encounterer implements Serializable {
                 rand.nextInt(11), rand.nextInt(11), reputation, new Ship());
     }
 
+    /**
+     * fills the cargo hold with random stuff
+     */
     protected void fillCargo() {
         Random rand = new Random();
-        for (TradeGood t: TradeGood.values()) {
+        for (TradeGood t : TradeGood.values()) {
             if (rand.nextBoolean()) {
                 int count = rand.nextInt(5);
                 getShip().getCargoHold().addCargo(t, count);
             }
         }
     }
+
     /**
      * Decide if Encounterer will fight or flee
      *
@@ -72,14 +74,17 @@ public abstract class Encounterer implements Serializable {
     public int getFighterPoints() {
         return p.getFighter();
     }
+
     /**
      * @return the fighterPoints
      */
     public int getTraderPoints() {
         return p.getTrader();
     }
+
     /**
      * Returns the encounterer info required to assess a fight
+     *
      * @return int array of stats for fight
      */
     public int[] getEncountererInfo() {
@@ -93,15 +98,14 @@ public abstract class Encounterer implements Serializable {
         return p.calcDamage();
     }
 
-     /**
+    /**
      * distributes the damage
+     *
      * @param totalDamage the damage done to the encounterer
      * @return true if encounterer survives
      */
     boolean distributeDamage(int totalDamage) {
         return p.distributeDamage(totalDamage);
     }
-
-
 
 }

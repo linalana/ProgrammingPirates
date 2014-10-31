@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package spacetrader.model;
+
 import java.io.Serializable;
 import java.util.Random;
 
 /**
  * A ship class that creates ships
+ *
  * @author Murph
  */
 public class Ship implements Serializable {
+
     private CargoHold cargoHold;
     private WeaponHold weaponHold;
     private ShieldHold shieldHold;
@@ -28,21 +25,23 @@ public class Ship implements Serializable {
     private int fuel;
     private int price;
     private boolean lifeBoat;
-    public String[] names = new String[] {"Guppy","Minnow","Snapping Turtle",
-        "Pufferfish","StingRay","S.S. Electric Eel","Dolphin Tales","SharkFin",
-        "Hammerhead","S.S. Bob Waters"};
-    
+    public String[] names = new String[]{"Guppy", "Minnow", "Snapping Turtle",
+        "Pufferfish", "StingRay", "S.S. Electric Eel", "Dolphin Tales", "SharkFin",
+        "Hammerhead", "S.S. Bob Waters"};
+
     public Ship() {
         this(new Random().nextInt(10));
         lifeBoat = false;
     }
+
     /**
      * Creates a new ship
+     *
      * @param type the type of ship
      */
-    public Ship(int typeind){
+    public Ship(int typeind) {
         this.type = names[typeind];
-        if(type.equals(names[0])){
+        if (type.equals(names[0])) {
             this.cargoBays = 5;
             this.hullStrength = 5;
             this.weaponSlots = 0;
@@ -51,9 +50,8 @@ public class Ship implements Serializable {
             this.quarters = 0;
             this.maxRange = 20;
             this.price = 5000;
-            
-        }
-        else if(type.equals(names[1])){
+
+        } else if (type.equals(names[1])) {
             this.cargoBays = 15;
             this.hullStrength = 5;
             this.weaponSlots = 1;
@@ -62,8 +60,7 @@ public class Ship implements Serializable {
             this.quarters = 0;
             this.maxRange = 14;
             this.price = 10000;
-        }
-        else if(type.equals(names[2])){
+        } else if (type.equals(names[2])) {
             this.cargoBays = 20;
             this.hullStrength = 10;
             this.weaponSlots = 1;
@@ -72,8 +69,7 @@ public class Ship implements Serializable {
             this.quarters = 0;
             this.maxRange = 17;
             this.price = 15000;
-        }
-        else if(type.equals(names[3])){
+        } else if (type.equals(names[3])) {
             this.cargoBays = 15;
             this.hullStrength = 15;
             this.weaponSlots = 2;
@@ -82,8 +78,7 @@ public class Ship implements Serializable {
             this.quarters = 0;
             this.maxRange = 13;
             this.price = 20000;
-        }
-        else if(type.equals(names[4])){
+        } else if (type.equals(names[4])) {
             this.cargoBays = 20;
             this.hullStrength = 10;
             this.weaponSlots = 1;
@@ -92,8 +87,7 @@ public class Ship implements Serializable {
             this.quarters = 1;
             this.maxRange = 15;
             this.price = 25000;
-        }
-        else if(type.equals(names[5])){
+        } else if (type.equals(names[5])) {
             this.cargoBays = 50;
             this.hullStrength = 10;
             this.weaponSlots = 0;
@@ -102,8 +96,7 @@ public class Ship implements Serializable {
             this.quarters = 3;
             this.maxRange = 14;
             this.price = 30000;
-        }
-        else if(type.equals(names[6])){
+        } else if (type.equals(names[6])) {
             this.cargoBays = 20;
             this.hullStrength = 15;
             this.weaponSlots = 3;
@@ -112,8 +105,7 @@ public class Ship implements Serializable {
             this.quarters = 2;
             this.maxRange = 16;
             this.price = 35000;
-        }
-        else if(type.equals(names[7])){
+        } else if (type.equals(names[7])) {
             this.cargoBays = 30;
             this.hullStrength = 20;
             this.weaponSlots = 2;
@@ -122,8 +114,7 @@ public class Ship implements Serializable {
             this.quarters = 3;
             this.maxRange = 15;
             this.price = 40000;
-        }
-        else if(type.equals(names[8])){
+        } else if (type.equals(names[8])) {
             this.cargoBays = 60;
             this.hullStrength = 25;
             this.weaponSlots = 1;
@@ -132,8 +123,7 @@ public class Ship implements Serializable {
             this.quarters = 3;
             this.maxRange = 13;
             this.price = 45000;
-        }
-        else{
+        } else {
             this.cargoBays = 35;
             this.hullStrength = 25;
             this.weaponSlots = 3;
@@ -149,13 +139,15 @@ public class Ship implements Serializable {
         this.shieldHold = new ShieldHold(getShieldSlots());
         this.gadgetHold = new GadgetHold(getGadgetSlots());
     }
+
     /**
      * Changes the ship type, for when you want to upgrade or downgrade
+     *
      * @param type the new ship type
      */
-    public void updateShip(int typeInd){
+    public void updateShip(int typeInd) {
         this.type = names[typeInd];
-        if(type.equals(names[0])){
+        if (type.equals(names[0])) {
             cargoBays = 5;
             hullStrength = 1;
             setWeaponSlots(0);
@@ -164,8 +156,7 @@ public class Ship implements Serializable {
             quarters = 0;
             maxRange = 20;
             price = 5000;
-        }
-        else if(type.equals(names[1])){
+        } else if (type.equals(names[1])) {
             cargoBays = 15;
             hullStrength = 1;
             setWeaponSlots(1);
@@ -174,8 +165,7 @@ public class Ship implements Serializable {
             quarters = 0;
             maxRange = 14;
             price = 10000;
-        }
-        else if(type.equals(names[2])){
+        } else if (type.equals(names[2])) {
             cargoBays = 20;
             hullStrength = 2;
             setWeaponSlots(1);
@@ -184,8 +174,7 @@ public class Ship implements Serializable {
             quarters = (0);
             maxRange = (17);
             price = 15000;
-        }
-        else if(type.equals(names[3])){
+        } else if (type.equals(names[3])) {
             cargoBays = 15;
             hullStrength = 3;
             setWeaponSlots(2);
@@ -194,8 +183,7 @@ public class Ship implements Serializable {
             quarters = (0);
             maxRange = (13);
             price = 20000;
-        }
-        else if(type.equals(names[4])){
+        } else if (type.equals(names[4])) {
             cargoBays = 20;
             hullStrength = 2;
             setWeaponSlots(1);
@@ -204,8 +192,7 @@ public class Ship implements Serializable {
             quarters = (1);
             maxRange = (15);
             price = 25000;
-        }
-        else if(type.equals(names[5])){
+        } else if (type.equals(names[5])) {
             cargoBays = 50;
             hullStrength = 2;
             setWeaponSlots(0);
@@ -214,8 +201,7 @@ public class Ship implements Serializable {
             quarters = (3);
             maxRange = (14);
             price = 30000;
-        }
-        else if(type.equals(names[6])){
+        } else if (type.equals(names[6])) {
             cargoBays = 20;
             hullStrength = 3;
             setWeaponSlots(3);
@@ -224,8 +210,7 @@ public class Ship implements Serializable {
             quarters = (2);
             maxRange = (16);
             price = 35000;
-        }
-        else if(type.equals(names[7])){
+        } else if (type.equals(names[7])) {
             cargoBays = 30;
             hullStrength = 4;
             setWeaponSlots(2);
@@ -234,8 +219,7 @@ public class Ship implements Serializable {
             quarters = (3);
             maxRange = (15);
             price = 40000;
-        }
-        else if(type.equals(names[8])){
+        } else if (type.equals(names[8])) {
             cargoBays = 60;
             hullStrength = 5;
             setWeaponSlots(1);
@@ -244,8 +228,7 @@ public class Ship implements Serializable {
             quarters = (3);
             maxRange = (13);
             price = 45000;
-        }
-        else{
+        } else {
             cargoBays = 35;
             hullStrength = 5;
             setWeaponSlots(3);
@@ -255,7 +238,7 @@ public class Ship implements Serializable {
             maxRange = (14);
             price = 50000;
         }
-        
+
         this.fuel = maxRange;
         cargoHold = new CargoHold(getCargoBays());
         weaponHold = new WeaponHold(getWeaponSlots());
@@ -269,29 +252,28 @@ public class Ship implements Serializable {
     public CargoHold getCargoHold() {
         return cargoHold;
     }
-    
+
     /**
      * @return the weapon hold
      */
     public WeaponHold getWeaponHold() {
         return weaponHold;
     }
-    
+
     /**
      * @return the shield hold
      */
     public ShieldHold getShieldHold() {
         return shieldHold;
     }
-    
+
     /**
      * @return the weapon hold
      */
     public int getPrice() {
         return price;
     }
-    
-    
+
     /**
      * @return the gadget hold
      */
@@ -376,10 +358,19 @@ public class Ship implements Serializable {
         return maxRange;
     }
 
+    /**
+     * fill fuel to max
+     */
     public void fillTank() {
         fuel = maxRange;
     }
-    public void setFuel(int change) {
+
+    /**
+     * adds the change in fuel to the total fuel
+     *
+     * @param change in fuel
+     */
+    public void addFuel(int change) {
         fuel = fuel + change;
         if (fuel > maxRange) {
             fuel = maxRange;
@@ -388,19 +379,26 @@ public class Ship implements Serializable {
             fuel = 0;
         }
     }
+
+    /**
+     * @return amount of fuel
+     */
     public int getFuel() {
         return fuel;
     }
+
     /**
      * Gets the damage capable
+     *
      * @return int damage
      */
     public int getDamage() {
         return weaponHold.calcTotalDamage();
     }
+
     /**
      * distributes damage
-     * 
+     *
      * @param totalDamage, damage to be allocated to parts of ship
      * @return true if ship lives
      */
@@ -411,7 +409,7 @@ public class Ship implements Serializable {
             if (hullStrength > 0) {
                 return true;
             }
-        }    
+        }
         return false;
     }
 
@@ -429,42 +427,61 @@ public class Ship implements Serializable {
         this.lifeBoat = lifeBoat;
     }
 
+    /**
+     * @return total strength of shields
+     */
     public int getShieldStrength() {
         return shieldHold.getEnergyStrength() + shieldHold.getReflectiveStrength();
     }
-    
+
+    /**
+     * @return total possible damage of weapons
+     */
     public int getWeaponStrength() {
         return weaponHold.calcTotalDamage();
     }
 
+    /**
+     * checks for narcotics and fire arms
+     *
+     * @return true if cargohold contains those items
+     */
     public boolean checkHoldForIllegal() {
         return cargoHold.findIllegal();
     }
 
+    /**
+     * removes illegal goods from cargohold
+     */
     void removeIllegalGoods() {
         cargoHold.removeIllegal();
     }
-    
+
+    /**
+     * calculates the sell price of the ship and contained goods
+     *
+     * @return total value of ship and contents
+     */
     public int calculateValue() {
         int v = price;
-        for (TradeGood g: cargoHold.getGoods().keySet()) {
+        for (TradeGood g : cargoHold.getGoods().keySet()) {
             int goodQuantity = cargoHold.getGoods().get(g);
             if (Game.getCurrentPort().getTechLevel() > g.getMTLU()) {
                 double goodPrice = 0.8 * goodQuantity * g.CalculatePrice(Game.getCurrentPort());
                 v = v + (int) goodPrice;
             }
         }
-        for (Gadget ga: gadgetHold.getGadgets().keySet()) {
+        for (Gadget ga : gadgetHold.getGadgets().keySet()) {
             int gadgetQuantity = gadgetHold.getGadgets().get(ga);
             double gadgetPrice = 0.8 * gadgetQuantity * ga.CalculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) gadgetPrice;
         }
-        for (Shield s: shieldHold.getShields().keySet()) {
+        for (Shield s : shieldHold.getShields().keySet()) {
             int shieldQuantity = shieldHold.getShields().get(s);
             double shieldPrice = 0.8 * shieldQuantity * s.CalculatePrice(Game.getCurrentPort());
             v = v + (int) shieldPrice;
         }
-        for (Weapon w: weaponHold.getWeapons().keySet()) {
+        for (Weapon w : weaponHold.getWeapons().keySet()) {
             int weaponQuantity = weaponHold.getWeapons().get(w);
             double weaponPrice = 0.8 * weaponQuantity * w.CalculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) weaponPrice;
@@ -472,5 +489,5 @@ public class Ship implements Serializable {
 
         return v;
     }
-    
+
 }

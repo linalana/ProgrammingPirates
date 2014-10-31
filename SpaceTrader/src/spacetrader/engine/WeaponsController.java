@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package spacetrader.engine;
 
 import java.net.URL;
@@ -15,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import spacetrader.model.Gadget;
 import spacetrader.model.Game;
 import spacetrader.model.Port;
 import spacetrader.model.ShipYard;
@@ -44,13 +37,12 @@ public class WeaponsController implements Initializable {
     private int slots;
     private ObservableList<String> ship;
     private ObservableList<String> market;
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         updateMoneyLabel();
         slots = Game.getPlayer().getShip().getWeaponSlots();
         updateSlotsLabel();
@@ -67,33 +59,33 @@ public class WeaponsController implements Initializable {
         shipWeapons = Game.getPlayer().getShip().getWeaponHold().getWeapons();
         market.clear();
         ship.clear();
-        for (Weapon w: weaponsForSale.keySet()) {
+        for (Weapon w : weaponsForSale.keySet()) {
             int[] pq = weaponsForSale.get(w);
-            if (pq[1] != 0 ) {
-                market.add(w.toString() + " Price: " + pq[0] + " Quantity: " + 
-                    pq[1]);
+            if (pq[1] != 0) {
+                market.add(w.toString() + " Price: " + pq[0] + " Quantity: "
+                        + pq[1]);
             }
         }
-        for (Weapon w: shipWeapons.keySet()) {
+        for (Weapon w : shipWeapons.keySet()) {
             int q = shipWeapons.get(w);
             int sellPrice = (int) Math.round(0.8 * weaponsForSale.get(w)[0]);
             if (q > 0) {
-                ship.add(w.toString() + " Quantity: " + q + " Sell Price: " +
-                        sellPrice);
+                ship.add(w.toString() + " Quantity: " + q + " Sell Price: "
+                        + sellPrice);
             }
         }
     }
-    
+
     @FXML
     private void updateMoneyLabel() {
         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }
-    
+
     @FXML
     private void updateSlotsLabel() {
         slotsLabel.setText("Weapon slots left: " + slots);
     }
-    
+
     @FXML
     public void buyButtonPressed(ActionEvent event) {
         String longString = marketWeaponsList.getSelectionModel().getSelectedItem();
@@ -115,14 +107,14 @@ public class WeaponsController implements Initializable {
                     ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
-                    slots-=quant;
+                    slots -= quant;
                     updateSlotsLabel();
                     updateLists();
                 }
             }
         }
     }
-    
+
     @FXML
     public void sellButtonPressed(ActionEvent event) {
         String longString = shipWeaponsList.getSelectionModel().getSelectedItem();
@@ -140,9 +132,9 @@ public class WeaponsController implements Initializable {
             int moneySpent = quant * pq[0];
             if (Game.getCurrentPort().getTechLevel() > weapon.getMTLU()) {
                 if (Game.getPlayer().getShip().getWeaponHold().subtractWeapon(weapon, quant)) {
-                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int) (pq[0] * 0.8 * quant));
                     updateMoneyLabel();
-                    slots+=quant;
+                    slots += quant;
                     updateSlotsLabel();
                     updateLists();
                 }
