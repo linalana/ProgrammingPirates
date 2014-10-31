@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.OpeningGameScreenController">
+   <children>
+      <TabPane prefHeight="420.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="20.0">
+        <tabs>
+            <Tab text="Current Port">
+              <content>
+                <fx:include fx:id="CurrentPortTabPage" source="CurrentPortTabPage.fxml" />
+              </content>
+            </Tab>
+            <Tab text="Travel">
+              <content>
+                <fx:include fx:id="TravelTabPage" source="TravelTabPage.fxml" />
+              </content>
+            </Tab>
+          <Tab text="Player">
+            <content>
+              <fx:include fx:id="PlayerTabPage" source="PlayerTabPage.fxml" />
+            </content>
+          </Tab>
+          <Tab text="Ship">
+            <content>
+              <fx:include fx:id="ShipTabPage" source="ShipTabPage.fxml" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
