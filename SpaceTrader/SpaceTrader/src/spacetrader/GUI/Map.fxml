@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.MapController">
+   <children>
+      <Canvas fx:id="canvas" height="400.0" width="600.0" />
+      <Label fx:id="continentLabel" text="Continent: " />
+      <Label fx:id="neededLabel" layoutY="17.0" text="Rum needed: " />
+      <Label fx:id="availableLabel" layoutY="34.0" text="Rum available: " />
+      <Label fx:id="techLabel" layoutY="51.0" text="Tech level: " />
+      <Label fx:id="politicalLabel" layoutY="68.0" text="Political system: " />
+      <Button fx:id="exitButton" layoutY="388.0" mnemonicParsing="false" onAction="#exitButtonPressed" text="Out!" />
+   </children>
+</AnchorPane>

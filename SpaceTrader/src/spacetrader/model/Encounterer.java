@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package spacetrader.model;
 
@@ -15,7 +11,10 @@ import java.util.Random;
  */
 public abstract class Encounterer implements Serializable {
     protected final Person p; //encounterer delegates to Person
-
+    
+    /**
+     * creates encounterer, and backing person
+     */
     public Encounterer() {
         Random rand = new Random();
         int deviance = rand.nextInt(2 * 10);
@@ -24,7 +23,9 @@ public abstract class Encounterer implements Serializable {
         p = new Person(rand.nextInt(11), rand.nextInt(11),
                 rand.nextInt(11), rand.nextInt(11), reputation, new Ship());
     }
-
+    /**
+     * fills the cargo hold with random stuff
+     */
     protected void fillCargo() {
         Random rand = new Random();
         for (TradeGood t: TradeGood.values()) {

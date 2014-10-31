@@ -177,13 +177,21 @@ public class Continent implements Serializable {
     public String getPoliticalSystem() {
         return politicalSystem;
     }
-
+    
+    /**
+     * calculates the distance of the click from continent
+     * @param eventX mouse x location
+     * @param eventY mouse y location
+     * @return true if continent was clicked
+     */
     public boolean isClicked(double eventX, double eventY) {
         double dx = eventX - x - 7.5;
         double dy = eventY - y - 7.5;
         return (Math.sqrt(dx*dx + dy*dy) < 7.5);
     }
-
+    /**
+     * @return continent name
+     */
     public String getName() {
         return name;
     }

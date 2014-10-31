@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package spacetrader.model;
 
@@ -92,7 +87,10 @@ public class CargoHold implements Serializable {
         return goods.get(TradeGood.NARCOTICS) != 0
                 || goods.get(TradeGood.FIREARMS) != 0;
     }
-
+    
+    /**
+     * removes narcotics and firearms from cargohold
+     */
     public void removeIllegal() {
         goods.put(TradeGood.NARCOTICS, 0);
         goods.put(TradeGood.FIREARMS, 0);

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package spacetrader.model;
 
@@ -36,9 +32,12 @@ public class Turn implements Serializable {
         randomPortEvents();
         
     }
-    
+    /**
+     * travels to a new point and checks if anything exciting occurred
+     * @param fuelUsed to travel
+     * @return the result (what happened)
+     */
     public String travel(int fuelUsed) {
-        String result = "";
         Random rand = new Random();
         int randInt = rand.nextInt(100);
         if (randInt < policeChance) {
@@ -57,6 +56,9 @@ public class Turn implements Serializable {
         return null;
     }
     
+    /**
+     * set chance of encountering various types of people
+     */
     private void setChanceEncounters() {
         switch (politicalSystem) {
             case "anarchy": 
@@ -153,7 +155,9 @@ public class Turn implements Serializable {
     public static Encounter getEncounter() {
         return encounter;
     }
-
+    /**
+     * decides an event to occur at the port
+     */
     private void randomPortEvents() {
         Random rand = new Random();
         if (rand.nextDouble() > 0.5) {
@@ -161,9 +165,15 @@ public class Turn implements Serializable {
         }
         newPort.getBazaar().setGoodsForSale();
     }
+    /**
+     * @return the title of the random event
+     */
     public static String getEventTitle() {
         return randomEvent.getTitle();
     }
+    /**
+     * @return description of event
+     */
     public static String getEventDescription() {
         return randomEvent.getDescription();
     }

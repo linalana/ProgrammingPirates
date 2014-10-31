@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package spacetrader.engine;
 
 import java.net.URL;
@@ -24,6 +18,7 @@ import spacetrader.model.TradeGood;
  * @author Michael
  */
 public class ShipTabPageController implements Initializable {
+
     @FXML
     private Label type;
     @FXML
@@ -35,9 +30,9 @@ public class ShipTabPageController implements Initializable {
     private HashMap<TradeGood, Integer> cargoGoods;
     private CargoHold cargoHold;
     private ObservableList<String> cargo;
-    
+
     /**
-     * Initializes the controller class.
+     * Initializes the controller class, filling in the info for the ship page
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -48,12 +43,12 @@ public class ShipTabPageController implements Initializable {
         cargo = cargoGoodsList.getItems();
         cargoGoods = Game.getPlayer().getShip().getCargoHold().getGoods();
         cargo.clear();
-        for (TradeGood tg: cargoGoods.keySet()) {
+        for (TradeGood tg : cargoGoods.keySet()) {
             int q = cargoGoods.get(tg);
             if (q > 0) {
                 cargo.add(tg.toString() + " Quantity: " + q);
             }
         }
-    }    
-    
+    }
+
 }

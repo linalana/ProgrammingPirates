@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package spacetrader.model;
 import java.io.Serializable;
@@ -375,11 +370,17 @@ public class Ship implements Serializable {
     public int getMaxRange() {
         return maxRange;
     }
-
+    /**
+     * fill fuel to max
+     */
     public void fillTank() {
         fuel = maxRange;
     }
-    public void setFuel(int change) {
+    /**
+     * adds the change in fuel to the total fuel
+     * @param change in fuel
+     */
+    public void addFuel(int change) {
         fuel = fuel + change;
         if (fuel > maxRange) {
             fuel = maxRange;
@@ -388,6 +389,9 @@ public class Ship implements Serializable {
             fuel = 0;
         }
     }
+    /**
+     * @return amount of fuel
+     */
     public int getFuel() {
         return fuel;
     }
@@ -428,23 +432,35 @@ public class Ship implements Serializable {
     public void setLifeBoat(boolean lifeBoat) {
         this.lifeBoat = lifeBoat;
     }
-
+    /**
+     * @return total strength of shields
+     */
     public int getShieldStrength() {
         return shieldHold.getEnergyStrength() + shieldHold.getReflectiveStrength();
     }
-    
+    /**
+     * @return total possible damage of weapons
+     */
     public int getWeaponStrength() {
         return weaponHold.calcTotalDamage();
     }
-
+    /**
+     * checks for narcotics and fire arms
+     * @return true if cargohold contains those items
+     */
     public boolean checkHoldForIllegal() {
         return cargoHold.findIllegal();
     }
-
+    /**
+     * removes illegal goods from cargohold
+     */
     void removeIllegalGoods() {
         cargoHold.removeIllegal();
     }
-    
+    /**
+     * calculates the sell price of the ship and contained goods
+     * @return total value of ship and contents
+     */
     public int calculateValue() {
         int v = price;
         for (TradeGood g: cargoHold.getGoods().keySet()) {

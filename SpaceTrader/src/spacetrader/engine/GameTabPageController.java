@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package spacetrader.engine;
 
 import java.io.File;
@@ -34,8 +28,13 @@ public class GameTabPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
+    /**
+     * Opens save dialog to save a .bin file
+     *
+     * @param event save button pressed
+     */
     @FXML
     private void saveButtonPressed(ActionEvent event) {
         FileChooser fc = new FileChooser();
@@ -44,10 +43,10 @@ public class GameTabPageController implements Initializable {
         File file = fc.showSaveDialog(new Stage());
         ModelFacade.getInstance().saveModelBinary(file);
     }
-    
+
     /**
      * Starts a game, switches to the player configuration screen
-     * 
+     *
      * @param event submit button pressed
      */
     @FXML
@@ -71,5 +70,5 @@ public class GameTabPageController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+
 }

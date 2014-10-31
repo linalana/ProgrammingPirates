@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package spacetrader.model;
 
@@ -21,10 +17,17 @@ public class Trader extends Encounterer implements Serializable {
         super.fillCargo();
         allocateSkillPoints();
     }
+    /**
+     * determines if the trader will encounter the player or not
+     * @param playerIsPirate, whether or not player is pirate
+     * @return true if trader will NOT flee
+     */
     public boolean willEncounter(boolean playerIsPirate) {
         return !playerIsPirate;
     }
-
+    /**
+     * distributes skill points
+     */
     private void allocateSkillPoints() {
         Random rand = new Random();
         traderPoints = rand.nextInt(11);

@@ -1,7 +1,6 @@
 package spacetrader.model;
 
 import java.io.Serializable;
-import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -37,17 +36,21 @@ public class Player implements Serializable {
     public String toString() {
         return "Player name: " + name + " " + p;
     }
-
+    /**
+     * Attack encounterer
+     * @param e the encounterer
+     */
     public void attack(Encounterer e) {
         if (e.getClass().equals(Pirate.class)) {
             //it's a pirate!
             Pirate p = (Pirate) e;
-
+            //to implement
 
         } else {
             //it's a trader!
             Trader t = (Trader) e;
             policeRecord.setIsPirate(true);
+            //to implement
 
         }
 
@@ -213,6 +216,9 @@ public class Player implements Serializable {
 
         return fine;
     }
+    /**
+     * @return player's shield hold
+     */
     public ShieldHold getShieldHold(){
         return p.getShieldHold();
     }

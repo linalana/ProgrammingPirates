@@ -1,28 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package spacetrader.engine;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import spacetrader.model.Game;
 import spacetrader.model.Port;
-import spacetrader.SpaceTrader;
 
 /**
  * FXML Controller class
@@ -69,13 +57,17 @@ public class CurrentPortTabPageController implements Initializable {
     /**
      * Opens the marketplace screen
      * 
-     * @param event submit button pressed
+     * @param event marketplace button pressed
      */
     @FXML
     private void handleMarketplaceButtonAction(ActionEvent event) {
         ApplicationController.changeScene("GUI/MarketplaceScreen.fxml");
     }
     
+    /**
+     * opens the shipyard screen
+     * @param event  ship yard button pressed
+     */
     @FXML
     private void handleShipYardButtonAction(ActionEvent event) {
         ApplicationController.changeScene("GUI/ShipYardScreen.fxml");

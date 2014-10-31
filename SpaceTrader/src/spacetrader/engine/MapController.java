@@ -111,7 +111,7 @@ public class MapController implements Initializable {
                                 //set new current port
                                 Game.setCurrentPort(newPort);
                                 //deduct fuel from ship based on distance traveled
-                                Game.getPlayer().getShip().setFuel(-fuelUsed);
+                                Game.getPlayer().getShip().addFuel(-fuelUsed);
                                 if (result != null) {
                                     ApplicationController.changeScene("GUI/Encounter.fxml");
                                 } else {
