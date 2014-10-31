@@ -1,4 +1,3 @@
-
 package spacetrader.model;
 
 import java.io.File;
@@ -16,15 +15,16 @@ import java.util.logging.Logger;
  * @author James
  */
 public class ModelFacade implements Serializable {
-    
-    private static  ModelFacade instance = new ModelFacade();
-    
+
+    private static ModelFacade instance = new ModelFacade();
+
     private Game game;
-    
-    public static ModelFacade getInstance() { return instance; }
-    
-    
-    public void saveModelBinary(File file)  {
+
+    public static ModelFacade getInstance() {
+        return instance;
+    }
+
+    public void saveModelBinary(File file) {
         try {
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
                 out.writeObject(game.getPlayer());
@@ -35,8 +35,8 @@ public class ModelFacade implements Serializable {
             Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void loadModelBinary(File file)  {
+
+    public void loadModelBinary(File file) {
         try {
             try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
                 //

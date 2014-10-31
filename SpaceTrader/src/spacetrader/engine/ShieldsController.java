@@ -28,13 +28,22 @@ public class ShieldsController implements Initializable {
     @FXML
     ListView shieldList;
     @FXML
+    ListView holdList;
+    @FXML
     Label moneyLabel;
     @FXML
     Button buyButton;
+    @FXML
+    Button sellButton;
 
     private ObservableList<String> shields;
+    private ObservableList<String> hold;
     private ShieldHold shieldHold;
     private Player player;
+    private int quanEn;
+    private int quanRef;
+    private int priceEn;
+    private int priceRef;
 
     /**
      * Initializes the controller class updates shield info in UI
@@ -44,7 +53,15 @@ public class ShieldsController implements Initializable {
         shieldHold = Game.getShieldHold();
         player = Game.getPlayer();
         shields = shieldList.getItems();
+        hold = holdList.getItems();
+        quanEn = Shield.ENERGY.CalculateSellQuantity(Game.getCurrentPort()
+                .getTechLevel());
+        quanRef = Shield.REFLECTIVE.CalculateSellQuantity(Game.getCurrentPort()
+                .getTechLevel());
+        priceEn = Shield.ENERGY.CalculatePrice(Game.getCurrentPort());
+        priceRef = Shield.REFLECTIVE.CalculatePrice(Game.getCurrentPort());
         updateShieldList();
+        updateHoldList();
         updateHoldLabels();
     }
 
@@ -54,17 +71,33 @@ public class ShieldsController implements Initializable {
      */
     private void updateHoldLabels() {
         emptySlotsLabel.setText("Empty Shield Slots: "
-                + shieldHold.getEmptySlots() + " Price: "
-                + Shield.ENERGY.CalculatePrice(Game.getCurrentPort()));
+                + shieldHold.getEmptySlots());
         totalShieldsLabel.setText("Total Shield Slots: "
-                + shieldHold.getMaxCapacity() + " Price: "
-                + Shield.REFLECTIVE.CalculatePrice(Game.getCurrentPort()));
+                + shieldHold.getMaxCapacity());
         moneyLabel.setText("Money: " + player.getMoney());
     }
 
+    /**
+     * updates the list of shields available
+     */
     private void updateShieldList() {
-        shields.add("Wooden Shield");
-        shields.add("Iron Shield");
+        shields.clear();
+        shields.add("Wooden Shield Price: " + priceEn + "(" + quanEn + ")");
+        shields.add("Iron Shield Price: " + priceRef + "(" + quanRef + ")");
+    }
+
+    /**
+     * updates the list of shields in your shield hold
+     */
+    private void updateHoldList() {
+        hold.clear();
+
+        hold.add("Wooden Shield Price: " + (priceEn * 0.8) + " Quantity: "
+                + shieldHold.getTotalEnergyShields());
+
+        hold.add("Iron Shield Price: " + +(priceRef * 0.8) + " Quantity: "
+                + shieldHold.getTotalReflectiveShields());
+
     }
 
     /**
@@ -74,20 +107,50 @@ public class ShieldsController implements Initializable {
     private void buyButtonPressed() {
         int index = shieldList.getSelectionModel().getSelectedIndex();
 
-        if (index == 0) {
-            shieldHold.addShield(Shield.ENERGY, 1);
-            player.setMoney(player.getMoney()
-                    - Shield.ENERGY.CalculatePrice(Game.getCurrentPort()));
+        if (index == 0 && quanEn > 0 && player.getMoney() > priceEn
+                && shieldHold.addShield(Shield.ENERGY, 1)) {
 
-        } else if (index == 1) {
-            shieldHold.addShield(Shield.REFLECTIVE, 1);
-            player.setMoney(player.getMoney() - Shield.REFLECTIVE
-                    .CalculatePrice(Game.getCurrentPort()));
+            player.setMoney(player.getMoney() - priceEn);
+            quanEn--;
+
+        } else if (index == 1 && quanRef > 0 && player.getMoney() > priceRef
+                && shieldHold.addShield(Shield.REFLECTIVE, 1)) {
+            player.setMoney(player.getMoney() - priceRef);
+            quanRef--;
         } else {
 
         }
         updateHoldLabels();
+        updateHoldList();
+        updateShieldList();
 
+    }
+
+    /**
+     * Sells a shield
+     */
+    @FXML
+    private void sellButtonPressed() {
+        int index = holdList.getSelectionModel().getSelectedIndex();
+        if (index == 0 && shieldHold.getTotalEnergyShields() > 0
+                && Shield.REFLECTIVE.getMTLU()
+                <= Game.getCurrentPort().getTechLevel()) {
+            player.setMoney(player.getMoney() + (int) (priceEn * 0.8));
+            quanEn++;
+            shieldHold.subtractShield(Shield.ENERGY, 1);
+
+        } else if (index == 1 && shieldHold.getTotalReflectiveShields() > 0
+                && Shield.REFLECTIVE.getMTLU()
+                <= Game.getCurrentPort().getTechLevel()) {
+            player.setMoney(player.getMoney() + (int) (priceRef * 0.8));
+            quanRef++;
+            shieldHold.subtractShield(Shield.REFLECTIVE, 1);
+        } else {
+
+        }
+        updateHoldLabels();
+        updateHoldList();
+        updateShieldList();
     }
 
 }

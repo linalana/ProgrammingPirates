@@ -45,6 +45,14 @@ public class MapController implements Initializable {
     @FXML
     private Button exitButton;
     
+    
+    /**
+     * Initializes the map - draws the continents on a canvas using their 
+     * coordinates. Adds listeners on the continents - displays relevant info
+     * on mouseover and travels to that continent on click
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         RangeChart range = new RangeChart();

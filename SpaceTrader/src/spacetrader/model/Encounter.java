@@ -1,4 +1,3 @@
-
 package spacetrader.model;
 
 import java.io.Serializable;
@@ -8,20 +7,22 @@ import java.io.Serializable;
  * @author alanalin
  */
 public class Encounter implements Serializable {
+
     Player p;
     Encounterer e;
+
     public Encounter(Player p, Encounterer e) {
         this.p = p;
         this.e = e;
     }
-    
+
     /**
      * Runs a "fight" offering choices to the user
      */
     public void engageFight() {
-        
+
     }
-    
+
     /**
      * Plays out the choice of the player attacking it's encounterer
      */
@@ -37,7 +38,7 @@ public class Encounter implements Serializable {
             //you won
         }
     }
-    
+
     /**
      * Plays out the choice of the encoutnerer attacking player
      */
@@ -53,9 +54,10 @@ public class Encounter implements Serializable {
             //continue
         }
     }
-    
+
     /**
      * Finds the what type the encounterer is
+     *
      * @return the string type of the encounterer
      */
     public String getType() {
@@ -70,32 +72,34 @@ public class Encounter implements Serializable {
 
     /**
      * Gets the info from the player and encounterer
+     *
      * @return the int array containing all the stats required for fight screen
      */
     public int[] getInfo() {
-       int[] info = new int[12];
-       int[] pInfo = p.getPlayerInfo();
-       int[] otherInfo = e.getEncountererInfo();
-       for (int i = 0; i < 12; i++) {
-           if (i < 6) {
-               info[i] = pInfo[i];
-           } else {
-               info[i] = otherInfo[i-6];
-           }    
-       }
-       return info;
+        int[] info = new int[12];
+        int[] pInfo = p.getPlayerInfo();
+        int[] otherInfo = e.getEncountererInfo();
+        for (int i = 0; i < 12; i++) {
+            if (i < 6) {
+                info[i] = pInfo[i];
+            } else {
+                info[i] = otherInfo[i - 6];
+            }
+        }
+        return info;
     }
+
     /**
      * Performs inspection by police on player
+     *
      * @return true if passes
      */
     public boolean Inspection() {
         boolean illegalGoods = p.checkCargo();
-        if (illegalGoods){
+        if (illegalGoods) {
             p.failInspection();
         }
         return false;
     }
-    
-    
+
 }

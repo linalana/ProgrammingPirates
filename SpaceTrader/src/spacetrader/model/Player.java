@@ -7,19 +7,20 @@ import java.io.Serializable;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Michael
  */
 public class Player implements Serializable {
+
     private String name;
     private final Person p;
-    private int money = 10000;
+    private int money = 1000000;
     private PoliceRecord policeRecord;
 
     /**
      * creates a new player
+     *
      * @param name
      * @param fighter
      * @param trader
@@ -32,12 +33,15 @@ public class Player implements Serializable {
         policeRecord = new PoliceRecord();
 
     }
+
     @Override
     public String toString() {
         return "Player name: " + name + " " + p;
     }
+
     /**
      * Attack encounterer
+     *
      * @param e the encounterer
      */
     public void attack(Encounterer e) {
@@ -57,14 +61,13 @@ public class Player implements Serializable {
     }
 
     //Getters and setters
-
     /**
      *
      * Setter for name
      *
      * @param newName
      */
-        public void setName(String newName) {
+    public void setName(String newName) {
         name = newName;
     }
 
@@ -159,27 +162,33 @@ public class Player implements Serializable {
     public void addExperience(int exp) {
         p.addReputation(exp);
     }
+
     /**
      * @return the policeRecord
      */
     public PoliceRecord getPoliceRecord() {
         return policeRecord;
     }
+
     /**
      * Returns the player info required to assess a fight
+     *
      * @return int array of stats for fight
      */
     public int[] getPlayerInfo() {
         return p.getInfo();
     }
+
     /**
      * @return total damage player is capable of
      */
     public int calcDamage() {
         return p.calcDamage();
     }
+
     /**
      * distributes the damage
+     *
      * @param totalDamage the damage done to the player
      * @return 0 if dead, 1 if survived on lifeboat, 2 if alive
      */
@@ -192,15 +201,19 @@ public class Player implements Serializable {
         }
         return 2;
     }
+
     /**
      * Checks ship for illegal goods
+     *
      * @return true if contains illegal goods
      */
     public boolean checkCargo() {
         return p.getShip().checkHoldForIllegal();
     }
+
     /**
      * Lower Inspection History, fine player, confiscate illegal goods
+     *
      * @return amount of fine based on inspection history
      */
     public int failInspection() {
@@ -216,11 +229,11 @@ public class Player implements Serializable {
 
         return fine;
     }
+
     /**
      * @return player's shield hold
      */
-    public ShieldHold getShieldHold(){
+    public ShieldHold getShieldHold() {
         return p.getShieldHold();
     }
 }
-

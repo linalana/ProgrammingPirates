@@ -1,4 +1,3 @@
-
 package spacetrader.model;
 
 import java.util.Random;
@@ -24,12 +23,14 @@ public class Person {
         this.reputation = reputation;
         this.ship = ship;
     }
+
     @Override
     public String toString() {
         return "Fighter: " + getFighter()
                 + ". Trader: " + getTrader() + ". Engineer: "
                 + getEngineer() + ". Investor: " + getInvestor();
     }
+
     /**
      * @return the fighter
      */
@@ -71,6 +72,7 @@ public class Person {
     public void addReputation(int reputation) {
         this.setReputation(this.getReputation() + reputation);
     }
+
     /**
      * @param fighter the fighter to set
      */
@@ -105,6 +107,7 @@ public class Person {
     public void setReputation(int reputation) {
         this.reputation = reputation;
     }
+
     /**
      * @return the ship
      */
@@ -118,15 +121,19 @@ public class Person {
     public void setShip(Ship ship) {
         this.ship = ship;
     }
+
     /**
      * updates the ship
+     *
      * @param type the new type of ship
      */
     public void updateShip(int type) {
         getShip().updateShip(type);
     }
+
     /**
      * Returns the info required to assess a fight
+     *
      * @return int array of stats for fight
      */
     public int[] getInfo() {
@@ -151,14 +158,17 @@ public class Person {
         }
         return damage;
     }
+
     /**
      * distributes damage to ship
+     *
      * @param totalDamage damage done (to distribute)
      * @return true if ship survives
      */
     public boolean distributeDamage(int totalDamage) {
         return getShip().distributeDamage(totalDamage);
     }
+
     /**
      *
      * @return true if ship has life boat
@@ -166,8 +176,9 @@ public class Person {
     public boolean hasLifeBoat() {
         return getShip().hasLifeBoat();
     }
+
     /**
-     * 
+     *
      * @return shieldhold
      */
     public ShieldHold getShieldHold() {

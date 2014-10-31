@@ -66,7 +66,7 @@ public class ShipMarketController implements Initializable {
     private Ship[] s = shipyard.getShips();
 
     /**
-     * Initializes the controller class. Fills out UI
+     * Initializes the controller class.fills out UI
      *
      * @param url
      * @param rb
@@ -141,7 +141,6 @@ public class ShipMarketController implements Initializable {
             int newMoney = Game.getPlayer().getMoney() - s[index].getPrice() + v;
             Game.getPlayer().setMoney(newMoney);
             money.setText("Money: " + Game.getPlayer().getMoney());
-            ApplicationController.changeScene("GUI/ShipYardScreen.fxml");
         }
     }
 
