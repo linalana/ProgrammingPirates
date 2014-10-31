@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package spacetrader.engine;
 
 import java.net.URL;
@@ -17,7 +11,7 @@ import spacetrader.model.Game;
 import spacetrader.model.Player;
 
 /**
- * FXML Controller class
+ * FXML Controller class for upgrade ship screen
  *
  * @author James
  */
@@ -31,13 +25,15 @@ public class ShipUpgradeController implements Initializable {
     private Button buyButton;
     @FXML
     private Button escapeBuyButton;
-    
+
     private Player player;
     private int costToRefuel;
     private int barrelsToBuy;
     private final int COST_OF_FUEL = 100;
+
     /**
-     * Initializes the controller class.
+     * Initializes the controller class Fills in labels and decides how much
+     * fuel player can buy
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -45,8 +41,8 @@ public class ShipUpgradeController implements Initializable {
         player = Game.getPlayer();
         rumLabel.setText("Rum on ship: " + player.getShip().getFuel());
         moneyLabel.setText("Money: " + player.getMoney());
-        int fuelNeeded = player.getShip().getMaxRange() -
-                player.getShip().getFuel();
+        int fuelNeeded = player.getShip().getMaxRange()
+                - player.getShip().getFuel();
         costToRefuel = fuelNeeded * COST_OF_FUEL;
         if (costToRefuel > player.getMoney()) {
             barrelsToBuy = player.getMoney() / 100;
@@ -57,20 +53,33 @@ public class ShipUpgradeController implements Initializable {
         if (player.getShip().hasLifeBoat()) {
             escapeBuyButton.setDisable(true);
         }
-    }    
-    
+    }
+
+    /**
+     * refuels, deducts money, update
+     *
+     * @param event rum button pressed
+     */
     @FXML
     private void handleRumButtonAction(ActionEvent event) {
         player.getShip().addFuel(barrelsToBuy);
-        player.setMoney(player.getMoney()-costToRefuel);
+        player.setMoney(player.getMoney() - costToRefuel);
         updateLabels();
     }
-    
+
+    /**
+     * updates the money and rum labels
+     */
     public void updateLabels() {
         rumLabel.setText("Rum on ship: " + player.getShip().getFuel());
         moneyLabel.setText("Money: " + player.getMoney());
     }
-    
+
+    /**
+     * purchases an escape pod, deducts money and returns to shipyard
+     *
+     * @param event escape pod button pressed
+     */
     @FXML
     private void handleEscapeButtonAction(ActionEvent event) {
         int money = Game.getPlayer().getMoney();
@@ -79,9 +88,9 @@ public class ShipUpgradeController implements Initializable {
             Game.getPlayer().getShip().setLifeBoat(true);
             moneyLabel.setText("Money: " + (money - 5000));
             escapeBuyButton.setDisable(true);
-            
+
             ApplicationController.changeScene("GUI/ShipYardScreen.fxml");
         }
     }
-    
+
 }

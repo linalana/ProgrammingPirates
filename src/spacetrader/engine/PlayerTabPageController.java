@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package spacetrader.engine;
 
 import java.net.URL;
@@ -14,7 +8,7 @@ import javafx.scene.control.Label;
 import spacetrader.model.Game;
 
 /**
- * FXML Controller class
+ * FXML Controller class for tab page
  *
  * @author Michael
  */
@@ -33,7 +27,7 @@ public class PlayerTabPageController implements Initializable {
     private Label engineer;
     
     /**
-     * Initializes the controller class.
+     * Initializes the controller class with updated labels for the player infoÏ
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

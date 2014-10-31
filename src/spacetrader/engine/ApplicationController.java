@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package spacetrader.engine;
 
 import java.io.IOException;
@@ -18,12 +14,22 @@ import spacetrader.SpaceTrader;
  * @author Michael
  */
 public class ApplicationController {
-    
-    public static void playSound(String file){
+
+    /**
+     * plays a sound
+     *
+     * @param file the audio file
+     */
+    public static void playSound(String file) {
         AudioClip sound = new AudioClip(file);
         sound.play();
     }
 
+    /**
+     * changes scene of center stage
+     *
+     * @param file the new fxml file
+     */
     public static void changeScene(String file) {
         try {
             // Load root layout from fxml file.

@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package spacetrader.engine;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Optional;
@@ -13,12 +7,8 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import org.controlsfx.dialog.Dialogs;
 import spacetrader.model.Game;
 import spacetrader.model.Port;
@@ -33,6 +23,7 @@ import spacetrader.model.Gadget;
  * @author Danny
  */
 public class GadgetsController implements Initializable {
+
     @FXML
     private Label moneyLabel;
     @FXML
@@ -48,6 +39,7 @@ public class GadgetsController implements Initializable {
     private ObservableList<String> market;
     private ShipYard shipYard;
     private int slots;
+
     /**
      * Initializes the controller class.
      */
@@ -61,7 +53,12 @@ public class GadgetsController implements Initializable {
         gadgetHold = Game.getPlayer().getShip().getGadgetHold();
         updateLists();
     }
-    
+
+    /**
+     * buys gadget (update player cargo and gadget list)
+     *
+     * @param event buy button pressed
+     */
     @FXML
     public void buyButtonPressed(ActionEvent event) {
         String longString = yardGadgetList.getSelectionModel().getSelectedItem();
@@ -75,7 +72,7 @@ public class GadgetsController implements Initializable {
             Gadget gadget = Gadget.valueOf(goodToBuy);
             int[] pq = gadgetsForSale.get(gadget);
             //get quantity desired from player 
-            String q = getQuantityFromPlayer();
+            String q = getQuantityFromPlayer("Buying Stuff", "Arr, how much ye want to buy?");
             int quant = 0;
             try {
                 quant = Integer.parseInt(q);
@@ -89,13 +86,19 @@ public class GadgetsController implements Initializable {
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, -1 * quant);
-                    slots-=quant;
+                    slots -= quant;
                     updateLists();
                 }
 
             }
         }
     }
+
+    /**
+     * Sells from inventory and puts into shop
+     *
+     * @param event sell button clicked
+     */
     @FXML
     public void sellButtonPressed(ActionEvent event) {
         String longString = playerGadgetList.getSelectionModel().getSelectedItem();
@@ -109,7 +112,7 @@ public class GadgetsController implements Initializable {
             Gadget gadget = Gadget.valueOf(goodToSell);
             int[] pq = gadgetsForSale.get(gadget);
             //get quantity desired from player 
-            String q = getQuantitySellFromPlayer();
+            String q = getQuantityFromPlayer("Selling Stuff", "Arr, how much ye want to sell?");
             int quant = 0;
             try {
                 quant = Integer.parseInt(q);
@@ -119,19 +122,26 @@ public class GadgetsController implements Initializable {
             int moneySpent = quant * pq[0];
             if (Game.getCurrentPort().getTechLevel() > gadget.getMTLU()) {
                 if (Game.getPlayer().getShip().getGadgetHold().subtractGadget(gadget, quant)) {
-                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int) (pq[0] * 0.8 * quant));
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, quant);
-                    slots+=quant;
+                    slots += quant;
                     updateLists();
                 }
             }
         }
     }
-    
+
+    /**
+     * updates the amount of money displayed
+     */
     public void updateMoneyLabel() {
-         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
+        moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }
+
+    /**
+     * updates the cargo and shop lists
+     */
     public void updateLists() {
         slotLabel.setText("Slots available: " + slots);
         cargo = playerGadgetList.getItems();
@@ -140,49 +150,36 @@ public class GadgetsController implements Initializable {
         playerGadgets = Game.getPlayer().getShip().getGadgetHold().getGadgets();
         market.clear();
         cargo.clear();
-        for (Gadget g: gadgetsForSale.keySet()) {
+        for (Gadget g : gadgetsForSale.keySet()) {
             int[] pq = gadgetsForSale.get(g);
-            if (pq[1] != 0 ) {
-                market.add(g.toString() + " Price: " + pq[0] + " Quantity: " + 
-                    pq[1]);
+            if (pq[1] != 0) {
+                market.add(g.toString() + " Price: " + pq[0] + " Quantity: "
+                        + pq[1]);
             }
         }
-        for (Gadget g: playerGadgets.keySet()) {
+        for (Gadget g : playerGadgets.keySet()) {
             int q = playerGadgets.get(g);
             int sellPrice = (int) Math.round(0.8 * gadgetsForSale.get(g)[0]);
             if (q > 0) {
-                cargo.add(g.toString() + " Quantity: " + q + " Sell Price: " +
-                        sellPrice);
+                cargo.add(g.toString() + " Quantity: " + q + " Sell Price: "
+                        + sellPrice);
             }
         }
     }
 
-    private String getQuantityFromPlayer() {
-        
-        Optional<String> response = Dialogs.create()
-            .owner(SpaceTrader.getPrimaryStage())
-            .title("Buying Stuff")
-            .masthead("Arr, how much ye want to buy?")
-            .message("Enter quantity:")
-            .showTextInput("0");
+    /**
+     * asks player how much they want to buy/sell
+     *
+     * @return response
+     */
+    private String getQuantityFromPlayer(String title, String head) {
 
-        if (response.isPresent()) {
-            String result = response.get();
-            return result;
-        } else {
-            return null;
-        }
-
-    }
-    
-    private String getQuantitySellFromPlayer() {
-        
         Optional<String> response = Dialogs.create()
-            .owner(SpaceTrader.getPrimaryStage())
-            .title("Selling Stuff")
-            .masthead("Arr, how much ye want to sell?")
-            .message("Enter quantity:")
-            .showTextInput("0");
+                .owner(SpaceTrader.getPrimaryStage())
+                .title(title)
+                .masthead(head)
+                .message("Enter quantity:")
+                .showTextInput("0");
 
         if (response.isPresent()) {
             String result = response.get();
