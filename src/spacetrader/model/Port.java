@@ -1,17 +1,17 @@
-
 package spacetrader.model;
 
 import java.io.Serializable;
 
 /**
  * This class represents a Port.
+ *
  * @author Danny
  */
 public class Port implements Serializable {
-    
-    private static final String[] events = new String[] {"DROUGHT", "COLD", 
-    "CROPFAIL", "WAR", "BOREDOM", "PLAGUE", "LACKOFWORKERS"};
-        
+
+    private static final String[] events = new String[]{"DROUGHT", "COLD",
+        "CROPFAIL", "WAR", "BOREDOM", "PLAGUE", "LACKOFWORKERS"};
+
     private String name;
     private ShipYard shipYard;
     private Bazaar bazaar;
@@ -21,17 +21,17 @@ public class Port implements Serializable {
     private Continent continent;
     private PoliceForce policeForce;
 
-    
     /**
      * This is the constructor for the Port, it sets all the necessary
      * variables.
+     *
      * @param newName
      * @param newTechLevel
      * @param newResources
      * @param continent in which the port is located
      */
-    public Port(String newName, int newTechLevel, String newResources, 
-                Continent continent) {
+    public Port(String newName, int newTechLevel, String newResources,
+            Continent continent) {
         name = newName;
         techLevel = newTechLevel;
         resources = newResources;
@@ -40,17 +40,17 @@ public class Port implements Serializable {
         this.continent = continent;
         policeForce = new PoliceForce(continent.getPoliticalSystem());
 
-        
     }
 
     /**
      * This is a getter method for the name of the Port.
+     *
      * @return name
      */
     public String getName() {
         return name;
     }
-    
+
     @Override
     public String toString() {
         return getName();
@@ -76,7 +76,7 @@ public class Port implements Serializable {
     public String getResources() {
         return resources;
     }
-    
+
     /**
      * @return the resources
      */

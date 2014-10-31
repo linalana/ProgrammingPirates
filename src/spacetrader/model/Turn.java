@@ -1,5 +1,3 @@
-
-
 package spacetrader.model;
 
 import java.io.Serializable;
@@ -10,7 +8,7 @@ import java.util.Random;
  * @author James
  */
 public class Turn implements Serializable {
-    
+
     private Continent newContinent;
     private Port newPort;
     private int distance;
@@ -22,7 +20,7 @@ public class Turn implements Serializable {
     private int pirateChance;
     private static Encounter encounter;
     private static RandomEvent randomEvent;
-    
+
     public Turn(Port newPort) {
         this.newPort = newPort;
         newContinent = newPort.getContinent();
@@ -30,10 +28,11 @@ public class Turn implements Serializable {
         techlevel = newPort.getTechLevel();
         setChanceEncounters();
         randomPortEvents();
-        
     }
+
     /**
      * travels to a new point and checks if anything exciting occurred
+     *
      * @param fuelUsed to travel
      * @return the result (what happened)
      */
@@ -44,24 +43,24 @@ public class Turn implements Serializable {
             encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
             return "PoliceForce";
         } else if (randInt > policeChance
-                   && randInt < (policeChance + traderChance)) {
+                && randInt < (policeChance + traderChance)) {
             encounter = new Encounter(Game.getPlayer(), new Trader());
             return "Trader";
         } else if (randInt > (policeChance + traderChance)
-                   && randInt < (policeChance + traderChance + pirateChance)) {
+                && randInt < (policeChance + traderChance + pirateChance)) {
             encounter = new Encounter(Game.getPlayer(), new Pirate());
             return "Pirate";
         }
         randomEvent = new RandomEvent();
         return null;
     }
-    
+
     /**
      * set chance of encountering various types of people
      */
     private void setChanceEncounters() {
         switch (politicalSystem) {
-            case "anarchy": 
+            case "anarchy":
                 policeChance = 0;
                 traderChance = 5;
                 pirateChance = 50;
@@ -155,6 +154,7 @@ public class Turn implements Serializable {
     public static Encounter getEncounter() {
         return encounter;
     }
+
     /**
      * decides an event to occur at the port
      */
@@ -165,18 +165,19 @@ public class Turn implements Serializable {
         }
         newPort.getBazaar().setGoodsForSale();
     }
+
     /**
      * @return the title of the random event
      */
     public static String getEventTitle() {
         return randomEvent.getTitle();
     }
+
     /**
      * @return description of event
      */
     public static String getEventDescription() {
         return randomEvent.getDescription();
     }
-    
-    
+
 }

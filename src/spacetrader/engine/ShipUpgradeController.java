@@ -11,7 +11,7 @@ import spacetrader.model.Game;
 import spacetrader.model.Player;
 
 /**
- * FXML Controller class for upgrade ship screen
+ * FXML Controller class
  *
  * @author James
  */
@@ -32,8 +32,7 @@ public class ShipUpgradeController implements Initializable {
     private final int COST_OF_FUEL = 100;
 
     /**
-     * Initializes the controller class Fills in labels and decides how much
-     * fuel player can buy
+     * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,8 +87,6 @@ public class ShipUpgradeController implements Initializable {
             Game.getPlayer().getShip().setLifeBoat(true);
             moneyLabel.setText("Money: " + (money - 5000));
             escapeBuyButton.setDisable(true);
-
-            ApplicationController.changeScene("GUI/ShipYardScreen.fxml");
         }
     }
 
