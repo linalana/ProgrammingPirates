@@ -14,7 +14,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="388.0" prefWidth="295.0" stylesheets="@DarkTheme.css">
                <children>
                   <Label layoutX="14.0" styleClass="label-subtitle" text="Shipyard Gadgets" />
-                  <Button fx:id="buyButton" layoutX="214.0" layoutY="230.0" mnemonicParsing="false" onAction="#buyButtonPressed" text="Buy" />
+                  <Button fx:id="buyButton" layoutX="185.0" layoutY="230.0" mnemonicParsing="false" onAction="#buyButtonPressed" text="Buy One" />
                   <ListView fx:id="yardGadgetList" layoutX="11.0" layoutY="30.0" prefHeight="183.0" prefWidth="298.0" stylesheets="@DarkTheme.css" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
                </children>
             </AnchorPane>
@@ -22,7 +22,7 @@
                <children>
                   <ListView fx:id="playerGadgetList" layoutX="-25.0" layoutY="40.0" prefHeight="183.0" prefWidth="298.0" stylesheets="@DarkTheme.css" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
                   <Label layoutX="14.0" styleClass="label-subtitle" text="Your Gadgets" />
-                  <Button fx:id="sellButton" layoutX="213.0" layoutY="229.0" mnemonicParsing="false" onAction="#sellButtonPressed" text="Sell" />
+                  <Button fx:id="sellButton" layoutX="187.0" layoutY="229.0" mnemonicParsing="false" onAction="#sellButtonPressed" text="Sell One" />
                   <Label fx:id="slotLabel" layoutX="14.0" layoutY="233.0" styleClass="label-small" text="Slots Available:" />
                </children>
             </AnchorPane>
