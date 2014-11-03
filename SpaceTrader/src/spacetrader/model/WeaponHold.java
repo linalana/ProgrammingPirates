@@ -86,4 +86,8 @@ public class WeaponHold implements Serializable {
         }
         return totalDamage;
     }
+    
+    public int getEmptySlots() {
+        return amount - totalWeapons;
+    }
 }

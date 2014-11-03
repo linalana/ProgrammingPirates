@@ -35,6 +35,7 @@ public class WeaponsController implements Initializable {
     private WeaponHold weaponHold;
     private ShipYard shipYard;
     private int slots;
+    private int slotsAvailable;
     private ObservableList<String> ship;
     private ObservableList<String> market;
 
@@ -45,7 +46,8 @@ public class WeaponsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         updateMoneyLabel();
         slots = Game.getPlayer().getShip().getWeaponSlots();
-        updateSlotsLabel();
+        slotsAvailable = Game.getPlayer().getShip().getWeaponHold().getEmptySlots();
+        slotsLabel.setText("Weapon slots left: " + slotsAvailable);
         Port port = Game.getCurrentPort();
         shipYard = port.getShipyard();
         weaponHold = Game.getPlayer().getShip().getWeaponHold();
@@ -83,7 +85,7 @@ public class WeaponsController implements Initializable {
 
     @FXML
     private void updateSlotsLabel() {
-        slotsLabel.setText("Weapon slots left: " + slots);
+        slotsLabel.setText("Weapon slots left: " + slotsAvailable);
     }
 
     @FXML
@@ -107,7 +109,7 @@ public class WeaponsController implements Initializable {
                     ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
-                    slots -= quant;
+                    slotsAvailable -= quant;
                     updateSlotsLabel();
                     updateLists();
                 }
@@ -134,7 +136,7 @@ public class WeaponsController implements Initializable {
                 if (Game.getPlayer().getShip().getWeaponHold().subtractWeapon(weapon, quant)) {
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int) (pq[0] * 0.8 * quant));
                     updateMoneyLabel();
-                    slots += quant;
+                    slotsAvailable += quant;
                     updateSlotsLabel();
                     updateLists();
                 }
