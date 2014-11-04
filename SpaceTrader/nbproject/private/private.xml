@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/engine/GadgetsController.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/PoliceForce.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Person.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Bazaar.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Player.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Ship.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Continent.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Encounterer.java</file>
+        </group>
     </open-files>
 </project-private>

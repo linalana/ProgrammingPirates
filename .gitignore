@@ -9,3 +9,4 @@ SpaceTrader/nbproject/private/private.xml
 *.jar
 
 *.jnlp
+/SpaceTrader/nbproject/private/
