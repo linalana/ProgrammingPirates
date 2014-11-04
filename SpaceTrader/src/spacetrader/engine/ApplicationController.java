@@ -2,6 +2,8 @@
 package spacetrader.engine;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -15,13 +17,19 @@ import spacetrader.SpaceTrader;
  */
 public class ApplicationController {
 
+    private static ApplicationController instance = new ApplicationController();
+    
+    public static ApplicationController getInstance() {
+        return instance;
+    }
+    
     /**
      * plays a sound
      *
      * @param file the audio file
      */
-    public static void playSound(String file) {
-        AudioClip sound = new AudioClip(file);
+    public void playSound(final String file) {
+        final AudioClip sound = new AudioClip(file);
         sound.play();
     }
 
@@ -30,20 +38,20 @@ public class ApplicationController {
      *
      * @param file the new fxml file
      */
-    public static void changeScene(String file) {
+    public void changeScene(final String file) {
         try {
             // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
+            final FXMLLoader loader = new FXMLLoader();
             loader.setLocation(SpaceTrader.class.getResource(file));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
+            final AnchorPane root = (AnchorPane) loader.load();
 
             // Show the scene containing the root layout.
-            Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
+            final Stage playerStage = SpaceTrader.getPrimaryStage();
+            final Scene scene = new Scene(root);
             playerStage.setScene(scene);
             playerStage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(ApplicationController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

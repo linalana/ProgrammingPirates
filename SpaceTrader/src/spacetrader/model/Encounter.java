@@ -8,12 +8,12 @@ import java.io.Serializable;
  */
 public class Encounter implements Serializable {
 
-    Player p;
-    Encounterer e;
+    final private Player player;
+    final private Encounterer encounterer;
 
-    public Encounter(Player p, Encounterer e) {
-        this.p = p;
-        this.e = e;
+    public Encounter(final Player player, final Encounterer encounterer) {
+        this.player = player;
+        this.encounterer = encounterer;
     }
 
     /**
@@ -26,14 +26,14 @@ public class Encounter implements Serializable {
     /**
      * Plays out the choice of the player attacking it's encounterer
      */
-    private void PlayerAttack() {
-        int totalDamage = p.calcDamage();
+    private void playerAttack() {
+        final int totalDamage = player.calcDamage();
         if (totalDamage == 0) {
             //tell player they missed
         }
         //algorithm to decide where to do that damage on the encounterer's ship
-        boolean result = e.distributeDamage(totalDamage);
-        if (result == false) {
+        final boolean result = encounterer.distributeDamage(totalDamage);
+        if (!result) {
             //distributeBooty();
             //you won
         }
@@ -42,10 +42,10 @@ public class Encounter implements Serializable {
     /**
      * Plays out the choice of the encoutnerer attacking player
      */
-    private void EncountererAttack() {
-        int totalDamage = e.calcDamage();
+    private void encountererAttack() {
+        final int totalDamage = encounterer.calcDamage();
         //algorithm to decide where to do that damage on the players's ship
-        int result = p.distributeDamage(totalDamage);
+        final int result = player.distributeDamage(totalDamage);
         if (result == 0) { //D.E.D dead
             //GAME OVER
         } else if (result == 1) { //life boat escape
@@ -61,13 +61,15 @@ public class Encounter implements Serializable {
      * @return the string type of the encounterer
      */
     public String getType() {
-        if (e.getClass().equals(Pirate.class)) {
-            return "Pirate";
-        } else if (e.getClass().equals(Trader.class)) {
-            return "Trader";
+        String type;
+        if (encounterer.getClass().equals(Pirate.class)) {
+            type = "Pirate";
+        } else if (encounterer.getClass().equals(Trader.class)) {
+            type = "Trader";
         } else {
-            return "Police Force";
+            type = "Police Force";
         }
+        return type;
     }
 
     /**
@@ -77,8 +79,8 @@ public class Encounter implements Serializable {
      */
     public int[] getInfo() {
         int[] info = new int[12];
-        int[] pInfo = p.getPlayerInfo();
-        int[] otherInfo = e.getEncountererInfo();
+        final int[] pInfo = player.getPlayerInfo();
+        final int[] otherInfo = encounterer.getEncountererInfo();
         for (int i = 0; i < 12; i++) {
             if (i < 6) {
                 info[i] = pInfo[i];
@@ -94,10 +96,10 @@ public class Encounter implements Serializable {
      *
      * @return true if passes
      */
-    public boolean Inspection() {
-        boolean illegalGoods = p.checkCargo();
+    public boolean inspection() {
+        final boolean illegalGoods = player.checkCargo();
         if (illegalGoods) {
-            p.failInspection();
+            player.failInspection();
         }
         return false;
     }

@@ -82,7 +82,7 @@ public class MarketplaceScreenController implements Initializable {
             int moneySpent = quant * pq[0];
             if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
                 if (cargoHold.addCargo(good, quant)) {
-                    ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
+                    ApplicationController.getInstance().playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
                     bazaar.updateQuantity(good, -1 * quant);
@@ -128,7 +128,7 @@ public class MarketplaceScreenController implements Initializable {
 
     @FXML
     public void backButtonPressed(ActionEvent event) {
-        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
+        ApplicationController.getInstance().changeScene("GUI/OpeningGameScreen.fxml");
     }
 
     public void updateMoneyLabel() {

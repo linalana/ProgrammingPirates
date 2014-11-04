@@ -61,7 +61,7 @@ public class CurrentPortTabPageController implements Initializable {
      */
     @FXML
     private void handleMarketplaceButtonAction(ActionEvent event) {
-        ApplicationController.changeScene("GUI/MarketplaceScreen.fxml");
+        ApplicationController.getInstance().changeScene("GUI/MarketplaceScreen.fxml");
     }
     
     /**
@@ -70,6 +70,6 @@ public class CurrentPortTabPageController implements Initializable {
      */
     @FXML
     private void handleShipYardButtonAction(ActionEvent event) {
-        ApplicationController.changeScene("GUI/ShipYardScreen.fxml");
+        ApplicationController.getInstance().changeScene("GUI/ShipYardScreen.fxml");
     }
 }

@@ -82,7 +82,7 @@ public class GadgetsController implements Initializable {
             int moneySpent = quant * pq[0];
             if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
                 if (gadgetHold.addGadget(gadget, quant)) {
-                    ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
+                    ApplicationController.getInstance().playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, -1 * quant);

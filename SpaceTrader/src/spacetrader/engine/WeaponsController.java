@@ -106,7 +106,7 @@ public class WeaponsController implements Initializable {
             int moneySpent = quant * pq[0];
             if (Game.getPlayer().getMoney() >= moneySpent && pq[1] > quant) {
                 if (weaponHold.addWeapon(weapon, quant)) {
-                    ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
+                    ApplicationController.getInstance().playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
                     slotsAvailable -= quant;

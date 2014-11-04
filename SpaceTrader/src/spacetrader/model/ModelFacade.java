@@ -24,7 +24,7 @@ public class ModelFacade implements Serializable {
         return instance;
     }
 
-    public void saveModelBinary(File file) {
+    public void saveModelBinary(final File file) {
         try {
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
                 out.writeObject(game.getPlayer());
@@ -36,15 +36,16 @@ public class ModelFacade implements Serializable {
         }
     }
 
-    public void loadModelBinary(File file) {
+    public void loadModelBinary(final File file) {
         try {
-            try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+            try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(file))) {
                 //
-                Player p = (Player) in.readObject();
-                World w = (World) in.readObject();
-                Port cp = (Port) in.readObject();
-                game = new Game(p);
-                game.setCurrentPort(cp);
+                final Player player = (Player) input.readObject();
+                final World world = (World) input.readObject();
+                final Port currentPort = (Port) input.readObject();
+                game = new Game(player);
+                game.setCurrentPort(currentPort);
+                game.setWorld(world);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
