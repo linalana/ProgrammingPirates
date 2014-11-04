@@ -10,8 +10,8 @@ import java.util.Random;
  */
 public class PoliceForce extends Encounterer implements Serializable {
 
-    private int strength;
-    private int bribe;
+    final private int strength;
+    final private int bribe;
 
     /**
      * Constructor for PoliceForce
@@ -49,10 +49,10 @@ public class PoliceForce extends Encounterer implements Serializable {
      * @param system the political system of the continent
      * @return the strength
      */
-    private int calculateStrength(String system) {
+    private int calculateStrength(final String system) {
         int strength;
         int strengthCount = 0;
-        String[] strengthArray = {"anarchy", "feudal", "pacifist", "satori", "capitalist", "democracy", "socialist",
+        final String[] strengthArray = {"anarchy", "feudal", "pacifist", "satori", "capitalist", "democracy", "socialist",
             "confederacy", "monarchy", "communist", "corporate", "cybernetic", "dictatorship",
             "technocracy", "theocracy", "fascist", "military"};
         for (int i = 0; i < strengthArray.length; i++) {
@@ -81,11 +81,11 @@ public class PoliceForce extends Encounterer implements Serializable {
      * @param system the political system of the continent
      * @return the bribe level
      */
-    private int calculateBribe(String system) {
+    private int calculateBribe(final String system) {
         int bribe;
         int bribeCount = 0;
-        Random rand = new Random();
-        String[] bribeArray = {"anarchy", "fascist", "feudal", "military", "pacifist", "satori", "capitalist",
+        final Random rand = new Random();
+        final String[] bribeArray = {"anarchy", "fascist", "feudal", "military", "pacifist", "satori", "capitalist",
             "communist", "cybernetic", "democracy", "dictatorship", "monarchy", "socialist",
             "confederacy", "corporate", "technocracy", "theocracy"};
         for (int i = 0; i < bribeArray.length; i++) {
@@ -111,7 +111,7 @@ public class PoliceForce extends Encounterer implements Serializable {
      * @param player the player being inspected
      * @return true if they pass the inspection, false otherwise
      */
-    private boolean inspect(Player player) {
+    private boolean inspect(final Player player) {
         if (player.getShip().getCargoHold().getGoods().get(TradeGood.FIREARMS) != 0
                 || player.getShip().getCargoHold().getGoods().get(TradeGood.NARCOTICS) != 0) {
             player.getPoliceRecord().decrementInspectionHistory();
