@@ -96,7 +96,7 @@ public class EncounterController implements Initializable {
      */
     @FXML
     private void handleFleeButtonAction(ActionEvent event) {
-        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
+        ApplicationController.getInstance().changeScene("GUI/OpeningGameScreen.fxml");
     }
 
     /**

@@ -117,7 +117,7 @@ public class ShipMarketController implements Initializable {
      */
     @FXML
     private void outButtonPressed(ActionEvent event) {
-        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
+        ApplicationController.getInstance().changeScene("GUI/OpeningGameScreen.fxml");
     }
 
     /**

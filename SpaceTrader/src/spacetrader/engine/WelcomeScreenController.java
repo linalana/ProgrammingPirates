@@ -32,8 +32,8 @@ public class WelcomeScreenController implements Initializable {
      */
     @FXML
     private void handleStartButtonAction(ActionEvent event) {
-        ApplicationController.playSound(getClass().getResource("yearr.wav").toString());
-        ApplicationController.changeScene("GUI/PlayerConfiguration.fxml");
+        ApplicationController.getInstance().playSound(getClass().getResource("yearr.wav").toString());
+        ApplicationController.getInstance().changeScene("GUI/PlayerConfiguration.fxml");
     }
 
     /**

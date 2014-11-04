@@ -37,22 +37,23 @@ public class Turn implements Serializable {
      * @return the result (what happened)
      */
     public String travel(int fuelUsed) {
+        String event = null;
         Random rand = new Random();
         int randInt = rand.nextInt(100);
         if (randInt < policeChance) {
             encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
-            return "PoliceForce";
+            event = "PoliceForce";
         } else if (randInt > policeChance
                 && randInt < (policeChance + traderChance)) {
             encounter = new Encounter(Game.getPlayer(), new Trader());
-            return "Trader";
+            event = "Trader";
         } else if (randInt > (policeChance + traderChance)
                 && randInt < (policeChance + traderChance + pirateChance)) {
             encounter = new Encounter(Game.getPlayer(), new Pirate());
-            return "Pirate";
+            event = "Pirate";
         }
         randomEvent = new RandomEvent();
-        return null;
+        return event;
     }
 
     /**

@@ -18,8 +18,8 @@ public class Game implements Serializable {
      *
      * @param p the player
      */
-    public Game(Player p) {
-        player = p;
+    public Game(final Player player) {
+        this.player = player;
         world = new World();
         currentPort = world.getContinents()[0].getMainPort();
     }
@@ -34,7 +34,7 @@ public class Game implements Serializable {
     /**
      * @param aCurrentPort the currentPort to set
      */
-    public static void setCurrentPort(Port aCurrentPort) {
+    public static void setCurrentPort(final Port aCurrentPort) {
         currentPort = aCurrentPort;
     }
 

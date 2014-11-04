@@ -147,7 +147,7 @@ public class PlayerConfigurationController implements Initializable {
             showOpeningScreen();
             World gameWorld = new World();
             System.out.println(gameWorld.toString());
-            ApplicationController.playSound(getClass()
+            ApplicationController.getInstance().playSound(getClass()
                     .getResource("ayeayecapn.wav").toString());
         }
     }
@@ -159,7 +159,7 @@ public class PlayerConfigurationController implements Initializable {
      */
     @FXML
     private void returnToStart(ActionEvent event) {
-        ApplicationController.changeScene("GUI/WelcomeScreen.fxml");
+        ApplicationController.getInstance().changeScene("GUI/WelcomeScreen.fxml");
     }
 
     /**
@@ -169,7 +169,7 @@ public class PlayerConfigurationController implements Initializable {
      */
     @FXML
     private void showOpeningScreen() {
-        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
+        ApplicationController.getInstance().changeScene("GUI/OpeningGameScreen.fxml");
     }
 
 }
