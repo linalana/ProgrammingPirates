@@ -37,6 +37,13 @@ public class Game implements Serializable {
     public static void setCurrentPort(final Port aCurrentPort) {
         currentPort = aCurrentPort;
     }
+    
+    /**
+     * @param aCurrentPort the currentPort to set
+     */
+    public static void setWorld(final World aWorld) {
+        world = aWorld;
+    }
 
     /**
      *
