@@ -13,7 +13,6 @@ import java.util.Random;
  */
 public class RandomEvent implements Serializable {
 
-    private Player player;
     private Event[] events;
     private Event event;
 
@@ -21,7 +20,6 @@ public class RandomEvent implements Serializable {
      * Creates event
      */
     public RandomEvent() {
-        player = Game.getPlayer();
         initialize();
     }
 
