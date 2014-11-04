@@ -13,20 +13,23 @@ import java.util.Random;
  */
 public class RandomEvent implements Serializable {
 
+    private Player player;
+    private Event[] events;
     private Event event;
 
     /**
      * Creates event
      */
     public RandomEvent() {
+        player = Game.getPlayer();
         initialize();
     }
 
     /**
      * Decides which event occurs
      */
-    private void initialize() {
-        final Event[] events = new Event[]{new Event("Kraken Attackin'!",
+    public void initialize() {
+        events = new Event[]{new Event("Kraken Attackin'!",
             "Your ship was attacked by a Kraken! Your fuel and shields are severly depleted",
             0, -100, -5),
             new Event("A Storm!", "You encountered a wicked storm! You lost a little of everything in the struggle",
@@ -34,7 +37,7 @@ public class RandomEvent implements Serializable {
             new Event("Sirens", "Beautiful sirens lured you off course! They stole your money and badly damaged your ship! Typical...",
             -200, -10, -10),
             new Event("Burried Treasure!", "You found burried treasure! Have some money!", 1000, 0, 0)};
-        final Random rand = new Random();
+        Random rand = new Random();
         event = events[rand.nextInt(events.length)];
         Game.getPlayer().setMoney(Game.getPlayer().getMoney() + event.getMoney());
         Game.getPlayer().getShip().addFuel(event.getFuel());
@@ -83,13 +86,13 @@ public class RandomEvent implements Serializable {
      */
     private class Event {
 
-        private final String title;
-        private final String description;
-        private final int moneyChange;
-        private final int fuelChange;
-        private final int shieldChange;
+        private String title;
+        private String description;
+        private int moneyChange;
+        private int fuelChange;
+        private int shieldChange;
 
-        public Event(final String aTitle, final String aDesc, final int mon, final int fuel, final int shield) {
+        public Event(String aTitle, String aDesc, int mon, int fuel, int shield) {
             title = aTitle;
             description = aDesc;
             moneyChange = mon;

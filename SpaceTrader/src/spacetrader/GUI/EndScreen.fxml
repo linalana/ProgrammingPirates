@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="spacetrader.engine.EndScreenController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane">
+         <children>
+            <Label alignment="CENTER" layoutX="100.0" layoutY="142.0" styleClass="label-subtitle" text="Congratulations! You have earned" />
+            <Label alignment="CENTER" layoutX="105.0" layoutY="181.0" styleClass="label-subtitle" text="enough money to buy and island" />
+            <Label alignment="CENTER" layoutX="200.0" layoutY="220.0" styleClass="label-subtitle" text="and finally retire!" />
+         </children>
+         <stylesheets>
+            <URL value="@DarkTheme.css" />
+            <URL value="@DarkTheme.css" />
+         </stylesheets>
+      </AnchorPane>
+   </children>
+</AnchorPane>

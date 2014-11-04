@@ -121,9 +121,9 @@ public class MapController implements Initializable {
                                 //deduct fuel from ship based on distance traveled
                                 Game.getPlayer().getShip().addFuel(-fuelUsed);
                                 if (result != null) {
-                                    ApplicationController.getInstance().changeScene("GUI/Encounter.fxml");
+                                    ApplicationController.changeScene("GUI/Encounter.fxml");
                                 } else {
-                                    ApplicationController.getInstance().changeScene("GUI/RandomEvent.fxml");
+                                    ApplicationController.changeScene("GUI/RandomEvent.fxml");
                                 }
                             }
                         }
@@ -133,7 +133,7 @@ public class MapController implements Initializable {
     
     @FXML
     private void exitButtonPressed(ActionEvent event) {
-        ApplicationController.getInstance().changeScene("GUI/OpeningGameScreen.fxml");
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
 
 }

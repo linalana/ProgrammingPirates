@@ -38,7 +38,7 @@ public class RandomEventController implements Initializable {
      */
     @FXML
     public void acceptButtonPressed(ActionEvent e) {
-        ApplicationController.getInstance().changeScene("GUI/OpeningGameScreen.fxml");
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
 
 }

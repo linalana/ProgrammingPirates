@@ -71,7 +71,7 @@ public class TravelTabPageController implements Initializable {
      */
     @FXML
     private void travelButtonPressed(ActionEvent event) {
-        ApplicationController.getInstance().playSound(getClass().getResource("raisethesails.wav").toString());
+        ApplicationController.playSound(getClass().getResource("raisethesails.wav").toString());
         int index = portsList.getSelectionModel().getSelectedIndex();
         newPort = continents[index].getMainPort();
         Turn turn = new Turn(continents[index].getMainPort());
@@ -93,14 +93,14 @@ public class TravelTabPageController implements Initializable {
      * changes to encounter screen
      */
     private void doEncounter() {
-        ApplicationController.getInstance().changeScene("GUI/Encounter.fxml");
+        ApplicationController.changeScene("GUI/Encounter.fxml");
     }
 
     /**
      * changes to random event screen
      */
     private void doEvent() {
-        ApplicationController.getInstance().changeScene("GUI/RandomEvent.fxml");
+        ApplicationController.changeScene("GUI/RandomEvent.fxml");
 
     }
 
@@ -108,7 +108,7 @@ public class TravelTabPageController implements Initializable {
      * moves to main screen of game
      */
     private void doTravel() {
-        ApplicationController.getInstance().changeScene("GUI/OpeningGameScreen.fxml");
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
 
     }
 
@@ -119,6 +119,6 @@ public class TravelTabPageController implements Initializable {
      */
     @FXML
     private void mapButtonPressed(ActionEvent event) {
-        ApplicationController.getInstance().changeScene("GUI/Map.fxml");
+        ApplicationController.changeScene("GUI/Map.fxml");
     }
 }
