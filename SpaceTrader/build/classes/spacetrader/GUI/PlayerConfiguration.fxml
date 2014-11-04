@@ -32,7 +32,7 @@
       <Label layoutX="52.0" layoutY="232.0" prefHeight="26.0" prefWidth="146.0" styleClass="label-plain" text="Trader" />
       <Label layoutX="52.0" layoutY="270.0" prefHeight="26.0" prefWidth="146.0" styleClass="label-plain" text="Engineer" />
       <Label layoutX="53.0" layoutY="312.0" prefHeight="26.0" prefWidth="146.0" styleClass="label-plain" text="Investor" />
-      <Label layoutX="398.0" layoutY="150.0" prefHeight="24.0" prefWidth="133.0" styleClass="label-plain" text="Pts. Remaining:" />
+      <Label layoutX="398.0" layoutY="150.0" prefHeight="24.0" prefWidth="133.0" styleClass="label-small" text="Pts. Remaining:" />
       <Label fx:id="pointLabel" layoutX="533.0" layoutY="151.0" prefHeight="24.0" prefWidth="24.0" styleClass="label-plain" text="15" />
    </children>
 </AnchorPane>
