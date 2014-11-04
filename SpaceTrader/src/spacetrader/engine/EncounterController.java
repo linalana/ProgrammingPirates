@@ -96,7 +96,7 @@ public class EncounterController implements Initializable {
      */
     @FXML
     private void handleFleeButtonAction(ActionEvent event) {
-        ApplicationController.getInstance().changeScene("GUI/OpeningGameScreen.fxml");
+        ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
 
     /**
@@ -110,7 +110,7 @@ public class EncounterController implements Initializable {
         if (type.equals("Trader")) {
             //trading window
         } else if (type.equals("PoliceForce")) {
-            Turn.getEncounter().inspection();
+            Turn.getEncounter().Inspection();
         }
 
     }

@@ -84,6 +84,19 @@ public class CargoHold implements Serializable {
     public void setAmount(int newAmount) {
         amount = newAmount;
     }
+    
+    /**
+     * Add five new cargo bays
+     */
+    public void addFiveBays(){
+        amount+=5;
+    }
+    /**
+     * Subtract five new cargo bays
+     */
+    public void subtractFiveBays(){
+        amount-=5;
+    }
 
     /**
      * Checks for illegal goods

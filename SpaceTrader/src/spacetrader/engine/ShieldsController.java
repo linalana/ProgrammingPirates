@@ -24,6 +24,8 @@ public class ShieldsController implements Initializable {
     @FXML
     Label emptySlotsLabel;
     @FXML
+    Label totalShieldsLabel;
+    @FXML
     ListView shieldList;
     @FXML
     ListView holdList;
@@ -68,8 +70,10 @@ public class ShieldsController implements Initializable {
      * player's money
      */
     private void updateHoldLabels() {
-        emptySlotsLabel.setText("Slots available: "
+        emptySlotsLabel.setText("Empty Shield Slots: "
                 + shieldHold.getEmptySlots());
+        totalShieldsLabel.setText("Total Shield Slots: "
+                + shieldHold.getMaxCapacity());
         moneyLabel.setText("Money: " + player.getMoney());
     }
 
@@ -78,8 +82,8 @@ public class ShieldsController implements Initializable {
      */
     private void updateShieldList() {
         shields.clear();
-        shields.add("Wooden Shield Price: " + priceEn);// + "(" + quanEn + ")");
-        shields.add("Iron Shield Price: " + priceRef);// + "(" + quanRef + ")");
+        shields.add("Wooden Shield Price: " + priceEn + "(" + quanEn + ")");
+        shields.add("Iron Shield Price: " + priceRef + "(" + quanRef + ")");
     }
 
     /**
@@ -88,12 +92,11 @@ public class ShieldsController implements Initializable {
     private void updateHoldList() {
         hold.clear();
 
-        if (shieldHold.getTotalEnergyShields() > 0) {
-            hold.add("Wooden Shield Sell Price: " + (int) (priceEn * 0.8));
-        }
-        if (shieldHold.getTotalReflectiveShields() > 0) {
-            hold.add("Iron Shield Sell Price: " + (int) (priceRef * 0.8));
-        }
+        hold.add("Wooden Shield Price: " + (priceEn * 0.8) + " Quantity: "
+                + shieldHold.getTotalEnergyShields());
+
+        hold.add("Iron Shield Price: " + +(priceRef * 0.8) + " Quantity: "
+                + shieldHold.getTotalReflectiveShields());
 
     }
 
@@ -106,13 +109,12 @@ public class ShieldsController implements Initializable {
 
         if (index == 0 && quanEn > 0 && player.getMoney() > priceEn
                 && shieldHold.addShield(Shield.ENERGY, 1)) {
-            ApplicationController.getInstance().playSound(getClass().getResource("yourbooty.wav").toString());
+
             player.setMoney(player.getMoney() - priceEn);
             quanEn--;
 
         } else if (index == 1 && quanRef > 0 && player.getMoney() > priceRef
                 && shieldHold.addShield(Shield.REFLECTIVE, 1)) {
-            ApplicationController.getInstance().playSound(getClass().getResource("yourbooty.wav").toString());
             player.setMoney(player.getMoney() - priceRef);
             quanRef--;
         } else {

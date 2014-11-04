@@ -11,8 +11,8 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SpaceTrader.jar" size="6440716" download="eager" />
-    <jar href="lib/controlsfx-8.20.7.jar" size="1007811" download="eager" />
+    <jar href="SpaceTrader.jar" size="3999436" download="eager" />
+    <jar href="lib/controlsfx-8.20.7.jar" size="1007814" download="eager" />
   </resources>
 <security>
   <all-permissions/>

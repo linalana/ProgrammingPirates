@@ -3,10 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/engine/ShipYardScreenController.java</file>
-            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/engine/TravelTabPageController.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/engine/ShipUpgradeController.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/engine/ShipMarketController.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/engine/ShieldsController.java</file>
             <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/engine/WeaponsController.java</file>
-            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/engine/WelcomeScreenController.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Turn.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Weapon.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/WeaponHold.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/World.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Trader.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/TradeGood.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/ShipYard.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Ship.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/ShieldHold.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Shield.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/RangeChart.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/RandomEvent.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Port.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/PoliceRecord.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/PoliceForce.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Player.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Pirate.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Person.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/ModelFacade.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Game.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/GadgetHold.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Gadget.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Encounterer.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Encounter.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Continent.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/CargoHold.java</file>
+            <file>file:/Users/alannafarrete/NetBeansProjects/ProgrammingPirates/SpaceTrader/src/spacetrader/model/Bazaar.java</file>
         </group>
     </open-files>
 </project-private>

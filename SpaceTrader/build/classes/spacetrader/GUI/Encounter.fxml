@@ -18,16 +18,16 @@
       <Button fx:id="fleeButton" layoutX="497.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleFleeButtonAction" prefHeight="31.0" prefWidth="84.0" text="Flee" />
       <Button fx:id="otherButton" layoutX="297.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleOtherButtonAction" text="Trade" />
       <Label layoutX="44.0" layoutY="151.0" styleClass="label-small" text="Fighter Points" />
-      <Label layoutX="306.0" layoutY="99.0" styleClass="label-plain" text="Trader" />
+      <Label fx:id="thingLabel" layoutX="306.0" layoutY="99.0" styleClass="label-plain" text="Trader" />
       <Label layoutX="43.0" layoutY="99.0" styleClass="label-plain" text="You" />
       <Label layoutX="43.0" layoutY="130.0" styleClass="label-small" text="Trader Points" />
       <Label layoutX="44.0" layoutY="199.0" styleClass="label-small" text="Hull Health" />
-      <Label layoutX="161.0" layoutY="151.0" styleClass="label-text" text="Label" />
+      <Label fx:id="pFightPtsLabel" layoutX="161.0" layoutY="151.0" styleClass="label-text" text="Label" />
       <Label layoutX="306.0" layoutY="128.0" styleClass="label-small" text="Trader Points" />
       <Label layoutX="306.0" layoutY="150.0" styleClass="label-small" text="Fighter Points" />
       <Label fx:id="pTradePtsLabel" layoutX="159.0" layoutY="130.0" styleClass="label-text" text="Label" />
-      <Label layoutX="426.0" layoutY="151.0" styleClass="label-text" text="Label" />
-      <Label layoutX="425.0" layoutY="129.0" styleClass="label-text" text="Label" />
+      <Label fx:id="eFightPtsLabel" layoutX="426.0" layoutY="151.0" styleClass="label-text" text="Label" />
+      <Label fx:id="eTradePtsLabel" layoutX="425.0" layoutY="129.0" styleClass="label-text" text="Label" />
       <Label layoutX="44.0" layoutY="174.0" styleClass="label-small" text="Experience" />
       <Label layoutX="306.0" layoutY="173.0" styleClass="label-small" text="Experience" />
       <Label layoutX="305.0" layoutY="199.0" styleClass="label-small" text="Hull Health" />
@@ -35,13 +35,13 @@
       <Label layoutX="305.0" layoutY="223.0" styleClass="label-small" text="Shield Strength" />
       <Label layoutX="44.0" layoutY="248.0" styleClass="label-small" text="Weapon Strength" />
       <Label layoutX="306.0" layoutY="248.0" styleClass="label-small" text="Weapon Strength" />
-      <Label layoutX="143.0" layoutY="174.0" styleClass="label-text" text="Label" />
-      <Label layoutX="143.0" layoutY="199.0" styleClass="label-text" text="Label" />
-      <Label layoutX="177.0" layoutY="224.0" styleClass="label-text" text="Label" />
-      <Label layoutX="191.0" layoutY="248.0" styleClass="label-text" text="Label" />
-      <Label layoutX="449.0" layoutY="248.0" styleClass="label-text" text="Label" />
-      <Label layoutX="435.0" layoutY="224.0" styleClass="label-text" text="Label" />
-      <Label layoutX="401.0" layoutY="199.0" styleClass="label-text" text="Label" />
-      <Label layoutX="401.0" layoutY="174.0" styleClass="label-text" text="Label" />
+      <Label fx:id="pExpLabel" layoutX="143.0" layoutY="174.0" styleClass="label-text" text="Label" />
+      <Label fx:id="pHullHealthLabel" layoutX="143.0" layoutY="199.0" styleClass="label-text" text="Label" />
+      <Label fx:id="pShieldStrengthLabel" layoutX="177.0" layoutY="224.0" styleClass="label-text" text="Label" />
+      <Label fx:id="pWepStrengthLabel" layoutX="191.0" layoutY="248.0" styleClass="label-text" text="Label" />
+      <Label fx:id="eWepStrengthLabel" layoutX="449.0" layoutY="248.0" styleClass="label-text" text="Label" />
+      <Label fx:id="eShieldStrengthLabel" layoutX="435.0" layoutY="224.0" styleClass="label-text" text="Label" />
+      <Label fx:id="eHullHealthLabel" layoutX="401.0" layoutY="199.0" styleClass="label-text" text="Label" />
+      <Label fx:id="eExpLabel" layoutX="401.0" layoutY="174.0" styleClass="label-text" text="Label" />
    </children>
 </AnchorPane>
