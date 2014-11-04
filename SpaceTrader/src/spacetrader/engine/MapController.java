@@ -6,6 +6,8 @@
 
 package spacetrader.engine;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,8 +18,12 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javax.imageio.ImageIO;
 import spacetrader.model.Continent;
 import spacetrader.model.Game;
 import spacetrader.model.Port;
@@ -44,26 +50,26 @@ public class MapController implements Initializable {
     private Label politicalLabel;
     @FXML
     private Button exitButton;
+    private Image image;   
     
-    
-    /**
-     * Initializes the map - draws the continents on a canvas using their 
-     * coordinates. Adds listeners on the continents - displays relevant info
-     * on mouseover and travels to that continent on click
-     * @param url
-     * @param rb 
-     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) { 
+        Image bgImage = new Image(getClass().getResource("aerial-sardine1.jpg").toString());
+        image = new Image(getClass().getResource("island.png").toString());
         RangeChart range = new RangeChart();
         Continent[] continents = range.getChart();
         GraphicsContext g2d = canvas.getGraphicsContext2D();
+        g2d.drawImage(bgImage, 0, 0, 700, 500);
         for (Continent cont: continents) {
-            g2d.fillOval(cont.getX(), cont.getY(), 15, 15);
+            
+            g2d.drawImage(image,cont.getX() - 10, cont.getY() - 10, 30, 30);
+            g2d.fillOval(cont.getX(), cont.getY(), 10, 10);
         }
         g2d.setFill(Color.RED);
+        
         Continent cur = Game.getCurrentPort().getContinent();
-        g2d.fillOval(cur.getX(), cur.getY(), 15, 15);
+        g2d.drawImage(image,cur.getX() - 10, cur.getY() - 10, 30, 30);
+        g2d.fillOval(cur.getX(), cur.getY(), 10, 10);
         continentLabel.setVisible(false);
         neededLabel.setVisible(false);
         availableLabel.setVisible(false);
