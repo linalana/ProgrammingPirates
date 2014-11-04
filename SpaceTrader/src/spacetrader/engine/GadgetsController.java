@@ -2,7 +2,6 @@ package spacetrader.engine;
 
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,15 +11,14 @@ import javafx.scene.control.*;
 import org.controlsfx.dialog.Dialogs;
 import spacetrader.model.Game;
 import spacetrader.model.Port;
-import spacetrader.SpaceTrader;
 import spacetrader.model.ShipYard;
 import spacetrader.model.GadgetHold;
 import spacetrader.model.Gadget;
 
 /**
- * FXML Controller class
+ * FXML for Gadget Controller
  *
- * @author Danny
+ * @author Joe
  */
 public class GadgetsController implements Initializable {
 
@@ -42,6 +40,7 @@ public class GadgetsController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * updates the labels, and sets up player and gadget information
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -61,23 +60,29 @@ public class GadgetsController implements Initializable {
      */
     @FXML
     public void buyButtonPressed(ActionEvent event) {
+        //gets the selected gadget 
         String longString = yardGadgetList.getSelectionModel().getSelectedItem();
         if (longString == null) {
             yardGadgetList.getSelectionModel().selectFirst();
             longString = yardGadgetList.getSelectionModel().getSelectedItem();
         }
+        //picks the name of the gadget out to get info from gadgets
         if (longString != null) {
             int spaceIndex = longString.indexOf(' ');
             String goodToBuy = longString.substring(0, spaceIndex);
             Gadget gadget = Gadget.valueOf(goodToBuy);
-            int[] pq = gadgetsForSale.get(gadget);
-            //get quantity desired from player 
-//            String q = getQuantityFromPlayer("Buying Stuff", "Arr, how much ye want to buy?");
+            int[] priceQuantity = gadgetsForSale.get(gadget);
             int quant = 1;
-            if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
+            int moneySpent = quant * priceQuantity[0];
+            if (Game.getPlayer().getMoney() >= quant * priceQuantity[0] && priceQuantity[1] > quant) {
                 if (gadgetHold.addGadget(gadget, quant)) {
+                    //adds cargo holds if extracargo was purchased
+                    if(gadget.name().equals("EXTRACARGO")){
+                        Game.getPlayer().getShip().getCargoHold().addFiveBays();
+                    }
+                    //finishes purchase (sound and updates)
                     ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
-                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * priceQuantity[0]);
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, -1 * quant);
                     slots -= quant;
@@ -95,11 +100,13 @@ public class GadgetsController implements Initializable {
      */
     @FXML
     public void sellButtonPressed(ActionEvent event) {
+        //gets selected
         String longString = playerGadgetList.getSelectionModel().getSelectedItem();
         if (longString == null) {
             playerGadgetList.getSelectionModel().selectFirst();
             longString = playerGadgetList.getSelectionModel().getSelectedItem();
         }
+        //picks out gadget name
         if (longString != null) {
             int spaceIndex = longString.indexOf(' ');
             String goodToSell = longString.substring(0, spaceIndex);
