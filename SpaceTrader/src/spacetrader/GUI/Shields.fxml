@@ -9,24 +9,26 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.ShieldsController">
    <children>
-      <SplitPane dividerPositions="0.5" layoutY="38.0" prefHeight="362.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.5016722408026756" layoutY="37.0" prefHeight="363.0" prefWidth="600.0" styleClass="anchor-pane">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="buyButton" layoutX="210.0" layoutY="319.0" mnemonicParsing="false" onAction="#buyButtonPressed" text="Buy" />
-                  <ListView fx:id="shieldList" layoutX="14.0" layoutY="20.0" prefHeight="292.0" prefWidth="260.0" />
+                  <Button fx:id="buyButton" layoutX="199.0" layoutY="260.0" mnemonicParsing="false" onAction="#buyButtonPressed" text="Buy 1" />
+                  <ListView fx:id="shieldList" layoutY="41.0" prefHeight="210.0" prefWidth="297.0" />
+                  <Label layoutX="14.0" styleClass="label-subtitle" text="Shipyard Shields" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="296.0">
                <children>
-                  <ListView fx:id="holdList" layoutX="14.0" layoutY="14.0" prefHeight="292.0" prefWidth="260.0" />
-                  <Button fx:id="sellButton" layoutX="203.0" layoutY="319.0" mnemonicParsing="false" onAction="#sellButtonPressed" text="Sell" />
+                  <ListView fx:id="holdList" layoutY="41.0" prefHeight="210.0" prefWidth="296.0" />
+                  <Button fx:id="sellButton" layoutX="198.0" layoutY="260.0" mnemonicParsing="false" onAction="#sellButtonPressed" text="Sell 1" />
+                  <Label fx:id="emptySlotsLabel" layoutX="14.0" layoutY="260.0" styleClass="label-small" text="Slots Available:" />
+                  <Label layoutX="14.0" styleClass="label-subtitle" text="Your Shields" />
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
-      <Label fx:id="totalShieldsLabel" layoutX="14.0" layoutY="14.0" styleClass="label-small" text="Total Shields:" />
-      <Label fx:id="emptySlotsLabel" layoutX="186.0" layoutY="14.0" styleClass="label-small" text="Empty Shield Slots:" />
-      <Label fx:id="moneyLabel" layoutX="401.0" layoutY="14.0" styleClass="label-small" text="Money:" />
+      <Label fx:id="moneyLabel" layoutX="300.0" styleClass="label-subtitle" text="Money:" />
+      <Separator layoutX="-2.0" layoutY="38.0" prefHeight="2.0" prefWidth="600.0" />
    </children>
 </AnchorPane>

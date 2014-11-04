@@ -47,7 +47,7 @@ public class WeaponsController implements Initializable {
         updateMoneyLabel();
         slots = Game.getPlayer().getShip().getWeaponSlots();
         slotsAvailable = Game.getPlayer().getShip().getWeaponHold().getEmptySlots();
-        slotsLabel.setText("Weapon slots left: " + slotsAvailable);
+        slotsLabel.setText("Slots available: " + slotsAvailable);
         Port port = Game.getCurrentPort();
         shipYard = port.getShipyard();
         weaponHold = Game.getPlayer().getShip().getWeaponHold();
@@ -64,16 +64,15 @@ public class WeaponsController implements Initializable {
         for (Weapon w : weaponsForSale.keySet()) {
             int[] pq = weaponsForSale.get(w);
             if (pq[1] != 0) {
-                market.add(w.toString() + " Price: " + pq[0] + " Quantity: "
-                        + pq[1]);
+                market.add(w.toString() + " Price: " + pq[0]);// + " Quantity: "
+//                        + pq[1]);
             }
         }
         for (Weapon w : shipWeapons.keySet()) {
             int q = shipWeapons.get(w);
             int sellPrice = (int) Math.round(0.8 * weaponsForSale.get(w)[0]);
             if (q > 0) {
-                ship.add(w.toString() + " Quantity: " + q + " Sell Price: "
-                        + sellPrice);
+                ship.add(w.toString() + " Sell Price: " + sellPrice);
             }
         }
     }
@@ -85,7 +84,7 @@ public class WeaponsController implements Initializable {
 
     @FXML
     private void updateSlotsLabel() {
-        slotsLabel.setText("Weapon slots left: " + slotsAvailable);
+        slotsLabel.setText("Slots available: " + slotsAvailable);
     }
 
     @FXML

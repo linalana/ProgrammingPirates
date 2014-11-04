@@ -72,14 +72,8 @@ public class GadgetsController implements Initializable {
             Gadget gadget = Gadget.valueOf(goodToBuy);
             int[] pq = gadgetsForSale.get(gadget);
             //get quantity desired from player 
-            String q = getQuantityFromPlayer("Buying Stuff", "Arr, how much ye want to buy?");
-            int quant = 0;
-            try {
-                quant = Integer.parseInt(q);
-            } catch (NumberFormatException e) {
-                quant = 0;
-            }
-            int moneySpent = quant * pq[0];
+//            String q = getQuantityFromPlayer("Buying Stuff", "Arr, how much ye want to buy?");
+            int quant = 1;
             if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
                 if (gadgetHold.addGadget(gadget, quant)) {
                     ApplicationController.getInstance().playSound(getClass().getResource("yourbooty.wav").toString());
@@ -112,14 +106,8 @@ public class GadgetsController implements Initializable {
             Gadget gadget = Gadget.valueOf(goodToSell);
             int[] pq = gadgetsForSale.get(gadget);
             //get quantity desired from player 
-            String q = getQuantityFromPlayer("Selling Stuff", "Arr, how much ye want to sell?");
-            int quant = 0;
-            try {
-                quant = Integer.parseInt(q);
-            } catch (NumberFormatException e) {
-                quant = 0;
-            }
-            int moneySpent = quant * pq[0];
+//            String q = getQuantityFromPlayer("Selling Stuff", "Arr, how much ye want to sell?");
+            int quant = 1;
             if (Game.getCurrentPort().getTechLevel() > gadget.getMTLU()) {
                 if (Game.getPlayer().getShip().getGadgetHold().subtractGadget(gadget, quant)) {
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int) (pq[0] * 0.8 * quant));
@@ -153,40 +141,16 @@ public class GadgetsController implements Initializable {
         for (Gadget g : gadgetsForSale.keySet()) {
             int[] pq = gadgetsForSale.get(g);
             if (pq[1] != 0) {
-                market.add(g.toString() + " Price: " + pq[0] + " Quantity: "
-                        + pq[1]);
+                market.add(g.toString() + " Price: " + pq[0]);// + " Quantity: "
+//                        + pq[1]);
             }
         }
         for (Gadget g : playerGadgets.keySet()) {
             int q = playerGadgets.get(g);
             int sellPrice = (int) Math.round(0.8 * gadgetsForSale.get(g)[0]);
             if (q > 0) {
-                cargo.add(g.toString() + " Quantity: " + q + " Sell Price: "
-                        + sellPrice);
+                cargo.add(g.toString() + " Sell Price: " + sellPrice);
             }
         }
-    }
-
-    /**
-     * asks player how much they want to buy/sell
-     *
-     * @return response
-     */
-    private String getQuantityFromPlayer(String title, String head) {
-
-        Optional<String> response = Dialogs.create()
-                .owner(SpaceTrader.getPrimaryStage())
-                .title(title)
-                .masthead(head)
-                .message("Enter quantity:")
-                .showTextInput("0");
-
-        if (response.isPresent()) {
-            String result = response.get();
-            return result;
-        } else {
-            return null;
-        }
-
     }
 }
