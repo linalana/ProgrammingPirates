@@ -132,15 +132,9 @@ public class ShipMarketController implements Initializable {
         if (Game.getPlayer().getMoney() >= (s[index].getPrice() - Game.getPlayer().getShip().calculateValue())) {
             int v = Game.getPlayer().getShip().calculateValue();
             Game.getPlayer().setShip(index);
-            cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoBays());
-            cFuel.setText("Max Fuel: " + Game.getPlayer().getShip().getMaxRange());
-            cHull.setText("Hull Strength: " + Game.getPlayer().getShip().getHullStrength());
-            mNeeded.setText("Money Needed: " + (s[index].getPrice() - Game.getPlayer().getShip().calculateValue()));
-            currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());
-            value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
             int newMoney = Game.getPlayer().getMoney() - s[index].getPrice() + v;
             Game.getPlayer().setMoney(newMoney);
-            money.setText("Money: " + Game.getPlayer().getMoney());
+            updateCurrentLabels();
         }
     }
 
