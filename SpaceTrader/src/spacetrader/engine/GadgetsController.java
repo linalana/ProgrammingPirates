@@ -1,36 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package spacetrader.engine;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import org.controlsfx.dialog.Dialogs;
 import spacetrader.model.Game;
 import spacetrader.model.Port;
-import spacetrader.SpaceTrader;
 import spacetrader.model.ShipYard;
 import spacetrader.model.GadgetHold;
 import spacetrader.model.Gadget;
 
 /**
- * FXML Controller class
+ * FXML for Gadget Controller
  *
- * @author Danny
+ * @author Joe
  */
 public class GadgetsController implements Initializable {
     @FXML
@@ -47,9 +34,10 @@ public class GadgetsController implements Initializable {
     private ObservableList<String> cargo;
     private ObservableList<String> market;
     private ShipYard shipYard;
-    private int slots;
+    
     /**
      * Initializes the controller class.
+     * updates the labels, and sets up player and gadget information
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,28 +48,35 @@ public class GadgetsController implements Initializable {
         gadgetHold = Game.getPlayer().getShip().getGadgetHold();
         updateLists();
     }
-    
+    /**
+     * Buys a gadget, deducts money, and applies the gadget's 
+     * @param event buy button pressed
+     */
     @FXML
     public void buyButtonPressed(ActionEvent event) {
+        //gets the selected gadget 
         String longString = yardGadgetList.getSelectionModel().getSelectedItem();
         if (longString == null) {
             yardGadgetList.getSelectionModel().selectFirst();
             longString = yardGadgetList.getSelectionModel().getSelectedItem();
         }
+        //picks the name of the gadget out to get info from gadgets
         if (longString != null) {
             int spaceIndex = longString.indexOf(' ');
             String goodToBuy = longString.substring(0, spaceIndex);
             Gadget gadget = Gadget.valueOf(goodToBuy);
-            int[] pq = gadgetsForSale.get(gadget);
+            int[] priceQuantity = gadgetsForSale.get(gadget);
             int quant = 1;
-            int moneySpent = quant * pq[0];
-            if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
+            int moneySpent = quant * priceQuantity[0];
+            if (Game.getPlayer().getMoney() >= quant * priceQuantity[0] && priceQuantity[1] > quant) {
                 if (gadgetHold.addGadget(gadget, quant)) {
+                    //adds cargo holds if extracargo was purchased
                     if(gadget.name().equals("EXTRACARGO")){
                         Game.getPlayer().getShip().getCargoHold().addFiveBays();
                     }
+                    //finishes purchase (sound and updates)
                     ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
-                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * priceQuantity[0]);
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, -1 * quant);
                     updateLists();
@@ -90,13 +85,19 @@ public class GadgetsController implements Initializable {
             }
         }
     }
+    /**
+     * Sells gadgets and removes upgrades they gave
+     * @param event sell button pressed
+     */
     @FXML
     public void sellButtonPressed(ActionEvent event) {
+        //gets selected
         String longString = playerGadgetList.getSelectionModel().getSelectedItem();
         if (longString == null) {
             playerGadgetList.getSelectionModel().selectFirst();
             longString = playerGadgetList.getSelectionModel().getSelectedItem();
         }
+        //picks out gadget name
         if (longString != null) {
             int spaceIndex = longString.indexOf(' ');
             String goodToSell = longString.substring(0, spaceIndex);
@@ -117,11 +118,16 @@ public class GadgetsController implements Initializable {
             }
         }
     }
-    
-    public void updateMoneyLabel() {
+    /**
+     * updates the money label in gadgets
+     */
+    private void updateMoneyLabel() {
          moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }
-    public void updateLists() {
+    /**
+     * updates the lists of items and inventory
+     */
+    private void updateLists() {
         int slots = Game.getPlayer().getShip().getGadgetSlots();
         String gadgetType="";
         slotLabel.setText("Slots available: " + slots);
