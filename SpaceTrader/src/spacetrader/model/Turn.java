@@ -11,10 +11,8 @@ public class Turn implements Serializable {
 
     private Continent newContinent;
     private Port newPort;
-    private int distance;
     //used to determine frequency of different types of random encounters
     private String politicalSystem;
-    private int techlevel;
     private int policeChance;
     private int traderChance;
     private int pirateChance;
@@ -25,7 +23,6 @@ public class Turn implements Serializable {
         this.newPort = newPort;
         newContinent = newPort.getContinent();
         politicalSystem = newContinent.getPoliticalSystem();
-        techlevel = newPort.getTechLevel();
         setChanceEncounters();
         randomPortEvents();
     }
@@ -38,21 +35,22 @@ public class Turn implements Serializable {
      */
     public String travel(int fuelUsed) {
         Random rand = new Random();
+        String encounterType = null;
         int randInt = rand.nextInt(100);
         if (randInt < policeChance) {
             encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
-            return "PoliceForce";
+            encounterType = "PoliceForce";
         } else if (randInt > policeChance
                 && randInt < (policeChance + traderChance)) {
             encounter = new Encounter(Game.getPlayer(), new Trader());
-            return "Trader";
+            encounterType = "Trader";
         } else if (randInt > (policeChance + traderChance)
                 && randInt < (policeChance + traderChance + pirateChance)) {
             encounter = new Encounter(Game.getPlayer(), new Pirate());
-            return "Pirate";
+            encounterType = "Pirate";
         }
         randomEvent = new RandomEvent();
-        return null;
+        return encounterType;
     }
 
     /**
@@ -140,7 +138,7 @@ public class Turn implements Serializable {
                 traderChance = 35;
                 pirateChance = 10;
                 break;
-            case "theocracy":
+            default:
                 policeChance = 40;
                 traderChance = 15;
                 pirateChance = 5;

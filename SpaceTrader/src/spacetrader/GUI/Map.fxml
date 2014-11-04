@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.canvas.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,12 +11,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.MapController">
    <children>
-      <Canvas fx:id="canvas" height="400.0" width="600.0" />
-      <Label fx:id="continentLabel" text="Continent: " />
-      <Label fx:id="neededLabel" layoutY="17.0" text="Rum needed: " />
-      <Label fx:id="availableLabel" layoutY="34.0" text="Rum available: " />
-      <Label fx:id="techLabel" layoutY="51.0" text="Tech level: " />
-      <Label fx:id="politicalLabel" layoutY="68.0" text="Political system: " />
+      <Canvas fx:id="canvas" height="413.0" width="600.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff49" height="93.0" layoutX="-43.0" layoutY="10.0" stroke="TRANSPARENT" strokeType="INSIDE" width="222.0" />
+      <Label fx:id="continentLabel" layoutX="6.0" layoutY="14.0" text="Continent: " />
+      <Label fx:id="neededLabel" layoutX="6.0" layoutY="31.0" text="Rum needed: " />
+      <Label fx:id="availableLabel" layoutX="6.0" layoutY="48.0" text="Rum available: " />
+      <Label fx:id="techLabel" layoutX="6.0" layoutY="65.0" text="Tech level: " />
+      <Label fx:id="politicalLabel" layoutX="6.0" layoutY="82.0" text="Political system: " />
       <Button fx:id="exitButton" layoutY="388.0" mnemonicParsing="false" onAction="#exitButtonPressed" text="Out!" />
    </children>
 </AnchorPane>

@@ -35,6 +35,7 @@ public class WeaponsController implements Initializable {
     private WeaponHold weaponHold;
     private ShipYard shipYard;
     private int slots;
+    private int slotsAvailable;
     private ObservableList<String> ship;
     private ObservableList<String> market;
 
@@ -45,7 +46,8 @@ public class WeaponsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         updateMoneyLabel();
         slots = Game.getPlayer().getShip().getWeaponSlots();
-        updateSlotsLabel();
+        slotsAvailable = Game.getPlayer().getShip().getWeaponHold().getEmptySlots();
+        slotsLabel.setText("Slots available: " + slotsAvailable);
         Port port = Game.getCurrentPort();
         shipYard = port.getShipyard();
         weaponHold = Game.getPlayer().getShip().getWeaponHold();
@@ -62,16 +64,15 @@ public class WeaponsController implements Initializable {
         for (Weapon w : weaponsForSale.keySet()) {
             int[] pq = weaponsForSale.get(w);
             if (pq[1] != 0) {
-                market.add(w.toString() + " Price: " + pq[0] + " Quantity: "
-                        + pq[1]);
+                market.add(w.toString() + " Price: " + pq[0]);// + " Quantity: "
+//                        + pq[1]);
             }
         }
         for (Weapon w : shipWeapons.keySet()) {
             int q = shipWeapons.get(w);
             int sellPrice = (int) Math.round(0.8 * weaponsForSale.get(w)[0]);
             if (q > 0) {
-                ship.add(w.toString() + " Quantity: " + q + " Sell Price: "
-                        + sellPrice);
+                ship.add(w.toString() + " Sell Price: " + sellPrice);
             }
         }
     }
@@ -83,7 +84,7 @@ public class WeaponsController implements Initializable {
 
     @FXML
     private void updateSlotsLabel() {
-        slotsLabel.setText("Weapon slots left: " + slots);
+        slotsLabel.setText("Slots available: " + slotsAvailable);
     }
 
     @FXML
@@ -107,7 +108,7 @@ public class WeaponsController implements Initializable {
                     ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
-                    slots -= quant;
+                    slotsAvailable -= quant;
                     updateSlotsLabel();
                     updateLists();
                 }
@@ -134,7 +135,7 @@ public class WeaponsController implements Initializable {
                 if (Game.getPlayer().getShip().getWeaponHold().subtractWeapon(weapon, quant)) {
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int) (pq[0] * 0.8 * quant));
                     updateMoneyLabel();
-                    slots += quant;
+                    slotsAvailable += quant;
                     updateSlotsLabel();
                     updateLists();
                 }

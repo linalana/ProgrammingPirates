@@ -20,6 +20,7 @@ import spacetrader.model.Gadget;
  * @author Joe
  */
 public class GadgetsController implements Initializable {
+
     @FXML
     private Label moneyLabel;
     @FXML
@@ -34,7 +35,8 @@ public class GadgetsController implements Initializable {
     private ObservableList<String> cargo;
     private ObservableList<String> market;
     private ShipYard shipYard;
-    
+    private int slots;
+
     /**
      * Initializes the controller class.
      * updates the labels, and sets up player and gadget information
@@ -42,14 +44,17 @@ public class GadgetsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        slots = Game.getPlayer().getShip().getGadgetSlots();
         updateMoneyLabel();
         Port port = Game.getCurrentPort();
         shipYard = port.getShipyard();
         gadgetHold = Game.getPlayer().getShip().getGadgetHold();
         updateLists();
     }
+
     /**
-     * Buys a gadget, deducts money, and applies the gadget's 
+     * buys gadget (update player cargo and gadget list)
+     *
      * @param event buy button pressed
      */
     @FXML
@@ -79,15 +84,18 @@ public class GadgetsController implements Initializable {
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * priceQuantity[0]);
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, -1 * quant);
+                    slots -= quant;
                     updateLists();
                 }
 
             }
         }
     }
+
     /**
-     * Sells gadgets and removes upgrades they gave
-     * @param event sell button pressed
+     * Sells from inventory and puts into shop
+     *
+     * @param event sell button clicked
      */
     @FXML
     public void sellButtonPressed(ActionEvent event) {
@@ -103,33 +111,32 @@ public class GadgetsController implements Initializable {
             String goodToSell = longString.substring(0, spaceIndex);
             Gadget gadget = Gadget.valueOf(goodToSell);
             int[] pq = gadgetsForSale.get(gadget);
+            //get quantity desired from player 
+//            String q = getQuantityFromPlayer("Selling Stuff", "Arr, how much ye want to sell?");
             int quant = 1;
-            int moneySpent = quant * pq[0];
             if (Game.getCurrentPort().getTechLevel() > gadget.getMTLU()) {
-                if (gadgetHold.subtractGadget(gadget, quant)) {
-                    if(gadget.name().equals("EXTRACARGO")){
-                        Game.getPlayer().getShip().getCargoHold().subtractFiveBays();
-                    }
-                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
+                if (Game.getPlayer().getShip().getGadgetHold().subtractGadget(gadget, quant)) {
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int) (pq[0] * 0.8 * quant));
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, quant);
+                    slots += quant;
                     updateLists();
                 }
             }
         }
     }
+
     /**
-     * updates the money label in gadgets
+     * updates the amount of money displayed
      */
-    private void updateMoneyLabel() {
-         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
+    public void updateMoneyLabel() {
+        moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }
+
     /**
-     * updates the lists of items and inventory
+     * updates the cargo and shop lists
      */
-    private void updateLists() {
-        int slots = Game.getPlayer().getShip().getGadgetSlots();
-        String gadgetType="";
+    public void updateLists() {
         slotLabel.setText("Slots available: " + slots);
         cargo = playerGadgetList.getItems();
         market = yardGadgetList.getItems();
@@ -137,21 +144,19 @@ public class GadgetsController implements Initializable {
         playerGadgets = Game.getPlayer().getShip().getGadgetHold().getGadgets();
         market.clear();
         cargo.clear();
-        for (Gadget g: gadgetsForSale.keySet()) {
+        for (Gadget g : gadgetsForSale.keySet()) {
             int[] pq = gadgetsForSale.get(g);
-            if (pq[1] != 0 ) {
-                market.add(g.toString() + " Price: " + pq[0]);
+            if (pq[1] != 0) {
+                market.add(g.toString() + " Price: " + pq[0]);// + " Quantity: "
+//                        + pq[1]);
             }
         }
-        for (Gadget g: playerGadgets.keySet()) {
+        for (Gadget g : playerGadgets.keySet()) {
             int q = playerGadgets.get(g);
             int sellPrice = (int) Math.round(0.8 * gadgetsForSale.get(g)[0]);
             if (q > 0) {
-                cargo.add(g.toString() + " Quantity: " + q + " Sell Price: " +
-                    sellPrice);
+                cargo.add(g.toString() + " Sell Price: " + sellPrice);
             }
-            slots-=q;
         }
-        slotLabel.setText("Slots available: " + slots);
     }
 }
