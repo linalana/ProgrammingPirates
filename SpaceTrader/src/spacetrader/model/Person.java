@@ -1,12 +1,13 @@
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author alanalin
  */
-public class Person {
+public class Person implements Serializable {
 
     private int fighter;
     private int trader;
