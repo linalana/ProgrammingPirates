@@ -32,6 +32,13 @@ public class WeaponHold implements Serializable {
     public HashMap<Weapon, Integer> getWeapons() {
         return weapons;
     }
+    
+    /**
+     * @return empty slots in the weaponHold
+     */
+    public int getEmptySlots() {
+        return amount - totalWeapons;
+    }
 
     /**
      * Set amount of weapons in weapon hold
