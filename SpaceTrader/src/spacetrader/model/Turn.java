@@ -21,7 +21,7 @@ public class Turn implements Serializable {
     private static Encounter encounter;
     private static RandomEvent randomEvent;
 
-    public Turn(Port newPort) {
+    public Turn(final Port newPort) {
         this.newPort = newPort;
         newContinent = newPort.getContinent();
         politicalSystem = newContinent.getPoliticalSystem();
@@ -36,10 +36,10 @@ public class Turn implements Serializable {
      * @param fuelUsed to travel
      * @return the result (what happened)
      */
-    public String travel(int fuelUsed) {
+    public String travel(final int fuelUsed) {
         String event = null;
-        Random rand = new Random();
-        int randInt = rand.nextInt(100);
+        final Random rand = new Random();
+        final int randInt = rand.nextInt(100);
         if (randInt < policeChance) {
             encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
             event = "PoliceForce";
