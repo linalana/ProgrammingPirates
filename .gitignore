@@ -6,6 +6,11 @@ SpaceTrader/nbproject/private/private.xml
 *.class
 /SpaceTrader/build/
 /SpaceTrader/dist/
+/build/
+/dist/
+nbproject/
+build.xml
+manifest.mf
 *.jar
 
 *.jnlp
