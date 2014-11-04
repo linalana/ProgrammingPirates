@@ -77,6 +77,9 @@ public class GadgetsController implements Initializable {
             int moneySpent = quant * pq[0];
             if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
                 if (gadgetHold.addGadget(gadget, quant)) {
+                    if(gadget.name().equals("EXTRACARGO")){
+                        Game.getPlayer().getShip().getCargoHold().addFiveBays();
+                    }
                     ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
@@ -102,7 +105,10 @@ public class GadgetsController implements Initializable {
             int quant = 1;
             int moneySpent = quant * pq[0];
             if (Game.getCurrentPort().getTechLevel() > gadget.getMTLU()) {
-                if (Game.getPlayer().getShip().getGadgetHold().subtractGadget(gadget, quant)) {
+                if (gadgetHold.subtractGadget(gadget, quant)) {
+                    if(gadget.name().equals("EXTRACARGO")){
+                        Game.getPlayer().getShip().getCargoHold().subtractFiveBays();
+                    }
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int)(pq[0] * 0.8 * quant));
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, quant);
