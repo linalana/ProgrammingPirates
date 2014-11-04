@@ -112,14 +112,15 @@ public class PoliceForce extends Encounterer implements Serializable {
      * @return true if they pass the inspection, false otherwise
      */
     private boolean inspect(Player player) {
+        boolean result =  false;
         if (player.getShip().getCargoHold().getGoods().get(TradeGood.FIREARMS) != 0
                 || player.getShip().getCargoHold().getGoods().get(TradeGood.NARCOTICS) != 0) {
             player.getPoliceRecord().decrementInspectionHistory();
-            return false;
         } else {
             player.getPoliceRecord().incrementInspectionHistory();
-            return true;
+            result = true;
         }
+        return result;
     }
 
     /**
