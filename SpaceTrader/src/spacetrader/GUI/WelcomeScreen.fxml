@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.net.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.canvas.*?>
@@ -20,6 +21,11 @@
       </Label>
       <Label alignment="CENTER" layoutX="85.0" layoutY="172.0" styleClass="label-subtitle" text="A Journey Through The Seven Seas" />
       <Label alignment="CENTER" layoutX="190.0" layoutY="94.0" text="Black Ships" textAlignment="CENTER" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="408.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Pirate_Ship.png" />
+         </image>
+      </ImageView>
     </children>
    <stylesheets>
       <URL value="@DarkTheme.css" />
