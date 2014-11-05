@@ -70,12 +70,14 @@ public class GadgetsController implements Initializable {
             int spaceIndex = longString.indexOf(' ');
             String goodToBuy = longString.substring(0, spaceIndex);
             Gadget gadget = Gadget.valueOf(goodToBuy);
+            //don't need to check for null because gadget is selected thru 
+            //listview which is populated with gadgetsForSale
             int[] pq = gadgetsForSale.get(gadget);
-            //get quantity desired from player 
-//            String q = getQuantityFromPlayer("Buying Stuff", "Arr, how much ye want to buy?");
             int quant = 1;
             if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
                 if (gadgetHold.addGadget(gadget, quant)) {
+                    //getResource is safe because controller classes won't be
+                    //extended
                     ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
@@ -105,8 +107,6 @@ public class GadgetsController implements Initializable {
             String goodToSell = longString.substring(0, spaceIndex);
             Gadget gadget = Gadget.valueOf(goodToSell);
             int[] pq = gadgetsForSale.get(gadget);
-            //get quantity desired from player 
-//            String q = getQuantityFromPlayer("Selling Stuff", "Arr, how much ye want to sell?");
             int quant = 1;
             if (Game.getCurrentPort().getTechLevel() > gadget.getMTLU()) {
                 if (Game.getPlayer().getShip().getGadgetHold().subtractGadget(gadget, quant)) {

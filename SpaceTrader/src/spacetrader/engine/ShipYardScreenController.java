@@ -33,23 +33,17 @@ public class ShipYardScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         yardPane.getSelectionModel().selectedItemProperty().addListener(
-            new ChangeListener<Tab>() {
-                @Override
-                public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
-                    FXMLLoader loader = new FXMLLoader(); 
-                    loader.setLocation(SpaceTrader.class.getResource("GUI/" + t1.getText() + ".fxml"));
-                    AnchorPane a;
-                    try {
-                        a = (AnchorPane) loader.load();
-                        t1.setContent(a);
-                    } catch (IOException ex) {
-                        Logger.getLogger(ShipYardScreenController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                
-                   
+            (ObservableValue<? extends Tab> ov, Tab t, Tab t1) -> {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(SpaceTrader.class.getResource("GUI/" + t1.getText() + ".fxml"));
+                AnchorPane a;
+                try {
+                    a = (AnchorPane) loader.load();
+                    t1.setContent(a);
+                } catch (IOException ex) {
+                    Logger.getLogger(ShipYardScreenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-        );
+        });
     }    
     
 }

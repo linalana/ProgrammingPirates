@@ -29,7 +29,7 @@ public class ShipUpgradeController implements Initializable {
     private Player player;
     private int costToRefuel;
     private int barrelsToBuy;
-    private final int COST_OF_FUEL = 100;
+    private static final int COST_OF_FUEL = 100;
 
     /**
      * Initializes the controller class.
