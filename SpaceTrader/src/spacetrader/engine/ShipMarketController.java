@@ -108,6 +108,7 @@ public class ShipMarketController implements Initializable {
         cWeapon.setText("Weapon Slots: " + Game.getPlayer().getShip().getWeaponSlots());
         cShield.setText("Shield Slots: " + Game.getPlayer().getShip().getShieldSlots());
         cQuarter.setText("Shield Slots: " + Game.getPlayer().getShip().getQuarters());
+        currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());
     }
 
     /**
