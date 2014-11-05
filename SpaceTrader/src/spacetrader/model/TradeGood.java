@@ -85,8 +85,8 @@ public enum TradeGood implements Serializable {
      */
     public int CalculatePrice(Port port) {
         Random rand = new Random();
-        int price = BasePrice + IPL * (port.getTechLevel() - MTLP) + BasePrice
-                * ((rand.nextInt(2 * Var) - Var / 2) / 100);
+        int price = getBasePrice() + IPL * (port.getTechLevel() - MTLP) + getBasePrice()
+                * ((rand.nextInt(2 * getVar()) - getVar() / 2) / 100);
         if (price < 0) {
             return 0;
         }
@@ -144,6 +144,20 @@ public enum TradeGood implements Serializable {
      */
     public int getMTH() {
         return MTH;
+    }
+
+    /**
+     * @return the BasePrice
+     */
+    public int getBasePrice() {
+        return BasePrice;
+    }
+
+    /**
+     * @return the Var
+     */
+    public int getVar() {
+        return Var;
     }
 
 }
