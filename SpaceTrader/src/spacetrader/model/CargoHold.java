@@ -51,7 +51,7 @@ public class CargoHold implements Serializable {
      */
     public boolean addCargo(TradeGood g, int q) {
         int oldVal = goods.get(g);
-        if (totalGoods + q <= (amount * 10)) {
+        if (totalGoods + q <= (getAmount() * 10)) {
             goods.put(g, oldVal + q);
             totalGoods += q;
             return true;
@@ -114,5 +114,12 @@ public class CargoHold implements Serializable {
     public void removeIllegal() {
         goods.put(TradeGood.NARCOTICS, 0);
         goods.put(TradeGood.FIREARMS, 0);
+    }
+
+    /**
+     * @return the amount
+     */
+    public int getAmount() {
+        return amount;
     }
 }

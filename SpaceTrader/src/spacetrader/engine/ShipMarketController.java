@@ -84,7 +84,7 @@ public class ShipMarketController implements Initializable {
             int index = shipList.getSelectionModel().getSelectedIndex();
             selectedLabel.setText("Selected: " + s[index].getType());
             price.setText("Price: " + s[index].getPrice());
-            sCargo.setText("Cargo Bays: " + s[index].getCargoBays());
+            sCargo.setText("Cargo Bays: " + s[index].getCargoHold().getAmount());
             sFuel.setText("Max Fuel: " + s[index].getMaxRange());
             sHull.setText("Hull Strength: " + s[index].getHullStrength());
             sGadget.setText("Gadget Slots: " + s[index].getGadgetSlots());
@@ -101,13 +101,14 @@ public class ShipMarketController implements Initializable {
     private void updateCurrentLabels() {
         value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
         money.setText("Money: " + Game.getPlayer().getMoney());
-        cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoBays());
+        cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoHold().getAmount());
         cFuel.setText("Max Fuel: " + Game.getPlayer().getShip().getMaxRange());
         cHull.setText("Hull Strength: " + Game.getPlayer().getShip().getHullStrength());
         cGadget.setText("Gadget Slots: " + Game.getPlayer().getShip().getGadgetSlots());
         cWeapon.setText("Weapon Slots: " + Game.getPlayer().getShip().getWeaponSlots());
         cShield.setText("Shield Slots: " + Game.getPlayer().getShip().getShieldSlots());
         cQuarter.setText("Shield Slots: " + Game.getPlayer().getShip().getQuarters());
+        currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());
     }
 
     /**
@@ -132,15 +133,9 @@ public class ShipMarketController implements Initializable {
         if (Game.getPlayer().getMoney() >= (s[index].getPrice() - Game.getPlayer().getShip().calculateValue())) {
             int v = Game.getPlayer().getShip().calculateValue();
             Game.getPlayer().setShip(index);
-            cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoBays());
-            cFuel.setText("Max Fuel: " + Game.getPlayer().getShip().getMaxRange());
-            cHull.setText("Hull Strength: " + Game.getPlayer().getShip().getHullStrength());
-            mNeeded.setText("Money Needed: " + (s[index].getPrice() - Game.getPlayer().getShip().calculateValue()));
-            currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());
-            value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
             int newMoney = Game.getPlayer().getMoney() - s[index].getPrice() + v;
             Game.getPlayer().setMoney(newMoney);
-            money.setText("Money: " + Game.getPlayer().getMoney());
+            updateCurrentLabels();
         }
     }
 

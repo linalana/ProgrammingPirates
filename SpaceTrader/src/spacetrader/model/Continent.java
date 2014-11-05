@@ -128,6 +128,8 @@ public class Continent implements Serializable {
      */
     protected void setTechLevel(int techLevel) {
         this.techLevel = techLevel;
+        mainPort.setTechLevel(techLevel);
+        ports[0].setTechLevel(techLevel);
     }
 
     /**

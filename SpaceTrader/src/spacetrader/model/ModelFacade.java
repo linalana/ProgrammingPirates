@@ -45,6 +45,7 @@ public class ModelFacade implements Serializable {
                 Port cp = (Port) in.readObject();
                 game = new Game(p);
                 game.setCurrentPort(cp);
+                game.setWorld(w);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
             }

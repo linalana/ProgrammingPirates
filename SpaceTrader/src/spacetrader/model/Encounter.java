@@ -61,13 +61,15 @@ public class Encounter implements Serializable {
      * @return the string type of the encounterer
      */
     public String getType() {
+        String type;
         if (e.getClass().equals(Pirate.class)) {
-            return "Pirate";
+            type = "Pirate";
         } else if (e.getClass().equals(Trader.class)) {
-            return "Trader";
+            type = "Trader";
         } else {
-            return "Police Force";
+            type = "Police Force";
         }
+        return type;
     }
 
     /**

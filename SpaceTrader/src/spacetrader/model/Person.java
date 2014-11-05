@@ -1,12 +1,13 @@
 package spacetrader.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author alanalin
  */
-public class Person {
+public class Person implements Serializable {
 
     private int fighter;
     private int trader;
@@ -128,7 +129,7 @@ public class Person {
      * @param type the new type of ship
      */
     public void updateShip(int type) {
-        getShip().updateShip(type);
+        ship = new Ship(type);
     }
 
     /**
@@ -166,7 +167,8 @@ public class Person {
      * @return true if ship survives
      */
     public boolean distributeDamage(int totalDamage) {
-        return getShip().distributeDamage(totalDamage);
+        boolean lives = getShip().distributeDamage(totalDamage);
+        return lives;
     }
 
     /**
