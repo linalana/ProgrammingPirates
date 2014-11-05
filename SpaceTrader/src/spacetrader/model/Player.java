@@ -193,13 +193,14 @@ public class Player implements Serializable {
      * @return 0 if dead, 1 if survived on lifeboat, 2 if alive
      */
     public int distributeDamage(int totalDamage) {
-        if (!p.distributeDamage(totalDamage)) {
-            if (p.hasLifeBoat()) {
-                return 1;
-            }
-            return 0;
+        if (p.distributeDamage(totalDamage)) {
+            return 2;
         }
-        return 2;
+        if (p.hasLifeBoat()) {
+            return 1;
+        }
+        return 0;
+        
     }
 
     /**
