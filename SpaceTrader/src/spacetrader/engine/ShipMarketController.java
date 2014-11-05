@@ -84,7 +84,7 @@ public class ShipMarketController implements Initializable {
             int index = shipList.getSelectionModel().getSelectedIndex();
             selectedLabel.setText("Selected: " + s[index].getType());
             price.setText("Price: " + s[index].getPrice());
-            sCargo.setText("Cargo Bays: " + s[index].getCargoBays());
+            sCargo.setText("Cargo Bays: " + s[index].getCargoHold().getAmount());
             sFuel.setText("Max Fuel: " + s[index].getMaxRange());
             sHull.setText("Hull Strength: " + s[index].getHullStrength());
             sGadget.setText("Gadget Slots: " + s[index].getGadgetSlots());
@@ -101,7 +101,7 @@ public class ShipMarketController implements Initializable {
     private void updateCurrentLabels() {
         value.setText("Value: " + Game.getPlayer().getShip().calculateValue());
         money.setText("Money: " + Game.getPlayer().getMoney());
-        cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoBays());
+        cCargo.setText("Cargo Bays: " + Game.getPlayer().getShip().getCargoHold().getAmount());
         cFuel.setText("Max Fuel: " + Game.getPlayer().getShip().getMaxRange());
         cHull.setText("Hull Strength: " + Game.getPlayer().getShip().getHullStrength());
         cGadget.setText("Gadget Slots: " + Game.getPlayer().getShip().getGadgetSlots());
