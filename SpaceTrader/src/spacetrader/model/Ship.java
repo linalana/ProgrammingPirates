@@ -240,10 +240,10 @@ public class Ship implements Serializable {
         }
 
         this.fuel = maxRange;
-        cargoHold = new CargoHold(getCargoBays());
-        weaponHold = new WeaponHold(getWeaponSlots());
-        shieldHold = new ShieldHold(getShieldSlots());
-        gadgetHold = new GadgetHold(getGadgetSlots());
+        setCargoHold(new CargoHold(getCargoBays()));
+        setWeaponHold(new WeaponHold(getWeaponSlots()));
+        setShieldHold(new ShieldHold(getShieldSlots()));
+        setGadgetHold(new GadgetHold(getGadgetSlots()));
     }
 
     /**
@@ -393,7 +393,7 @@ public class Ship implements Serializable {
      * @return int damage
      */
     public int getDamage() {
-        return weaponHold.calcTotalDamage();
+        return getWeaponHold().calcTotalDamage();
     }
 
     /**
@@ -403,7 +403,7 @@ public class Ship implements Serializable {
      * @return true if ship lives
      */
     boolean distributeDamage(int totalDamage) {
-        int remainingDamage = shieldHold.decreaseStrength(totalDamage);
+        int remainingDamage = getShieldHold().decreaseStrength(totalDamage);
         if (remainingDamage != 0) {
             hullStrength -= remainingDamage;
             if (hullStrength > 0) {
@@ -431,14 +431,14 @@ public class Ship implements Serializable {
      * @return total strength of shields
      */
     public int getShieldStrength() {
-        return shieldHold.getEnergyStrength() + shieldHold.getReflectiveStrength();
+        return getShieldHold().getEnergyStrength() + getShieldHold().getReflectiveStrength();
     }
 
     /**
      * @return total possible damage of weapons
      */
     public int getWeaponStrength() {
-        return weaponHold.calcTotalDamage();
+        return getWeaponHold().calcTotalDamage();
     }
 
     /**
@@ -447,14 +447,14 @@ public class Ship implements Serializable {
      * @return true if cargohold contains those items
      */
     public boolean checkHoldForIllegal() {
-        return cargoHold.findIllegal();
+        return getCargoHold().findIllegal();
     }
 
     /**
      * removes illegal goods from cargohold
      */
     void removeIllegalGoods() {
-        cargoHold.removeIllegal();
+        getCargoHold().removeIllegal();
     }
 
     /**
@@ -464,30 +464,58 @@ public class Ship implements Serializable {
      */
     public int calculateValue() {
         int v = price;
-        for (TradeGood g : cargoHold.getGoods().keySet()) {
-            int goodQuantity = cargoHold.getGoods().get(g);
+        for (TradeGood g : getCargoHold().getGoods().keySet()) {
+            int goodQuantity = getCargoHold().getGoods().get(g);
             if (Game.getCurrentPort().getTechLevel() > g.getMTLU()) {
                 double goodPrice = 0.8 * goodQuantity * g.CalculatePrice(Game.getCurrentPort());
                 v = v + (int) goodPrice;
             }
         }
-        for (Gadget ga : gadgetHold.getGadgets().keySet()) {
-            int gadgetQuantity = gadgetHold.getGadgets().get(ga);
+        for (Gadget ga : getGadgetHold().getGadgets().keySet()) {
+            int gadgetQuantity = getGadgetHold().getGadgets().get(ga);
             double gadgetPrice = 0.8 * gadgetQuantity * ga.CalculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) gadgetPrice;
         }
-        for (Shield s : shieldHold.getShields().keySet()) {
-            int shieldQuantity = shieldHold.getShields().get(s);
+        for (Shield s : getShieldHold().getShields().keySet()) {
+            int shieldQuantity = getShieldHold().getShields().get(s);
             double shieldPrice = 0.8 * shieldQuantity * s.CalculatePrice(Game.getCurrentPort());
             v = v + (int) shieldPrice;
         }
-        for (Weapon w : weaponHold.getWeapons().keySet()) {
-            int weaponQuantity = weaponHold.getWeapons().get(w);
+        for (Weapon w : getWeaponHold().getWeapons().keySet()) {
+            int weaponQuantity = getWeaponHold().getWeapons().get(w);
             double weaponPrice = 0.8 * weaponQuantity * w.CalculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) weaponPrice;
         }
 
         return v;
+    }
+
+    /**
+     * @param cargoHold the cargoHold to set
+     */
+    public void setCargoHold(CargoHold cargoHold) {
+        this.cargoHold = cargoHold;
+    }
+
+    /**
+     * @param weaponHold the weaponHold to set
+     */
+    public void setWeaponHold(WeaponHold weaponHold) {
+        this.weaponHold = weaponHold;
+    }
+
+    /**
+     * @param shieldHold the shieldHold to set
+     */
+    public void setShieldHold(ShieldHold shieldHold) {
+        this.shieldHold = shieldHold;
+    }
+
+    /**
+     * @param gadgetHold the gadgetHold to set
+     */
+    public void setGadgetHold(GadgetHold gadgetHold) {
+        this.gadgetHold = gadgetHold;
     }
 
 }
