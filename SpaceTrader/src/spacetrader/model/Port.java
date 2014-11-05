@@ -121,4 +121,11 @@ public class Port implements Serializable {
     public void setPoliceForce(PoliceForce policeForce) {
         this.policeForce = policeForce;
     }
+
+    /**
+     * @param techLevel the techLevel to set
+     */
+    public void setTechLevel(int techLevel) {
+        this.techLevel = techLevel;
+    }
 }
