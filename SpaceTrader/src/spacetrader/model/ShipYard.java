@@ -39,7 +39,9 @@ public class ShipYard implements Serializable {
      * @return Ship[] of ships
      */
     public Ship[] getShips() {
-        return ships;
+        Ship[] toReturn = new Ship[ships.length];
+        System.arraycopy(ships, 0, toReturn, 0, ships.length);
+        return toReturn;
     }
 
     /**

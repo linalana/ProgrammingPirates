@@ -47,6 +47,7 @@ public class Player implements Serializable {
     public void attack(Encounterer e) {
         if (e.getClass().equals(Pirate.class)) {
             //it's a pirate!
+            //cast is safe because if statement checks it
             Pirate pirate = (Pirate) e;
             //to implement
 

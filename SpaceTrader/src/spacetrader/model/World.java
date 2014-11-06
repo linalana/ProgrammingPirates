@@ -93,7 +93,9 @@ public class World implements Serializable {
      * @return the array of continents
      */
     public Continent[] getContinents() {
-        return continents;
+        Continent[] toReturn = new Continent[continents.length];
+        System.arraycopy(continents, 0, toReturn, 0, continents.length);
+        return toReturn;
     }
 
     /**

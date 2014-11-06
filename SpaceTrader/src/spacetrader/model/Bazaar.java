@@ -54,7 +54,7 @@ public class Bazaar implements Serializable {
     public boolean updateQuantity(TradeGood g, int q) {
 
         int[] oldVals = goodsForSale.get(g);
-        if (oldVals[1] + q > 1) {
+        if (oldVals[1] + q >= 0) {
             goodsForSale.put(g, new int[]{oldVals[0], oldVals[1] + q});
             return true;
         }

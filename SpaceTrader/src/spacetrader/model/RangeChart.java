@@ -62,7 +62,9 @@ public class RangeChart implements Serializable {
         for (int i = 0; i < continentsInRange.length; i++) {
             System.out.println(continentsInRange[i].toString());
         }
-        return continentsInRange;
+        Continent[] toReturn = new Continent[continentsInRange.length];
+        System.arraycopy(continentsInRange, 0, toReturn, 0, continentsInRange.length);
+        return toReturn;
     }
 
     public int getDists(Continent cont) {
