@@ -11,7 +11,7 @@ import spacetrader.model.Game;
 import spacetrader.model.Player;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author James
  */
@@ -33,9 +33,11 @@ public class ShipUpgradeController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url the url
+     * @param rb the resource bundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         // TODO
         player = Game.getPlayer();
         rumLabel.setText("Rum on ship: " + player.getShip().getFuel());
@@ -60,14 +62,14 @@ public class ShipUpgradeController implements Initializable {
      * @param event rum button pressed
      */
     @FXML
-    private void handleRumButtonAction(ActionEvent event) {
+    private void handleRumButtonAction(final ActionEvent event) {
         player.getShip().addFuel(barrelsToBuy);
         player.setMoney(player.getMoney() - costToRefuel);
         updateLabels();
     }
 
     /**
-     * updates the money and rum labels
+     * updates the money and rum labels.
      */
     public void updateLabels() {
         rumLabel.setText("Rum on ship: " + player.getShip().getFuel());
@@ -75,12 +77,12 @@ public class ShipUpgradeController implements Initializable {
     }
 
     /**
-     * purchases an escape pod, deducts money and returns to shipyard
+     * purchases an escape pod, deducts money and returns to shipyard.
      *
      * @param event escape pod button pressed
      */
     @FXML
-    private void handleEscapeButtonAction(ActionEvent event) {
+    private void handleEscapeButtonAction(final ActionEvent event) {
         int money = Game.getPlayer().getMoney();
         if (money >= 5000) {
             Game.getPlayer().setMoney(money - 5000);

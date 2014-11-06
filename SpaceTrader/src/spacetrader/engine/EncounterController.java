@@ -58,9 +58,11 @@ public class EncounterController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url is the url
+     * @param rb is the resource bundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         String type = Turn.getEncounter().getType();
         encounterLabel.setText("You encountered a " + type);
         thingLabel.setText(type);
@@ -76,6 +78,7 @@ public class EncounterController implements Initializable {
                 break;
             default:
                 otherButton.setText("Accept Inspection");
+                //210 is only ever used once and is a specific position
                 otherButton.relocate(210, 349);
                 break;
         }
@@ -111,6 +114,7 @@ public class EncounterController implements Initializable {
         String type = Turn.getEncounter().getType();
         if (type.equals("Trader")) {
             //trading window
+            //not finished
         } else if (type.equals("PoliceForce")) {
             Turn.getEncounter().inspection();
         }
@@ -118,8 +122,8 @@ public class EncounterController implements Initializable {
     }
 
     /**
-     * get's all the data from the player and encounterer and fills the UI to
-     * display to player
+     * gets all the data from the player and encounterer and fills the UI to
+     * display to player.
      */
     private void fillStats() {
         int[] info = Turn.getEncounter().getInfo();

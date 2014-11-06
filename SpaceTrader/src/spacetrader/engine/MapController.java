@@ -6,12 +6,10 @@
 
 package spacetrader.engine;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -19,11 +17,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javax.imageio.ImageIO;
 import spacetrader.model.Continent;
 import spacetrader.model.Game;
 import spacetrader.model.Port;
@@ -35,7 +30,7 @@ import spacetrader.model.Turn;
  * @author James
  */
 public class MapController implements Initializable {
-    
+
     @FXML
     private Canvas canvas;
     @FXML
@@ -50,10 +45,14 @@ public class MapController implements Initializable {
     private Label politicalLabel;
     @FXML
     private Button exitButton;
-    private Image image;   
-    
+    private Image image;
+    /**
+     * Initializes.
+     * @param url the url
+     * @param rb  the resource bundle
+     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) { 
+    public void initialize(final URL url, final ResourceBundle rb) {
         Image bgImage = new Image(getClass().getResource("aerial-sardine1.jpg").toString());
         image = new Image(getClass().getResource("island.png").toString());
         RangeChart range = new RangeChart();
@@ -61,12 +60,11 @@ public class MapController implements Initializable {
         GraphicsContext g2d = canvas.getGraphicsContext2D();
         g2d.drawImage(bgImage, 0, 0, 700, 500);
         for (Continent cont: continents) {
-            
+
             g2d.drawImage(image,cont.getX() - 10, cont.getY() - 10, 30, 30);
             g2d.fillOval(cont.getX(), cont.getY(), 10, 10);
         }
         g2d.setFill(Color.RED);
-        
         Continent cur = Game.getCurrentPort().getContinent();
         g2d.drawImage(image,cur.getX() - 10, cur.getY() - 10, 30, 30);
         g2d.fillOval(cur.getX(), cur.getY(), 10, 10);
@@ -76,7 +74,6 @@ public class MapController implements Initializable {
         techLabel.setVisible(false);
         politicalLabel.setVisible(false);
         availableLabel.setText("Rum available: " + Game.getPlayer().getShip().getFuel());
-        
         canvas.addEventHandler(MouseEvent.MOUSE_MOVED, (MouseEvent e) -> {
             boolean onPlanet = false;
             for (Continent cont: continents) {
@@ -127,7 +124,7 @@ public class MapController implements Initializable {
             }
         });
     }
-    
+
     @FXML
     private void exitButtonPressed(ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");

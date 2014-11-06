@@ -7,7 +7,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import spacetrader.model.Game;
 import spacetrader.model.Player;
 import spacetrader.model.World;
@@ -46,11 +49,12 @@ public class PlayerConfigurationController implements Initializable {
      * Initializes the controller class Adding listeners to all the sliders to
      * register when changed.
      *
-     * @param url
-     * @param rb
+     * @param url the url
+     * @param rb the resource bundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
+        //15 is how many points you can allocate.
         pointTotal = 15;
         fighterPoint = 0;
         traderPoint = 0;
@@ -59,15 +63,15 @@ public class PlayerConfigurationController implements Initializable {
 
         fighterSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(ObservableValue<? extends Number> ov,
-                    Number old_val, Number new_val) {
+            public void changed(final ObservableValue<? extends Number> ov,
+                    final Number old_val, final Number new_val) {
                 fighterPoint = updatePoints(fighterSlider, fighterPoint);
             }
         });
         traderSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> ov,
-                    Number old_val, Number new_val) {
+                    Number oldVal, Number newVal) {
                 traderPoint = updatePoints(traderSlider, traderPoint);
             }
         });
@@ -75,7 +79,7 @@ public class PlayerConfigurationController implements Initializable {
                 .addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> ov,
-                    Number old_val, Number new_val) {
+                    Number oldVal, Number newVal) {
                 engineerPoint = updatePoints(engineerSlider, engineerPoint);
             }
         });
@@ -83,7 +87,7 @@ public class PlayerConfigurationController implements Initializable {
                 .addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> ov,
-                    Number old_val, Number new_val) {
+                    Number oldVal, Number newVal) {
                 investorPoint = updatePoints(investorSlider, investorPoint);
             }
         });
@@ -92,7 +96,9 @@ public class PlayerConfigurationController implements Initializable {
             @Override
             public void changed(final ObservableValue<? extends String> ov,
                     final String oldValue, final String newValue) {
+                //20 is the maximum characters a name can be
                 if (nameText.getText().length() > 20) {
+                    //20 is the maximum number of characters a name can be
                     String s = nameText.getText().substring(0, 20);
                     nameText.setText(s);
                 }
@@ -101,25 +107,27 @@ public class PlayerConfigurationController implements Initializable {
     }
 
     /**
-     * Checks to see if the slider's new position will go over the total points
+     * Checks to see if the sliders new position will go over the total points
      * If it wont, updates the points remaining, if it will, sets to max points
-     * possible within the limit of the points
+     * possible within the limit of the points.
      *
      * @param slider the slider being modified
      * @param pastVal the previous value of the slider
      * @return
      */
     @FXML
-    private int updatePoints(Slider slider, int pastVal) {
+    private int updatePoints(final Slider slider, int pastVal) {
         int diff = (int) slider.getValue() - pastVal;
         if (pointTotal - diff >= 0) {
             pointTotal -= diff;
         } else {
             int maxPossible = pointTotal + pastVal;
+            //sliders have a max value of ten
             if (maxPossible < 10) {
                 slider.setValue(maxPossible);
                 pointTotal = 0;
             } else {
+                //sliders have a max value of ten
                 slider.setValue(10);
                 pointTotal = maxPossible - 10;
             }
@@ -136,7 +144,7 @@ public class PlayerConfigurationController implements Initializable {
      * @param event submit button pressed
      */
     @FXML
-    private void submitButtonCreatePlayer(ActionEvent event) {
+    private void submitButtonCreatePlayer(final ActionEvent event) {
         if (nameText.getText() != null && !nameText.getText().isEmpty()
                 && pointTotal == 0) {
             Player player = new Player(nameText.getText(), fighterPoint,
@@ -153,17 +161,17 @@ public class PlayerConfigurationController implements Initializable {
     }
 
     /**
-     * Returns the screen to the start screen if canceled
+     * Returns the screen to the start screen if canceled.
      *
      * @param event cancel button pressed
      */
     @FXML
-    private void returnToStart(ActionEvent event) {
+    private void returnToStart(final ActionEvent event) {
         ApplicationController.changeScene("GUI/WelcomeScreen.fxml");
     }
 
     /**
-     * moves to next screen when finished making player
+     * moves to next screen when finished making player.
      *
      * @author Michael
      */

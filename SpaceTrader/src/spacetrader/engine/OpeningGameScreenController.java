@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author Michael
  */
@@ -13,9 +13,11 @@ public class OpeningGameScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url the url
+     * @param rb the resource bundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         // TODO
     }
 }
