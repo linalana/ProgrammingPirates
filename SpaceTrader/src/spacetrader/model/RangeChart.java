@@ -2,6 +2,7 @@ package spacetrader.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -71,7 +72,7 @@ public class RangeChart implements Serializable {
     /**
      * This represents a point with an X and Y coordinate
      */
-    private class Point implements Serializable {
+    private static class Point implements Serializable {
 
         private int x;
         private int y;

@@ -34,7 +34,6 @@ public class WeaponsController implements Initializable {
     private HashMap<Weapon, Integer> shipWeapons;
     private WeaponHold weaponHold;
     private ShipYard shipYard;
-    private int slots;
     private int slotsAvailable;
     private ObservableList<String> ship;
     private ObservableList<String> market;
@@ -45,7 +44,6 @@ public class WeaponsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         updateMoneyLabel();
-        slots = Game.getPlayer().getShip().getWeaponSlots();
         slotsAvailable = Game.getPlayer().getShip().getWeaponHold().getEmptySlots();
         slotsLabel.setText("Slots available: " + slotsAvailable);
         Port port = Game.getCurrentPort();
@@ -130,7 +128,6 @@ public class WeaponsController implements Initializable {
             int[] pq = weaponsForSale.get(weapon);
             //get quantity desired from player 
             int quant = 1;
-            int moneySpent = quant * pq[0];
             if (Game.getCurrentPort().getTechLevel() > weapon.getMTLU()) {
                 if (Game.getPlayer().getShip().getWeaponHold().subtractWeapon(weapon, quant)) {
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int) (pq[0] * 0.8 * quant));

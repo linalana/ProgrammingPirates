@@ -61,14 +61,14 @@ public class PlayerConfigurationController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> ov,
                     Number old_val, Number new_val) {
-                fighterPoint = UpdatePoints(fighterSlider, fighterPoint);
+                fighterPoint = updatePoints(fighterSlider, fighterPoint);
             }
         });
         traderSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> ov,
                     Number old_val, Number new_val) {
-                traderPoint = UpdatePoints(traderSlider, traderPoint);
+                traderPoint = updatePoints(traderSlider, traderPoint);
             }
         });
         engineerSlider.valueProperty()
@@ -76,7 +76,7 @@ public class PlayerConfigurationController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> ov,
                     Number old_val, Number new_val) {
-                engineerPoint = UpdatePoints(engineerSlider, engineerPoint);
+                engineerPoint = updatePoints(engineerSlider, engineerPoint);
             }
         });
         investorSlider.valueProperty()
@@ -84,7 +84,7 @@ public class PlayerConfigurationController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> ov,
                     Number old_val, Number new_val) {
-                investorPoint = UpdatePoints(investorSlider, investorPoint);
+                investorPoint = updatePoints(investorSlider, investorPoint);
             }
         });
 
@@ -110,7 +110,7 @@ public class PlayerConfigurationController implements Initializable {
      * @return
      */
     @FXML
-    private int UpdatePoints(Slider slider, int pastVal) {
+    private int updatePoints(Slider slider, int pastVal) {
         int diff = (int) slider.getValue() - pastVal;
         if (pointTotal - diff >= 0) {
             pointTotal -= diff;

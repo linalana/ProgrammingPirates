@@ -24,7 +24,7 @@ public enum Shield {
     private final int BasePrice;
     private final int IPL;        // Price increase per tech level
     private final int Var;        // variance is the maximum percentage that the price can vary above or below the base
-    protected final int strength;   // strength of the shield
+    public final int strength;   // strength of the shield
 
     Shield(int MTLP, int MTLU, int TTP, int BasePrice, int IPL, int Var, int strength) {
         this.MTLP = MTLP;
@@ -37,12 +37,12 @@ public enum Shield {
     }
 
     /**
-     * Calculates the price of the good at the tech level of the port
+     * calculates the price of the good at the tech level of the port
      *
      * @param port
      * @return the price
      */
-    public int CalculatePrice(Port port) {
+    public int calculatePrice(Port port) {
         Random rand = new Random();
         int price = BasePrice + IPL * (port.getTechLevel() - MTLP) + BasePrice
                 * ((rand.nextInt(2 * Var) - Var / 2) / 100);
@@ -53,12 +53,12 @@ public enum Shield {
     }
 
     /**
-     * Calculates the quantity to be sold at a specific marketplace
+     * calculates the quantity to be sold at a specific marketplace
      *
      * @param techLevel
      * @return the suggested sale quantity
      */
-    public int CalculateSellQuantity(int techLevel) {
+    public int calculateSellQuantity(int techLevel) {
         Random rand = new Random();
         int random = rand.nextInt(8) - rand.nextInt(8);
         int q;

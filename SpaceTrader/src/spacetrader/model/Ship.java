@@ -141,112 +141,6 @@ public class Ship implements Serializable {
     }
 
     /**
-     * Changes the ship type, for when you want to upgrade or downgrade
-     *
-     * @param type the new ship type
-     */
-    public void updateShip(int typeInd) {
-        this.type = names[typeInd];
-        if (type.equals(names[0])) {
-            cargoBays = 5;
-            hullStrength = 1;
-            setWeaponSlots(0);
-            setShieldSlots(0);
-            setGadgetSlots(0);
-            quarters = 0;
-            maxRange = 20;
-            price = 5000;
-        } else if (type.equals(names[1])) {
-            cargoBays = 15;
-            hullStrength = 1;
-            setWeaponSlots(1);
-            setShieldSlots(0);
-            setGadgetSlots(1);
-            quarters = 0;
-            maxRange = 14;
-            price = 10000;
-        } else if (type.equals(names[2])) {
-            cargoBays = 20;
-            hullStrength = 2;
-            setWeaponSlots(1);
-            setShieldSlots(1);
-            setGadgetSlots(1);
-            quarters = (0);
-            maxRange = (17);
-            price = 15000;
-        } else if (type.equals(names[3])) {
-            cargoBays = 15;
-            hullStrength = 3;
-            setWeaponSlots(2);
-            setShieldSlots(1);
-            setGadgetSlots(1);
-            quarters = (0);
-            maxRange = (13);
-            price = 20000;
-        } else if (type.equals(names[4])) {
-            cargoBays = 20;
-            hullStrength = 2;
-            setWeaponSlots(1);
-            setShieldSlots(2);
-            setGadgetSlots(2);
-            quarters = (1);
-            maxRange = (15);
-            price = 25000;
-        } else if (type.equals(names[5])) {
-            cargoBays = 50;
-            hullStrength = 2;
-            setWeaponSlots(0);
-            setShieldSlots(1);
-            setGadgetSlots(1);
-            quarters = (3);
-            maxRange = (14);
-            price = 30000;
-        } else if (type.equals(names[6])) {
-            cargoBays = 20;
-            hullStrength = 3;
-            setWeaponSlots(3);
-            setShieldSlots(2);
-            setGadgetSlots(1);
-            quarters = (2);
-            maxRange = (16);
-            price = 35000;
-        } else if (type.equals(names[7])) {
-            cargoBays = 30;
-            hullStrength = 4;
-            setWeaponSlots(2);
-            setShieldSlots(2);
-            setGadgetSlots(3);
-            quarters = (3);
-            maxRange = (15);
-            price = 40000;
-        } else if (type.equals(names[8])) {
-            cargoBays = 60;
-            hullStrength = 5;
-            setWeaponSlots(1);
-            setShieldSlots(3);
-            setGadgetSlots(2);
-            quarters = (3);
-            maxRange = (13);
-            price = 45000;
-        } else {
-            cargoBays = 35;
-            hullStrength = 5;
-            setWeaponSlots(3);
-            setShieldSlots(2);
-            setGadgetSlots(2);
-            quarters = (3);
-            maxRange = (14);
-            price = 50000;
-        }
-
-        this.fuel = maxRange;
-        setCargoHold(new CargoHold(getCargoBays()));
-        setWeaponHold(new WeaponHold(getWeaponSlots()));
-        setShieldHold(new ShieldHold(getShieldSlots()));
-        setGadgetHold(new GadgetHold(getGadgetSlots()));
-    }
-
-    /**
      * @return the cargo hold
      */
     public CargoHold getCargoHold() {
@@ -409,8 +303,9 @@ public class Ship implements Serializable {
             if (hullStrength > 0) {
                 return true;
             }
+            return false;
         }
-        return false;
+        return true;
     }
 
     /**
@@ -467,23 +362,23 @@ public class Ship implements Serializable {
         for (TradeGood g : getCargoHold().getGoods().keySet()) {
             int goodQuantity = getCargoHold().getGoods().get(g);
             if (Game.getCurrentPort().getTechLevel() > g.getMTLU()) {
-                double goodPrice = 0.8 * goodQuantity * g.CalculatePrice(Game.getCurrentPort());
+                double goodPrice = 0.8 * goodQuantity * g.calculatePrice(Game.getCurrentPort());
                 v = v + (int) goodPrice;
             }
         }
         for (Gadget ga : getGadgetHold().getGadgets().keySet()) {
             int gadgetQuantity = getGadgetHold().getGadgets().get(ga);
-            double gadgetPrice = 0.8 * gadgetQuantity * ga.CalculatePrice(Game.getCurrentPort().getTechLevel());
+            double gadgetPrice = 0.8 * gadgetQuantity * ga.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) gadgetPrice;
         }
         for (Shield s : getShieldHold().getShields().keySet()) {
             int shieldQuantity = getShieldHold().getShields().get(s);
-            double shieldPrice = 0.8 * shieldQuantity * s.CalculatePrice(Game.getCurrentPort());
+            double shieldPrice = 0.8 * shieldQuantity * s.calculatePrice(Game.getCurrentPort());
             v = v + (int) shieldPrice;
         }
         for (Weapon w : getWeaponHold().getWeapons().keySet()) {
             int weaponQuantity = getWeaponHold().getWeapons().get(w);
-            double weaponPrice = 0.8 * weaponQuantity * w.CalculatePrice(Game.getCurrentPort().getTechLevel());
+            double weaponPrice = 0.8 * weaponQuantity * w.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) weaponPrice;
         }
 

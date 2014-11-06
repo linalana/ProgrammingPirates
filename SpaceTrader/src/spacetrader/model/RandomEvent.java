@@ -1,7 +1,5 @@
 package spacetrader.model;
 
-import java.io.Serializable;
-
 //import spacetrader.model.Game;
 //import spacetrader.model.Player;
 import java.util.Random;
@@ -11,7 +9,7 @@ import java.util.Random;
  *
  * @author Danny
  */
-public class RandomEvent implements Serializable {
+public class RandomEvent {
 
     private Event[] events;
     private Event event;

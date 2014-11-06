@@ -26,7 +26,7 @@ public class Encounter implements Serializable {
     /**
      * Plays out the choice of the player attacking it's encounterer
      */
-    private void PlayerAttack() {
+    private void playerAttack() {
         int totalDamage = p.calcDamage();
         if (totalDamage == 0) {
             //tell player they missed
@@ -42,7 +42,7 @@ public class Encounter implements Serializable {
     /**
      * Plays out the choice of the encoutnerer attacking player
      */
-    private void EncountererAttack() {
+    private void encountererAttack() {
         int totalDamage = e.calcDamage();
         //algorithm to decide where to do that damage on the players's ship
         int result = p.distributeDamage(totalDamage);
@@ -96,7 +96,7 @@ public class Encounter implements Serializable {
      *
      * @return true if passes
      */
-    public boolean Inspection() {
+    public boolean inspection() {
         boolean illegalGoods = p.checkCargo();
         if (illegalGoods) {
             p.failInspection();

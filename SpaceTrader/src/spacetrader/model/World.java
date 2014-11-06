@@ -80,11 +80,12 @@ public class World implements Serializable {
      */
     @Override
     public String toString() {
-        String result = "The World contains: \n";
+        StringBuilder builder = new StringBuilder();
+        builder.append("The World contains: \n");
         for (int i = 0; i < continents.length; i++) {
-            result += continents[i].toString() + "\n";
+            builder.append(continents[i].toString() + "\n");
         }
-        return result;
+        return builder.toString();
     }
 
     /**

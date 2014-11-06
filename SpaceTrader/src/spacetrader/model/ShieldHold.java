@@ -106,30 +106,31 @@ public class ShieldHold implements Serializable {
      * @return remaining damage
      */
     public int decreaseStrength(int damage) {
-        Random rand = new Random();
-        int num = rand.nextInt(1);
-        if (num == 0) {
+        
+        if (totalEnergyShields > 0) {
             int strength = getEnergyStrength();
             if (strength <= damage) {
                 energyStrength = 0;
                 totalEnergyShields = 0;
-                return damage - strength;
+                damage -= strength;
             } else {
                 energyStrength -= damage;
+                damage = 0;
                 totalEnergyShields = getEnergyStrength() % 25 + 1;
             }
-        } else {
+        } else if (totalReflectiveShields > 0) {
             int strength = getReflectiveStrength();
             if (getReflectiveStrength() <= damage) {
                 reflectiveStrength = 0;
                 totalReflectiveShields = 0;
-                return damage - strength;
+                damage -= strength;
             } else {
                 reflectiveStrength -= damage;
+                damage = 0;
                 totalReflectiveShields = getReflectiveStrength() % 50 + 1;
             }
         }
-        return 0;
+        return damage;
     }
 
     /**

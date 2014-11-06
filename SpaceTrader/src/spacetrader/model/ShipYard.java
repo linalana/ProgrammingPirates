@@ -57,20 +57,20 @@ public class ShipYard implements Serializable {
     }
 
     /**
-     * Calculate price and quantity
+     * calculate price and quantity
      */
     public void setGadgetsForSale() {
         for (Gadget g : Gadget.values()) {
-            gadgetsForSale.put(g, new int[]{g.CalculatePrice(techLevel), g.CalculateSellQuantity(techLevel)});
+            gadgetsForSale.put(g, new int[]{g.calculatePrice(techLevel), g.calculateSellQuantity(techLevel)});
         }
     }
 
     /**
-     * Calculate price and quantity
+     * calculate price and quantity
      */
     public void setWeaponsForSale() {
         for (Weapon w : Weapon.values()) {
-            weaponsForSale.put(w, new int[]{w.CalculatePrice(techLevel), w.CalculateSellQuantity(techLevel)});
+            weaponsForSale.put(w, new int[]{w.calculatePrice(techLevel), w.calculateSellQuantity(techLevel)});
         }
     }
 

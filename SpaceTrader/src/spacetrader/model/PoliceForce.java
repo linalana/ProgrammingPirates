@@ -1,6 +1,5 @@
 package spacetrader.model;
 
-import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -8,7 +7,7 @@ import java.util.Random;
  *
  * @author Murph
  */
-public class PoliceForce extends Encounterer implements Serializable {
+public class PoliceForce extends Encounterer {
 
     private int strength;
     private int bribe;

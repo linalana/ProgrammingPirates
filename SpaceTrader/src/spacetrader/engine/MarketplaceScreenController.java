@@ -80,7 +80,7 @@ public class MarketplaceScreenController implements Initializable {
                 quant = 0;
             }
             int moneySpent = quant * pq[0];
-            if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
+            if (Game.getPlayer().getMoney() >= moneySpent && pq[1] > quant) {
                 if (cargoHold.addCargo(good, quant)) {
                     ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
@@ -114,7 +114,6 @@ public class MarketplaceScreenController implements Initializable {
             } catch (NumberFormatException e) {
                 quant = 0;
             }
-            int moneySpent = quant * pq[0];
             if (Game.getCurrentPort().getTechLevel() > good.getMTLU()) {
                 if (Game.getPlayer().getShip().getCargoHold().subtractCargo(good, quant)) {
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int) (pq[0] * 0.8 * quant));

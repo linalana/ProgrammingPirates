@@ -5,6 +5,7 @@
 package spacetrader.model;
 
 import java.io.Serializable;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -32,7 +33,7 @@ public class Continent implements Serializable {
 
     private final Port[] ports;
     private final Port mainPort;
-    private final int maxPorts = 10;
+    private static final int MAX_PORTS = 10;
 
     /**
      *
@@ -44,7 +45,7 @@ public class Continent implements Serializable {
      * @param y position
      */
     public Continent(String name, String politicalSystem, int x, int y) {
-        ports = new Port[maxPorts];
+        ports = new Port[MAX_PORTS];
 
         this.x = x;
         this.y = y;
@@ -66,6 +67,8 @@ public class Continent implements Serializable {
      */
     private void setTechLevel() {
         Random rand = new Random();
+        //no default case needed because there is only a set number of possible
+        //political systems
         switch (getPoliticalSystem()) {
             case "anarchy":
                 techLevel = rand.nextInt(5);
@@ -128,6 +131,8 @@ public class Continent implements Serializable {
      */
     protected void setTechLevel(int techLevel) {
         this.techLevel = techLevel;
+        mainPort.setTechLevel(techLevel);
+        ports[0].setTechLevel(techLevel);
     }
 
     /**
@@ -139,16 +144,16 @@ public class Continent implements Serializable {
 
     @Override
     public String toString() {
-        String portString = "";
+        StringBuilder builder = new StringBuilder();
         int i = 0;
-        while (i < maxPorts && ports[i] != null) {
-            portString += ports[i].toString();
-            if (i != maxPorts - 1 && ports[i + 1] != null) {
-                portString += ", ";
+        while (i < MAX_PORTS && ports[i] != null) {
+            builder.append(ports[i].toString());
+            if (i != MAX_PORTS - 1 && ports[i + 1] != null) {
+                builder.append(", ");
             }
             i++;
         }
-        return name + " @ (" + getX() + ", " + getY() + ") : " + getPoliticalSystem() + ", Tech: " + techLevels[getTechLevel()] + ", Primary Resource: " + getResource() + ", Ports: " + portString;
+        return name + " @ (" + getX() + ", " + getY() + ") : " + getPoliticalSystem() + ", Tech: " + techLevels[getTechLevel()] + ", Primary Resource: " + getResource() + ", Ports: " + builder.toString();
     }
 
     /**
@@ -177,7 +182,7 @@ public class Continent implements Serializable {
      * @return techLevel as a string
      */
     public String getTechLevelString() {
-        return techLevels[techLevel].toLowerCase();
+        return techLevels[techLevel].toLowerCase(Locale.ENGLISH);
     }
 
     /**

@@ -35,7 +35,6 @@ public class ShipTabPageController implements Initializable {
     private HashMap<Weapon, Integer> weapons;
     private HashMap<Shield, Integer> shields;
     private HashMap<Gadget, Integer> gadgets;
-    private CargoHold cargoHold;
     private ObservableList<String> cargo;
     private ObservableList<String> weaponsList;
     private ObservableList<String> shieldsList;
@@ -50,7 +49,6 @@ public class ShipTabPageController implements Initializable {
         fuel.setText("Rum: " + Game.getPlayer().getShip().getFuel());
         cargo = cargoGoodsList.getItems();
         Ship ship = Game.getPlayer().getShip();
-        cargoHold = ship.getCargoHold();
         cargoGoods = ship.getCargoHold().getGoods();
         weapons = ship.getWeaponHold().getWeapons();
         shields = ship.getShieldHold().getShields();

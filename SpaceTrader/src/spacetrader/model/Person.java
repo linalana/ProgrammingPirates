@@ -129,7 +129,7 @@ public class Person implements Serializable {
      * @param type the new type of ship
      */
     public void updateShip(int type) {
-        getShip().updateShip(type);
+        ship = new Ship(type);
     }
 
     /**
@@ -167,7 +167,8 @@ public class Person implements Serializable {
      * @return true if ship survives
      */
     public boolean distributeDamage(int totalDamage) {
-        return getShip().distributeDamage(totalDamage);
+        boolean lives = getShip().distributeDamage(totalDamage);
+        return lives;
     }
 
     /**

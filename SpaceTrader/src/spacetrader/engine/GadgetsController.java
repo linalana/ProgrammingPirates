@@ -47,7 +47,6 @@ public class GadgetsController implements Initializable {
     private ObservableList<String> cargo;
     private ObservableList<String> market;
     private ShipYard shipYard;
-    private int slots;
     /**
      * Initializes the controller class.
      */
@@ -77,14 +76,18 @@ public class GadgetsController implements Initializable {
             int spaceIndex = longString.indexOf(' ');
             String goodToBuy = longString.substring(0, spaceIndex);
             Gadget gadget = Gadget.valueOf(goodToBuy);
+            //don't need to check for null because gadget is selected thru 
+            //listview which is populated with gadgetsForSale
             int[] pq = gadgetsForSale.get(gadget);
             int quant = 1;
             int moneySpent = quant * pq[0];
-            if (Game.getPlayer().getMoney() >= quant * pq[0] && pq[1] > quant) {
+            if (Game.getPlayer().getMoney() >= moneySpent && pq[1] > quant) {
                 if (gadgetHold.addGadget(gadget, quant)) {
                     if(gadget.toString().equals("EXTRACARGO")){
                         Game.getPlayer().getShip().getCargoHold().addFiveBays();
                     }
+                    //using getResource is fine because Controller classes won't
+                    //be extended
                     ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
                     updateMoneyLabel();
@@ -114,7 +117,6 @@ public class GadgetsController implements Initializable {
             Gadget gadget = Gadget.valueOf(goodToSell);
             int[] pq = gadgetsForSale.get(gadget);
             int quant = 1;
-            int moneySpent = quant * pq[0];
             if (Game.getCurrentPort().getTechLevel() > gadget.getMTLU()) {
                 if (gadgetHold.subtractGadget(gadget, quant)) {
                     if(gadget.toString().equals("EXTRACARGO")){

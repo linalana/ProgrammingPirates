@@ -112,7 +112,7 @@ public class EncounterController implements Initializable {
         if (type.equals("Trader")) {
             //trading window
         } else if (type.equals("PoliceForce")) {
-            Turn.getEncounter().Inspection();
+            Turn.getEncounter().inspection();
         }
 
     }
