@@ -83,8 +83,10 @@ public class TravelTabPageController implements Initializable {
         Game.getPlayer().getShip().addFuel(-fuelUsed);
         if (result != null) {
             doEncounter();
-        } else {
+        } else if (Turn.getRandomEvent() != null){
             doEvent();
+        } else {
+            doTravel();
         }
 
     }

@@ -9,6 +9,13 @@ import java.util.Random;
  */
 public class Turn implements Serializable {
 
+    /**
+     * @return the randomEvent
+     */
+    public static RandomEvent getRandomEvent() {
+        return randomEvent;
+    }
+
     private Continent newContinent;
     private Port newPort;
     //used to determine frequency of different types of random encounters
@@ -37,19 +44,21 @@ public class Turn implements Serializable {
         Random rand = new Random();
         String encounterType = null;
         int randInt = rand.nextInt(100);
-        if (randInt < policeChance) {
-            encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
-            encounterType = "PoliceForce";
-        } else if (randInt > policeChance
-                && randInt < (policeChance + traderChance)) {
-            encounter = new Encounter(Game.getPlayer(), new Trader());
-            encounterType = "Trader";
-        } else if (randInt > (policeChance + traderChance)
-                && randInt < (policeChance + traderChance + pirateChance)) {
-            encounter = new Encounter(Game.getPlayer(), new Pirate());
-            encounterType = "Pirate";
+//        if (randInt < policeChance) {
+//            encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
+//            encounterType = "PoliceForce";
+//        } else if (randInt > policeChance
+//                && randInt < (policeChance + traderChance)) {
+//            encounter = new Encounter(Game.getPlayer(), new Trader());
+//            encounterType = "Trader";
+//        } else if (randInt > (policeChance + traderChance)
+//                && randInt < (policeChance + traderChance + pirateChance)) {
+//            encounter = new Encounter(Game.getPlayer(), new Pirate());
+//            encounterType = "Pirate";
+//        }
+        if (randInt < 25) {
+            randomEvent = new RandomEvent();
         }
-        randomEvent = new RandomEvent();
         return encounterType;
     }
 
@@ -168,14 +177,14 @@ public class Turn implements Serializable {
      * @return the title of the random event
      */
     public static String getEventTitle() {
-        return randomEvent.getTitle();
+        return getRandomEvent().getTitle();
     }
 
     /**
      * @return description of event
      */
     public static String getEventDescription() {
-        return randomEvent.getDescription();
+        return getRandomEvent().getDescription();
     }
 
 }

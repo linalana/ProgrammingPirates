@@ -8,12 +8,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.PlayerTabPageController">
    <children>
-      <Label fx:id="nameLabel" layoutX="14.0" layoutY="40.0" styleClass="label-subtitle" text="Name: YABOIDINGDONG" />
-      <Label fx:id="moneyLabel" layoutX="320.0" layoutY="40.0" styleClass="label-subtitle" text="Money: " />
-      <Label layoutX="14.0" layoutY="83.0" styleClass="label-subtitle" text="Skill Levels" />
-      <Label fx:id="fighter" layoutX="14.0" layoutY="129.0" styleClass="label-subtitle" text="Label" />
-      <Label fx:id="trader" layoutX="14.0" layoutY="165.0" styleClass="label-subtitle" text="Label" />
-      <Label fx:id="investor" layoutX="14.0" layoutY="201.0" styleClass="label-subtitle" text="Label" />
-      <Label fx:id="engineer" layoutX="14.0" layoutY="237.0" styleClass="label-subtitle" text="Label" />
+      <Label fx:id="nameLabel" layoutX="14.0" layoutY="30.0" text="Name: YABOIDINGDONG" />
+      <Label fx:id="moneyLabel" layoutX="294.0" layoutY="97.0" styleClass="label-subtitle" text="Money: " />
+      <Label layoutX="13.0" layoutY="97.0" styleClass="label-subtitle" text="Skill Levels" />
+      <Label fx:id="fighter" layoutX="39.0" layoutY="132.0" styleClass="label-travel" text="Label" />
+      <Label fx:id="trader" layoutX="39.0" layoutY="166.0" styleClass="label-travel" text="Label" />
+      <Label fx:id="investor" layoutX="39.0" layoutY="202.0" styleClass="label-travel" text="Label" />
+      <Label fx:id="engineer" layoutX="39.0" layoutY="238.0" styleClass="label-travel" text="Label" />
    </children>
 </AnchorPane>

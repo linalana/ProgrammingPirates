@@ -12,12 +12,12 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.engine.MapController">
    <children>
       <Canvas fx:id="canvas" height="413.0" width="600.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff49" height="93.0" layoutX="-43.0" layoutY="10.0" stroke="TRANSPARENT" strokeType="INSIDE" width="222.0" />
-      <Label fx:id="continentLabel" layoutX="6.0" layoutY="14.0" text="Continent: " />
-      <Label fx:id="neededLabel" layoutX="6.0" layoutY="31.0" text="Rum needed: " />
-      <Label fx:id="availableLabel" layoutX="6.0" layoutY="48.0" text="Rum available: " />
-      <Label fx:id="techLabel" layoutX="6.0" layoutY="65.0" text="Tech level: " />
-      <Label fx:id="politicalLabel" layoutX="6.0" layoutY="82.0" text="Political system: " />
-      <Button fx:id="exitButton" layoutY="388.0" mnemonicParsing="false" onAction="#exitButtonPressed" text="Out!" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff49" height="93.0" layoutX="9.0" layoutY="11.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0" />
+      <Label fx:id="continentLabel" layoutX="16.0" layoutY="15.0" text="Continent: " />
+      <Label fx:id="neededLabel" layoutX="16.0" layoutY="32.0" text="Rum needed: " />
+      <Label fx:id="availableLabel" layoutX="16.0" layoutY="49.0" text="Rum available: " />
+      <Label fx:id="techLabel" layoutX="16.0" layoutY="66.0" text="Tech level: " />
+      <Label fx:id="politicalLabel" layoutX="16.0" layoutY="83.0" text="Political system: " />
+      <Button fx:id="exitButton" layoutX="16.0" layoutY="373.0" mnemonicParsing="false" onAction="#exitButtonPressed" stylesheets="@DarkTheme.css" text="Back" />
    </children>
 </AnchorPane>
