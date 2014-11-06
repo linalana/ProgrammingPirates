@@ -362,23 +362,23 @@ public class Ship implements Serializable {
         for (TradeGood g : getCargoHold().getGoods().keySet()) {
             int goodQuantity = getCargoHold().getGoods().get(g);
             if (Game.getCurrentPort().getTechLevel() > g.getMTLU()) {
-                double goodPrice = 0.8 * goodQuantity * g.CalculatePrice(Game.getCurrentPort());
+                double goodPrice = 0.8 * goodQuantity * g.calculatePrice(Game.getCurrentPort());
                 v = v + (int) goodPrice;
             }
         }
         for (Gadget ga : getGadgetHold().getGadgets().keySet()) {
             int gadgetQuantity = getGadgetHold().getGadgets().get(ga);
-            double gadgetPrice = 0.8 * gadgetQuantity * ga.CalculatePrice(Game.getCurrentPort().getTechLevel());
+            double gadgetPrice = 0.8 * gadgetQuantity * ga.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) gadgetPrice;
         }
         for (Shield s : getShieldHold().getShields().keySet()) {
             int shieldQuantity = getShieldHold().getShields().get(s);
-            double shieldPrice = 0.8 * shieldQuantity * s.CalculatePrice(Game.getCurrentPort());
+            double shieldPrice = 0.8 * shieldQuantity * s.calculatePrice(Game.getCurrentPort());
             v = v + (int) shieldPrice;
         }
         for (Weapon w : getWeaponHold().getWeapons().keySet()) {
             int weaponQuantity = getWeaponHold().getWeapons().get(w);
-            double weaponPrice = 0.8 * weaponQuantity * w.CalculatePrice(Game.getCurrentPort().getTechLevel());
+            double weaponPrice = 0.8 * weaponQuantity * w.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) weaponPrice;
         }
 

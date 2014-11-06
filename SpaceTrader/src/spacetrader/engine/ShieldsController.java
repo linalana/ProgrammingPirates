@@ -52,12 +52,12 @@ public class ShieldsController implements Initializable {
         player = Game.getPlayer();
         shields = shieldList.getItems();
         hold = holdList.getItems();
-        quanEn = Shield.ENERGY.CalculateSellQuantity(Game.getCurrentPort()
+        quanEn = Shield.ENERGY.calculateSellQuantity(Game.getCurrentPort()
                 .getTechLevel());
-        quanRef = Shield.REFLECTIVE.CalculateSellQuantity(Game.getCurrentPort()
+        quanRef = Shield.REFLECTIVE.calculateSellQuantity(Game.getCurrentPort()
                 .getTechLevel());
-        priceEn = Shield.ENERGY.CalculatePrice(Game.getCurrentPort());
-        priceRef = Shield.REFLECTIVE.CalculatePrice(Game.getCurrentPort());
+        priceEn = Shield.ENERGY.calculatePrice(Game.getCurrentPort());
+        priceRef = Shield.REFLECTIVE.calculatePrice(Game.getCurrentPort());
         updateShieldList();
         updateHoldList();
         updateHoldLabels();

@@ -47,7 +47,7 @@ public class Player implements Serializable {
     public void attack(Encounterer e) {
         if (e.getClass().equals(Pirate.class)) {
             //it's a pirate!
-            Pirate p = (Pirate) e;
+            Pirate pirate = (Pirate) e;
             //to implement
 
         } else {

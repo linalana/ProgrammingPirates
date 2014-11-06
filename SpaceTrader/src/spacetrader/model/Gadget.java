@@ -1,6 +1,5 @@
 package spacetrader.model;
 
-import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -8,7 +7,7 @@ import java.util.Random;
  *
  * @author Murph
  */
-public enum Gadget implements Serializable {
+public enum Gadget {
 
     /**
      * 5 extra cargo bays
@@ -48,12 +47,12 @@ public enum Gadget implements Serializable {
     }
 
     /**
-     * Calculates the price of the good at the tech level of the port
+     * calculates the price of the good at the tech level of the port
      *
      * @param techLevel
      * @return the price
      */
-    public int CalculatePrice(int techLevel) {
+    public int calculatePrice(int techLevel) {
         Random rand = new Random();
         int price = BasePrice + IPL * (techLevel - MTLP) + BasePrice
                 * ((rand.nextInt(2 * Var) - Var / 2) / 100);
@@ -64,12 +63,12 @@ public enum Gadget implements Serializable {
     }
 
     /**
-     * Calculates the quantity to be sold at a specific marketplace
+     * calculates the quantity to be sold at a specific marketplace
      *
      * @param techLevel
      * @return the suggested sale quantity
      */
-    public int CalculateSellQuantity(int techLevel) {
+    public int calculateSellQuantity(int techLevel) {
         Random rand = new Random();
         int random = rand.nextInt(8) - rand.nextInt(8);
         int q;

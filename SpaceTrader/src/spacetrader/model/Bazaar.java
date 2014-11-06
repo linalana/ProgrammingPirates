@@ -34,11 +34,11 @@ public class Bazaar implements Serializable {
     }
 
     /**
-     * Calculate price and quantity
+     * calculate price and quantity
      */
     public void setGoodsForSale() {
         for (TradeGood g : TradeGood.values()) {
-            goodsForSale.put(g, new int[]{g.CalculatePrice(port), g.CalculateSellQuantity(port.getTechLevel())});
+            goodsForSale.put(g, new int[]{g.calculatePrice(port), g.calculateSellQuantity(port.getTechLevel())});
         }
     }
 
