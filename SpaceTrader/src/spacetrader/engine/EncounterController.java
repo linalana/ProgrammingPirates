@@ -6,11 +6,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+
 import spacetrader.model.Turn;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author alanalin
  */
@@ -80,32 +82,32 @@ public class EncounterController implements Initializable {
     }
 
     /**
-     * starts the fight in encounter
+     * starts the fight in encounter.
      *
      * @param event fight button pressed
      */
     @FXML
-    private void handleFightButtonAction(ActionEvent event) {
+    private void handleFightButtonAction(final ActionEvent event) {
         Turn.getEncounter().engageFight();
     }
 
     /**
-     * escapes the encounter
+     * escapes the encounter.
      *
      * @param event flee button pressed
      */
     @FXML
-    private void handleFleeButtonAction(ActionEvent event) {
+    private void handleFleeButtonAction(final ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
 
     /**
-     * completes "other" action for each type of encounter
+     * completes "other" action for each type of encounter.
      *
      * @param event the 3rd button is pressed
      */
     @FXML
-    private void handleOtherButtonAction(ActionEvent event) {
+    private void handleOtherButtonAction(final ActionEvent event) {
         String type = Turn.getEncounter().getType();
         if (type.equals("Trader")) {
             //trading window
