@@ -50,7 +50,7 @@ public class GadgetHold implements Serializable {
      */
     public boolean addGadget(Gadget g, int q) {
         int oldVal = gadgets.get(g);
-        if (totalGadgets + q <= (amount)) {
+        if (getTotalGadgets() + q <= (amount)) {
             gadgets.put(g, oldVal + q);
             totalGadgets += q;
             return true;
@@ -72,5 +72,12 @@ public class GadgetHold implements Serializable {
             return true;
         }
         return false;
+    }
+
+    /**
+     * @return the totalGadgets
+     */
+    public int getTotalGadgets() {
+        return totalGadgets;
     }
 }
