@@ -413,4 +413,11 @@ public class Ship implements Serializable {
         this.gadgetHold = gadgetHold;
     }
 
+    /**
+     * @param maxRange the maxRange to set
+     */
+    public void setMaxRange(int maxRange) {
+        this.maxRange = maxRange;
+    }
+
 }
