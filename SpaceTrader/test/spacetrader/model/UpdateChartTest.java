@@ -23,6 +23,11 @@ public class UpdateChartTest {
         Game.setWorld(testWorld);
     }
 
+    
+    /**
+     * test that the continent does not show up in the range chart when it is
+     * out of range
+     */
     @Test
     public void testContinentOutOfRange() {
        RangeChart chart = new RangeChart();
@@ -32,6 +37,10 @@ public class UpdateChartTest {
        }
     }
      
+    /**
+     * test that the continent does show up in the range chart when it is now 
+     * in range of the ship
+     */
     @Test
     public void testContinentInRange() {
         Game.getPlayer().setShip(0);
@@ -43,6 +52,9 @@ public class UpdateChartTest {
         assertArrayEquals(resultContinents, allContinents);
     }
     
+    /**
+     * test that the range chart is empty when the ship has no fuel
+     */
     @Test
     public void testNoFuel() {
         Game.getPlayer().getShip().addFuel(-100);
