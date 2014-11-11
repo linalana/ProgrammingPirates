@@ -16,13 +16,14 @@ public class RangeChart implements Serializable {
     private int[] dists;
     private int conversionFactor = 40;
     private Continent[] continentsInRange;
-
+    /**
+     * Constructor for range chart.
+     */
     public RangeChart() {
         continents = new Point[Game.getWorld().getContinents().length];
         for (int i = 0; i < continents.length; i++) {
             continents[i] = new Point(Game.getWorld().getContinents()[i].getX(),
                     Game.getWorld().getContinents()[i].getY());
-            //System.out.println("x: " + continents[i].getXPos() + " y: " + continents[i].getYPos());
         }
         updateChart();
     }
@@ -37,11 +38,13 @@ public class RangeChart implements Serializable {
         ArrayList<Continent> conts = new ArrayList<Continent>();
         dists = new int[continents.length];
         for (int i = 0; i < dists.length; i++) {
-            dists[i] = (int) (Math.sqrt((Math.pow(playerX - continents[i].getXPos(), 2))
-                    + (Math.pow(playerY - continents[i].getYPos(), 2))) / conversionFactor);
+            dists[i] = (int) (Math.sqrt((Math.pow(playerX - continents[i]
+                    .getXPos(), 2)) + (Math.pow(playerY
+                            - continents[i].getYPos(), 2))) / conversionFactor);
         }
         for (int i = 0; i < continents.length; i++) {
-            if (fuel > dists[i] && Game.getWorld().getContinents()[i] != Game.getCurrentPort().getContinent()) {
+            if (fuel > dists[i] && Game.getWorld().getContinents()[i]
+                    != Game.getCurrentPort().getContinent()) {
                 conts.add(Game.getWorld().getContinents()[i]);
             }
         }
@@ -59,23 +62,29 @@ public class RangeChart implements Serializable {
             System.out.println(continentsInRange[i].toString());
         }
         Continent[] toReturn = new Continent[continentsInRange.length];
-        System.arraycopy(continentsInRange, 0, toReturn, 0, continentsInRange.length);
+        System.arraycopy(continentsInRange, 0, toReturn, 0, continentsInRange
+                .length);
         return toReturn;
     }
 
-    public int getDists(Continent cont) {
-        return (int) (Math.sqrt((Math.pow(playerX - cont.getX(), 2)) + (Math.pow(playerY - cont.getY(), 2))) / conversionFactor);
+    public int getDists(final Continent cont) {
+        return (int) (Math.sqrt((Math.pow(playerX - cont.getX(), 2))
+                + (Math.pow(playerY - cont.getY(), 2))) / conversionFactor);
     }
 
     /**
-     * This represents a point with an X and Y coordinate
+     * This represents a point with an X and Y coordinate.
      */
     private static class Point implements Serializable {
 
         private int x;
         private int y;
-
-        public Point(int xPos, int yPos) {
+        /**
+         * Constructor for private Point class.
+         * @param xPos the x component of the point
+         * @param yPos the y component of the point
+         */
+        public Point(final int xPos, final int yPos) {
             x = xPos;
             y = yPos;
         }
