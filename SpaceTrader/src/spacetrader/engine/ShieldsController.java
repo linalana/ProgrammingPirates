@@ -146,6 +146,12 @@ public class ShieldsController implements Initializable {
             quanEn++;
             shieldHold.subtractShield(Shield.ENERGY, 1);
 
+        } else if (index == 0 && shieldHold.getTotalEnergyShields() == 0
+                && shieldHold.getTotalReflectiveShields() > 0) {
+            //0.8 is the portion of the price of a good that it can be sold for.
+            player.setMoney(player.getMoney() + (int) (priceRef * 0.8));
+            quanRef++;
+            shieldHold.subtractShield(Shield.REFLECTIVE, 1);  
         } else if (index == 1 && shieldHold.getTotalReflectiveShields() > 0
                 && Shield.REFLECTIVE.getMTLU()
                 <= Game.getCurrentPort().getTechLevel()) {
