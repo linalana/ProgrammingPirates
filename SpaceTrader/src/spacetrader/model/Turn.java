@@ -2,7 +2,6 @@ package spacetrader.model;
 
 import java.io.Serializable;
 import java.util.Random;
-import spacetrader.engine.ApplicationController;
 
 /**
  *

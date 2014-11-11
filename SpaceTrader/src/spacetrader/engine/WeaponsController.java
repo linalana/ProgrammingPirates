@@ -87,7 +87,7 @@ public class WeaponsController implements Initializable {
     private void updateMoneyLabel() {
         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }
-    /** 
+    /**
      * updates the label for slots you have.
      */
     @FXML

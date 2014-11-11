@@ -22,17 +22,17 @@ import spacetrader.model.ShieldHold;
 public class ShieldsController implements Initializable {
 
     @FXML
-    Label emptySlotsLabel;
+    private Label emptySlotsLabel;
     @FXML
-    ListView shieldList;
+    private ListView shieldList;
     @FXML
-    ListView holdList;
+    private ListView holdList;
     @FXML
-    Label moneyLabel;
+    private Label moneyLabel;
     @FXML
-    Button buyButton;
+    private Button buyButton;
     @FXML
-    Button sellButton;
+    private Button sellButton;
 
     private ObservableList<String> shields;
     private ObservableList<String> hold;
@@ -151,7 +151,7 @@ public class ShieldsController implements Initializable {
             //0.8 is the portion of the price of a good that it can be sold for.
             player.setMoney(player.getMoney() + (int) (priceRef * 0.8));
             quanRef++;
-            shieldHold.subtractShield(Shield.REFLECTIVE, 1);  
+            shieldHold.subtractShield(Shield.REFLECTIVE, 1);
         } else if (index == 1 && shieldHold.getTotalReflectiveShields() > 0
                 && Shield.REFLECTIVE.getMTLU()
                 <= Game.getCurrentPort().getTechLevel()) {

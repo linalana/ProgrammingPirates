@@ -22,30 +22,30 @@ public class PoliceForce extends Encounterer {
         this.strength = calculateStrength(system);
         this.bribe = calculateBribe(system);
         if (strength == 1) {
-            p.setShip(new Ship(1));
-            p.setFighter(2);
+            person.setShip(new Ship(1));
+            person.setFighter(2);
         }
         if (strength == 2) {
-            p.setShip(new Ship(2));
+            person.setShip(new Ship(2));
             //4 corresponds to how strong police should be here
-            p.setFighter(4);
+            person.setFighter(4);
         }
         if (strength == 3) {
             //3 is ship type
-            p.setShip(new Ship(3));
+            person.setShip(new Ship(3));
             //6 corresponds to how strong police should be here
-            p.setFighter(6);
+            person.setFighter(6);
         }
-        if (strength == 4) {//6 corresponds to ship type
-            p.setShip(new Ship(6));
+        if (strength == 4) { //6 corresponds to ship type
+            person.setShip(new Ship(6));
             //8 corresponds to how strong police should be here
-            p.setFighter(8);
+            person.setFighter(8);
         }
         if (strength == 5) {
             //9 corresponds to ship type
-            p.setShip(new Ship(9));
+            person.setShip(new Ship(9));
             //10 corresponds to how strong police should be here
-            p.setFighter(10);
+            person.setFighter(10);
         }
     }
 

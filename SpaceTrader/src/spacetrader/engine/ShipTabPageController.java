@@ -79,7 +79,7 @@ public class ShipTabPageController implements Initializable {
             }
         }
         gadgetsList.add("GADGETS");
-        for (Gadget g: gadgets.keySet()) {
+        for (Gadget g : gadgets.keySet()) {
             int q = gadgets.get(g);
             if (q > 0) {
                 gadgetsList.add(g.toString() + " Quantity: " + q);

@@ -121,7 +121,7 @@ public class GadgetsController implements Initializable {
                                 .subtractFiveBays();
                     }
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney()
-                            + (int)(pq[0] * 0.8 * quant));
+                            + (int) (pq[0] * 0.8 * quant));
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, quant);
                     updateLists();
@@ -150,13 +150,13 @@ public class GadgetsController implements Initializable {
         playerGadgets = Game.getPlayer().getShip().getGadgetHold().getGadgets();
         market.clear();
         cargo.clear();
-        for (Gadget g: gadgetsForSale.keySet()) {
+        for (Gadget g : gadgetsForSale.keySet()) {
             int[] pq = gadgetsForSale.get(g);
             if (pq[1] != 0) {
                 market.add(g.toString() + " Price: " + pq[0]);
             }
         }
-        for (Gadget g: playerGadgets.keySet()) {
+        for (Gadget g : playerGadgets.keySet()) {
             int q = playerGadgets.get(g);
             //.8 is the percentage of the good's original price that it can
             // be sold for.

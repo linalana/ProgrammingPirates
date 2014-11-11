@@ -63,11 +63,11 @@ public class ShieldHold implements Serializable {
             switch (s) {
                 case ENERGY:
                     totalEnergyShields += q;
-                    energyStrength += Shield.ENERGY.strength;
+                    energyStrength += Shield.ENERGY.getStrength();
                     break;
                 case REFLECTIVE:
                     totalReflectiveShields += q;
-                    reflectiveStrength += Shield.REFLECTIVE.strength;
+                    reflectiveStrength += Shield.REFLECTIVE.getStrength();
                     break;
             }
             return true;
@@ -89,11 +89,11 @@ public class ShieldHold implements Serializable {
             switch (s) {
                 case ENERGY:
                     totalEnergyShields -= q;
-                    energyStrength -= Shield.ENERGY.strength;
+                    energyStrength -= Shield.ENERGY.getStrength();
                     break;
                 case REFLECTIVE:
                     totalReflectiveShields -= q;
-                    reflectiveStrength -= Shield.REFLECTIVE.strength;
+                    reflectiveStrength -= Shield.REFLECTIVE.getStrength();
                     break;
             }
             return true;
@@ -108,7 +108,7 @@ public class ShieldHold implements Serializable {
      * @return remaining damage
      */
     public int decreaseStrength(int damage) {
-        
+
         if (totalEnergyShields > 0) {
             int strength = getEnergyStrength();
             if (strength <= damage) {

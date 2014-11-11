@@ -36,7 +36,7 @@ public class CargoHold implements Serializable {
     /**
      * Set initial amount of goods in cargo hold.
      */
-    public void setGoods() {
+    private void setGoods() {
         for (TradeGood g : TradeGood.values()) {
             getGoods().put(g, 0);
         }
@@ -85,7 +85,7 @@ public class CargoHold implements Serializable {
     public void setAmount(final int newAmount) {
         amount = newAmount;
     }
-    
+
     /**
      * Add five new cargo bays.
      */

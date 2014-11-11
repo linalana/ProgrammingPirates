@@ -49,7 +49,7 @@ public class Trader extends Encounterer {
      */
     @Override
     public int[] getEncountererInfo() {
-        return p.getInfo();
+        return person.getInfo();
     }
 
 }

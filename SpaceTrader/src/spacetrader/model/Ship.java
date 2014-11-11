@@ -25,7 +25,7 @@ public class Ship implements Serializable {
     private int fuel;
     private int price;
     private boolean lifeBoat;
-    public String[] names = new String[]{"Guppy", "Minnow", "Snapping Turtle",
+    private String[] names = new String[]{"Guppy", "Minnow", "Snapping Turtle",
         "Pufferfish", "StingRay", "S.S. Electric Eel", "Dolphin Tales", "SharkFin",
         "Hammerhead", "S.S. Bob Waters"};
 
@@ -418,6 +418,13 @@ public class Ship implements Serializable {
      */
     public void setMaxRange(int maxRange) {
         this.maxRange = maxRange;
+    }
+
+    /**
+     * @return the names
+     */
+    public String[] getNames() {
+        return names;
     }
 
 }

@@ -9,17 +9,20 @@ import java.util.Random;
  */
 public abstract class Encounterer implements Serializable {
 
-    protected final Person p; //encounterer delegates to Person
+protected final Person person; //encounterer delegates to Person
+//(used by children)
 
     /**
      * creates encounterer, and backing person.
      */
     public Encounterer() {
         Random rand = new Random();
-        int deviance = rand.nextInt(2 * 10);
-        int reputation = Game.getPlayer().getReputation() + (deviance - 10);
+        int varianceFactor = 10;
+        int deviance = rand.nextInt(2 * varianceFactor);
+        int reputation = Game.getPlayer().getReputation() + (deviance
+                - varianceFactor);
 
-        p = new Person(rand.nextInt(11), rand.nextInt(11),
+        person = new Person(rand.nextInt(11), rand.nextInt(11),
                 rand.nextInt(11), rand.nextInt(11), reputation, new Ship());
     }
 
@@ -58,28 +61,28 @@ public abstract class Encounterer implements Serializable {
      * @return the reputation
      */
     public int getReputation() {
-        return p.getReputation();
+        return person.getReputation();
     }
 
     /**
      * @return the ship
      */
     public Ship getShip() {
-        return p.getShip();
+        return person.getShip();
     }
 
     /**
      * @return the fighterPoints
      */
     public int getFighterPoints() {
-        return p.getFighter();
+        return person.getFighter();
     }
 
     /**
      * @return the fighterPoints
      */
     public int getTraderPoints() {
-        return p.getTrader();
+        return person.getTrader();
     }
 
     /**
@@ -88,14 +91,14 @@ public abstract class Encounterer implements Serializable {
      * @return int array of stats for fight
      */
     public int[] getEncountererInfo() {
-        return p.getInfo();
+        return person.getInfo();
     }
 
     /**
      * @return total damage encounterer is capable of
      */
     public int calcDamage() {
-        return p.calcDamage();
+        return person.calcDamage();
     }
 
     /**
@@ -105,7 +108,7 @@ public abstract class Encounterer implements Serializable {
      * @return true if encounterer survives
      */
     boolean distributeDamage(int totalDamage) {
-        return p.distributeDamage(totalDamage);
+        return person.distributeDamage(totalDamage);
     }
 
 }

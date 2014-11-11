@@ -30,9 +30,9 @@ public enum Shield {
     private final int IPL;
     // Price increase per tech level
     private final int Var;
-    // variance is the maximum percentage 
+    // variance is the maximum percentage
     //that the price can vary above or below the base
-    public final int strength;
+    private final int strength;
     // strength of the shield
     /**
      * The shield constructor.
@@ -41,7 +41,7 @@ public enum Shield {
      * @param TTP Tech Level which produces the most of this item
      * @param BasePrice the base price
      * @param IPL Price increase per tech level
-     * @param Var variance is the maximum percentage 
+     * @param Var variance is the maximum percentage
      * @param strength strength of the shield
      */
     Shield(int MTLP, int MTLU, int TTP, int BasePrice, int IPL, int Var,
@@ -94,6 +94,13 @@ public enum Shield {
      */
     public int getMTLU() {
         return MTLU;
+    }
+
+    /**
+     * @return the strength
+     */
+    public int getStrength() {
+        return strength;
     }
 
 }
