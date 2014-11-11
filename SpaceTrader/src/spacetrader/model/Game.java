@@ -14,11 +14,11 @@ public class Game implements Serializable {
 
     /**
      *
-     * Constructs a Game
+     * Constructs a Game.
      *
      * @param p the player
      */
-    public Game(Player p) {
+    public Game(final Player p) {
         player = p;
         world = new World();
         currentPort = world.getContinents()[0].getMainPort();
@@ -34,13 +34,13 @@ public class Game implements Serializable {
     /**
      * @param aCurrentPort the currentPort to set
      */
-    public static void setCurrentPort(Port aCurrentPort) {
+    public static void setCurrentPort(final Port aCurrentPort) {
         currentPort = aCurrentPort;
     }
 
     /**
      *
-     * Getter for player
+     * Getter for player.
      *
      * @return player
      */
@@ -55,12 +55,12 @@ public class Game implements Serializable {
     public static World getWorld() {
         return world;
     }
-    
+
     /**
      *
      * @param aWorld the world
      */
-    public static void setWorld(World aWorld) {
+    public static void setWorld(final World aWorld) {
         world = aWorld;
     }
 
@@ -74,7 +74,7 @@ public class Game implements Serializable {
 
     /**
      *
-     * @return the ship's shieldhold
+     * @return the ship's shieldHold
      */
     public static ShieldHold getShieldHold() {
         return getPlayer().getShieldHold();

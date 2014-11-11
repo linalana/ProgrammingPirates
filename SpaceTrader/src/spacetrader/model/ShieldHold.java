@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * A shield hold to hold shields
+ * A shield hold to hold shields.
  *
  * @author Murph
  */
