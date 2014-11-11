@@ -1,6 +1,5 @@
 package spacetrader.model;
 
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -35,7 +34,7 @@ public class ShieldTest {
         result = Shield.ENERGY.calculateSellQuantity(3);
         assertTrue(result > 42 && result < 58);
     }
-    
+
     /**
      * Test the calculateSellQuantity method in Shield for tech level values
      * that are greater than the minimum value required to produce the shield
@@ -47,6 +46,6 @@ public class ShieldTest {
         assertTrue((20 - 8 <= result) && (20 + 8 >= result));
         result = Shield.ENERGY.calculateSellQuantity(4);
         assertTrue((20 + 5 * (4) - 8 < result) && (20 + 5 * (4) + 8 > result));
-        
+
     }
 }

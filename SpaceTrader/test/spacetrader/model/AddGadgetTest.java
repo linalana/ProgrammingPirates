@@ -1,15 +1,14 @@
 package spacetrader.model;
 
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 /**
  * Test of addGadget method, of class GadgetHold.
- * 
+ *
  * @author Murph
  */
 public class AddGadgetTest {
-    
+
     /**
      * Test of addGadget method, where no gadgets have been added yet.
      */
@@ -20,7 +19,7 @@ public class AddGadgetTest {
         int result = hold.getTotalGadgets();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of addGadget method, where one gadget has been added.
      */
@@ -46,7 +45,7 @@ public class AddGadgetTest {
         int result = hold.getTotalGadgets();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of addGadget method, where different gadgets have been added.
      */
@@ -64,7 +63,7 @@ public class AddGadgetTest {
         int result = hold.getTotalGadgets();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of addGadget method, where gadgets are added and the method
      * should return True.
@@ -77,9 +76,9 @@ public class AddGadgetTest {
         boolean result = hold.addGadget(gadget, 1);;
         assertEquals(expResult, result);
     }
-    
+
     /**
-     * Test of addGadget method, where too many gadgets are added and 
+     * Test of addGadget method, where too many gadgets are added and
      * the method should return False.
      */
     @Test

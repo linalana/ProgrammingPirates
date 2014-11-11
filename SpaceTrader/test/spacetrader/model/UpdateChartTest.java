@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  * @author James
  */
 public class UpdateChartTest {
-    
+
     @Before
     public void setUp() {
         new Game(new Player("James", 0, 0, 0, 0));
@@ -23,7 +23,7 @@ public class UpdateChartTest {
         Game.setWorld(testWorld);
     }
 
-    
+
     /**
      * test that the continent does not show up in the range chart when it is
      * out of range
@@ -32,13 +32,13 @@ public class UpdateChartTest {
     public void testContinentOutOfRange() {
        RangeChart chart = new RangeChart();
        Continent[] resultContinents = chart.getChart();
-       for (Continent c: resultContinents) {
+       for (Continent c : resultContinents) {
            assertFalse(c.getName().equals("Test1"));
        }
     }
-     
+
     /**
-     * test that the continent does show up in the range chart when it is now 
+     * test that the continent does show up in the range chart when it is now
      * in range of the ship
      */
     @Test
@@ -51,7 +51,7 @@ public class UpdateChartTest {
         Continent[] allContinents = Game.getWorld().getContinents();
         assertArrayEquals(resultContinents, allContinents);
     }
-    
+
     /**
      * test that the range chart is empty when the ship has no fuel
      */
