@@ -44,9 +44,9 @@ public class ShieldTest {
     @Test
     public void testOtherTechLevel() {
         int result = Shield.REFLECTIVE.calculateSellQuantity(4);
-        assertTrue(20 + 5 * (4 - 3) - 8 < result && 20 + 5 * (4 - 3) + 8 > result);
+        assertTrue((20 - 8 <= result) && (20 + 8 >= result));
         result = Shield.ENERGY.calculateSellQuantity(4);
-        assertTrue(20 + 5 * (4) - 8 < result && 20 + 5 * (4) + 8 > result);
+        assertTrue((20 + 5 * (4) - 8 < result) && (20 + 5 * (4) + 8 > result));
         
     }
 }
