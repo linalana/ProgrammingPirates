@@ -14,6 +14,7 @@ public class ShieldTest {
      * below the minimum required value for a shipyard to sell a particular
      * type of shield.
      */
+    @Test
     public void testLowTechLevel() {
         int result = Shield.REFLECTIVE.calculateSellQuantity(3);
         int expectedVal = 0;
@@ -27,6 +28,7 @@ public class ShieldTest {
      * equaling the tech level required for maximum production of that type of
      * shield.
      */
+    @Test
     public void testMaxTechLevel() {
         int result = Shield.REFLECTIVE.calculateSellQuantity(7);
         assertTrue(result > 42 && result < 58);
@@ -39,6 +41,7 @@ public class ShieldTest {
      * that are greater than the minimum value required to produce the shield
      * but not equal to the tech level that produces the most of that shield.
      */
+    @Test
     public void testOtherTechLevel() {
         int result = Shield.REFLECTIVE.calculateSellQuantity(4);
         assertTrue(20 + 5 * (4 - 3) - 8 < result && 20 + 5 * (4 - 3) + 8 > result);
