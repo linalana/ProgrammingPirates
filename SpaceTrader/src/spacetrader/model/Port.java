@@ -128,4 +128,11 @@ public class Port implements Serializable {
     public void setTechLevel(final int techLevel) {
         this.techLevel = techLevel;
     }
+
+    /**
+     * @param shipYard the shipYard to set
+     */
+    public void setShipYard(ShipYard shipYard) {
+        this.shipYard = shipYard;
+    }
 }

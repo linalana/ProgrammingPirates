@@ -135,6 +135,8 @@ public class Continent implements Serializable {
         this.techLevel = techLevel;
         mainPort.setTechLevel(techLevel);
         ports[0].setTechLevel(techLevel);
+        mainPort.setShipYard(new ShipYard(techLevel));
+        ports[0].setShipYard(new ShipYard(techLevel));
     }
 
     /**
