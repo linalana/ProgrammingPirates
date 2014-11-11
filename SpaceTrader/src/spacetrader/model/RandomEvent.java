@@ -80,7 +80,7 @@ public class RandomEvent {
     /**
      * the event class, holds the details for the random event
      */
-    private class Event {
+    private static class Event {
 
         private String title;
         private String description;

@@ -58,7 +58,7 @@ public class Game implements Serializable {
     
     /**
      *
-     * @param world the world
+     * @param aWorld the world
      */
     public static void setWorld(World aWorld) {
         world = aWorld;

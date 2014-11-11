@@ -2,7 +2,6 @@ package spacetrader.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -37,14 +36,11 @@ public class RangeChart implements Serializable {
         fuel = Game.getPlayer().getShip().getFuel();
         ArrayList<Continent> conts = new ArrayList<Continent>();
         dists = new int[continents.length];
-        //System.out.println(playerX + "    " + playerY);
         for (int i = 0; i < dists.length; i++) {
             dists[i] = (int) (Math.sqrt((Math.pow(playerX - continents[i].getXPos(), 2))
                     + (Math.pow(playerY - continents[i].getYPos(), 2))) / conversionFactor);
-            //System.out.println("Dist " + dists[i]);
         }
         for (int i = 0; i < continents.length; i++) {
-
             if (fuel > dists[i] && Game.getWorld().getContinents()[i] != Game.getCurrentPort().getContinent()) {
                 conts.add(Game.getWorld().getContinents()[i]);
             }
@@ -62,7 +58,9 @@ public class RangeChart implements Serializable {
         for (int i = 0; i < continentsInRange.length; i++) {
             System.out.println(continentsInRange[i].toString());
         }
-        return continentsInRange;
+        Continent[] toReturn = new Continent[continentsInRange.length];
+        System.arraycopy(continentsInRange, 0, toReturn, 0, continentsInRange.length);
+        return toReturn;
     }
 
     public int getDists(Continent cont) {

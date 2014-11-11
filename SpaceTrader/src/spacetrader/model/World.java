@@ -82,8 +82,8 @@ public class World implements Serializable {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("The World contains: \n");
-        for (int i = 0; i < continents.length; i++) {
-            builder.append(continents[i].toString() + "\n");
+        for (int i = 0; i < getContinents().length; i++) {
+            builder.append(getContinents()[i].toString() + "\n");
         }
         return builder.toString();
     }
@@ -93,7 +93,9 @@ public class World implements Serializable {
      * @return the array of continents
      */
     public Continent[] getContinents() {
-        return continents;
+        Continent[] toReturn = new Continent[continents.length];
+        System.arraycopy(continents, 0, toReturn, 0, continents.length);
+        return toReturn;
     }
 
     /**
@@ -110,5 +112,12 @@ public class World implements Serializable {
         if (rangeChart == null) {
             this.rangeChart = new RangeChart();
         }
+    }
+
+    /**
+     * @param continents the continents to set
+     */
+    public void setContinents(Continent[] continents) {
+        this.continents = continents;
     }
 }
