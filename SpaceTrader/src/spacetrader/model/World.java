@@ -118,6 +118,8 @@ public class World implements Serializable {
      * @param continents the continents to set
      */
     public void setContinents(Continent[] continents) {
-        this.continents = continents;
+        Continent[] toSet = new Continent[continents.length];
+        System.arraycopy(continents, 0, toSet, 0, continents.length);
+        this.continents = toSet;
     }
 }

@@ -47,7 +47,6 @@ public enum Weapon {
      * @return the price
      */
     public int calculatePrice(int techLevel) {
-        Random rand = new Random();
         int price = BasePrice + IPL * (techLevel - MTLP);
         if (price < 0) {
             return 0;
