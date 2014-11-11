@@ -65,4 +65,29 @@ public class AddGadgetTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Test of addGadget method, where gadgets are added and the method
+     * should return True.
+     */
+    @Test
+    public void testTrue() {
+        GadgetHold hold = new GadgetHold(5);
+        Gadget gadget = Gadget.valueOf("EXTRACARGO");
+        boolean expResult = true;
+        boolean result = hold.addGadget(gadget, 1);;
+        assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of addGadget method, where too many gadgets are added and 
+     * the method should return False.
+     */
+    @Test
+    public void testFalse() {
+        GadgetHold hold = new GadgetHold(5);
+        Gadget gadget = Gadget.valueOf("EXTRACARGO");
+        boolean expResult = false;
+        boolean result = hold.addGadget(gadget, 6);;
+        assertEquals(expResult, result);
+    }
 }
