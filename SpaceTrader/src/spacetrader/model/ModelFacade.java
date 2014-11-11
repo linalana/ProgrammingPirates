@@ -23,23 +23,31 @@ public class ModelFacade implements Serializable {
     public static ModelFacade getInstance() {
         return instance;
     }
-
-    public void saveModelBinary(File file) {
+    /**
+     * Saves the game in binary.
+     * @param file file to save go to
+     */
+    public void saveModelBinary(final File file) {
         try {
-            try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
+            try (ObjectOutputStream out =
+                    new ObjectOutputStream(new FileOutputStream(file))) {
                 out.writeObject(game.getPlayer());
                 out.writeObject(game.getWorld());
                 out.writeObject(game.getCurrentPort());
             }
         } catch (IOException ex) {
-            Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE,
+                    null, ex);
         }
     }
-
-    public void loadModelBinary(File file) {
+    /**
+     * loads a game.
+     * @param file file to load from
+     */
+    public void loadModelBinary(final File file) {
         try {
-            try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
-                //
+            try (ObjectInputStream in =
+                    new ObjectInputStream(new FileInputStream(file))) {
                 Player p = (Player) in.readObject();
                 World w = (World) in.readObject();
                 Port cp = (Port) in.readObject();
@@ -47,10 +55,12 @@ public class ModelFacade implements Serializable {
                 game.setCurrentPort(cp);
                 game.setWorld(w);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE,
+                        null, ex);
             }
         } catch (IOException ex) {
-            Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE,
+                    null, ex);
         }
     }
 }

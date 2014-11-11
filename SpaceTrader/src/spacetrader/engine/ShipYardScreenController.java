@@ -5,12 +5,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
@@ -25,8 +23,6 @@ public class ShipYardScreenController implements Initializable {
 
     @FXML
     private TabPane yardPane;
-    
-    
     /**
      * Initializes the controller class.
      */
@@ -35,7 +31,8 @@ public class ShipYardScreenController implements Initializable {
         yardPane.getSelectionModel().selectedItemProperty().addListener(
             (ObservableValue<? extends Tab> ov, Tab t, Tab t1) -> {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(SpaceTrader.class.getResource("GUI/" + t1.getText() + ".fxml"));
+                loader.setLocation(SpaceTrader.class.getResource("GUI/"
+                        + t1.getText() + ".fxml"));
                 AnchorPane a;
                 try {
                     a = (AnchorPane) loader.load();
@@ -44,6 +41,6 @@ public class ShipYardScreenController implements Initializable {
                     Logger.getLogger(ShipYardScreenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
         });
-    }    
-    
+    }
+
 }

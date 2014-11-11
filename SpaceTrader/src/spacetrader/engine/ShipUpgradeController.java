@@ -57,7 +57,7 @@ public class ShipUpgradeController implements Initializable {
     }
 
     /**
-     * refuels, deducts money, update
+     * refuels, deducts money, update.
      *
      * @param event rum button pressed
      */
@@ -84,6 +84,7 @@ public class ShipUpgradeController implements Initializable {
     @FXML
     private void handleEscapeButtonAction(final ActionEvent event) {
         int money = Game.getPlayer().getMoney();
+        //5000 is cost of life boat
         if (money >= 5000) {
             Game.getPlayer().setMoney(money - 5000);
             Game.getPlayer().getShip().setLifeBoat(true);

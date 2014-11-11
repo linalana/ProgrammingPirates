@@ -8,23 +8,23 @@ import java.io.Serializable;
  */
 public class Encounter implements Serializable {
 
-    Player p;
-    Encounterer e;
+    private Player p;
+    private Encounterer e;
 
-    public Encounter(Player p, Encounterer e) {
+    public Encounter(final Player p, final Encounterer e) {
         this.p = p;
         this.e = e;
     }
 
     /**
-     * Runs a "fight" offering choices to the user
+     * Runs a "fight" offering choices to the user.
      */
     public void engageFight() {
 
     }
 
     /**
-     * Plays out the choice of the player attacking it's encounterer
+     * Plays out the choice of the player attacking it's encounterer.
      */
     private void playerAttack() {
         int totalDamage = p.calcDamage();

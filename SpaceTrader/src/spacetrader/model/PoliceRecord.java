@@ -14,7 +14,9 @@ public class PoliceRecord implements Serializable {
     //goes up with positive inspections and down with failed inspections
     //controls the likelyhood of an inspection
     private int inspectionHistory;
-
+    /**
+     * sets up a police record.
+     */
     public PoliceRecord() {
         isPirate = false;
         arrestCount = 0;
@@ -31,7 +33,7 @@ public class PoliceRecord implements Serializable {
     /**
      * @param isPirate the isPirate to set
      */
-    public void setIsPirate(boolean isPirate) {
+    public void setIsPirate(final boolean isPirate) {
         this.isPirate = isPirate;
     }
 
@@ -50,14 +52,14 @@ public class PoliceRecord implements Serializable {
     }
 
     /**
-     * Increment InspectionHistory (good job!)
+     * Increment InspectionHistory (good job!).
      */
     public void incrementInspectionHistory() {
         inspectionHistory++;
     }
 
     /**
-     * Decrement InspectionHistory (good job!)
+     * Decrement InspectionHistory (good job!).
      */
     public void decrementInspectionHistory() {
         if (inspectionHistory > 0) {

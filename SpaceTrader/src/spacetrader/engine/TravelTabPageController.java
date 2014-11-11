@@ -39,7 +39,7 @@ public class TravelTabPageController implements Initializable {
 
     /**
      * Initializes the controller class with ports in range, and rum available
-     * for use, adds listener to display info on the selected port
+     * for use, adds listener to display info on the selected port.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -65,7 +65,7 @@ public class TravelTabPageController implements Initializable {
     }
 
     /**
-     * deducts fuel, moves to new continent, refreshes travel page info
+     * deducts fuel, moves to new continent, refreshes travel page info.
      *
      * @param event travel button pressed
      */
@@ -90,14 +90,14 @@ public class TravelTabPageController implements Initializable {
     }
 
     /**
-     * changes to encounter screen
+     * changes to encounter screen.
      */
     private void doEncounter() {
         ApplicationController.changeScene("GUI/Encounter.fxml");
     }
 
     /**
-     * changes to random event screen
+     * changes to random event screen.
      */
     private void doEvent() {
         ApplicationController.changeScene("GUI/RandomEvent.fxml");
@@ -105,7 +105,7 @@ public class TravelTabPageController implements Initializable {
     }
 
     /**
-     * moves to main screen of game
+     * moves to main screen of game.
      */
     private void doTravel() {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
@@ -113,7 +113,7 @@ public class TravelTabPageController implements Initializable {
     }
 
     /**
-     * changes to the map view of the places
+     * changes to the map view of the places.
      *
      * @param event map button pressed
      */

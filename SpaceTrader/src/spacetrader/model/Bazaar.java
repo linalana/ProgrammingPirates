@@ -18,9 +18,9 @@ public class Bazaar implements Serializable {
     /**
      * This is the constructor for a Bazaar.
      *
-     * @param port
+     * @param port the port of the bazaar
      */
-    public Bazaar(Port port) {
+    public Bazaar(final Port port) {
         this.port = port;
         goodsForSale = new HashMap<>();
         setGoodsForSale();
@@ -34,22 +34,23 @@ public class Bazaar implements Serializable {
     }
 
     /**
-     * calculate price and quantity
+     * calculate price and quantity.
      */
     public void setGoodsForSale() {
         for (TradeGood g : TradeGood.values()) {
-            goodsForSale.put(g, new int[]{g.calculatePrice(port), g.calculateSellQuantity(port.getTechLevel())});
+            goodsForSale.put(g, new int[]{g.calculatePrice(port),
+                g.calculateSellQuantity(port.getTechLevel())});
         }
     }
 
     /**
      *
      * Update the quantity (input positive quantity for adding, negative for
-     * subtracting)
+     * subtracting).
      *
      * @param g the TradeGood in question
      * @param q the quantity changed (postive or negative)
-     * @return
+     * @return if the quantity can be updated
      */
     public boolean updateQuantity(TradeGood g, int q) {
 

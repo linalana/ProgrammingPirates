@@ -12,7 +12,7 @@ public abstract class Encounterer implements Serializable {
     protected final Person p; //encounterer delegates to Person
 
     /**
-     * creates encounterer, and backing person
+     * creates encounterer, and backing person.
      */
     public Encounterer() {
         Random rand = new Random();

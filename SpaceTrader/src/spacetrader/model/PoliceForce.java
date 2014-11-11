@@ -3,7 +3,7 @@ package spacetrader.model;
 import java.util.Random;
 
 /**
- * A police force that will be assigned to each continent
+ * A police force that will be assigned to each continent.
  *
  * @author Murph
  */
@@ -13,11 +13,11 @@ public class PoliceForce extends Encounterer {
     private int bribe;
 
     /**
-     * Constructor for PoliceForce
+     * Constructor for PoliceForce.
      *
      * @param system the political system of the continent
      */
-    public PoliceForce(String system) {
+    public PoliceForce(final String system) {
         super();
         this.strength = calculateStrength(system);
         this.bribe = calculateBribe(system);
@@ -27,18 +27,24 @@ public class PoliceForce extends Encounterer {
         }
         if (strength == 2) {
             p.setShip(new Ship(2));
+            //4 corresponds to how strong police should be here
             p.setFighter(4);
         }
         if (strength == 3) {
+            //3 is ship type
             p.setShip(new Ship(3));
+            //6 corresponds to how strong police should be here
             p.setFighter(6);
         }
-        if (strength == 4) {
+        if (strength == 4) {//6 corresponds to ship type
             p.setShip(new Ship(6));
+            //8 corresponds to how strong police should be here
             p.setFighter(8);
         }
         if (strength == 5) {
+            //9 corresponds to ship type
             p.setShip(new Ship(9));
+            //10 corresponds to how strong police should be here
             p.setFighter(10);
         }
     }
@@ -48,11 +54,12 @@ public class PoliceForce extends Encounterer {
      * @param system the political system of the continent
      * @return the strength
      */
-    private int calculateStrength(String system) {
+    private int calculateStrength(final String system) {
         int strength;
         int strengthCount = 0;
-        String[] strengthArray = {"anarchy", "feudal", "pacifist", "satori", "capitalist", "democracy", "socialist",
-            "confederacy", "monarchy", "communist", "corporate", "cybernetic", "dictatorship",
+        String[] strengthArray = {"anarchy", "feudal", "pacifist", "satori",
+            "capitalist", "democracy", "socialist", "confederacy", "monarchy",
+            "communist", "corporate", "cybernetic", "dictatorship",
             "technocracy", "theocracy", "fascist", "military"};
         for (int i = 0; i < strengthArray.length; i++) {
             if (strengthArray[i].equals(system)) {
@@ -80,12 +87,13 @@ public class PoliceForce extends Encounterer {
      * @param system the political system of the continent
      * @return the bribe level
      */
-    private int calculateBribe(String system) {
+    private int calculateBribe(final String system) {
         int bribe;
         int bribeCount = 0;
         Random rand = new Random();
-        String[] bribeArray = {"anarchy", "fascist", "feudal", "military", "pacifist", "satori", "capitalist",
-            "communist", "cybernetic", "democracy", "dictatorship", "monarchy", "socialist",
+        String[] bribeArray = {"anarchy", "fascist", "feudal", "military",
+            "pacifist", "satori", "capitalist", "communist", "cybernetic",
+            "democracy", "dictatorship", "monarchy", "socialist",
             "confederacy", "corporate", "technocracy", "theocracy"};
         for (int i = 0; i < bribeArray.length; i++) {
             if (bribeArray[i].equals(system)) {
@@ -105,15 +113,16 @@ public class PoliceForce extends Encounterer {
     }
 
     /**
-     * Inspect a player
+     * Inspect a player.
      *
      * @param player the player being inspected
      * @return true if they pass the inspection, false otherwise
      */
-    private boolean inspect(Player player) {
+    private boolean inspect(final Player player) {
         boolean result =  false;
-        if (player.getShip().getCargoHold().getGoods().get(TradeGood.FIREARMS) != 0
-                || player.getShip().getCargoHold().getGoods().get(TradeGood.NARCOTICS) != 0) {
+        if (player.getShip().getCargoHold().getGoods().get(TradeGood.FIREARMS)
+                != 0 || player.getShip().getCargoHold().getGoods()
+                        .get(TradeGood.NARCOTICS) != 0) {
             player.getPoliceRecord().decrementInspectionHistory();
         } else {
             player.getPoliceRecord().incrementInspectionHistory();

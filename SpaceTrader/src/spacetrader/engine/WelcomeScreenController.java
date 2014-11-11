@@ -26,23 +26,24 @@ public class WelcomeScreenController implements Initializable {
     private Label label;
 
     /**
-     * Starts a game, switches to the player configuration screen
+     * Starts a game, switches to the player configuration screen.
      *
      * @param event submit button pressed
      */
     @FXML
-    private void handleStartButtonAction(ActionEvent event) {
-        ApplicationController.playSound(getClass().getResource("yearr.wav").toString());
+    private void handleStartButtonAction(final ActionEvent event) {
+        ApplicationController.playSound(getClass()
+                .getResource("yearr.wav").toString());
         ApplicationController.changeScene("GUI/PlayerConfiguration.fxml");
     }
 
     /**
-     * Starts a game, switches to the player configuration screen
+     * Starts a game, switches to the player configuration screen.
      *
      * @param event submit button pressed
      */
     @FXML
-    private void handleLoadButtonAction(ActionEvent event) {
+    private void handleLoadButtonAction(final ActionEvent event) {
         final FileChooser fc = new FileChooser();
         fc.setTitle("Select stored BIN file");
         File file = fc.showOpenDialog(new Stage());
@@ -50,21 +51,26 @@ public class WelcomeScreenController implements Initializable {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/OpeningGameScreen.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
+            loader.setLocation(SpaceTrader.class
+                    .getResource("GUI/OpeningGameScreen.fxml"));
+            AnchorPane configurationLayout = (AnchorPane) loader.load();
 
             // Show the scene containing the root layout.
             Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
+            Scene scene = new Scene(configurationLayout);
             playerStage.setScene(scene);
             playerStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Initializes but currently does nothing.
+     * @param url the url
+     * @param rb the resource bundle
+     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         // TODO
     }
 
