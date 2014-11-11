@@ -83,7 +83,6 @@ public enum TradeGood {
      * @return the price
      */
     public int calculatePrice(Port port) {
-        Random rand = new Random();
         int price = getBasePrice() + IPL * (port.getTechLevel() - MTLP);
         if (price < 0) {
             return 0;

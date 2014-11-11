@@ -43,7 +43,6 @@ public enum Shield {
      * @return the price
      */
     public int calculatePrice(Port port) {
-        Random rand = new Random();
         int price = BasePrice + IPL * (port.getTechLevel() - MTLP);
         if (price < 0) {
             return 0;
