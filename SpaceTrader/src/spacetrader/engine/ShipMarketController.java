@@ -75,7 +75,7 @@ public class ShipMarketController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         updateCurrentLabels();
         ships = shipList.getItems();
-        for (int i = 0; i < (Game.getCurrentPort().getTechLevel() + 3); i++) {
+        for (int i = 0; i < (Game.getCurrentPort().getTechLevel() + 2); i++) {
             ships.add(s[i].getType());
         }
         currentLabel.setText("Current: " + Game.getPlayer().getShip().getType());
