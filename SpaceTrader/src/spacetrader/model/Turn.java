@@ -2,6 +2,7 @@ package spacetrader.model;
 
 import java.io.Serializable;
 import java.util.Random;
+import spacetrader.engine.ApplicationController;
 
 /**
  *
@@ -48,8 +49,9 @@ public class Turn implements Serializable {
                 && randInt < (policeChance + traderChance + pirateChance)) {
             encounter = new Encounter(Game.getPlayer(), new Pirate());
             encounterType = "Pirate";
+        } else {
+            randomEvent = new RandomEvent();
         }
-        randomEvent = new RandomEvent();
         return encounterType;
     }
 
