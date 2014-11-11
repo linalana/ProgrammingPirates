@@ -23,7 +23,7 @@ public class ShieldHold implements Serializable {
      *
      * @param amount the amount of shield slots available
      */
-    public ShieldHold(int amount) {
+    public ShieldHold(final int amount) {
         this.amount = amount;
         this.totalEnergyShields = 0;
         this.totalReflectiveShields = 0;
@@ -41,7 +41,7 @@ public class ShieldHold implements Serializable {
     }
 
     /**
-     * Set amount of shields in shield hold
+     * Set amount of shields in shield hold.
      */
     public void setShields() {
         for (Shield s : Shield.values()) {
@@ -50,12 +50,13 @@ public class ShieldHold implements Serializable {
     }
 
     /**
-     * Add shield to your ship
+     * Add shield to your ship.
      *
      * @param s the shield type to be added
      * @param q the amount of shield to be added
+     * @return true if shield can be added
      */
-    public boolean addShield(Shield s, int q) {
+    public boolean addShield(final Shield s, final int q) {
         int oldVal = shields.get(s);
         if (totalEnergyShields + totalReflectiveShields + q <= (amount)) {
             shields.put(s, oldVal + q);
@@ -75,12 +76,13 @@ public class ShieldHold implements Serializable {
     }
 
     /**
-     * Subtract shield from your ship
+     * Subtract shield from your ship.
      *
      * @param s the shield type to be subtracted
      * @param q the amount of shield to be subtracted
+     * @return true if shield can be subtracted
      */
-    public boolean subtractShield(Shield s, int q) {
+    public boolean subtractShield(final Shield s, final int q) {
         int oldVal = shields.get(s);
         if (oldVal - q >= 0) {
             shields.put(s, oldVal - q);
@@ -100,7 +102,7 @@ public class ShieldHold implements Serializable {
     }
 
     /**
-     * Damage the shields
+     * Damage the shields.
      *
      * @param damage the amount of damage
      * @return remaining damage
@@ -134,7 +136,7 @@ public class ShieldHold implements Serializable {
     }
 
     /**
-     * Recharge the shields to full power
+     * Recharge the shields to full power.
      */
     public void recharge() {
         energyStrength = totalEnergyShields * 25;
