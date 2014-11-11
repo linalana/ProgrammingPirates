@@ -15,7 +15,7 @@ import spacetrader.model.Shield;
 import spacetrader.model.ShieldHold;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author Lil B
  */
@@ -44,10 +44,12 @@ public class ShieldsController implements Initializable {
     private int priceRef;
 
     /**
-     * Initializes the controller class updates shield info in UI
+     * Initializes the controller class updates shield info in UI.
+     * @param url the url
+     * @param rb the resource bundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         shieldHold = Game.getShieldHold();
         player = Game.getPlayer();
         shields = shieldList.getItems();
@@ -65,7 +67,7 @@ public class ShieldsController implements Initializable {
 
     /**
      * updates the info about the current shield hold on the ship and the
-     * player's money
+     * player's money.
      */
     private void updateHoldLabels() {
         emptySlotsLabel.setText("Slots available: "
@@ -74,31 +76,35 @@ public class ShieldsController implements Initializable {
     }
 
     /**
-     * updates the list of shields available
+     * updates the list of shields available.
      */
     private void updateShieldList() {
         shields.clear();
-        shields.add("Wooden Shield Price: " + priceEn);// + "(" + quanEn + ")");
-        shields.add("Iron Shield Price: " + priceRef);// + "(" + quanRef + ")");
+        shields.add("Wooden Shield Price: " + priceEn);
+        // + "(" + quanEn + ")");
+        shields.add("Iron Shield Price: " + priceRef);
+        // + "(" + quanRef + ")");
     }
 
     /**
-     * updates the list of shields in your shield hold
+     * updates the list of shields in your shield hold.
      */
     private void updateHoldList() {
         hold.clear();
 
         if (shieldHold.getTotalEnergyShields() > 0) {
+            //0.8 is the portion of the price of a good that it can be sold for.
             hold.add("Wooden Shield Sell Price: " + (int) (priceEn * 0.8));
         }
         if (shieldHold.getTotalReflectiveShields() > 0) {
+            //0.8 is the portion of the price of a good that it can be sold for.
             hold.add("Iron Shield Sell Price: " + (int) (priceRef * 0.8));
         }
 
     }
 
     /**
-     * buys the selected shield when the buy button is pressed
+     * buys the selected shield when the buy button is pressed.
      */
     @FXML
     private void buyButtonPressed() {
@@ -106,17 +112,19 @@ public class ShieldsController implements Initializable {
 
         if (index == 0 && quanEn > 0 && player.getMoney() > priceEn
                 && shieldHold.addShield(Shield.ENERGY, 1)) {
-            ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
+            ApplicationController.playSound(getClass()
+                    .getResource("yourbooty.wav").toString());
             player.setMoney(player.getMoney() - priceEn);
             quanEn--;
 
         } else if (index == 1 && quanRef > 0 && player.getMoney() > priceRef
                 && shieldHold.addShield(Shield.REFLECTIVE, 1)) {
-            ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
+            ApplicationController.playSound(getClass()
+                    .getResource("yourbooty.wav").toString());
             player.setMoney(player.getMoney() - priceRef);
             quanRef--;
         } else {
-
+          //nothing
         }
         updateHoldLabels();
         updateHoldList();
@@ -125,7 +133,7 @@ public class ShieldsController implements Initializable {
     }
 
     /**
-     * Sells a shield
+     * Sells a shield.
      */
     @FXML
     private void sellButtonPressed() {
@@ -133,6 +141,7 @@ public class ShieldsController implements Initializable {
         if (index == 0 && shieldHold.getTotalEnergyShields() > 0
                 && Shield.REFLECTIVE.getMTLU()
                 <= Game.getCurrentPort().getTechLevel()) {
+            //0.8 is the portion of the price of a good that it can be sold for.
             player.setMoney(player.getMoney() + (int) (priceEn * 0.8));
             quanEn++;
             shieldHold.subtractShield(Shield.ENERGY, 1);
@@ -140,11 +149,12 @@ public class ShieldsController implements Initializable {
         } else if (index == 1 && shieldHold.getTotalReflectiveShields() > 0
                 && Shield.REFLECTIVE.getMTLU()
                 <= Game.getCurrentPort().getTechLevel()) {
+            //0.8 is the portion of the price of a good that it can be sold for.
             player.setMoney(player.getMoney() + (int) (priceRef * 0.8));
             quanRef++;
             shieldHold.subtractShield(Shield.REFLECTIVE, 1);
         } else {
-
+            //nothing.
         }
         updateHoldLabels();
         updateHoldList();

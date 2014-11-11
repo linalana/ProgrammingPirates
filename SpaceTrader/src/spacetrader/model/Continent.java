@@ -37,14 +37,15 @@ public class Continent implements Serializable {
 
     /**
      *
-     * The constructor for a continent, randomly generates details
+     * The constructor for a continent, randomly generates details.
      *
      * @param name the name of the continent
      * @param politicalSystem the political system
      * @param x position
      * @param y position
      */
-    public Continent(String name, String politicalSystem, int x, int y) {
+    public Continent(final String name, final String politicalSystem,
+            final int x, final int y) {
         ports = new Port[MAX_PORTS];
 
         this.x = x;
@@ -54,6 +55,7 @@ public class Continent implements Serializable {
         setTechLevel();
         //randomly generate a primary resource
         Random rand = new Random();
+        //there are 13 resources
         resource = rand.nextInt(13);
 
         //create port(s)
@@ -63,7 +65,7 @@ public class Continent implements Serializable {
     }
 
     /**
-     * Sets the tech level based on the current political system
+     * Sets the tech level based on the current political system.
      */
     private void setTechLevel() {
         Random rand = new Random();
@@ -125,7 +127,7 @@ public class Continent implements Serializable {
     }
 
     /**
-     * Only to be used to ensure home port has tech level 7
+     * Only to be used to ensure home port has tech level 7.
      *
      * @param techLevel
      */
@@ -153,7 +155,10 @@ public class Continent implements Serializable {
             }
             i++;
         }
-        return name + " @ (" + getX() + ", " + getY() + ") : " + getPoliticalSystem() + ", Tech: " + techLevels[getTechLevel()] + ", Primary Resource: " + getResource() + ", Ports: " + builder.toString();
+        return name + " @ (" + getX() + ", " + getY() + ") : "
+                + getPoliticalSystem() + ", Tech: " + techLevels[getTechLevel()]
+                + ", Primary Resource: " + getResource() + ", Ports: "
+                + builder.toString();
     }
 
     /**
@@ -206,7 +211,7 @@ public class Continent implements Serializable {
      * @param eventY mouse y location
      * @return true if continent was clicked
      */
-    public boolean isClicked(double eventX, double eventY) {
+    public boolean isClicked(final double eventX, final double eventY) {
         double dx = eventX - x - 7.5;
         double dy = eventY - y - 7.5;
         return (Math.sqrt(dx * dx + dy * dy) < 7.5);

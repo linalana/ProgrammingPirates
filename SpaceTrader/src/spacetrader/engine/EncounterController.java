@@ -6,11 +6,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+
 import spacetrader.model.Turn;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author alanalin
  */
@@ -56,9 +58,11 @@ public class EncounterController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url is the url
+     * @param rb is the resource bundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         String type = Turn.getEncounter().getType();
         encounterLabel.setText("You encountered a " + type);
         thingLabel.setText(type);
@@ -74,41 +78,43 @@ public class EncounterController implements Initializable {
                 break;
             default:
                 otherButton.setText("Accept Inspection");
+                //210 is only ever used once and is a specific position
                 otherButton.relocate(210, 349);
                 break;
         }
     }
 
     /**
-     * starts the fight in encounter
+     * starts the fight in encounter.
      *
      * @param event fight button pressed
      */
     @FXML
-    private void handleFightButtonAction(ActionEvent event) {
+    private void handleFightButtonAction(final ActionEvent event) {
         Turn.getEncounter().engageFight();
     }
 
     /**
-     * escapes the encounter
+     * escapes the encounter.
      *
      * @param event flee button pressed
      */
     @FXML
-    private void handleFleeButtonAction(ActionEvent event) {
+    private void handleFleeButtonAction(final ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
 
     /**
-     * completes "other" action for each type of encounter
+     * completes "other" action for each type of encounter.
      *
      * @param event the 3rd button is pressed
      */
     @FXML
-    private void handleOtherButtonAction(ActionEvent event) {
+    private void handleOtherButtonAction(final ActionEvent event) {
         String type = Turn.getEncounter().getType();
         if (type.equals("Trader")) {
             //trading window
+            //not finished
         } else if (type.equals("PoliceForce")) {
             Turn.getEncounter().inspection();
         }
@@ -116,8 +122,8 @@ public class EncounterController implements Initializable {
     }
 
     /**
-     * get's all the data from the player and encounterer and fills the UI to
-     * display to player
+     * gets all the data from the player and encounterer and fills the UI to
+     * display to player.
      */
     private void fillStats() {
         int[] info = Turn.getEncounter().getInfo();

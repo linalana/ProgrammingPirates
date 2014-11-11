@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class Port implements Serializable {
 
-    private static final String[] events = new String[]{"DROUGHT", "COLD",
+    private static final String[] EVENTS = new String[]{"DROUGHT", "COLD",
         "CROPFAIL", "WAR", "BOREDOM", "PLAGUE", "LACKOFWORKERS"};
 
     private String name;
@@ -25,13 +25,13 @@ public class Port implements Serializable {
      * This is the constructor for the Port, it sets all the necessary
      * variables.
      *
-     * @param newName
-     * @param newTechLevel
-     * @param newResources
+     * @param newName the ports new name
+     * @param newTechLevel the ports new tech level
+     * @param newResources the ports new resources
      * @param continent in which the port is located
      */
-    public Port(String newName, int newTechLevel, String newResources,
-            Continent continent) {
+    public Port(final String newName, final int newTechLevel,
+            final String newResources, final Continent continent) {
         name = newName;
         techLevel = newTechLevel;
         resources = newResources;
@@ -91,13 +91,13 @@ public class Port implements Serializable {
         if (event == -1) {
             return null;
         }
-        return events[event];
+        return EVENTS[event];
     }
 
     /**
      * @param event the event to set
      */
-    public void setEvent(int event) {
+    public void setEvent(final int event) {
         this.event = event;
     }
 
@@ -118,14 +118,14 @@ public class Port implements Serializable {
     /**
      * @param policeForce the policeForce to set
      */
-    public void setPoliceForce(PoliceForce policeForce) {
+    public void setPoliceForce(final PoliceForce policeForce) {
         this.policeForce = policeForce;
     }
 
     /**
      * @param techLevel the techLevel to set
      */
-    public void setTechLevel(int techLevel) {
+    public void setTechLevel(final int techLevel) {
         this.techLevel = techLevel;
     }
 }

@@ -16,7 +16,7 @@ import spacetrader.SpaceTrader;
 import spacetrader.model.ModelFacade;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author Michael
  */
@@ -24,19 +24,21 @@ public class GameTabPageController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url is the url
+     * @param rb is the resource bundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         // TODO
     }
 
     /**
-     * Opens save dialog to save a .bin file
+     * Opens save dialog to save a .bin file.
      *
      * @param event save button pressed
      */
     @FXML
-    private void saveButtonPressed(ActionEvent event) {
+    private void saveButtonPressed(final ActionEvent event) {
         FileChooser fc = new FileChooser();
         fc.setTitle("Save .bin");
         fc.setInitialFileName("game1.bin");
@@ -45,12 +47,12 @@ public class GameTabPageController implements Initializable {
     }
 
     /**
-     * Starts a game, switches to the player configuration screen
+     * Starts a game, switches to the player configuration screen.
      *
      * @param event submit button pressed
      */
     @FXML
-    private void handleLoadGameAction(ActionEvent event) {
+    private void handleLoadGameAction(final ActionEvent event) {
         final FileChooser fc = new FileChooser();
         fc.setTitle("Select stored BIN file");
         File file = fc.showOpenDialog(new Stage());
@@ -58,12 +60,13 @@ public class GameTabPageController implements Initializable {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(SpaceTrader.class.getResource("GUI/OpeningGameScreen.fxml"));
-            AnchorPane ConfigurationLayout = (AnchorPane) loader.load();
+            loader.setLocation(SpaceTrader.class
+                    .getResource("GUI/OpeningGameScreen.fxml"));
+            AnchorPane configurationLayout = (AnchorPane) loader.load();
 
             // Show the scene containing the root layout.
             Stage playerStage = SpaceTrader.getPrimaryStage();
-            Scene scene = new Scene(ConfigurationLayout);
+            Scene scene = new Scene(configurationLayout);
             playerStage.setScene(scene);
             playerStage.show();
         } catch (IOException e) {

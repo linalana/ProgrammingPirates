@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author Murph
  */
@@ -21,8 +21,8 @@ public class EndScreenController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 /**
- * A cargo hold to hold cargo so that you can cargo while you cargo
+ * A cargo hold to hold cargo so that you can cargo while you cargo.
  *
  * @author Murph
  */
@@ -19,7 +19,7 @@ public class CargoHold implements Serializable {
      *
      * @param amount the amount of cargo bays available
      */
-    public CargoHold(int amount) {
+    public CargoHold(final int amount) {
         this.amount = amount;
         totalGoods = 0;
         goods = new HashMap<>();
@@ -34,7 +34,7 @@ public class CargoHold implements Serializable {
     }
 
     /**
-     * Set initial amount of goods in cargo hold
+     * Set initial amount of goods in cargo hold.
      */
     public void setGoods() {
         for (TradeGood g : TradeGood.values()) {
@@ -43,7 +43,7 @@ public class CargoHold implements Serializable {
     }
 
     /**
-     * Add cargo to your ship
+     * Add cargo to your ship.
      *
      * @param g the cargo type to be added
      * @param q the amount of cargo to be added
@@ -51,6 +51,7 @@ public class CargoHold implements Serializable {
      */
     public boolean addCargo(TradeGood g, int q) {
         int oldVal = goods.get(g);
+        //10 is a balancing number to create a fair game
         if (totalGoods + q <= (getAmount() * 10)) {
             goods.put(g, oldVal + q);
             totalGoods += q;
@@ -60,7 +61,7 @@ public class CargoHold implements Serializable {
     }
 
     /**
-     * Subtract cargo from your ship
+     * Subtract cargo from your ship.
      *
      * @param g the cargo type to be subtracted
      * @param q the amount of cargo to be subtracted
@@ -77,29 +78,30 @@ public class CargoHold implements Serializable {
     }
 
     /**
-     * Set the amount of cargo bays
+     * Set the amount of cargo bays.
      *
      * @param newAmount the updated cargo bay amount
      */
-    public void setAmount(int newAmount) {
+    public void setAmount(final int newAmount) {
         amount = newAmount;
     }
     
     /**
-     * Add five new cargo bays
+     * Add five new cargo bays.
      */
-    public void addFiveBays(){
-        amount+=5;
+    public void addFiveBays() {
+        //adds five new cargo bays
+        amount += 5;
     }
     /**
-     * Subtract five new cargo bays
+     * Subtract five new cargo bays.
      */
     public void subtractFiveBays(){
-        amount-=5;
+        amount -= 5;
     }
 
     /**
-     * Checks for illegal goods
+     * Checks for illegal goods.
      *
      * @return true if found
      */
@@ -109,7 +111,7 @@ public class CargoHold implements Serializable {
     }
 
     /**
-     * removes narcotics and firearms from cargohold
+     * removes narcotics and firearms from cargohold.
      */
     public void removeIllegal() {
         goods.put(TradeGood.NARCOTICS, 0);
@@ -117,7 +119,7 @@ public class CargoHold implements Serializable {
     }
 
     /**
-     * @return the amount
+     * @return the amount.
      */
     public int getAmount() {
         return amount;

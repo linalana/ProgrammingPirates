@@ -8,7 +8,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import org.controlsfx.dialog.Dialogs;
 import spacetrader.model.Game;
 import spacetrader.model.Port;
@@ -18,7 +19,7 @@ import spacetrader.model.CargoHold;
 import spacetrader.model.TradeGood;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author Danny
  */
@@ -40,10 +41,12 @@ public class MarketplaceScreenController implements Initializable {
     private Bazaar bazaar;
 
     /**
-     * Initializes the controller class, gets port bazaar and cargo hold
+     * Initializes the controller class, gets port bazaar and cargo hold.
+     * @param url the url
+     * @param rb the resource bundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         // TODO
         updateMoneyLabel();
         Port port = Game.getCurrentPort();
@@ -54,13 +57,14 @@ public class MarketplaceScreenController implements Initializable {
     }
 
     /**
-     * buys goods
+     * buys goods.
      *
      * @param event buy button pressed
      */
     @FXML
-    public void buyButtonPressed(ActionEvent event) {
-        String longString = marketGoodsList.getSelectionModel().getSelectedItem();
+    public void buyButtonPressed(final ActionEvent event) {
+        String longString = marketGoodsList.getSelectionModel()
+                .getSelectedItem();
         if (longString == null) {
             marketGoodsList.getSelectionModel().selectFirst();
             longString = marketGoodsList.getSelectionModel().getSelectedItem();
@@ -70,7 +74,7 @@ public class MarketplaceScreenController implements Initializable {
             String goodToBuy = longString.substring(0, spaceIndex);
             TradeGood good = TradeGood.valueOf(goodToBuy);
             int[] pq = goodsForSale.get(good);
-            //get quantity desired from player 
+            //get quantity desired from player
             String q = getQuantityFromPlayer("Buying Stuff",
                     "Arr, how much ye want to buy?");
             int quant = 0;
@@ -82,8 +86,10 @@ public class MarketplaceScreenController implements Initializable {
             int moneySpent = quant * pq[0];
             if (Game.getPlayer().getMoney() >= moneySpent && pq[1] > quant) {
                 if (cargoHold.addCargo(good, quant)) {
-                    ApplicationController.playSound(getClass().getResource("yourbooty.wav").toString());
-                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() - quant * pq[0]);
+                    ApplicationController.playSound(getClass()
+                            .getResource("yourbooty.wav").toString());
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney()
+                            - quant * pq[0]);
                     updateMoneyLabel();
                     bazaar.updateQuantity(good, -1 * quant);
                     updateLists();

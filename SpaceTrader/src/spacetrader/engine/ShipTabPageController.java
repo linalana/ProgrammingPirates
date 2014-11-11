@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import spacetrader.model.CargoHold;
 import spacetrader.model.Gadget;
 import spacetrader.model.Game;
 import spacetrader.model.Shield;
@@ -17,7 +16,7 @@ import spacetrader.model.TradeGood;
 import spacetrader.model.Weapon;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author Michael
  */
@@ -41,10 +40,12 @@ public class ShipTabPageController implements Initializable {
     private ObservableList<String> gadgetsList;
 
     /**
-     * Initializes the controller class, filling in the info for the ship page
+     * Initializes the controller class, filling in the info for the ship page.
+     * @param url the url
+     * @param rb the resource bundle
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(final URL url, final ResourceBundle rb) {
         type.setText("Ship Type: " + Game.getPlayer().getShip().getType());
         fuel.setText("Rum: " + Game.getPlayer().getShip().getFuel());
         cargo = cargoGoodsList.getItems();

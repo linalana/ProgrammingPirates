@@ -10,34 +10,48 @@ import java.util.Random;
 public enum Gadget {
 
     /**
-     * 5 extra cargo bays
+     * 5 extra cargo bays.
      */
     EXTRACARGO(0, 0, 3, 500, 50, 10),
     /**
-     * Navigating system
+     * Navigating system.
      */
     NAVSYSTEM(3, 3, 5, 1000, 100, 10),
     /**
-     * Auto-repair system
+     * Auto-repair system.
      */
     AUTOREPAIR(4, 4, 6, 5000, 500, 10),
     /**
-     * Targeting system
+     * Targeting system.
      */
     TARSYSTEM(4, 4, 6, 5000, 500, 10),
     /**
-     * Cloaking device
+     * Cloaking device.
      */
     CLOAK(7, 7, 7, 10000, 1000, 10);
 
-    private final int MTLP;       // Minimum Tech Level to Produce this resource (You can't buy on planets below this level)
-    private final int MTLU;       // Minimum Tech Level to Use this resource (You can't sell on planets below this level)
-    private final int TTP;        // Tech Level which produces the most of this item
+    private final int MTLP;       // Minimum Tech Level to Produce this resource
+    //(You can't buy on planets below this level)
+    private final int MTLU;       // Minimum Tech Level to Use this resource
+    //(You can't sell on planets below this level)
+    private final int TTP;        // Tech Level which produces the most of this 
+    //item
     private final int BasePrice;
     private final int IPL;        // Price increase per tech level
-    private final int Var;        // variance is the maximum percentage that the price can vary above or below the base
-
-    Gadget(int MTLP, int MTLU, int TTP, int BasePrice, int IPL, int Var) {
+    private final int Var;        // variance is the maximum percentage that the
+    //price can vary above or below the base
+    /**
+     * The constructor for a gadjet
+     * @param MTLP Minimum Tech Level to Produce this resource
+     * @param MTLU Minimum Tech Level to Use this resource
+     * @param TTP  Tech Level which produces the most of this item
+     * @param BasePrice base price
+     * @param IPL Price increase per tech level
+     * @param Varvariance is the maximum percentage that the price can vary 
+     * above or below the base
+     */
+    Gadget(final int MTLP, final int MTLU, final int TTP, final int BasePrice,
+            final int IPL, final int Var) {
         this.MTLP = MTLP;
         this.MTLU = MTLU;
         this.TTP = TTP;
@@ -47,12 +61,13 @@ public enum Gadget {
     }
 
     /**
-     * calculates the price of the good at the tech level of the port
+     * calculates the price of the good at the tech level of the port.
      *
-     * @param techLevel
+     * @param techLevel tech level of port
      * @return the price
      */
-    public int calculatePrice(int techLevel) {
+    public int calculatePrice(final int techLevel) {
+        Random rand = new Random();
         int price = BasePrice + IPL * (techLevel - MTLP);
         if (price < 0) {
             return 0;
@@ -61,21 +76,24 @@ public enum Gadget {
     }
 
     /**
-     * calculates the quantity to be sold at a specific marketplace
+     * calculates the quantity to be sold at a specific marketplace.
      *
-     * @param techLevel
+     * @param techLevel tech level of port
      * @return the suggested sale quantity
      */
-    public int calculateSellQuantity(int techLevel) {
+    public int calculateSellQuantity(final int techLevel) {
         Random rand = new Random();
+        //there are 8 gadgets
         int random = rand.nextInt(8) - rand.nextInt(8);
         int q;
         if (techLevel < MTLP) {
             q = 0;
         } else if (techLevel == TTP) {
+            //there must be at least 50
             q = 50 + random;
         } else {
             q = 20 + 5 * (techLevel - MTLP) + random;
+            //there must be at least 20
         }
         return q;
     }
