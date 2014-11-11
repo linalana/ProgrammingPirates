@@ -33,7 +33,7 @@ public class AddGadgetTest {
         int result = hold.getTotalGadgets();
         assertEquals(expResult, result);
     }
-    
+
     /**
      * Test of addGadget method, where too many gadgets have been added.
      */
