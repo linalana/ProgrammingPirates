@@ -34,7 +34,16 @@ public enum Shield {
     //that the price can vary above or below the base
     public final int strength;
     // strength of the shield
-
+    /**
+     * The shield constructor.
+     * @param MTLP Minimum Tech Level to Produce this resource
+     * @param MTLU Minimum Tech Level to Use this resource
+     * @param TTP Tech Level which produces the most of this item
+     * @param BasePrice the base price
+     * @param IPL Price increase per tech level
+     * @param Var variance is the maximum percentage 
+     * @param strength strength of the shield
+     */
     Shield(int MTLP, int MTLU, int TTP, int BasePrice, int IPL, int Var,
             int strength) {
         this.MTLP = MTLP;
