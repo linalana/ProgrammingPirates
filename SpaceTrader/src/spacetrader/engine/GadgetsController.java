@@ -114,7 +114,7 @@ public class GadgetsController implements Initializable {
             Gadget gadget = Gadget.valueOf(goodToSell);
             int[] pq = gadgetsForSale.get(gadget);
             int quant = 1;
-            if (Game.getCurrentPort().getTechLevel() > gadget.getMTLU()) {
+            if (Game.getCurrentPort().getTechLevel() >= gadget.getMTLU()) {
                 if (gadgetHold.subtractGadget(gadget, quant)) {
                     if (gadget.toString().equals("EXTRACARGO")) {
                         Game.getPlayer().getShip().getCargoHold()
