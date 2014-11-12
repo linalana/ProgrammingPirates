@@ -39,8 +39,8 @@ public class RangeChart implements Serializable {
         dists = new int[continents.length];
         for (int i = 0; i < dists.length; i++) {
             dists[i] = (int) (Math.sqrt((Math.pow(playerX - continents[i]
-                    .getXPos(), 2)) + (Math.pow(playerY
-                            - continents[i].getYPos(), 2))) / CONVERSION_FACTOR);
+                    .getXPos(), 2)) + (Math.pow(playerY - continents[i]
+                            .getYPos(), 2))) / CONVERSION_FACTOR);
         }
         for (int i = 0; i < continents.length; i++) {
             if (fuel > dists[i] && Game.getWorld().getContinents()[i]

@@ -37,6 +37,7 @@ public class WeaponsController implements Initializable {
     private int slotsAvailable;
     private ObservableList<String> ship;
     private ObservableList<String> market;
+    private static final double SELL_RATIO = 0.8;
 
     /**
      * Initializes the controller class.
@@ -73,8 +74,9 @@ public class WeaponsController implements Initializable {
         }
         for (Weapon w : shipWeapons.keySet()) {
             int q = shipWeapons.get(w);
-            //0.8 is the sell back price fraction
-            int sellPrice = (int) Math.round(0.8 * weaponsForSale.get(w)[0]);
+            //SELL_RATIO is the sell back price fraction
+            int sellPrice = (int) Math.round(SELL_RATIO
+                    * weaponsForSale.get(w)[0]);
             if (q > 0) {
                 ship.add(w.toString() + " Sell Price: " + sellPrice);
             }
@@ -152,9 +154,9 @@ public class WeaponsController implements Initializable {
             if (Game.getCurrentPort().getTechLevel() > weapon.getMTLU()) {
                 if (Game.getPlayer().getShip().getWeaponHold()
                         .subtractWeapon(weapon, quant)) {
-                    //0.8 is the sell back price portion
+                    //SELL_RATIO is the sell back price portion
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney()
-                            + (int) (pq[0] * 0.8 * quant));
+                            + (int) (pq[0] * SELL_RATIO * quant));
                     updateMoneyLabel();
                     slotsAvailable += quant;
                     updateSlotsLabel();

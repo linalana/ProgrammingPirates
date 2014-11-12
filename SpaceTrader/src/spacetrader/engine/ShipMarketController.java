@@ -15,7 +15,7 @@ import spacetrader.model.ShipYard;
 /**
  * FXML Controller class
  *
- * @author Lil B
+ * @author James
  */
 public class ShipMarketController implements Initializable {
 

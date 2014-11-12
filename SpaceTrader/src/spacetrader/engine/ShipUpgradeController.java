@@ -86,7 +86,7 @@ public class ShipUpgradeController implements Initializable {
     private void handleEscapeButtonAction(final ActionEvent event) {
         int money = Game.getPlayer().getMoney();
         //5000 is cost of life boat
-        if (money >= 5000) {
+        if (money >= COST_OF_ESCAPE) {
             Game.getPlayer().setMoney(money - COST_OF_ESCAPE);
             Game.getPlayer().getShip().setLifeBoat(true);
             moneyLabel.setText("Money: " + (money - COST_OF_ESCAPE));

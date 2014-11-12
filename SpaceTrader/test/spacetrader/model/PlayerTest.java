@@ -10,6 +10,10 @@ import static org.junit.Assert.assertEquals;
  */
 public class PlayerTest {
     private Player player;
+    
+    /**
+     * Set up a player to test damage calculation with.
+     */
     @Before
     public final void setUp() {
         player = new Player("Test", 5, 5, 3, 2);

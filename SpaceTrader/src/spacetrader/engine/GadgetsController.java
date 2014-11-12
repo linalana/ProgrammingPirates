@@ -40,6 +40,7 @@ public class GadgetsController implements Initializable {
     private ObservableList<String> cargo;
     private ObservableList<String> market;
     private ShipYard shipYard;
+    private static final double SELL_RATIO = 0.8;
     /**
      * Initializes the controller class.
      * @param url the url
@@ -123,7 +124,7 @@ public class GadgetsController implements Initializable {
                                 .subtractFiveBays();
                     }
                     Game.getPlayer().setMoney(Game.getPlayer().getMoney()
-                            + (int) (pq[0] * 0.8 * quant));
+                            + (int) (pq[0] * SELL_RATIO * quant));
                     updateMoneyLabel();
                     shipYard.updateGadgetQuantity(gadget, quant);
                     updateLists();
@@ -162,7 +163,8 @@ public class GadgetsController implements Initializable {
             int q = playerGadgets.get(g);
             //.8 is the percentage of the good's original price that it can
             // be sold for.
-            int sellPrice = (int) Math.round(0.8 * gadgetsForSale.get(g)[0]);
+            int sellPrice = (int) Math.round(SELL_RATIO
+                    * gadgetsForSale.get(g)[0]);
             if (q > 0) {
                 cargo.add(g.toString() + " Quantity: " + q + " Sell Price: "
                         + sellPrice);

@@ -13,6 +13,9 @@ import static org.junit.Assert.assertArrayEquals;
 public class UpdateChartTest {
 
     @Before
+    /**
+     * set up a game with a world and continents to test range chart with
+     */
     public final void setUp() {
         new Game(new Player("James", 0, 0, 0, 0));
         World testWorld = new World();

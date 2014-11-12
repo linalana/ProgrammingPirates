@@ -39,6 +39,7 @@ public class MarketplaceScreenController implements Initializable {
     private ObservableList<String> cargo;
     private ObservableList<String> market;
     private Bazaar bazaar;
+    private static final double SELL_RATIO = 0.8;
 
     /**
      * Initializes the controller class, gets port bazaar and cargo hold.
@@ -127,8 +128,8 @@ public class MarketplaceScreenController implements Initializable {
             if (Game.getCurrentPort().getTechLevel() > good.getMTLU()) {
                 if (Game.getPlayer().getShip().getCargoHold()
                     .subtractCargo(good, quant)) {
-                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() +
-                        (int) (pq[0] * 0.8 * quant));
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney()
+                            + (int) (pq[0] * SELL_RATIO * quant));
                     updateMoneyLabel();
                     bazaar.updateQuantity(good, quant);
                     updateLists();
@@ -169,7 +170,8 @@ public class MarketplaceScreenController implements Initializable {
         }
         for (TradeGood tg : cargoGoods.keySet()) {
             int q = cargoGoods.get(tg);
-            int sellPrice = (int) Math.round(0.8 * goodsForSale.get(tg)[0]);
+            int sellPrice = (int) Math.round(SELL_RATIO
+                    * goodsForSale.get(tg)[0]);
             if (q > 0) {
                 cargo.add(tg.toString() + " Quantity: " + q + " Sell Price: "
                         + sellPrice);

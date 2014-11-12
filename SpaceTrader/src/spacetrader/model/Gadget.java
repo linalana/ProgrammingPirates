@@ -36,9 +36,9 @@ public enum Gadget {
     //(You can't sell on planets below this level)
     private final int TTP;        // Tech Level which produces the most of this
     //item
-    private final int BasePrice;
+    private final int basePrice;
     private final int IPL;        // Price increase per tech level
-    private final int Var;        // variance is the maximum percentage that the
+    private final int var;        // variance is the maximum percentage that the
     //price can vary above or below the base
     private static final int QUANTITY_VARIANCE = 8;
     private static final int MAXIMUM_QUANTITY = 50;
@@ -59,9 +59,9 @@ public enum Gadget {
         this.MTLP = aMTLP;
         this.MTLU = aMTLU;
         this.TTP = aTTP;
-        this.BasePrice = aBasePrice;
+        this.basePrice = aBasePrice;
         this.IPL = aIPL;
-        this.Var = aVar;
+        this.var = aVar;
     }
 
     /**
@@ -72,7 +72,7 @@ public enum Gadget {
      */
     public int calculatePrice(final int techLevel) {
         Random rand = new Random();
-        int price = BasePrice + IPL * (techLevel - MTLP);
+        int price = basePrice + IPL * (techLevel - MTLP);
         if (price < 0) {
             return 0;
         }

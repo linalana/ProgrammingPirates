@@ -26,10 +26,10 @@ public enum Shield {
     //(You can't sell on planets below this level)
     private final int TTP;
     // Tech Level which produces the most of this item
-    private final int BasePrice;
+    private final int basePrice;
     private final int IPL;
     // Price increase per tech level
-    private final int Var;
+    private final int var;
     // variance is the maximum percentage
     //that the price can vary above or below the base
     private final int strength;
@@ -54,9 +54,9 @@ public enum Shield {
         this.MTLP = aMTLP;
         this.MTLU = aMTLU;
         this.TTP = aTTP;
-        this.BasePrice = aBasePrice;
+        this.basePrice = aBasePrice;
         this.IPL = aIPL;
-        this.Var = aVar;
+        this.var = aVar;
         this.strength = aStrength;
     }
 
@@ -67,7 +67,7 @@ public enum Shield {
      * @return the price
      */
     public int calculatePrice(final Port port) {
-        int price = BasePrice + IPL * (port.getTechLevel() - MTLP);
+        int price = basePrice + IPL * (port.getTechLevel() - MTLP);
         if (price < 0) {
             return 0;
         }
@@ -90,7 +90,8 @@ public enum Shield {
         } else if (techLevel == TTP) {
             q = MAXIMUM_QUANTITY + random;
         } else {
-            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - MTLP) + random;
+            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - MTLP)
+                    + random;
         }
         return q;
     }

@@ -15,7 +15,8 @@ public class Player implements Serializable {
 
     private String name;
     private final Person p;
-    private int money = 1000000;
+    private static final int STARTING_MONEY = 1000000;
+    private int money = STARTING_MONEY;
     private PoliceRecord policeRecord;
 
     /**

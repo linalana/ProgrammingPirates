@@ -18,6 +18,7 @@ public class Turn implements Serializable {
     private int pirateChance;
     private static Encounter encounter;
     private static RandomEvent randomEvent;
+    private static final int NUM_PORT_EVENTS = 7;
     /**
      * Constructor for Turn.
      * @param aNewPort the current port.
@@ -163,8 +164,8 @@ public class Turn implements Serializable {
      */
     private void randomPortEvents() {
         Random rand = new Random();
-        if (rand.nextDouble() > 0.5) {
-            newPort.setEvent(rand.nextInt(7));
+        if (rand.nextBoolean()) {
+            newPort.setEvent(rand.nextInt(NUM_PORT_EVENTS));
         }
         newPort.getBazaar().setGoodsForSale();
     }

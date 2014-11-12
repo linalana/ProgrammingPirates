@@ -42,6 +42,7 @@ public class ShieldsController implements Initializable {
     private int quanRef;
     private int priceEn;
     private int priceRef;
+    private static final double SELL_RATIO = 0.8;
 
     /**
      * Initializes the controller class updates shield info in UI.
@@ -93,12 +94,16 @@ public class ShieldsController implements Initializable {
         hold.clear();
 
         if (shieldHold.getTotalEnergyShields() > 0) {
-            //0.8 is the portion of the price of a good that it can be sold for.
-            hold.add("Wooden Shield Sell Price: " + (int) (priceEn * 0.8));
+            //SELL_RATIO is the portion of the price of a good that it can be
+            //sold for.
+            hold.add("Wooden Shield Sell Price: "
+                    + (int) (priceEn* SELL_RATIO));
         }
         if (shieldHold.getTotalReflectiveShields() > 0) {
-            //0.8 is the portion of the price of a good that it can be sold for.
-            hold.add("Iron Shield Sell Price: " + (int) (priceRef * 0.8));
+            //SELL_RATIO is the portion of the price of a good that it can be
+            //sold for.
+            hold.add("Iron Shield Sell Price: "
+                    + (int) (priceRef * SELL_RATIO));
         }
 
     }
@@ -143,26 +148,29 @@ public class ShieldsController implements Initializable {
         if (index == 0 && shieldHold.getTotalEnergyShields() > 0
                 && Shield.REFLECTIVE.getMTLU()
                 <= Game.getCurrentPort().getTechLevel()) {
-            //0.8 is the portion of the price of a good that it can be sold for.
-            player.setMoney(player.getMoney() + (int) (priceEn * 0.8));
+            //SELL_RATIO is the portion of the price of a good that it can be
+            //sold for.
+            player.setMoney(player.getMoney() + (int) (priceEn * SELL_RATIO));
             quanEn++;
             shieldHold.subtractShield(Shield.ENERGY, 1);
 
         } else if (index == 0 && shieldHold.getTotalEnergyShields() == 0
                 && shieldHold.getTotalReflectiveShields() > 0) {
-            //0.8 is the portion of the price of a good that it can be sold for.
-            player.setMoney(player.getMoney() + (int) (priceRef * 0.8));
+            //SELL_RATIO is the portion of the price of a good that it can be
+            //sold for.
+            player.setMoney(player.getMoney() + (int) (priceRef * SELL_RATIO));
             quanRef++;
             shieldHold.subtractShield(Shield.REFLECTIVE, 1);
         } else if (index == 1 && shieldHold.getTotalReflectiveShields() > 0
                 && Shield.REFLECTIVE.getMTLU()
                 <= Game.getCurrentPort().getTechLevel()) {
-            //0.8 is the portion of the price of a good that it can be sold for.
-            player.setMoney(player.getMoney() + (int) (priceRef * 0.8));
+            //SELL_RATIO is the portion of the price of a good that it can be
+            //sold for.
+            player.setMoney(player.getMoney() + (int) (priceRef * SELL_RATIO));
             quanRef++;
             shieldHold.subtractShield(Shield.REFLECTIVE, 1);
         } else {
-            //nothing.
+            //do nothing.
             //this is a filler statement
             int filler = 0;
         }

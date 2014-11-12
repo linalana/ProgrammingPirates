@@ -92,6 +92,7 @@ public class Encounter implements Serializable {
      * @return the int array containing all the stats required for fight screen
      */
     public final int[] getInfo() {
+        //12 is the number of stats needed - only used once
         int[] info = new int[12];
         int[] pInfo = p.getPlayerInfo();
         int[] otherInfo = e.getEncountererInfo();

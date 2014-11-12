@@ -64,7 +64,7 @@ public class PlayerConfigurationController implements Initializable {
         fighterSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(final ObservableValue<? extends Number> ov,
-                    final Number old_val, final Number new_val) {
+                    final Number oldVal, final Number newVal) {
                 fighterPoint = updatePoints(fighterSlider, fighterPoint);
             }
         });

@@ -55,6 +55,7 @@ public class CurrentPortTabPageController implements Initializable {
      */
     @FXML
     private Button shipyard;
+    private static final int MIN_TECH_LEVEL = 5;
     /**
      * Initializes the controller class.
      * @param url the url
@@ -76,7 +77,7 @@ public class CurrentPortTabPageController implements Initializable {
             randomEvent.setText(currentPort.getEvent());
         }
         //5 is representative of the unchanging tech level required for ships
-        if (currentPort.getTechLevel() < 5) {
+        if (currentPort.getTechLevel() < MIN_TECH_LEVEL) {
             shipyard.setDisable(true);
         }
     }

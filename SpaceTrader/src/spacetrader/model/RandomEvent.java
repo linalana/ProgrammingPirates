@@ -33,12 +33,12 @@ public class RandomEvent {
             new Event("Sirens", "Beautiful sirens lured you off course! They "
                     + "stole your money and badly damaged your ship!", -200 ,
                     -10, -10),
-            new Event("Burried Treasure!", "You found burried treasure! Have "
+            new Event("Buried Treasure!", "You found burried treasure! Have "
                     + "some money!", 1000, 0, 0)};
         Random rand = new Random();
         event = events[rand.nextInt(events.length)];
-        Game.getPlayer().setMoney(Game.getPlayer().getMoney() +
-                                  event.getMoney());
+        Game.getPlayer().setMoney(Game.getPlayer().getMoney()
+                + event.getMoney());
         Game.getPlayer().getShip().addFuel(event.getFuel());
     }
 

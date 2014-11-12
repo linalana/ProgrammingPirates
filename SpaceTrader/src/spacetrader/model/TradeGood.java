@@ -61,12 +61,12 @@ public enum TradeGood {
     private final int MTLU;
     // Tech Level which produces the most of this item
     private final int TTP;
-    private final int BasePrice;
+    private final int basePrice;
     // Price increase per tech level
     private final int IPL;
-    /* variance is the maximum percentage 
+    /* variance is the maximum percentage
        that the price can vary above or below the base */
-    private final int Var;
+    private final int var;
     /* Radical price increase event, when this even happens on a planet,
        the price may increase astronomically */
     private final String IE;
@@ -91,13 +91,13 @@ public enum TradeGood {
      * @param aTTP Tech Level which produces the most of this item
      * @param aBasePrice the base price
      * @param aIPL Price increase per tech level
-     * @param aVar maximum percentage that the price can vary above or below 
+     * @param aVar maximum percentage that the price can vary above or below
      * the base
-     * @param aIE Radical price increase event, when this even happens on a 
+     * @param aIE Radical price increase event, when this even happens on a
      * planet, the price may increase astronomically
      * @param aCR When this condition is present, the resource is cheap
      * @param aER When this condition is present, the resource is expensive
-     * @param aMTL Min price offered in space trade with random trader 
+     * @param aMTL Min price offered in space trade with random trader
      * @param aMTH Max price offered in space trade with random trader
      */
     TradeGood(final int aMTLP, final int aMTLU, final int aTTP,
@@ -107,9 +107,9 @@ public enum TradeGood {
         this.MTLP = aMTLP;
         this.MTLU = aMTLU;
         this.TTP = aTTP;
-        this.BasePrice = aBasePrice;
+        this.basePrice = aBasePrice;
         this.IPL = aIPL;
-        this.Var = aVar;
+        this.var = aVar;
         this.IE = aIE;
         this.CR = aCR;
         this.ER = aER;
@@ -190,14 +190,14 @@ public enum TradeGood {
      * @return the BasePrice
      */
     public int getBasePrice() {
-        return BasePrice;
+        return basePrice;
     }
 
     /**
      * @return the Var
      */
     public int getVar() {
-        return Var;
+        return var;
     }
 
 }

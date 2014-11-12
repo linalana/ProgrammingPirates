@@ -35,6 +35,7 @@ public class Continent implements Serializable {
     private final Port mainPort;
     private static final int MAX_PORTS = 10;
     private static final int NUM_RESOURCES = 13;
+    private static final double ICON_RADIUS = 7.5;
 
     /**
      *
@@ -215,9 +216,9 @@ public class Continent implements Serializable {
      * @return true if continent was clicked
      */
     public final boolean isClicked(final double eventX, final double eventY) {
-        double dx = eventX - x - 7.5;
-        double dy = eventY - y - 7.5;
-        return (Math.sqrt(dx * dx + dy * dy) < 7.5);
+        double dx = eventX - x - ICON_RADIUS;
+        double dy = eventY - y - ICON_RADIUS;
+        return (Math.sqrt(dx * dx + dy * dy) < ICON_RADIUS);
     }
 
     /**

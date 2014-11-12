@@ -30,12 +30,13 @@ public enum Weapon {
     private final int MTLU;
     // Tech Level which produces the most of this item
     private final int TTP;
-    private final int BasePrice;
+    private final int basePrice;
     private final int IPL;        // Price increase per tech level
-    /* variance is the maximum percentage 
+    /* variance is the maximum percentage
        that the price can vary above or below the base */
-    private final int Var;
+    private final int var;
     private final int strength;   // strength of the weapon
+    private static final int SELL_VARIANCE = 8;
     /**
      * constructor for trade good.
      * @param aMTLP Minimum Tech Level to Use this resource
@@ -53,9 +54,9 @@ public enum Weapon {
         this.MTLP = aMTLP;
         this.MTLU = aMTLU;
         this.TTP = aTTP;
-        this.BasePrice = aBasePrice;
+        this.basePrice = aBasePrice;
         this.IPL = aIPL;
-        this.Var = aVar;
+        this.var = aVar;
         this.strength = aStrength;
     }
 
@@ -66,7 +67,7 @@ public enum Weapon {
      * @return the price
      */
     public int calculatePrice(final int techLevel) {
-        int price = BasePrice + IPL * (techLevel - MTLP);
+        int price = basePrice + IPL * (techLevel - MTLP);
         if (price < 0) {
             return 0;
         }
@@ -81,7 +82,7 @@ public enum Weapon {
      */
     public int calculateSellQuantity(final int techLevel) {
         Random rand = new Random();
-        int random = rand.nextInt(8) - rand.nextInt(8);
+        int random = rand.nextInt(SELL_VARIANCE);
         int q;
         if (techLevel < MTLP) {
             q = 0;

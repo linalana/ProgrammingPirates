@@ -84,6 +84,7 @@ protected final Person person; //encounterer delegates to Person
     }
 
     /**
+     * Definitely designed to be extended.
      * @return the fighterPoints
      */
     public int getTraderPoints() {
@@ -92,7 +93,7 @@ protected final Person person; //encounterer delegates to Person
 
     /**
      * Returns the encounterer info required to assess a fight.
-     *
+     * 100% confirmed designed to be extended.
      * @return int array of stats for fight
      */
     public int[] getEncountererInfo() {

@@ -332,8 +332,8 @@ public class Ship implements Serializable {
      * @return total strength of shields
      */
     public final int getShieldStrength() {
-        return getShieldHold().getEnergyStrength() +
-               getShieldHold().getReflectiveStrength();
+        return getShieldHold().getEnergyStrength()
+                + getShieldHold().getReflectiveStrength();
     }
 
     /**
@@ -369,27 +369,27 @@ public class Ship implements Serializable {
         for (TradeGood g : getCargoHold().getGoods().keySet()) {
             int goodQuantity = getCargoHold().getGoods().get(g);
             if (Game.getCurrentPort().getTechLevel() > g.getMTLU()) {
-                double goodPrice = SELL_PERCENT * goodQuantity *
-                                   g.calculatePrice(Game.getCurrentPort());
+                double goodPrice = SELL_PERCENT * goodQuantity
+                        * g.calculatePrice(Game.getCurrentPort());
                 v = v + (int) goodPrice;
             }
         }
         for (Gadget ga : getGadgetHold().getGadgets().keySet()) {
             int gadgetQuantity = getGadgetHold().getGadgets().get(ga);
-            double gadgetPrice = SELL_PERCENT * gadgetQuantity *
-                    ga.calculatePrice(Game.getCurrentPort().getTechLevel());
+            double gadgetPrice = SELL_PERCENT * gadgetQuantity
+                    * ga.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) gadgetPrice;
         }
         for (Shield s : getShieldHold().getShields().keySet()) {
             int shieldQuantity = getShieldHold().getShields().get(s);
-            double shieldPrice = SELL_PERCENT * shieldQuantity *
-                                 s.calculatePrice(Game.getCurrentPort());
+            double shieldPrice = SELL_PERCENT * shieldQuantity
+                    * s.calculatePrice(Game.getCurrentPort());
             v = v + (int) shieldPrice;
         }
         for (Weapon w : getWeaponHold().getWeapons().keySet()) {
             int weaponQuantity = getWeaponHold().getWeapons().get(w);
-            double weaponPrice = SELL_PERCENT * weaponQuantity *
-                    w.calculatePrice(Game.getCurrentPort().getTechLevel());
+            double weaponPrice = SELL_PERCENT * weaponQuantity
+                    * w.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) weaponPrice;
         }
 
