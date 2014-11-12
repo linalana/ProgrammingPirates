@@ -45,8 +45,10 @@ public class CalculateValueTest {
         cargo.addCargo(TradeGood.ORE, 1);
         cargo.addCargo(TradeGood.NARCOTICS, 1);
         instance.setCargoHold(cargo);
-        int narcoticPrice =  (int) (.8 * TradeGood.NARCOTICS.calculatePrice(Game.getCurrentPort()));
-        int orePrice = (int) (.8 * TradeGood.ORE.calculatePrice(Game.getCurrentPort()));
+        int narcoticPrice =  (int)
+            (.8 * TradeGood.NARCOTICS.calculatePrice(Game.getCurrentPort()));
+        int orePrice = (int)
+            (.8 * TradeGood.ORE.calculatePrice(Game.getCurrentPort()));
         int expResult = 30000 + narcoticPrice + orePrice;
         int result = instance.calculateValue();
         assertEquals(expResult, result);
@@ -61,7 +63,8 @@ public class CalculateValueTest {
     @Test
     public void testContainsGoodsOverTechLevel() {
         Ship instance = new Ship(5);
-        Game.setCurrentPort(new Port("Tester", 3, "RICH SOIL", new Continent("Tester", "Theocracy", 200, 200)));
+        Game.setCurrentPort(new Port("Tester", 3, "RICH SOIL",
+                new Continent("Tester", "Theocracy", 200, 200)));
         CargoHold cargo = new CargoHold(1);
         cargo.addCargo(TradeGood.MINIONS, 1);
         instance.setCargoHold(cargo);
@@ -81,8 +84,12 @@ public class CalculateValueTest {
         gadget.addGadget(Gadget.CLOAK, 1);
         gadget.addGadget(Gadget.NAVSYSTEM, 1);
         instance.setGadgetHold(gadget);
-        int cloakPrice =  (int) (.8 * Gadget.CLOAK.calculatePrice(Game.getCurrentPort().getTechLevel()));
-        int navPrice = (int) (.8 * Gadget.NAVSYSTEM.calculatePrice(Game.getCurrentPort().getTechLevel()));
+        int cloakPrice =  (int)
+                (.8 * Gadget.CLOAK.calculatePrice(
+                        Game.getCurrentPort().getTechLevel()));
+        int navPrice = (int)
+                (.8 * Gadget.NAVSYSTEM.calculatePrice(
+                        Game.getCurrentPort().getTechLevel()));
         int expResult = 30000 + cloakPrice + navPrice;
         int result = instance.calculateValue();
         assertEquals(expResult, result);
@@ -99,8 +106,10 @@ public class CalculateValueTest {
         shield.addShield(Shield.ENERGY, 1);
         shield.addShield(Shield.REFLECTIVE, 1);
         instance.setShieldHold(shield);
-        int energyPrice =  (int) (.8 * Shield.ENERGY.calculatePrice(Game.getCurrentPort()));
-        int reflectivePrice = (int) (.8 * Shield.REFLECTIVE.calculatePrice(Game.getCurrentPort()));
+        int energyPrice =  (int)
+                (.8 * Shield.ENERGY.calculatePrice(Game.getCurrentPort()));
+        int reflectivePrice = (int)
+                (.8 * Shield.REFLECTIVE.calculatePrice(Game.getCurrentPort()));
         int expResult = 30000 + energyPrice + reflectivePrice;
         int result = instance.calculateValue();
         assertEquals(expResult, result);
@@ -117,8 +126,12 @@ public class CalculateValueTest {
         weapon.addWeapon(Weapon.BEAM, 1);
         weapon.addWeapon(Weapon.PULSE, 1);
         instance.setWeaponHold(weapon);
-        int beamPrice =  (int) (.8 * Weapon.BEAM.calculatePrice(Game.getCurrentPort().getTechLevel()));
-        int pulsePrice = (int) (.8 * Weapon.PULSE.calculatePrice(Game.getCurrentPort().getTechLevel()));
+        int beamPrice =  (int)
+                (.8 * Weapon.BEAM.calculatePrice(
+                        Game.getCurrentPort().getTechLevel()));
+        int pulsePrice = (int)
+                (.8 * Weapon.PULSE.calculatePrice(
+                        Game.getCurrentPort().getTechLevel()));
         int expResult = 30000 + beamPrice + pulsePrice;
         int result = instance.calculateValue();
         assertEquals(expResult, result);
@@ -136,29 +149,41 @@ public class CalculateValueTest {
         cargo.addCargo(TradeGood.ORE, 1);
         cargo.addCargo(TradeGood.NARCOTICS, 1);
         instance.setCargoHold(cargo);
-        int narcoticPrice =  (int) (.8 * TradeGood.NARCOTICS.calculatePrice(Game.getCurrentPort()));
-        int orePrice = (int) (.8 * TradeGood.ORE.calculatePrice(Game.getCurrentPort()));
+        int narcoticPrice =  (int)
+            (.8 * TradeGood.NARCOTICS.calculatePrice(Game.getCurrentPort()));
+        int orePrice = (int)
+                (.8 * TradeGood.ORE.calculatePrice(Game.getCurrentPort()));
         int expGoodResult = 30000 + narcoticPrice + orePrice;
         ShieldHold shield = new ShieldHold(2);
         shield.addShield(Shield.ENERGY, 1);
         shield.addShield(Shield.REFLECTIVE, 1);
         instance.setShieldHold(shield);
-        int energyPrice =  (int) (.8 * Shield.ENERGY.calculatePrice(Game.getCurrentPort()));
-        int reflectivePrice = (int) (.8 * Shield.REFLECTIVE.calculatePrice(Game.getCurrentPort()));
+        int energyPrice =  (int)
+                (.8 * Shield.ENERGY.calculatePrice(Game.getCurrentPort()));
+        int reflectivePrice = (int)
+                (.8 * Shield.REFLECTIVE.calculatePrice(Game.getCurrentPort()));
         int expResult = expGoodResult + energyPrice + reflectivePrice;
         GadgetHold gadget = new GadgetHold(2);
         gadget.addGadget(Gadget.CLOAK, 1);
         gadget.addGadget(Gadget.NAVSYSTEM, 1);
         instance.setGadgetHold(gadget);
-        int cloakPrice =  (int) (.8 * Gadget.CLOAK.calculatePrice(Game.getCurrentPort().getTechLevel()));
-        int navPrice = (int) (.8 * Gadget.NAVSYSTEM.calculatePrice(Game.getCurrentPort().getTechLevel()));
+        int cloakPrice =  (int)
+                (.8 * Gadget.CLOAK.calculatePrice(
+                        Game.getCurrentPort().getTechLevel()));
+        int navPrice = (int)
+                (.8 * Gadget.NAVSYSTEM.calculatePrice(
+                        Game.getCurrentPort().getTechLevel()));
         expResult += (cloakPrice + navPrice);
         WeaponHold weapon = new WeaponHold(2);
         weapon.addWeapon(Weapon.BEAM, 1);
         weapon.addWeapon(Weapon.PULSE, 1);
         instance.setWeaponHold(weapon);
-        int beamPrice =  (int) (.8 * Weapon.BEAM.calculatePrice(Game.getCurrentPort().getTechLevel()));
-        int pulsePrice = (int) (.8 * Weapon.PULSE.calculatePrice(Game.getCurrentPort().getTechLevel()));
+        int beamPrice =  (int)
+                (.8 * Weapon.BEAM.calculatePrice(
+                        Game.getCurrentPort().getTechLevel()));
+        int pulsePrice = (int)
+                (.8 * Weapon.PULSE.calculatePrice(
+                        Game.getCurrentPort().getTechLevel()));
         expResult += (beamPrice + pulsePrice);
         int result = instance.calculateValue();
         assertEquals(expResult, result);

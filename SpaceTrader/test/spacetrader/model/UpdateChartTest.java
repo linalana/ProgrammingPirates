@@ -15,9 +15,11 @@ public class UpdateChartTest {
         new Game(new Player("James", 0, 0, 0, 0));
         World testWorld = new World();
         Continent[] allContinents = testWorld.getContinents();
-        Continent testFarAway = new Continent("Test1", "capitalist", 1000, 1000);
+        Continent testFarAway = new Continent("Test1",
+                                              "capitalist", 1000, 1000);
         Continent[] testContinents = new Continent[allContinents.length + 1];
-        System.arraycopy(allContinents, 0, testContinents, 0, allContinents.length);
+        System.arraycopy(allContinents, 0,
+                         testContinents, 0, allContinents.length);
         testContinents[testContinents.length - 1] = testFarAway;
         testWorld.setContinents(testContinents);
         Game.setWorld(testWorld);
