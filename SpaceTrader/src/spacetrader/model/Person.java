@@ -24,7 +24,8 @@ public class Person implements Serializable {
      * @param reputation reputation points
      * @param ship ship
      */
-    public Person(int fighter, int trader, int engineer, int investor, int reputation, Ship ship) {
+    public Person(int fighter, int trader, int engineer,
+                  int investor, int reputation, Ship ship) {
         this.fighter = fighter;
         this.trader = trader;
         this.engineer = engineer;

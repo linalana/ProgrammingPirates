@@ -26,7 +26,8 @@ public class Ship implements Serializable {
     private int price;
     private boolean lifeBoat;
     private String[] names = new String[]{"Guppy", "Minnow", "Snapping Turtle",
-        "Pufferfish", "StingRay", "S.S. Electric Eel", "Dolphin Tales", "SharkFin",
+        "Pufferfish", "StingRay", "S.S. Electric Eel",
+        "Dolphin Tales", "SharkFin",
         "Hammerhead", "S.S. Bob Waters"};
 
     public Ship() {
@@ -326,7 +327,8 @@ public class Ship implements Serializable {
      * @return total strength of shields
      */
     public int getShieldStrength() {
-        return getShieldHold().getEnergyStrength() + getShieldHold().getReflectiveStrength();
+        return getShieldHold().getEnergyStrength() +
+               getShieldHold().getReflectiveStrength();
     }
 
     /**
@@ -362,23 +364,27 @@ public class Ship implements Serializable {
         for (TradeGood g : getCargoHold().getGoods().keySet()) {
             int goodQuantity = getCargoHold().getGoods().get(g);
             if (Game.getCurrentPort().getTechLevel() > g.getMTLU()) {
-                double goodPrice = 0.8 * goodQuantity * g.calculatePrice(Game.getCurrentPort());
+                double goodPrice = 0.8 * goodQuantity *
+                                   g.calculatePrice(Game.getCurrentPort());
                 v = v + (int) goodPrice;
             }
         }
         for (Gadget ga : getGadgetHold().getGadgets().keySet()) {
             int gadgetQuantity = getGadgetHold().getGadgets().get(ga);
-            double gadgetPrice = 0.8 * gadgetQuantity * ga.calculatePrice(Game.getCurrentPort().getTechLevel());
+            double gadgetPrice = 0.8 * gadgetQuantity *
+                    ga.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) gadgetPrice;
         }
         for (Shield s : getShieldHold().getShields().keySet()) {
             int shieldQuantity = getShieldHold().getShields().get(s);
-            double shieldPrice = 0.8 * shieldQuantity * s.calculatePrice(Game.getCurrentPort());
+            double shieldPrice = 0.8 * shieldQuantity *
+                                 s.calculatePrice(Game.getCurrentPort());
             v = v + (int) shieldPrice;
         }
         for (Weapon w : getWeaponHold().getWeapons().keySet()) {
             int weaponQuantity = getWeaponHold().getWeapons().get(w);
-            double weaponPrice = 0.8 * weaponQuantity * w.calculatePrice(Game.getCurrentPort().getTechLevel());
+            double weaponPrice = 0.8 * weaponQuantity *
+                    w.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) weaponPrice;
         }
 

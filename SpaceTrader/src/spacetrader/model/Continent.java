@@ -120,7 +120,7 @@ public class Continent implements Serializable {
             case "technocracy":
                 techLevel = rand.nextInt(3) + 5;
                 break;
-            case "theocracy":
+            default:
                 techLevel = rand.nextInt(4);
                 break;
         }

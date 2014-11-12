@@ -138,7 +138,8 @@ public class PlayerConfigurationController implements Initializable {
     }
 
     /**
-     * Creates a new player from the current set up on the UI when submit button.
+     * Creates a new player from the current set
+     * up on the UI when submit button.
      * pressed
      *
      * @param event submit button pressed

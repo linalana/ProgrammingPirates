@@ -33,7 +33,7 @@ public class Encounter implements Serializable {
         }
         //algorithm to decide where to do that damage on the encounterer's ship
         boolean result = e.distributeDamage(totalDamage);
-        if (result == false) {
+        if (!result) {
             //distributeBooty();
             //you won
         }

@@ -38,7 +38,8 @@ public class Turn implements Serializable {
         String encounterType = null;
         int randInt = rand.nextInt(100);
         if (randInt < policeChance) {
-            encounter = new Encounter(Game.getPlayer(), new PoliceForce(newContinent.getPoliticalSystem()));
+            encounter = new Encounter(Game.getPlayer(),
+                        new PoliceForce(newContinent.getPoliticalSystem()));
             encounterType = "PoliceForce";
         } else if (randInt > policeChance
                 && randInt < (policeChance + traderChance)) {

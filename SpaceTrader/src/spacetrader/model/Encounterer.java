@@ -49,7 +49,8 @@ protected final Person person; //encounterer delegates to Person
     public boolean willEncounter(int playerRep, int fightPoints) {
         return (playerRep <= getReputation());
         //take into account fighter skill points
-        //NOTE: we might have to move this method into the individual trader/pirate/police classes
+        /* NOTE: we might have to move this method
+          into the individual trader/pirate/police classes */
     }
 
     public int attack() {

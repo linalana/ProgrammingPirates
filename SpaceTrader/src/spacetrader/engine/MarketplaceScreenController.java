@@ -101,7 +101,8 @@ public class MarketplaceScreenController implements Initializable {
 
     @FXML
     public void sellButtonPressed(ActionEvent event) {
-        String longString = cargoGoodsList.getSelectionModel().getSelectedItem();
+        String longString =
+               cargoGoodsList.getSelectionModel().getSelectedItem();
         if (longString == null) {
             cargoGoodsList.getSelectionModel().selectFirst();
             longString = cargoGoodsList.getSelectionModel().getSelectedItem();
@@ -121,8 +122,10 @@ public class MarketplaceScreenController implements Initializable {
                 quant = 0;
             }
             if (Game.getCurrentPort().getTechLevel() > good.getMTLU()) {
-                if (Game.getPlayer().getShip().getCargoHold().subtractCargo(good, quant)) {
-                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() + (int) (pq[0] * 0.8 * quant));
+                if (Game.getPlayer().getShip().getCargoHold()
+                    .subtractCargo(good, quant)) {
+                    Game.getPlayer().setMoney(Game.getPlayer().getMoney() +
+                        (int) (pq[0] * 0.8 * quant));
                     updateMoneyLabel();
                     bazaar.updateQuantity(good, quant);
                     updateLists();

@@ -37,7 +37,8 @@ public class RandomEvent {
                     + "some money!", 1000, 0, 0)};
         Random rand = new Random();
         event = events[rand.nextInt(events.length)];
-        Game.getPlayer().setMoney(Game.getPlayer().getMoney() + event.getMoney());
+        Game.getPlayer().setMoney(Game.getPlayer().getMoney() +
+                                  event.getMoney());
         Game.getPlayer().getShip().addFuel(event.getFuel());
     }
 
@@ -90,7 +91,8 @@ public class RandomEvent {
         private int fuelChange;
         private int shieldChange;
 
-        public Event(String aTitle, String aDesc, int mon, int fuel, int shield) {
+        public Event(String aTitle, String aDesc,
+                     int mon, int fuel, int shield) {
             title = aTitle;
             description = aDesc;
             moneyChange = mon;

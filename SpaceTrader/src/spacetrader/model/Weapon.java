@@ -22,15 +22,23 @@ public enum Weapon {
      */
     MILITARY(6, 6, 7, 1000, 100, 10, 20);
 
-    private final int MTLP;       // Minimum Tech Level to Produce this resource (You can't buy on planets below this level)
-    private final int MTLU;       // Minimum Tech Level to Use this resource (You can't sell on planets below this level)
-    private final int TTP;        // Tech Level which produces the most of this item
+    /* Minimum Tech Level to Produce this resource
+       (You can't buy on planets below this level) */
+    private final int MTLP;
+    /* Minimum Tech Level to Use this resource
+       (You can't sell on planets below this level) */
+    private final int MTLU;
+    // Tech Level which produces the most of this item
+    private final int TTP;
     private final int BasePrice;
     private final int IPL;        // Price increase per tech level
-    private final int Var;        // variance is the maximum percentage that the price can vary above or below the base
+    /* variance is the maximum percentage 
+       that the price can vary above or below the base */
+    private final int Var;
     private final int strength;   // strength of the weapon
 
-    Weapon(int MTLP, int MTLU, int TTP, int BasePrice, int IPL, int Var, int strength) {
+    Weapon(int MTLP, int MTLU, int TTP, int BasePrice,
+           int IPL, int Var, int strength) {
         this.MTLP = MTLP;
         this.MTLU = MTLU;
         this.TTP = TTP;

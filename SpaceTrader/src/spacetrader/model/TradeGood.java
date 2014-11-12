@@ -45,25 +45,43 @@ public enum TradeGood {
     /**
      * Narcotics Good.
      */
-    NARCOTICS(5, 0, 5, 3500, -125, 150, "BOREDOM", "WEIRDMUSHROOMS", "NEVER", 2000, 3000),
+    NARCOTICS(5, 0, 5, 3500, -125, 150, "BOREDOM",
+              "WEIRDMUSHROOMS", "NEVER", 2000, 3000),
     /**
      * Minions Good.
      */
-    MINIONS(6, 4, 7, 5000, -150, 100, "LACKOFWORKERS", "NEVER", "NEVER", 3500, 5000);
+    MINIONS(6, 4, 7, 5000, -150, 100, "LACKOFWORKERS",
+            "NEVER", "NEVER", 3500, 5000);
 
-    private final int MTLP;       // Minimum Tech Level to Produce this resource (You can't buy on planets below this level)
-    private final int MTLU;       // Minimum Tech Level to Use this resource (You can't sell on planets below this level)
-    private final int TTP;        // Tech Level which produces the most of this item
+    /* Minimum Tech Level to Produce this resource
+       (You can't buy on planets below this level) */
+    private final int MTLP;
+    /* Minimum Tech Level to Use this resource
+       (You can't sell on planets below this level) */
+    private final int MTLU;
+    // Tech Level which produces the most of this item
+    private final int TTP;
     private final int BasePrice;
-    private final int IPL;        // Price increase per tech level
-    private final int Var;        // variance is the maximum percentage that the price can vary above or below the base
-    private final String IE;      // Radical price increase event, when this even happens on a planet, the price may increase astronomically
-    private final String CR;      // When this condition is present, the price of this resource is unusually low
-    private final String ER;      // When this condition is present, the resource is expensive
-    private final int MTL;        // Min price offered in space trade with random trader (not on a planet)
-    private final int MTH;        // Max price offered in space trade with random trader (not on a planet)
+    // Price increase per tech level
+    private final int IPL;
+    /* variance is the maximum percentage 
+       that the price can vary above or below the base */
+    private final int Var;
+    /* Radical price increase event, when this even happens on a planet,
+       the price may increase astronomically */
+    private final String IE;
+    /* When this condition is present,
+       the price of this resource is unusually low */
+    private final String CR;
+    // When this condition is present, the resource is expensive
+    private final String ER;
+    // Min price offered in space trade with random trader (not on a planet)
+    private final int MTL;
+    // Max price offered in space trade with random trader (not on a planet)
+    private final int MTH;
 
-    TradeGood(int MTLP, int MTLU, int TTP, int BasePrice, int IPL, int Var, String IE, String CR, String ER, int MTL, int MTH) {
+    TradeGood(int MTLP, int MTLU, int TTP, int BasePrice, int IPL,
+              int Var, String IE, String CR, String ER, int MTL, int MTH) {
         this.MTLP = MTLP;
         this.MTLU = MTLU;
         this.TTP = TTP;
