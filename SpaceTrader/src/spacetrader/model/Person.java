@@ -15,7 +15,11 @@ public class Person implements Serializable {
     private int investor;
     private int reputation;
     private Ship ship;
-    private static final int ONE_HUNDRED_ONE = 101;
+    private static final int CHANCE_SCALE = 101;
+    private static final int CHANCE_SCALER = 10;
+    private static final double LARGE_CHANCE = 11;
+    private static final double LARGE_DAMAGE = 0.9;
+    private static final double SMALL_DAMAGE = 0.5;
     /**
      * Constructor for a person.
      * @param aFighter fighter skill points
@@ -162,11 +166,11 @@ public class Person implements Serializable {
         //implement use of target system later
         Random rand = new Random();
         //chances calculated out of 100
-        int r = rand.nextInt(ONE_HUNDRED_ONE);
-        if (r <= getFighter() * 10) {
-            damage *= .9;
-        } else if (r <= getFighter() * 11) {
-            damage *= .5;
+        int r = rand.nextInt(CHANCE_SCALE);
+        if (r <= getFighter() * CHANCE_SCALER) {
+            damage *= LARGE_DAMAGE;
+        } else if (r <= (getFighter() * (LARGE_CHANCE))) {
+            damage *= SMALL_DAMAGE;
         } else {
             damage = 0;
         }
