@@ -26,7 +26,7 @@ public class UpdateChartTest {
 
     /**
      * test that the continent does not show up in the range chart when it is
-     * out of range
+     * out of range.
      */
     @Test
     public void testContinentOutOfRange() {
@@ -39,7 +39,7 @@ public class UpdateChartTest {
 
     /**
      * test that the continent does show up in the range chart when it is now
-     * in range of the ship
+     * in range of the ship.
      */
     @Test
     public void testContinentInRange() {
@@ -53,7 +53,7 @@ public class UpdateChartTest {
     }
 
     /**
-     * test that the range chart is empty when the ship has no fuel
+     * test that the range chart is empty when the ship has no fuel.
      */
     @Test
     public void testNoFuel() {
