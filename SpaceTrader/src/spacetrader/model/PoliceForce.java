@@ -11,7 +11,36 @@ public class PoliceForce extends Encounterer {
 
     private int strength;
     private int bribe;
+    private final int policeStrength1 = 4;
+    private final int policeStrength2 = 6;
+    private final int policeStrength3 = 8;
+    private final int policeStrength4 = 10;
+    private final int strength1 = 3;
+    private final int strength2 = 4;
+    private final int strength3 = 5;
+    private final int ship3 = 3;
+    private final int ship6 = 6;
+    private final int ship9 = 9;
+    
+    private final int strengthCount2 = 2;
+    private final int strengthCount3 = 3;
+    private final int strengthCount4 = 4;
+    private final int strengthCount6 = 6;
+    private final int strengthCount7 = 7;
+    private final int strengthCount8 = 8;
+    private final int strengthCount9 = 9;
+    private final int strengthCount14 = 14;
 
+    private final int minBribe1 = 0;
+    private final int maxBribe1 = 5;
+    private final int minBribe2 = 6;
+    private final int maxBribe2 = 10;
+    private final int minBribe3 = 11;
+    private final int maxBribe3 = 12;
+    private final int bribeRange1 = 200;
+    private final int bribeRange2 = 2000;
+    private final int bribeRange3 = 20000;
+    
     /**
      * Constructor for PoliceForce.
      *
@@ -28,29 +57,29 @@ public class PoliceForce extends Encounterer {
         if (strength == 2) {
             person.setShip(new Ship(2));
             //4 corresponds to how strong police should be here
-            person.setFighter(4);
+            person.setFighter(policeStrength1);
         }
-        if (strength == 3) {
+        if (strength == strength1) {
             //3 is ship type
-            person.setShip(new Ship(3));
+            person.setShip(new Ship(ship3));
             //6 corresponds to how strong police should be here
-            person.setFighter(6);
+            person.setFighter(policeStrength2);
         }
-        if (strength == 4) { //6 corresponds to ship type
-            person.setShip(new Ship(6));
+        if (strength == strength2) { //6 corresponds to ship type
+            person.setShip(new Ship(ship6));
             //8 corresponds to how strong police should be here
-            person.setFighter(8);
+            person.setFighter(policeStrength3);
         }
-        if (strength == 5) {
+        if (strength == strength3) {
             //9 corresponds to ship type
-            person.setShip(new Ship(9));
+            person.setShip(new Ship(ship9));
             //10 corresponds to how strong police should be here
-            person.setFighter(10);
+            person.setFighter(policeStrength4);
         }
     }
 
     /**
-     * Decides the appropriate police strength based on the political system
+     * Decides the appropriate police strength based on the political system.
      * @param system the political system of the continent
      * @return the strength
      */
@@ -69,16 +98,20 @@ public class PoliceForce extends Encounterer {
         //these strengths represent the level of police force (0-5)
         if (strengthCount >= 0 && strengthCount <= 1) {
             aStrength = 0;
-        } else if (strengthCount >= 2 && strengthCount <= 3) {
+        } else if (strengthCount >= strengthCount2
+                && strengthCount <= strengthCount3) {
             aStrength = 1;
-        } else if (strengthCount >= 4 && strengthCount <= 6) {
+        } else if (strengthCount >= strengthCount4
+                && strengthCount <= strengthCount6) {
             aStrength = 2;
-        } else if (strengthCount >= 7 && strengthCount <= 8) {
-            aStrength = 3;
-        } else if (strengthCount >= 9 && strengthCount <= 14) {
-            aStrength = 4;
+        } else if (strengthCount >= strengthCount7
+                && strengthCount <= strengthCount8) {
+            aStrength = strength1;
+        } else if (strengthCount >= strengthCount9
+                && strengthCount <= strengthCount14) {
+            aStrength = strength2;
         } else {
-            aStrength = 5;
+            aStrength = strength3;
         }
         return aStrength;
     }
@@ -101,15 +134,15 @@ public class PoliceForce extends Encounterer {
                 bribeCount = i;
             }
         }
-        
-        if (bribeCount >= 0 && bribeCount <= 5) {
+
+        if (bribeCount >= minBribe1 && bribeCount <= maxBribe1) {
             aBribe = 0;
-        } else if (bribeCount >= 6 && bribeCount <= 10) {
-            aBribe = rand.nextInt((300 - 100) + 1) + 100;
-        } else if (bribeCount >= 11 && bribeCount <= 12) {
-            aBribe = rand.nextInt((3000 - 1000) + 1) + 1000;
+        } else if (bribeCount >= minBribe2 && bribeCount <= maxBribe2) {
+            aBribe = rand.nextInt((bribeRange1) + 1) + bribeRange1 / 2;
+        } else if (bribeCount >= minBribe3 && bribeCount <= maxBribe3) {
+            aBribe = rand.nextInt((bribeRange2) + 1) + bribeRange2 / 2;
         } else {
-            aBribe = rand.nextInt((30000 - 10000) + 1) + 10000;
+            aBribe = rand.nextInt((bribeRange3) + 1) + bribeRange3 / 2;
         }
         return aBribe;
     }
