@@ -40,24 +40,28 @@ public enum Gadget {
     private final int IPL;        // Price increase per tech level
     private final int Var;        // variance is the maximum percentage that the
     //price can vary above or below the base
+    private static final int QUANTITY_VARIANCE = 8;
+    private static final int MAXIMUM_QUANTITY = 50;
+    private static final int MINIMUM_QUANTITY = 20;
+    private static final int MINIMUM_VARIANCE = 5;
     /**
      * The constructor for a gadget.
-     * @param MTLP Minimum Tech Level to Produce this resource
-     * @param MTLU Minimum Tech Level to Use this resource
-     * @param TTP  Tech Level which produces the most of this item
-     * @param BasePrice base price
-     * @param IPL Price increase per tech level
-     * @param Varvariance is the maximum percentage that the price can vary
+     * @param aMTLP Minimum Tech Level to Produce this resource
+     * @param aMTLU Minimum Tech Level to Use this resource
+     * @param aTTP  Tech Level which produces the most of this item
+     * @param aBasePrice base price
+     * @param aIPL Price increase per tech level
+     * @param aVar is the maximum percentage that the price can vary
      * above or below the base
      */
-    Gadget(final int MTLP, final int MTLU, final int TTP, final int BasePrice,
-            final int IPL, final int Var) {
-        this.MTLP = MTLP;
-        this.MTLU = MTLU;
-        this.TTP = TTP;
-        this.BasePrice = BasePrice;
-        this.IPL = IPL;
-        this.Var = Var;
+    Gadget(final int aMTLP, final int aMTLU, final int aTTP,
+            final int aBasePrice, final int aIPL, final int aVar) {
+        this.MTLP = aMTLP;
+        this.MTLU = aMTLU;
+        this.TTP = aTTP;
+        this.BasePrice = aBasePrice;
+        this.IPL = aIPL;
+        this.Var = aVar;
     }
 
     /**
@@ -83,17 +87,16 @@ public enum Gadget {
      */
     public int calculateSellQuantity(final int techLevel) {
         Random rand = new Random();
-        //there are 8 gadgets
-        int random = rand.nextInt(8) - rand.nextInt(8);
+        int random = rand.nextInt(QUANTITY_VARIANCE)
+                - rand.nextInt(QUANTITY_VARIANCE);
         int q;
         if (techLevel < MTLP) {
             q = 0;
         } else if (techLevel == TTP) {
-            //there must be at least 50
-            q = 50 + random;
+            q = MAXIMUM_QUANTITY + random;
         } else {
-            q = 20 + 5 * (techLevel - MTLP) + random;
-            //there must be at least 20
+            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - MTLP)
+                    + random;
         }
         return q;
     }

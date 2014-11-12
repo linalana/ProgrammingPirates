@@ -90,9 +90,16 @@ public class RandomEvent {
         private int moneyChange;
         private int fuelChange;
         private int shieldChange;
-
-        public Event(String aTitle, String aDesc,
-                     int mon, int fuel, int shield) {
+        /**
+         * Event constructor.
+         * @param aTitle title of the event
+         * @param aDesc description of the even
+         * @param mon money change
+         * @param fuel fuel change
+         * @param shield shield change
+         */
+        public Event(final String aTitle, final String aDesc,
+                     final int mon, final int fuel, final int shield) {
             title = aTitle;
             description = aDesc;
             moneyChange = mon;

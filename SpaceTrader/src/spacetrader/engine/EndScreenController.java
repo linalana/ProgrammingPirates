@@ -19,6 +19,8 @@ public class EndScreenController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url is the url
+     * @param rb is the resource bundle
      */
     @Override
     public void initialize(final URL url, final ResourceBundle rb) {

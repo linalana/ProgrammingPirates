@@ -18,10 +18,13 @@ public class Turn implements Serializable {
     private int pirateChance;
     private static Encounter encounter;
     private static RandomEvent randomEvent;
-
-    public Turn(Port newPort) {
-        this.newPort = newPort;
-        newContinent = newPort.getContinent();
+    /**
+     * Constructor for Turn.
+     * @param aNewPort the current port.
+     */
+    public Turn(final Port aNewPort) {
+        this.newPort = aNewPort;
+        newContinent = aNewPort.getContinent();
         politicalSystem = newContinent.getPoliticalSystem();
         setChanceEncounters();
         randomPortEvents();
@@ -33,7 +36,7 @@ public class Turn implements Serializable {
      * @param fuelUsed to travel
      * @return the result (what happened)
      */
-    public final String travel(int fuelUsed) {
+    public final String travel(final int fuelUsed) {
         Random rand = new Random();
         String encounterType = null;
         int randInt = rand.nextInt(100);

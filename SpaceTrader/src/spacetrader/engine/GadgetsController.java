@@ -42,6 +42,8 @@ public class GadgetsController implements Initializable {
     private ShipYard shipYard;
     /**
      * Initializes the controller class.
+     * @param url the url
+     * @param rb the resource bundle
      */
     @Override
     public final void initialize(final URL url, final ResourceBundle rb) {

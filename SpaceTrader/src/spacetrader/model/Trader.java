@@ -9,7 +9,9 @@ import java.util.Random;
 public class Trader extends Encounterer {
 
     private int traderPoints;
-
+    /**
+     * This is the constructor for a trader.
+     */
     public Trader() {
         super();
         super.fillCargo();
@@ -19,10 +21,10 @@ public class Trader extends Encounterer {
     /**
      * determines if the trader will encounter the player or not.
      *
-     * @param playerIsPirate, whether or not player is pirate
+     * @param playerIsPirate whether or not player is pirate
      * @return true if trader will NOT flee
      */
-    public final boolean willEncounter(boolean playerIsPirate) {
+    public final boolean willEncounter(final boolean playerIsPirate) {
         return !playerIsPirate;
     }
 

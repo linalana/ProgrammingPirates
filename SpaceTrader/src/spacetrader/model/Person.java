@@ -15,23 +15,25 @@ public class Person implements Serializable {
     private int investor;
     private int reputation;
     private Ship ship;
+    private static final int ONE_HUNDRED_ONE = 101;
     /**
      * Constructor for a person.
-     * @param fighter fighter skill points
-     * @param trader trader skill points
-     * @param engineer engineer skill points
-     * @param investor investor skill points
-     * @param reputation reputation points
-     * @param ship ship
+     * @param aFighter fighter skill points
+     * @param aTrader trader skill points
+     * @param aEngineer engineer skill points
+     * @param aInvestor investor skill points
+     * @param aReputation reputation points
+     * @param aShip ship
      */
-    public Person(int fighter, int trader, int engineer,
-                  int investor, int reputation, Ship ship) {
-        this.fighter = fighter;
-        this.trader = trader;
-        this.engineer = engineer;
-        this.investor = investor;
-        this.reputation = reputation;
-        this.ship = ship;
+    public Person(final int aFighter, final int aTrader, final int aEngineer,
+                  final int aInvestor, final int aReputation,
+                  final Ship aShip) {
+        this.fighter = aFighter;
+        this.trader = aTrader;
+        this.engineer = aEngineer;
+        this.investor = aInvestor;
+        this.reputation = aReputation;
+        this.ship = aShip;
     }
 
     @Override
@@ -77,45 +79,45 @@ public class Person implements Serializable {
     }
 
     /**
-     * @param reputation the reputation to add
+     * @param aReputation the reputation to add
      */
-    public final void addReputation(final int reputation) {
-        this.setReputation(this.getReputation() + reputation);
+    public final void addReputation(final int aReputation) {
+        this.setReputation(this.getReputation() + aReputation);
     }
 
     /**
-     * @param fighter the fighter to set
+     * @param aFighter the fighter to set
      */
-    public final void setFighter(final int fighter) {
-        this.fighter = fighter;
+    public final void setFighter(final int aFighter) {
+        this.fighter = aFighter;
     }
 
     /**
-     * @param trader the trader to set
+     * @param aTrader the trader to set
      */
-    public final void setTrader(final int trader) {
-        this.trader = trader;
+    public final void setTrader(final int aTrader) {
+        this.trader = aTrader;
     }
 
     /**
-     * @param engineer the engineer to set
+     * @param aEngineer the engineer to set
      */
-    public final void setEngineer(final int engineer) {
-        this.engineer = engineer;
+    public final void setEngineer(final int aEngineer) {
+        this.engineer = aEngineer;
     }
 
     /**
-     * @param investor the investor to set
+     * @param aInvestor the investor to set
      */
-    public final void setInvestor(final int investor) {
-        this.investor = investor;
+    public final void setInvestor(final int aInvestor) {
+        this.investor = aInvestor;
     }
 
     /**
-     * @param reputation the reputation to set
+     * @param aReputation the reputation to set
      */
-    public final void setReputation(final int reputation) {
-        this.reputation = reputation;
+    public final void setReputation(final int aReputation) {
+        this.reputation = aReputation;
     }
 
     /**
@@ -126,19 +128,19 @@ public class Person implements Serializable {
     }
 
     /**
-     * @param ship the ship to set
+     * @param aShip the ship to set
      */
-    public final void setShip(final Ship ship) {
-        this.ship = ship;
+    public final void setShip(final Ship aShip) {
+        this.ship = aShip;
     }
 
     /**
      * updates the ship.
      *
-     * @param type the new type of ship
+     * @param aType the new type of ship
      */
-    public final void updateShip(final int type) {
-        ship = new Ship(type);
+    public final void updateShip(final int aType) {
+        ship = new Ship(aType);
     }
 
     /**
@@ -160,7 +162,7 @@ public class Person implements Serializable {
         //implement use of target system later
         Random rand = new Random();
         //chances calculated out of 100
-        int r = rand.nextInt(101);
+        int r = rand.nextInt(ONE_HUNDRED_ONE);
         if (r <= getFighter() * 10) {
             damage *= .9;
         } else if (r <= getFighter() * 11) {

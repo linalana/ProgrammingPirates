@@ -46,13 +46,17 @@ protected final Person person; //encounterer delegates to Person
      * @param fightPoints the fighter skill points of the player
      * @return true if will fight
      */
-    public final boolean willEncounter(int playerRep, int fightPoints) {
+    public final boolean willEncounter(final int playerRep,
+            final int fightPoints) {
         return (playerRep <= getReputation());
         //take into account fighter skill points
         /* NOTE: we might have to move this method
           into the individual trader/pirate/police classes */
     }
-
+    /**
+     * creates an attack.
+     * @return the value of the attack
+     */
     public final int attack() {
         Random rand = new Random();
         return rand.nextInt(10) * getReputation() / 100;
@@ -108,7 +112,7 @@ protected final Person person; //encounterer delegates to Person
      * @param totalDamage the damage done to the encounterer
      * @return true if encounterer survives
      */
-    final boolean distributeDamage(int totalDamage) {
+    final boolean distributeDamage(final int totalDamage) {
         return person.distributeDamage(totalDamage);
     }
 

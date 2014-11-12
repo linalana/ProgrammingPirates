@@ -57,8 +57,8 @@ public class CurrentPortTabPageController implements Initializable {
     private Button shipyard;
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
+     * @param url the url
+     * @param rb the resource bundle
      */
     @Override
     public final void initialize(final URL url, final ResourceBundle rb) {

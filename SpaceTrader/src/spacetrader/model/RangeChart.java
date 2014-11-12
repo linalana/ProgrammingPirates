@@ -14,7 +14,7 @@ public class RangeChart implements Serializable {
     private Point[] continents;
     private int fuel;
     private int[] dists;
-    private int conversionFactor = 40;
+    private static final int CONVERSION_FACTOR = 40;
     private Continent[] continentsInRange;
     /**
      * Constructor for range chart.
@@ -40,7 +40,7 @@ public class RangeChart implements Serializable {
         for (int i = 0; i < dists.length; i++) {
             dists[i] = (int) (Math.sqrt((Math.pow(playerX - continents[i]
                     .getXPos(), 2)) + (Math.pow(playerY
-                            - continents[i].getYPos(), 2))) / conversionFactor);
+                            - continents[i].getYPos(), 2))) / CONVERSION_FACTOR);
         }
         for (int i = 0; i < continents.length; i++) {
             if (fuel > dists[i] && Game.getWorld().getContinents()[i]
@@ -66,10 +66,14 @@ public class RangeChart implements Serializable {
                 .length);
         return toReturn;
     }
-
+    /**
+     * gets the distance from your current location to the desired continent.
+     * @param cont the desired continent
+     * @return the distance
+     */
     public final int getDists(final Continent cont) {
         return (int) (Math.sqrt((Math.pow(playerX - cont.getX(), 2))
-                + (Math.pow(playerY - cont.getY(), 2))) / conversionFactor);
+                + (Math.pow(playerY - cont.getY(), 2))) / CONVERSION_FACTOR);
     }
 
     /**

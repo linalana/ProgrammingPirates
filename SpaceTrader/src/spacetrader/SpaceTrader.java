@@ -24,8 +24,8 @@ public class SpaceTrader extends Application {
     private AnchorPane rootLayout;
 
     @Override
-    public final void start(Stage primaryStage) {
-        SpaceTrader.primaryStage = primaryStage;
+    public final void start(final Stage aPrimaryStage) {
+        SpaceTrader.primaryStage = aPrimaryStage;
         SpaceTrader.primaryStage.setTitle("Call of Booty: Black Ships");
 
         initRootLayout();
@@ -54,13 +54,16 @@ public class SpaceTrader extends Application {
 
     /**
      * Returns the main stage.
-     * @return
+     * @return the main stage
      */
     public static Stage getPrimaryStage() {
         return primaryStage;
     }
-
-    public static void main(String[] args) {
+    /**
+     * main method of the game.
+     * @param args arguments to be passed in (probably none)
+     */
+    public static void main(final String[] args) {
         launch(args);
     }
 }

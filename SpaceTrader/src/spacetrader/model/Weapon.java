@@ -36,25 +36,36 @@ public enum Weapon {
        that the price can vary above or below the base */
     private final int Var;
     private final int strength;   // strength of the weapon
-
-    Weapon(int MTLP, int MTLU, int TTP, int BasePrice,
-           int IPL, int Var, int strength) {
-        this.MTLP = MTLP;
-        this.MTLU = MTLU;
-        this.TTP = TTP;
-        this.BasePrice = BasePrice;
-        this.IPL = IPL;
-        this.Var = Var;
-        this.strength = strength;
+    /**
+     * constructor for trade good.
+     * @param aMTLP Minimum Tech Level to Use this resource
+     * @param aMTLU Minimum Tech Level to Use this resource
+     * @param aTTP Tech Level which produces the most of this item
+     * @param aBasePrice the base price
+     * @param aIPL Price increase per tech level
+     * @param aVar maximum percentage that the price can vary above or below
+     * the base
+     * @param aStrength is the strength of the weapon
+     */
+    Weapon(final int aMTLP, final int aMTLU, final int aTTP,
+            final int aBasePrice, final int aIPL, final int aVar,
+            final int aStrength) {
+        this.MTLP = aMTLP;
+        this.MTLU = aMTLU;
+        this.TTP = aTTP;
+        this.BasePrice = aBasePrice;
+        this.IPL = aIPL;
+        this.Var = aVar;
+        this.strength = aStrength;
     }
 
     /**
      * calculates the price of the good at the tech level of the port.
      *
-     * @param port
+     * @param techLevel the current tech level
      * @return the price
      */
-    public int calculatePrice(int techLevel) {
+    public int calculatePrice(final int techLevel) {
         int price = BasePrice + IPL * (techLevel - MTLP);
         if (price < 0) {
             return 0;
@@ -65,10 +76,10 @@ public enum Weapon {
     /**
      * calculates the quantity to be sold at a specific marketplace.
      *
-     * @param techLevel
+     * @param techLevel the current tech level
      * @return the suggested sale quantity
      */
-    public int calculateSellQuantity(int techLevel) {
+    public int calculateSellQuantity(final int techLevel) {
         Random rand = new Random();
         int random = rand.nextInt(8) - rand.nextInt(8);
         int q;

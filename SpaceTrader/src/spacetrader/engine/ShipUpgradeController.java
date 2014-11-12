@@ -30,6 +30,7 @@ public class ShipUpgradeController implements Initializable {
     private int costToRefuel;
     private int barrelsToBuy;
     private static final int COST_OF_FUEL = 100;
+    private static final int COST_OF_ESCAPE = 5000;
 
     /**
      * Initializes the controller class.
@@ -46,7 +47,7 @@ public class ShipUpgradeController implements Initializable {
                 - player.getShip().getFuel();
         costToRefuel = fuelNeeded * COST_OF_FUEL;
         if (costToRefuel > player.getMoney()) {
-            barrelsToBuy = player.getMoney() / 100;
+            barrelsToBuy = player.getMoney() / COST_OF_FUEL;
         } else {
             barrelsToBuy = fuelNeeded;
         }
@@ -86,9 +87,9 @@ public class ShipUpgradeController implements Initializable {
         int money = Game.getPlayer().getMoney();
         //5000 is cost of life boat
         if (money >= 5000) {
-            Game.getPlayer().setMoney(money - 5000);
+            Game.getPlayer().setMoney(money - COST_OF_ESCAPE);
             Game.getPlayer().getShip().setLifeBoat(true);
-            moneyLabel.setText("Money: " + (money - 5000));
+            moneyLabel.setText("Money: " + (money - COST_OF_ESCAPE));
             escapeBuyButton.setDisable(true);
         }
     }

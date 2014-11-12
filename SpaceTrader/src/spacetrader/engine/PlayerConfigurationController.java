@@ -70,24 +70,24 @@ public class PlayerConfigurationController implements Initializable {
         });
         traderSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(ObservableValue<? extends Number> ov,
-                    Number oldVal, Number newVal) {
+            public void changed(final ObservableValue<? extends Number> ov,
+                   final  Number oldVal, final Number newVal) {
                 traderPoint = updatePoints(traderSlider, traderPoint);
             }
         });
         engineerSlider.valueProperty()
                 .addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(ObservableValue<? extends Number> ov,
-                    Number oldVal, Number newVal) {
+            public void changed(final ObservableValue<? extends Number> ov,
+                    final Number oldVal, final Number newVal) {
                 engineerPoint = updatePoints(engineerSlider, engineerPoint);
             }
         });
         investorSlider.valueProperty()
                 .addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(ObservableValue<? extends Number> ov,
-                    Number oldVal, Number newVal) {
+            public void changed(final ObservableValue<? extends Number> ov,
+                    final Number oldVal, final Number newVal) {
                 investorPoint = updatePoints(investorSlider, investorPoint);
             }
         });
@@ -113,11 +113,12 @@ public class PlayerConfigurationController implements Initializable {
      *
      * @param slider the slider being modified
      * @param pastVal the previous value of the slider
-     * @return
+     * @return the new points value
      */
     @FXML
-    private int updatePoints(final Slider slider, int pastVal) {
+    private int updatePoints(final Slider slider, final int pastVal) {
         int diff = (int) slider.getValue() - pastVal;
+        int oldVal = pastVal;
         if (pointTotal - diff >= 0) {
             pointTotal -= diff;
         } else {
@@ -133,8 +134,8 @@ public class PlayerConfigurationController implements Initializable {
             }
         }
         pointLabel.setText("" + pointTotal);
-        pastVal = (int) slider.getValue();
-        return pastVal;
+        oldVal = (int) slider.getValue();
+        return oldVal;
     }
 
     /**

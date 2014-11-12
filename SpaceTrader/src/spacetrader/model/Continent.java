@@ -34,32 +34,33 @@ public class Continent implements Serializable {
     private final Port[] ports;
     private final Port mainPort;
     private static final int MAX_PORTS = 10;
+    private static final int NUM_RESOURCES = 13;
 
     /**
      *
      * The constructor for a continent, randomly generates details.
      *
-     * @param name the name of the continent
-     * @param politicalSystem the political system
-     * @param x position
-     * @param y position
+     * @param aName the name of the continent
+     * @param aPoliticalSystem the political system
+     * @param aX position
+     * @param aY position
      */
-    public Continent(final String name, final String politicalSystem,
-            final int x, final int y) {
+    public Continent(final String aName, final String aPoliticalSystem,
+            final int aX, final int aY) {
         ports = new Port[MAX_PORTS];
 
-        this.x = x;
-        this.y = y;
-        this.name = name;
-        this.politicalSystem = politicalSystem;
+        this.x = aX;
+        this.y = aY;
+        this.name = aName;
+        this.politicalSystem = aPoliticalSystem;
         setTechLevel();
         //randomly generate a primary resource
         Random rand = new Random();
         //there are 13 resources
-        resource = rand.nextInt(13);
+        resource = rand.nextInt(NUM_RESOURCES);
 
         //create port(s)
-        mainPort = new Port(name, getTechLevel(), getResource(), this);
+        mainPort = new Port(aName, getTechLevel(), getResource(), this);
         ports[0] = mainPort;
 
     }
@@ -129,14 +130,14 @@ public class Continent implements Serializable {
     /**
      * Only to be used to ensure home port has tech level 7.
      *
-     * @param techLevel
+     * @param aTechLevel a new tech level
      */
-    protected final void setTechLevel(int techLevel) {
-        this.techLevel = techLevel;
-        mainPort.setTechLevel(techLevel);
-        ports[0].setTechLevel(techLevel);
-        mainPort.setShipYard(new ShipYard(techLevel));
-        ports[0].setShipYard(new ShipYard(techLevel));
+    protected final void setTechLevel(final int aTechLevel) {
+        this.techLevel = aTechLevel;
+        mainPort.setTechLevel(aTechLevel);
+        ports[0].setTechLevel(aTechLevel);
+        mainPort.setShipYard(new ShipYard(aTechLevel));
+        ports[0].setShipYard(new ShipYard(aTechLevel));
     }
 
     /**

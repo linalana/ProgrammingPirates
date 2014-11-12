@@ -10,10 +10,14 @@ public class Encounter implements Serializable {
 
     private Player p;
     private Encounterer e;
-
-    public Encounter(final Player p, final Encounterer e) {
-        this.p = p;
-        this.e = e;
+    /**
+     * Encounter constructor.
+     * @param newP a player
+     * @param newE an encounterer
+     */
+    public Encounter(final Player newP, final Encounterer newE) {
+        this.p = newP;
+        this.e = newE;
     }
 
     /**

@@ -21,16 +21,16 @@ public class Player implements Serializable {
     /**
      * creates a new player.
      *
-     * @param name players name
+     * @param aName players name
      * @param fighter players fighter points
      * @param trader players trader points
      * @param engineer players engineer points
      * @param investor players investor points
      */
-    public Player(final String name, final int fighter, final int trader,
+    public Player(final String aName, final int fighter, final int trader,
             final int engineer, final int investor) {
         p = new Person(fighter, trader, engineer, investor, 0, new Ship(0));
-        this.name = name;
+        this.name = aName;
         policeRecord = new PoliceRecord();
 
     }
@@ -131,10 +131,10 @@ public class Player implements Serializable {
     }
 
     /**
-     * @param money the money to set
+     * @param newMoney the money to set
      */
-    public final void setMoney(final int money) {
-        this.money = money;
+    public final void setMoney(final int newMoney) {
+        this.money = newMoney;
     }
 
     /**

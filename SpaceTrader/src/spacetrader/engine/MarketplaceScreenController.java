@@ -98,9 +98,12 @@ public class MarketplaceScreenController implements Initializable {
             }
         }
     }
-
+    /**
+     * When the sell button is pressed, selling takes place.
+     * @param event is the sell button pressed
+     */
     @FXML
-    public final void sellButtonPressed(ActionEvent event) {
+    public final void sellButtonPressed(final ActionEvent event) {
         String longString =
                cargoGoodsList.getSelectionModel().getSelectedItem();
         if (longString == null) {
@@ -133,16 +136,23 @@ public class MarketplaceScreenController implements Initializable {
             }
         }
     }
-
+    /**
+     * goes back to the previous screen.
+     * @param event the back button pressed
+     */
     @FXML
-    public final void backButtonPressed(ActionEvent event) {
+    public final void backButtonPressed(final ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
-
+    /**
+     * updates the money label.
+     */
     public final void updateMoneyLabel() {
         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }
-
+    /**
+     * updates the lists.
+     */
     public final void updateLists() {
         cargo = cargoGoodsList.getItems();
         market = marketGoodsList.getItems();
@@ -166,8 +176,14 @@ public class MarketplaceScreenController implements Initializable {
             }
         }
     }
-
-    private String getQuantityFromPlayer(String title, String head) {
+    /**
+     * gets the quantity of a good from the player.
+     * @param title the title of the god
+     * @param head the head
+     * @return a string representing the quantity
+     */
+    private String getQuantityFromPlayer(final String title,
+            final String head) {
 
         Optional<String> response = Dialogs.create()
                 .owner(SpaceTrader.getPrimaryStage())

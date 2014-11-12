@@ -79,44 +79,66 @@ public enum TradeGood {
     private final int MTL;
     // Max price offered in space trade with random trader (not on a planet)
     private final int MTH;
-
-    TradeGood(int MTLP, int MTLU, int TTP, int BasePrice, int IPL,
-              int Var, String IE, String CR, String ER, int MTL, int MTH) {
-        this.MTLP = MTLP;
-        this.MTLU = MTLU;
-        this.TTP = TTP;
-        this.BasePrice = BasePrice;
-        this.IPL = IPL;
-        this.Var = Var;
-        this.IE = IE;
-        this.CR = CR;
-        this.ER = ER;
-        this.MTL = MTL;
-        this.MTH = MTH;
+    private static final double HALF = 0.5;
+    private static final int QUANTITY_VARIANCE = 8;
+    private static final int MAXIMUM_QUANTITY = 50;
+    private static final int MINIMUM_QUANTITY = 20;
+    private static final int MINIMUM_VARIANCE = 5;
+    /**
+     * constructor for trade good.
+     * @param aMTLP Minimum Tech Level to Use this resource
+     * @param aMTLU Minimum Tech Level to Use this resource
+     * @param aTTP Tech Level which produces the most of this item
+     * @param aBasePrice the base price
+     * @param aIPL Price increase per tech level
+     * @param aVar maximum percentage that the price can vary above or below 
+     * the base
+     * @param aIE Radical price increase event, when this even happens on a 
+     * planet, the price may increase astronomically
+     * @param aCR When this condition is present, the resource is cheap
+     * @param aER When this condition is present, the resource is expensive
+     * @param aMTL Min price offered in space trade with random trader 
+     * @param aMTH Max price offered in space trade with random trader
+     */
+    TradeGood(final int aMTLP, final int aMTLU, final int aTTP,
+            final int aBasePrice, final int aIPL, final int aVar,
+            final String aIE, final String aCR, final String aER,
+            final int aMTL, final int aMTH) {
+        this.MTLP = aMTLP;
+        this.MTLU = aMTLU;
+        this.TTP = aTTP;
+        this.BasePrice = aBasePrice;
+        this.IPL = aIPL;
+        this.Var = aVar;
+        this.IE = aIE;
+        this.CR = aCR;
+        this.ER = aER;
+        this.MTL = aMTL;
+        this.MTH = aMTH;
     }
 
     /**
      * calculates the price of the good at the tech level of the port.
      *
-     * @param port
+     * @param aPort the current port
      * @return the price
      */
-    public int calculatePrice(Port port) {
-        int price = getBasePrice() + IPL * (port.getTechLevel() - MTLP);
+    public int calculatePrice(final Port aPort) {
+        int price = getBasePrice() + IPL * (aPort.getTechLevel() - MTLP);
         if (price < 0) {
             return 0;
         }
-        if (port.getEvent() == null) {
+        if (aPort.getEvent() == null) {
             return price;
         }
-        if (port.getEvent().equals(IE)) {
-            price *= 5;
+        if (aPort.getEvent().equals(IE)) {
+            price *= HALF;
         }
-        if (port.getResources().equals(CR)) {
-            price *= .5;
+        if (aPort.getResources().equals(CR)) {
+            price *= HALF;
         }
-        if (port.getResources().equals(ER)) {
-            price *= 1.5;
+        if (aPort.getResources().equals(ER)) {
+            price *= 1 + HALF;
         }
         return price;
     }
@@ -124,19 +146,21 @@ public enum TradeGood {
     /**
      * calculates the quantity to be sold at a specific marketplace.
      *
-     * @param techLevel
+     * @param techLevel the current tech level
      * @return the suggested sale quantity
      */
-    public int calculateSellQuantity(int techLevel) {
+    public int calculateSellQuantity(final int techLevel) {
         Random rand = new Random();
-        int random = rand.nextInt(8) - rand.nextInt(8);
+        int random = rand.nextInt(QUANTITY_VARIANCE)
+                - rand.nextInt(QUANTITY_VARIANCE);
         int q;
         if (techLevel < MTLP) {
             q = 0;
         } else if (techLevel == TTP) {
-            q = 50 + random;
+            q = MAXIMUM_QUANTITY + random;
         } else {
-            q = 20 + 5 * (techLevel - MTLP) + random;
+            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - MTLP)
+                    + random;
         }
         return q;
     }

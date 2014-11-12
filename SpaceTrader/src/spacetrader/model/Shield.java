@@ -33,32 +33,37 @@ public enum Shield {
     // variance is the maximum percentage
     //that the price can vary above or below the base
     private final int strength;
+    private static final int QUANTITY_VARIANCE = 8;
+    private static final int MAXIMUM_QUANTITY = 50;
+    private static final int MINIMUM_QUANTITY = 20;
+    private static final int MINIMUM_VARIANCE = 5;
     // strength of the shield
     /**
      * The shield constructor.
-     * @param MTLP Minimum Tech Level to Produce this resource
-     * @param MTLU Minimum Tech Level to Use this resource
-     * @param TTP Tech Level which produces the most of this item
-     * @param BasePrice the base price
-     * @param IPL Price increase per tech level
-     * @param Var variance is the maximum percentage
-     * @param strength strength of the shield
+     * @param aMTLP Minimum Tech Level to Produce this resource
+     * @param aMTLU Minimum Tech Level to Use this resource
+     * @param aTTP Tech Level which produces the most of this item
+     * @param aBasePrice the base price
+     * @param aIPL Price increase per tech level
+     * @param aVar variance is the maximum percentage
+     * @param aStrength strength of the shield
      */
-    Shield(int MTLP, int MTLU, int TTP, int BasePrice, int IPL, int Var,
-            int strength) {
-        this.MTLP = MTLP;
-        this.MTLU = MTLU;
-        this.TTP = TTP;
-        this.BasePrice = BasePrice;
-        this.IPL = IPL;
-        this.Var = Var;
-        this.strength = strength;
+    Shield(final int aMTLP, final int aMTLU, final int aTTP,
+            final int aBasePrice, final int aIPL, final int aVar,
+            final int aStrength) {
+        this.MTLP = aMTLP;
+        this.MTLU = aMTLU;
+        this.TTP = aTTP;
+        this.BasePrice = aBasePrice;
+        this.IPL = aIPL;
+        this.Var = aVar;
+        this.strength = aStrength;
     }
 
     /**
      * calculates the price of the good at the tech level of the port.
      *
-     * @param port
+     * @param port is the current port
      * @return the price
      */
     public int calculatePrice(final Port port) {
@@ -72,19 +77,20 @@ public enum Shield {
     /**
      * calculates the quantity to be sold at a specific marketplace.
      *
-     * @param techLevel
+     * @param techLevel is the current ports tech level
      * @return the suggested sale quantity
      */
     public int calculateSellQuantity(final int techLevel) {
         Random rand = new Random();
-        int random = rand.nextInt(8) - rand.nextInt(8);
+        int random = rand.nextInt(QUANTITY_VARIANCE)
+                - rand.nextInt(QUANTITY_VARIANCE);
         int q;
         if (techLevel < MTLP) {
             q = 0;
         } else if (techLevel == TTP) {
-            q = 50 + random;
+            q = MAXIMUM_QUANTITY + random;
         } else {
-            q = 20 + 5 * (techLevel - MTLP) + random;
+            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - MTLP) + random;
         }
         return q;
     }

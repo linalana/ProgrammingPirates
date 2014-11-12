@@ -31,10 +31,10 @@ public class PoliceRecord implements Serializable {
     }
 
     /**
-     * @param isPirate the isPirate to set
+     * @param newIsPirate the isPirate to set
      */
-    public final void setIsPirate(final boolean isPirate) {
-        this.isPirate = isPirate;
+    public final void setIsPirate(final boolean newIsPirate) {
+        this.isPirate = newIsPirate;
     }
 
     /**

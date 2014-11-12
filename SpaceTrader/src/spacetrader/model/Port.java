@@ -28,16 +28,16 @@ public class Port implements Serializable {
      * @param newName the ports new name
      * @param newTechLevel the ports new tech level
      * @param newResources the ports new resources
-     * @param continent in which the port is located
+     * @param aContinent in which the port is located
      */
     public Port(final String newName, final int newTechLevel,
-            final String newResources, final Continent continent) {
+            final String newResources, final Continent aContinent) {
         name = newName;
         techLevel = newTechLevel;
         resources = newResources;
         shipYard = new ShipYard(newTechLevel);
         bazaar = new Bazaar(this);
-        this.continent = continent;
+        this.continent = aContinent;
         policeForce = new PoliceForce(continent.getPoliticalSystem());
 
     }
@@ -95,10 +95,10 @@ public class Port implements Serializable {
     }
 
     /**
-     * @param event the event to set
+     * @param aEvent the event to set
      */
-    public final void setEvent(final int event) {
-        this.event = event;
+    public final void setEvent(final int aEvent) {
+        this.event = aEvent;
     }
 
     /**
@@ -116,23 +116,23 @@ public class Port implements Serializable {
     }
 
     /**
-     * @param policeForce the policeForce to set
+     * @param aPoliceForce the policeForce to set
      */
-    public final void setPoliceForce(final PoliceForce policeForce) {
-        this.policeForce = policeForce;
+    public final void setPoliceForce(final PoliceForce aPoliceForce) {
+        this.policeForce = aPoliceForce;
     }
 
     /**
-     * @param techLevel the techLevel to set
+     * @param aTechLevel the techLevel to set
      */
-    public final void setTechLevel(final int techLevel) {
-        this.techLevel = techLevel;
+    public final void setTechLevel(final int aTechLevel) {
+        this.techLevel = aTechLevel;
     }
 
     /**
-     * @param shipYard the shipYard to set
+     * @param aShipYard the shipYard to set
      */
-    public final void setShipYard(ShipYard shipYard) {
-        this.shipYard = shipYard;
+    public final void setShipYard(final ShipYard aShipYard) {
+        this.shipYard = aShipYard;
     }
 }

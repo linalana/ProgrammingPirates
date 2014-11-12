@@ -29,18 +29,23 @@ public class Ship implements Serializable {
         "Pufferfish", "StingRay", "S.S. Electric Eel",
         "Dolphin Tales", "SharkFin",
         "Hammerhead", "S.S. Bob Waters"};
+    private static final int NUM_SHIP_TYPES = 10;
+    private static final double SELL_PERCENT = 0.8;
 
+    /**
+     * Constructor for ship.
+     */
     public Ship() {
-        this(new Random().nextInt(10));
+        this(new Random().nextInt(NUM_SHIP_TYPES));
         lifeBoat = false;
     }
 
     /**
      * Creates a new ship.
      *
-     * @param type the type of ship
+     * @param typeind the type of ship
      */
-    public Ship(int typeind) {
+    public Ship(final int typeind) {
         this.type = names[typeind];
         if (type.equals(names[0])) {
             this.cargoBays = 5;
@@ -205,10 +210,10 @@ public class Ship implements Serializable {
     }
 
     /**
-     * @param weaponSlots the weaponSlots to set
+     * @param newWeaponSlots the weaponSlots to set
      */
-    public final void setWeaponSlots(int weaponSlots) {
-        this.weaponSlots = weaponSlots;
+    public final void setWeaponSlots(final int newWeaponSlots) {
+        this.weaponSlots = newWeaponSlots;
     }
 
     /**
@@ -219,10 +224,10 @@ public class Ship implements Serializable {
     }
 
     /**
-     * @param shieldSlots the shieldSlots to set
+     * @param newShieldSlots the shieldSlots to set
      */
-    public final void setShieldSlots(int shieldSlots) {
-        this.shieldSlots = shieldSlots;
+    public final void setShieldSlots(final int newShieldSlots) {
+        this.shieldSlots = newShieldSlots;
     }
 
     /**
@@ -233,10 +238,10 @@ public class Ship implements Serializable {
     }
 
     /**
-     * @param gadgetSlots the gadgetSlots to set
+     * @param newGadgetSlots the gadgetSlots to set
      */
-    public final void setGadgetSlots(int gadgetSlots) {
-        this.gadgetSlots = gadgetSlots;
+    public final void setGadgetSlots(final int newGadgetSlots) {
+        this.gadgetSlots = newGadgetSlots;
     }
 
     /**
@@ -265,7 +270,7 @@ public class Ship implements Serializable {
      *
      * @param change in fuel
      */
-    public final void addFuel(int change) {
+    public final void addFuel(final int change) {
         fuel = fuel + change;
         if (fuel > maxRange) {
             fuel = maxRange;
@@ -294,10 +299,10 @@ public class Ship implements Serializable {
     /**
      * distributes damage.
      *
-     * @param totalDamage, damage to be allocated to parts of ship
+     * @param totalDamage damage to be allocated to parts of ship
      * @return true if ship lives
      */
-    final boolean distributeDamage(int totalDamage) {
+    final boolean distributeDamage(final int totalDamage) {
         int remainingDamage = getShieldHold().decreaseStrength(totalDamage);
         if (remainingDamage != 0) {
             hullStrength -= remainingDamage;
@@ -317,10 +322,10 @@ public class Ship implements Serializable {
     }
 
     /**
-     * @param lifeBoat the lifeBoat to set
+     * @param newLifeBoat the lifeBoat to set
      */
-    public final void setLifeBoat(boolean lifeBoat) {
-        this.lifeBoat = lifeBoat;
+    public final void setLifeBoat(final boolean newLifeBoat) {
+        this.lifeBoat = newLifeBoat;
     }
 
     /**
@@ -364,26 +369,26 @@ public class Ship implements Serializable {
         for (TradeGood g : getCargoHold().getGoods().keySet()) {
             int goodQuantity = getCargoHold().getGoods().get(g);
             if (Game.getCurrentPort().getTechLevel() > g.getMTLU()) {
-                double goodPrice = 0.8 * goodQuantity *
+                double goodPrice = SELL_PERCENT * goodQuantity *
                                    g.calculatePrice(Game.getCurrentPort());
                 v = v + (int) goodPrice;
             }
         }
         for (Gadget ga : getGadgetHold().getGadgets().keySet()) {
             int gadgetQuantity = getGadgetHold().getGadgets().get(ga);
-            double gadgetPrice = 0.8 * gadgetQuantity *
+            double gadgetPrice = SELL_PERCENT * gadgetQuantity *
                     ga.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) gadgetPrice;
         }
         for (Shield s : getShieldHold().getShields().keySet()) {
             int shieldQuantity = getShieldHold().getShields().get(s);
-            double shieldPrice = 0.8 * shieldQuantity *
+            double shieldPrice = SELL_PERCENT * shieldQuantity *
                                  s.calculatePrice(Game.getCurrentPort());
             v = v + (int) shieldPrice;
         }
         for (Weapon w : getWeaponHold().getWeapons().keySet()) {
             int weaponQuantity = getWeaponHold().getWeapons().get(w);
-            double weaponPrice = 0.8 * weaponQuantity *
+            double weaponPrice = SELL_PERCENT * weaponQuantity *
                     w.calculatePrice(Game.getCurrentPort().getTechLevel());
             v = v + (int) weaponPrice;
         }
@@ -392,38 +397,38 @@ public class Ship implements Serializable {
     }
 
     /**
-     * @param cargoHold the cargoHold to set
+     * @param aCargoHold the cargoHold to set
      */
-    public final void setCargoHold(CargoHold cargoHold) {
-        this.cargoHold = cargoHold;
+    public final void setCargoHold(final CargoHold aCargoHold) {
+        this.cargoHold = aCargoHold;
     }
 
     /**
-     * @param weaponHold the weaponHold to set
+     * @param aWeaponHold the weaponHold to set
      */
-    public final void setWeaponHold(WeaponHold weaponHold) {
-        this.weaponHold = weaponHold;
+    public final void setWeaponHold(final WeaponHold aWeaponHold) {
+        this.weaponHold = aWeaponHold;
     }
 
     /**
-     * @param shieldHold the shieldHold to set
+     * @param aShieldHold the shieldHold to set
      */
-    public final void setShieldHold(ShieldHold shieldHold) {
-        this.shieldHold = shieldHold;
+    public final void setShieldHold(final ShieldHold aShieldHold) {
+        this.shieldHold = aShieldHold;
     }
 
     /**
-     * @param gadgetHold the gadgetHold to set
+     * @param aGadgetHold the gadgetHold to set
      */
-    public final void setGadgetHold(GadgetHold gadgetHold) {
-        this.gadgetHold = gadgetHold;
+    public final void setGadgetHold(final GadgetHold aGadgetHold) {
+        this.gadgetHold = aGadgetHold;
     }
 
     /**
-     * @param maxRange the maxRange to set
+     * @param newMaxRange the maxRange to set
      */
-    public final void setMaxRange(int maxRange) {
-        this.maxRange = maxRange;
+    public final void setMaxRange(final int newMaxRange) {
+        this.maxRange = newMaxRange;
     }
 
     /**

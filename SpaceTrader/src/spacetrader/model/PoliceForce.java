@@ -55,7 +55,7 @@ public class PoliceForce extends Encounterer {
      * @return the strength
      */
     private int calculateStrength(final String system) {
-        int strength;
+        int aStrength;
         int strengthCount = 0;
         String[] strengthArray = {"anarchy", "feudal", "pacifist", "satori",
             "capitalist", "democracy", "socialist", "confederacy", "monarchy",
@@ -67,19 +67,19 @@ public class PoliceForce extends Encounterer {
             }
         }
         if (strengthCount >= 0 && strengthCount <= 1) {
-            strength = 0;
+            aStrength = 0;
         } else if (strengthCount >= 2 && strengthCount <= 3) {
-            strength = 1;
+            aStrength = 1;
         } else if (strengthCount >= 4 && strengthCount <= 6) {
-            strength = 2;
+            aStrength = 2;
         } else if (strengthCount >= 7 && strengthCount <= 8) {
-            strength = 3;
+            aStrength = 3;
         } else if (strengthCount >= 9 && strengthCount <= 14) {
-            strength = 4;
+            aStrength = 4;
         } else {
-            strength = 5;
+            aStrength = 5;
         }
-        return strength;
+        return aStrength;
     }
 
     /**
@@ -88,7 +88,7 @@ public class PoliceForce extends Encounterer {
      * @return the bribe level
      */
     private int calculateBribe(final String system) {
-        int bribe;
+        int aBribe;
         int bribeCount = 0;
         Random rand = new Random();
         String[] bribeArray = {"anarchy", "fascist", "feudal", "military",
@@ -101,15 +101,15 @@ public class PoliceForce extends Encounterer {
             }
         }
         if (bribeCount >= 0 && bribeCount <= 5) {
-            bribe = 0;
+            aBribe = 0;
         } else if (bribeCount >= 6 && bribeCount <= 10) {
-            bribe = rand.nextInt((300 - 100) + 1) + 100;
+            aBribe = rand.nextInt((300 - 100) + 1) + 100;
         } else if (bribeCount >= 11 && bribeCount <= 12) {
-            bribe = rand.nextInt((3000 - 1000) + 1) + 1000;
+            aBribe = rand.nextInt((3000 - 1000) + 1) + 1000;
         } else {
-            bribe = rand.nextInt((30000 - 10000) + 1) + 10000;
+            aBribe = rand.nextInt((30000 - 10000) + 1) + 10000;
         }
-        return bribe;
+        return aBribe;
     }
 
     /**
