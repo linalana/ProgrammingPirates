@@ -28,7 +28,7 @@ public class Turn implements Serializable {
     }
 
     /**
-     * travels to a new point and checks if anything exciting occurred
+     * travels to a new point and checks if anything exciting occurred.
      *
      * @param fuelUsed to travel
      * @return the result (what happened)
@@ -55,7 +55,7 @@ public class Turn implements Serializable {
     }
 
     /**
-     * set chance of encountering various types of people
+     * set chance of encountering various types of people.
      */
     private void setChanceEncounters() {
         switch (politicalSystem) {
@@ -155,7 +155,7 @@ public class Turn implements Serializable {
     }
 
     /**
-     * decides an event to occur at the port
+     * decides an event to occur at the port.
      */
     private void randomPortEvents() {
         Random rand = new Random();

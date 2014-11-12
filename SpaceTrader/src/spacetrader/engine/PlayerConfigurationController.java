@@ -16,7 +16,7 @@ import spacetrader.model.Player;
 import spacetrader.model.World;
 
 /**
- * FXML Controller class handles the GUI for player creation
+ * FXML Controller class handles the GUI for player creation.
  *
  * @author Alana Lin
  */
@@ -138,7 +138,7 @@ public class PlayerConfigurationController implements Initializable {
     }
 
     /**
-     * Creates a new player from the current set up on the UI when submit button
+     * Creates a new player from the current set up on the UI when submit button.
      * pressed
      *
      * @param event submit button pressed

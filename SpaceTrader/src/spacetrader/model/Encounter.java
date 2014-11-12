@@ -40,7 +40,7 @@ public class Encounter implements Serializable {
     }
 
     /**
-     * Plays out the choice of the encoutnerer attacking player
+     * Plays out the choice of the encounterer attacking player.
      */
     private void encountererAttack() {
         int totalDamage = e.calcDamage();
@@ -56,7 +56,7 @@ public class Encounter implements Serializable {
     }
 
     /**
-     * Finds the what type the encounterer is
+     * Finds the what type the encounterer is.
      *
      * @return the string type of the encounterer
      */
@@ -73,7 +73,7 @@ public class Encounter implements Serializable {
     }
 
     /**
-     * Gets the info from the player and encounterer
+     * Gets the info from the player and encounterer.
      *
      * @return the int array containing all the stats required for fight screen
      */
@@ -92,7 +92,7 @@ public class Encounter implements Serializable {
     }
 
     /**
-     * Performs inspection by police on player
+     * Performs inspection by police on player.
      *
      * @return true if passes
      */

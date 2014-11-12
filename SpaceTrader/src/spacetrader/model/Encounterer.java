@@ -27,7 +27,7 @@ protected final Person person; //encounterer delegates to Person
     }
 
     /**
-     * fills the cargo hold with random stuff
+     * fills the cargo hold with random stuff.
      */
     protected void fillCargo() {
         Random rand = new Random();
@@ -40,7 +40,7 @@ protected final Person person; //encounterer delegates to Person
     }
 
     /**
-     * Decide if Encounterer will fight or flee
+     * Decide if Encounterer will fight or flee.
      *
      * @param playerRep the exp of the player
      * @param fightPoints the fighter skill points of the player
@@ -86,7 +86,7 @@ protected final Person person; //encounterer delegates to Person
     }
 
     /**
-     * Returns the encounterer info required to assess a fight
+     * Returns the encounterer info required to assess a fight.
      *
      * @return int array of stats for fight
      */
@@ -102,7 +102,7 @@ protected final Person person; //encounterer delegates to Person
     }
 
     /**
-     * distributes the damage
+     * distributes the damage.
      *
      * @param totalDamage the damage done to the encounterer
      * @return true if encounterer survives

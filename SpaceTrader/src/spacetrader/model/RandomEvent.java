@@ -80,7 +80,7 @@ public class RandomEvent {
     }
 
     /**
-     * the event class, holds the details for the random event
+     * the event class, holds the details for the random event.
      */
     private static class Event {
 

@@ -14,6 +14,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * This is the main JavaFX Application class which launches the application.
+ *
+ */
 public class SpaceTrader extends Application {
 
     private static Stage primaryStage;

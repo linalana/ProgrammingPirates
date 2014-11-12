@@ -3,50 +3,51 @@ package spacetrader.model;
 import java.util.Random;
 
 /**
- * TradeGood enum storing info on each type of trade good and calculating prices
+ * TradeGood enum storing info on each type of trade good
+ * and calculating prices.
  *
  * @author alanalin
  */
 public enum TradeGood {
 
     /**
-     * Water Good
+     * Water Good.
      */
     WATER(0, 0, 2, 30, 3, 4, "DROUGHT", "LOTSOFWATER", "DESERT", 30, 50),
     /**
-     * Furs Good
+     * Furs Good.
      */
     FURS(0, 0, 0, 250, 10, 10, "COLD", "RICHFAUNA", "LIFELESS", 230, 280),
     /**
-     * Food Good
+     * Food Good.
      */
     FOOD(1, 0, 1, 100, 5, 5, "CROPFAIL", "RICHSOIL", "POORSOIL", 90, 160),
     /**
-     * Ore Good
+     * Ore Good.
      */
     ORE(2, 2, 3, 350, 20, 10, "WAR", "MINERALRICH", "MINERALPOOR", 350, 420),
     /**
-     * Games Good
+     * Games Good.
      */
     GAMES(3, 1, 6, 250, -10, 5, "BOREDOM", "ARTISTIC", "NEVER", 160, 270),
     /**
-     * Firearms Good
+     * Firearms Good.
      */
     FIREARMS(3, 1, 5, 1250, -75, 100, "WAR", "WARLIKE", "NEVER", 600, 1100),
     /**
-     * Medicine Good
+     * Medicine Good.
      */
     MEDICINE(4, 1, 6, 650, -20, 10, "PLAGUE", "LOTSOFHERBS", "NEVER", 400, 700),
     /**
-     * Machines Good
+     * Machines Good.
      */
     MACHINES(4, 3, 5, 900, -30, 5, "LACKOFWORKERS", "NEVER", "NEVER", 600, 800),
     /**
-     *
+     * Narcotics Good.
      */
     NARCOTICS(5, 0, 5, 3500, -125, 150, "BOREDOM", "WEIRDMUSHROOMS", "NEVER", 2000, 3000),
     /**
-     * Minions Good
+     * Minions Good.
      */
     MINIONS(6, 4, 7, 5000, -150, 100, "LACKOFWORKERS", "NEVER", "NEVER", 3500, 5000);
 
@@ -77,7 +78,7 @@ public enum TradeGood {
     }
 
     /**
-     * calculates the price of the good at the tech level of the port
+     * calculates the price of the good at the tech level of the port.
      *
      * @param port
      * @return the price
@@ -103,7 +104,7 @@ public enum TradeGood {
     }
 
     /**
-     * calculates the quantity to be sold at a specific marketplace
+     * calculates the quantity to be sold at a specific marketplace.
      *
      * @param techLevel
      * @return the suggested sale quantity

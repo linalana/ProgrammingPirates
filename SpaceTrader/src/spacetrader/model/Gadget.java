@@ -3,7 +3,7 @@ package spacetrader.model;
 import java.util.Random;
 
 /**
- * Gadget enum storing info on each type of gadget and calculating prices
+ * Gadget enum storing info on each type of gadget and calculating prices.
  *
  * @author Murph
  */
@@ -41,7 +41,7 @@ public enum Gadget {
     private final int Var;        // variance is the maximum percentage that the
     //price can vary above or below the base
     /**
-     * The constructor for a gadjet
+     * The constructor for a gadget.
      * @param MTLP Minimum Tech Level to Produce this resource
      * @param MTLU Minimum Tech Level to Use this resource
      * @param TTP  Tech Level which produces the most of this item

@@ -17,7 +17,7 @@ public class Trader extends Encounterer {
     }
 
     /**
-     * determines if the trader will encounter the player or not
+     * determines if the trader will encounter the player or not.
      *
      * @param playerIsPirate, whether or not player is pirate
      * @return true if trader will NOT flee
@@ -27,7 +27,7 @@ public class Trader extends Encounterer {
     }
 
     /**
-     * distributes skill points
+     * distributes skill points.
      */
     private void allocateSkillPoints() {
         Random rand = new Random();
@@ -43,7 +43,7 @@ public class Trader extends Encounterer {
     }
 
     /**
-     * Returns the trader info required to assess a fight
+     * Returns the trader info required to assess a fight.
      *
      * @return int array of stats for fight
      */

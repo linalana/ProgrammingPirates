@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * A ship class that creates ships
+ * A ship class that creates ships.
  *
  * @author Murph
  */
@@ -35,7 +35,7 @@ public class Ship implements Serializable {
     }
 
     /**
-     * Creates a new ship
+     * Creates a new ship.
      *
      * @param type the type of ship
      */
@@ -253,14 +253,14 @@ public class Ship implements Serializable {
     }
 
     /**
-     * fill fuel to max
+     * fill fuel to max.
      */
     public void fillTank() {
         fuel = maxRange;
     }
 
     /**
-     * adds the change in fuel to the total fuel
+     * adds the change in fuel to the total fuel.
      *
      * @param change in fuel
      */
@@ -282,7 +282,7 @@ public class Ship implements Serializable {
     }
 
     /**
-     * Gets the damage capable
+     * Gets the damage capable.
      *
      * @return int damage
      */
@@ -291,7 +291,7 @@ public class Ship implements Serializable {
     }
 
     /**
-     * distributes damage
+     * distributes damage.
      *
      * @param totalDamage, damage to be allocated to parts of ship
      * @return true if ship lives
@@ -337,7 +337,7 @@ public class Ship implements Serializable {
     }
 
     /**
-     * checks for narcotics and fire arms
+     * checks for narcotics and fire arms.
      *
      * @return true if cargohold contains those items
      */
@@ -346,14 +346,14 @@ public class Ship implements Serializable {
     }
 
     /**
-     * removes illegal goods from cargohold
+     * removes illegal goods from cargohold.
      */
     void removeIllegalGoods() {
         getCargoHold().removeIllegal();
     }
 
     /**
-     * calculates the sell price of the ship and contained goods
+     * calculates the sell price of the ship and contained goods.
      *
      * @return total value of ship and contents
      */

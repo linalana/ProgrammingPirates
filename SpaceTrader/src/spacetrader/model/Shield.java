@@ -3,18 +3,18 @@ package spacetrader.model;
 import java.util.Random;
 
 /**
- * Shield enum storing info on each type of shield and calculating prices
+ * Shield enum storing info on each type of shield and calculating prices.
  *
  * @author Murph
  */
 public enum Shield {
 
     /**
-     * Energy Shield
+     * Energy Shield.
      */
     ENERGY(0, 0, 3, 500, 50, 10, 25),
     /**
-     * Reflective Shield
+     * Reflective Shield.
      */
     REFLECTIVE(4, 4, 7, 1000, 100, 10, 50);
 

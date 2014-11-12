@@ -207,7 +207,7 @@ public class Continent implements Serializable {
     }
 
     /**
-     * calculates the distance of the click from continent
+     * calculates the distance of the click from continent.
      *
      * @param eventX mouse x location
      * @param eventY mouse y location

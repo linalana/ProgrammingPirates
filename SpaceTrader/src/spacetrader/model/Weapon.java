@@ -3,22 +3,22 @@ package spacetrader.model;
 import java.util.Random;
 
 /**
- * Weapon enum storing info on each type of weapon and calculating prices
+ * Weapon enum storing info on each type of weapon and calculating prices.
  *
  * @author Murph
  */
 public enum Weapon {
 
     /**
-     * Pulse Weapon
+     * Pulse Weapon.
      */
     PULSE(0, 0, 2, 100, 10, 10, 10),
     /**
-     * Beam Weapon
+     * Beam Weapon.
      */
     BEAM(3, 3, 5, 500, 50, 10, 15),
     /**
-     * Military Weapon
+     * Military Weapon.
      */
     MILITARY(6, 6, 7, 1000, 100, 10, 20);
 
@@ -41,7 +41,7 @@ public enum Weapon {
     }
 
     /**
-     * calculates the price of the good at the tech level of the port
+     * calculates the price of the good at the tech level of the port.
      *
      * @param port
      * @return the price
@@ -55,7 +55,7 @@ public enum Weapon {
     }
 
     /**
-     * calculates the quantity to be sold at a specific marketplace
+     * calculates the quantity to be sold at a specific marketplace.
      *
      * @param techLevel
      * @return the suggested sale quantity
