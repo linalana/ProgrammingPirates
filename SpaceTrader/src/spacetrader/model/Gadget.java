@@ -34,7 +34,7 @@ public enum Gadget {
     //(You can't buy on planets below this level)
     private final int MTLU;       // Minimum Tech Level to Use this resource
     //(You can't sell on planets below this level)
-    private final int TTP;        // Tech Level which produces the most of this 
+    private final int TTP;        // Tech Level which produces the most of this
     //item
     private final int BasePrice;
     private final int IPL;        // Price increase per tech level
@@ -47,7 +47,7 @@ public enum Gadget {
      * @param TTP  Tech Level which produces the most of this item
      * @param BasePrice base price
      * @param IPL Price increase per tech level
-     * @param Varvariance is the maximum percentage that the price can vary 
+     * @param Varvariance is the maximum percentage that the price can vary
      * above or below the base
      */
     Gadget(final int MTLP, final int MTLU, final int TTP, final int BasePrice,

@@ -220,7 +220,7 @@ public class Player implements Serializable {
      */
     public int failInspection() {
         policeRecord.decrementInspectionHistory();
-        //fine - halfs 
+        //fine - halfs
         int fine = (int) (money * .05);
         if (policeRecord.getInspectionHistory() < 0) {
             //fine divides by 10

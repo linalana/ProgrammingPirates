@@ -25,7 +25,7 @@ public class PlayerTabPageController implements Initializable {
     private Label trader;
     @FXML
     private Label engineer;
- 
+
     /**
      * Initializes the controller class with updated labels for the player info.
      * @param url the url

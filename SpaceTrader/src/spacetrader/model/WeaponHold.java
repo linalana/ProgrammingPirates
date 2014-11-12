@@ -32,7 +32,7 @@ public class WeaponHold implements Serializable {
     public HashMap<Weapon, Integer> getWeapons() {
         return weapons;
     }
-    
+
     /**
      * @return empty slots in the weaponHold
      */

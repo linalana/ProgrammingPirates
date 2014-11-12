@@ -111,7 +111,7 @@ public class MarketplaceScreenController implements Initializable {
             String goodToSell = longString.substring(0, spaceIndex);
             TradeGood good = TradeGood.valueOf(goodToSell);
             int[] pq = goodsForSale.get(good);
-            //get quantity desired from player 
+            //get quantity desired from player
             String q = getQuantityFromPlayer("Selling Stuff",
                     "Arr, how much ye want to sell?");
             int quant = 0;
