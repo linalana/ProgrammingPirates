@@ -55,30 +55,30 @@ public enum TradeGood {
 
     /* Minimum Tech Level to Produce this resource
        (You can't buy on planets below this level) */
-    private final int MTLP;
+    private final int mtlp;
     /* Minimum Tech Level to Use this resource
        (You can't sell on planets below this level) */
-    private final int MTLU;
+    private final int mtlu;
     // Tech Level which produces the most of this item
-    private final int TTP;
+    private final int ttp;
     private final int basePrice;
     // Price increase per tech level
-    private final int IPL;
+    private final int ipl;
     /* variance is the maximum percentage
        that the price can vary above or below the base */
     private final int var;
     /* Radical price increase event, when this even happens on a planet,
        the price may increase astronomically */
-    private final String IE;
+    private final String ie;
     /* When this condition is present,
        the price of this resource is unusually low */
-    private final String CR;
+    private final String cr;
     // When this condition is present, the resource is expensive
-    private final String ER;
+    private final String er;
     // Min price offered in space trade with random trader (not on a planet)
-    private final int MTL;
+    private final int mtl;
     // Max price offered in space trade with random trader (not on a planet)
-    private final int MTH;
+    private final int mth;
     private static final double HALF = 0.5;
     private static final int QUANTITY_VARIANCE = 8;
     private static final int MAXIMUM_QUANTITY = 50;
@@ -104,17 +104,17 @@ public enum TradeGood {
             final int aBasePrice, final int aIPL, final int aVar,
             final String aIE, final String aCR, final String aER,
             final int aMTL, final int aMTH) {
-        this.MTLP = aMTLP;
-        this.MTLU = aMTLU;
-        this.TTP = aTTP;
+        this.mtlp = aMTLP;
+        this.mtlu = aMTLU;
+        this.ttp = aTTP;
         this.basePrice = aBasePrice;
-        this.IPL = aIPL;
+        this.ipl = aIPL;
         this.var = aVar;
-        this.IE = aIE;
-        this.CR = aCR;
-        this.ER = aER;
-        this.MTL = aMTL;
-        this.MTH = aMTH;
+        this.ie = aIE;
+        this.cr = aCR;
+        this.er = aER;
+        this.mtl = aMTL;
+        this.mth = aMTH;
     }
 
     /**
@@ -124,20 +124,20 @@ public enum TradeGood {
      * @return the price
      */
     public int calculatePrice(final Port aPort) {
-        int price = getBasePrice() + IPL * (aPort.getTechLevel() - MTLP);
+        int price = getBasePrice() + ipl * (aPort.getTechLevel() - mtlp);
         if (price < 0) {
             return 0;
         }
         if (aPort.getEvent() == null) {
             return price;
         }
-        if (aPort.getEvent().equals(IE)) {
+        if (aPort.getEvent().equals(ie)) {
             price *= HALF;
         }
-        if (aPort.getResources().equals(CR)) {
+        if (aPort.getResources().equals(cr)) {
             price *= HALF;
         }
-        if (aPort.getResources().equals(ER)) {
+        if (aPort.getResources().equals(er)) {
             price *= 1 + HALF;
         }
         return price;
@@ -154,36 +154,36 @@ public enum TradeGood {
         int random = rand.nextInt(QUANTITY_VARIANCE)
                 - rand.nextInt(QUANTITY_VARIANCE);
         int q;
-        if (techLevel < MTLP) {
+        if (techLevel < mtlp) {
             q = 0;
-        } else if (techLevel == TTP) {
+        } else if (techLevel == ttp) {
             q = MAXIMUM_QUANTITY + random;
         } else {
-            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - MTLP)
+            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - mtlp)
                     + random;
         }
         return q;
     }
 
     /**
-     * @return the MTLU
+     * @return the mtlu
      */
     public int getMTLU() {
-        return MTLU;
+        return mtlu;
     }
 
     /**
-     * @return the MTL
+     * @return the mtl
      */
     public int getMTL() {
-        return MTL;
+        return mtl;
     }
 
     /**
-     * @return the MTH
+     * @return the mth
      */
     public int getMTH() {
-        return MTH;
+        return mth;
     }
 
     /**

@@ -8,6 +8,7 @@ import java.util.Random;
  */
 public class Trader extends Encounterer {
 
+    private static final int MAX_TRADER_POINTS = 10;
     private int traderPoints;
     /**
      * This is the constructor for a trader.
@@ -33,7 +34,7 @@ public class Trader extends Encounterer {
      */
     private void allocateSkillPoints() {
         Random rand = new Random();
-        traderPoints = rand.nextInt(11);
+        traderPoints = rand.nextInt(MAX_TRADER_POINTS + 1);
     }
 
     /**

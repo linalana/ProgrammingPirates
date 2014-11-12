@@ -45,6 +45,10 @@ public class PlayerConfigurationController implements Initializable {
     private int investorPoint;
     private int pointTotal;
 
+    private static final int MAX_POINTS = 15;
+    private static final int MAX_NAME_LENGTH = 20;
+    private static final int MAX_SLIDER_VALUE = 10;
+
     /**
      * Initializes the controller class Adding listeners to all the sliders to
      * register when changed.
@@ -55,7 +59,7 @@ public class PlayerConfigurationController implements Initializable {
     @Override
     public final void initialize(final URL url, final ResourceBundle rb) {
         //15 is how many points you can allocate.
-        pointTotal = 15;
+        pointTotal = MAX_POINTS;
         fighterPoint = 0;
         traderPoint = 0;
         engineerPoint = 0;
@@ -63,14 +67,14 @@ public class PlayerConfigurationController implements Initializable {
 
         fighterSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(final ObservableValue<? extends Number> ov,
+            public void changed(final ObservableValue<? extends Number> obsVal,
                     final Number oldVal, final Number newVal) {
                 fighterPoint = updatePoints(fighterSlider, fighterPoint);
             }
         });
         traderSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(final ObservableValue<? extends Number> ov,
+            public void changed(final ObservableValue<? extends Number> obsVal,
                    final  Number oldVal, final Number newVal) {
                 traderPoint = updatePoints(traderSlider, traderPoint);
             }
@@ -78,7 +82,7 @@ public class PlayerConfigurationController implements Initializable {
         engineerSlider.valueProperty()
                 .addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(final ObservableValue<? extends Number> ov,
+            public void changed(final ObservableValue<? extends Number> obsVal,
                     final Number oldVal, final Number newVal) {
                 engineerPoint = updatePoints(engineerSlider, engineerPoint);
             }
@@ -86,7 +90,7 @@ public class PlayerConfigurationController implements Initializable {
         investorSlider.valueProperty()
                 .addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(final ObservableValue<? extends Number> ov,
+            public void changed(final ObservableValue<? extends Number> obsVal,
                     final Number oldVal, final Number newVal) {
                 investorPoint = updatePoints(investorSlider, investorPoint);
             }
@@ -94,12 +98,10 @@ public class PlayerConfigurationController implements Initializable {
 
         nameText.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(final ObservableValue<? extends String> ov,
+            public void changed(final ObservableValue<? extends String> obsVal,
                     final String oldValue, final String newValue) {
-                //20 is the maximum characters a name can be
-                if (nameText.getText().length() > 20) {
-                    //20 is the maximum number of characters a name can be
-                    String s = nameText.getText().substring(0, 20);
+                if (nameText.getText().length() > MAX_NAME_LENGTH) {
+                    String s = nameText.getText().substring(0, MAX_NAME_LENGTH);
                     nameText.setText(s);
                 }
             }
@@ -118,24 +120,22 @@ public class PlayerConfigurationController implements Initializable {
     @FXML
     private int updatePoints(final Slider slider, final int pastVal) {
         int diff = (int) slider.getValue() - pastVal;
-        int oldVal = pastVal;
         if (pointTotal - diff >= 0) {
             pointTotal -= diff;
         } else {
             int maxPossible = pointTotal + pastVal;
             //sliders have a max value of ten
-            if (maxPossible < 10) {
+            if (maxPossible < MAX_SLIDER_VALUE) {
                 slider.setValue(maxPossible);
                 pointTotal = 0;
             } else {
                 //sliders have a max value of ten
-                slider.setValue(10);
-                pointTotal = maxPossible - 10;
+                slider.setValue(MAX_SLIDER_VALUE);
+                pointTotal = maxPossible - MAX_SLIDER_VALUE;
             }
         }
-        pointLabel.setText("" + pointTotal);
-        oldVal = (int) slider.getValue();
-        return oldVal;
+        pointLabel.setText(Integer.toString(pointTotal));
+        return (int) slider.getValue();
     }
 
     /**
@@ -143,20 +143,19 @@ public class PlayerConfigurationController implements Initializable {
      * up on the UI when submit button.
      * pressed
      *
+     * used by button in UI, method header must be this way
+     *
      * @param event submit button pressed
      */
     @FXML
     private void submitButtonCreatePlayer(final ActionEvent event) {
         if (nameText.getText() != null && !nameText.getText().isEmpty()
                 && pointTotal == 0) {
-            Player player = new Player(nameText.getText(), fighterPoint,
-                    traderPoint, engineerPoint, investorPoint);
-            Game game = new Game(player);
-            game.getWorld().setRangeChart();
-            System.out.println(player.toString());
+            Game game = new Game(new Player(nameText.getText(), fighterPoint,
+                    traderPoint, engineerPoint, investorPoint));
+            Game.getWorld().setRangeChart();
             showOpeningScreen();
             World gameWorld = new World();
-            System.out.println(gameWorld.toString());
             ApplicationController.playSound(getClass()
                     .getResource("ayeayecapn.wav").toString());
         }

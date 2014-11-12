@@ -97,7 +97,7 @@ public class ShieldsController implements Initializable {
             //SELL_RATIO is the portion of the price of a good that it can be
             //sold for.
             hold.add("Wooden Shield Sell Price: "
-                    + (int) (priceEn* SELL_RATIO));
+                    + (int) (priceEn * SELL_RATIO));
         }
         if (shieldHold.getTotalReflectiveShields() > 0) {
             //SELL_RATIO is the portion of the price of a good that it can be

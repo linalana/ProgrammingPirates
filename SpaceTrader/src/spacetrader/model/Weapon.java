@@ -24,14 +24,14 @@ public enum Weapon {
 
     /* Minimum Tech Level to Produce this resource
        (You can't buy on planets below this level) */
-    private final int MTLP;
+    private final int mtlp;
     /* Minimum Tech Level to Use this resource
        (You can't sell on planets below this level) */
-    private final int MTLU;
+    private final int mtlu;
     // Tech Level which produces the most of this item
-    private final int TTP;
+    private final int ttp;
     private final int basePrice;
-    private final int IPL;        // Price increase per tech level
+    private final int ipl;        // Price increase per tech level
     /* variance is the maximum percentage
        that the price can vary above or below the base */
     private final int var;
@@ -51,11 +51,11 @@ public enum Weapon {
     Weapon(final int aMTLP, final int aMTLU, final int aTTP,
             final int aBasePrice, final int aIPL, final int aVar,
             final int aStrength) {
-        this.MTLP = aMTLP;
-        this.MTLU = aMTLU;
-        this.TTP = aTTP;
+        this.mtlp = aMTLP;
+        this.mtlu = aMTLU;
+        this.ttp = aTTP;
         this.basePrice = aBasePrice;
-        this.IPL = aIPL;
+        this.ipl = aIPL;
         this.var = aVar;
         this.strength = aStrength;
     }
@@ -67,7 +67,7 @@ public enum Weapon {
      * @return the price
      */
     public int calculatePrice(final int techLevel) {
-        int price = basePrice + IPL * (techLevel - MTLP);
+        int price = basePrice + ipl * (techLevel - mtlp);
         if (price < 0) {
             return 0;
         }
@@ -84,21 +84,21 @@ public enum Weapon {
         Random rand = new Random();
         int random = rand.nextInt(SELL_VARIANCE);
         int q;
-        if (techLevel < MTLP) {
+        if (techLevel < mtlp) {
             q = 0;
-        } else if (techLevel == TTP) {
+        } else if (techLevel == ttp) {
             q = 50 + random;
         } else {
-            q = 20 + 5 * (techLevel - MTLP) + random;
+            q = 20 + 5 * (techLevel - mtlp) + random;
         }
         return q;
     }
 
     /**
-     * @return the MTLU
+     * @return the mtlu
      */
     public int getMTLU() {
-        return MTLU;
+        return mtlu;
     }
 
     /**

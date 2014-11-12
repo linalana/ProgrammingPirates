@@ -9,21 +9,23 @@ import java.util.Random;
  */
 public abstract class Encounterer implements Serializable {
 
-protected final Person person; //encounterer delegates to Person
-//(used by children)
-
+    protected final Person person; //encounterer delegates to Person
+    //(used by children)
+    private static final int VARIANCE_ALLOWED = 10;
+    private static final int MAX_SKILL_POINTS = 10;
     /**
      * creates encounterer, and backing person.
      */
     public Encounterer() {
         Random rand = new Random();
-        int varianceFactor = 10;
-        int deviance = rand.nextInt(2 * varianceFactor);
+        int deviance = rand.nextInt(2 * VARIANCE_ALLOWED);
         int reputation = Game.getPlayer().getReputation() + (deviance
-                - varianceFactor);
+                - VARIANCE_ALLOWED);
 
-        person = new Person(rand.nextInt(11), rand.nextInt(11),
-                rand.nextInt(11), rand.nextInt(11), reputation, new Ship());
+        person = new Person(rand.nextInt(MAX_SKILL_POINTS + 1), rand
+                .nextInt(MAX_SKILL_POINTS + 1), rand.nextInt(MAX_SKILL_POINTS
+                        + 1), rand.nextInt(MAX_SKILL_POINTS + 1), reputation,
+                new Ship());
     }
 
     /**
@@ -59,6 +61,7 @@ protected final Person person; //encounterer delegates to Person
      */
     public final int attack() {
         Random rand = new Random();
+        //removed in expansion of encounters
         return rand.nextInt(10) * getReputation() / 100;
     }
 

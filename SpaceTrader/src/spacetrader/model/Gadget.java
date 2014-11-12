@@ -30,14 +30,14 @@ public enum Gadget {
      */
     CLOAK(7, 7, 7, 10000, 1000, 10);
 
-    private final int MTLP;       // Minimum Tech Level to Produce this resource
+    private final int mtlp;       // Minimum Tech Level to Produce this resource
     //(You can't buy on planets below this level)
-    private final int MTLU;       // Minimum Tech Level to Use this resource
+    private final int mtlu;       // Minimum Tech Level to Use this resource
     //(You can't sell on planets below this level)
-    private final int TTP;        // Tech Level which produces the most of this
+    private final int ttp;        // Tech Level which produces the most of this
     //item
     private final int basePrice;
-    private final int IPL;        // Price increase per tech level
+    private final int ilp;        // Price increase per tech level
     private final int var;        // variance is the maximum percentage that the
     //price can vary above or below the base
     private static final int QUANTITY_VARIANCE = 8;
@@ -56,11 +56,11 @@ public enum Gadget {
      */
     Gadget(final int aMTLP, final int aMTLU, final int aTTP,
             final int aBasePrice, final int aIPL, final int aVar) {
-        this.MTLP = aMTLP;
-        this.MTLU = aMTLU;
-        this.TTP = aTTP;
+        this.mtlp = aMTLP;
+        this.mtlu = aMTLU;
+        this.ttp = aTTP;
         this.basePrice = aBasePrice;
-        this.IPL = aIPL;
+        this.ilp = aIPL;
         this.var = aVar;
     }
 
@@ -72,7 +72,7 @@ public enum Gadget {
      */
     public int calculatePrice(final int techLevel) {
         Random rand = new Random();
-        int price = basePrice + IPL * (techLevel - MTLP);
+        int price = basePrice + ilp * (techLevel - mtlp);
         if (price < 0) {
             return 0;
         }
@@ -90,22 +90,22 @@ public enum Gadget {
         int random = rand.nextInt(QUANTITY_VARIANCE)
                 - rand.nextInt(QUANTITY_VARIANCE);
         int q;
-        if (techLevel < MTLP) {
+        if (techLevel < mtlp) {
             q = 0;
-        } else if (techLevel == TTP) {
+        } else if (techLevel == ttp) {
             q = MAXIMUM_QUANTITY + random;
         } else {
-            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - MTLP)
+            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - mtlp)
                     + random;
         }
         return q;
     }
 
     /**
-     * @return the MTLU
+     * @return the mtlu
      */
     public int getMTLU() {
-        return MTLU;
+        return mtlu;
     }
 
 }

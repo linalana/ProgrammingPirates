@@ -78,7 +78,7 @@ public class EncounterController implements Initializable {
                 break;
             default:
                 otherButton.setText("Accept Inspection");
-                //210 is only ever used once and is a specific position
+                //210 and 349 are specific positions
                 otherButton.relocate(210, 349);
                 break;
         }
@@ -130,6 +130,7 @@ public class EncounterController implements Initializable {
     private void fillStats() {
         int[] info = Turn.getEncounter().getInfo();
         System.out.println("This is the array:" + Arrays.toString(info));
+        //these "magic numbers" are indexes in the array
         pTradePtsLabel.setText(Integer.toString(info[0]));
         pFightPtsLabel.setText(Integer.toString(info[1]));
         pExpLabel.setText(Integer.toString(info[2]));

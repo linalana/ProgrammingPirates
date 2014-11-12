@@ -11,11 +11,10 @@ import static org.junit.Assert.assertArrayEquals;
  * @author James
  */
 public class UpdateChartTest {
-
-    @Before
     /**
-     * set up a game with a world and continents to test range chart with
+     * set up a game with a world and continents to test range chart with.
      */
+    @Before
     public final void setUp() {
         new Game(new Player("James", 0, 0, 0, 0));
         World testWorld = new World();

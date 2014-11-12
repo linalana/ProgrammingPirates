@@ -72,7 +72,7 @@ public class Continent implements Serializable {
     private void setTechLevel() {
         Random rand = new Random();
         //no default case needed because there is only a set number of possible
-        //political systems
+        //political systems designate techlevel. Values from spacetrader reqs
         switch (getPoliticalSystem()) {
             case "anarchy":
                 techLevel = rand.nextInt(5);

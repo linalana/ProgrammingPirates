@@ -50,7 +50,7 @@ public class PoliceForce extends Encounterer {
     }
 
     /**
-     *
+     * Decides the appropriate police strength based on the political system
      * @param system the political system of the continent
      * @return the strength
      */
@@ -66,6 +66,7 @@ public class PoliceForce extends Encounterer {
                 strengthCount = i;
             }
         }
+        //these strengths represent the level of police force (0-5)
         if (strengthCount >= 0 && strengthCount <= 1) {
             aStrength = 0;
         } else if (strengthCount >= 2 && strengthCount <= 3) {
@@ -100,6 +101,7 @@ public class PoliceForce extends Encounterer {
                 bribeCount = i;
             }
         }
+        
         if (bribeCount >= 0 && bribeCount <= 5) {
             aBribe = 0;
         } else if (bribeCount >= 6 && bribeCount <= 10) {

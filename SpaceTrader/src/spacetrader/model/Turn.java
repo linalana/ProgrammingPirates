@@ -41,6 +41,7 @@ public class Turn implements Serializable {
         Random rand = new Random();
         String encounterType = null;
         int randInt = rand.nextInt(100);
+        //100% chances filled for what encounter happens
         if (randInt < policeChance) {
             encounter = new Encounter(Game.getPlayer(),
                         new PoliceForce(newContinent.getPoliticalSystem()));
@@ -61,6 +62,7 @@ public class Turn implements Serializable {
 
     /**
      * set chance of encountering various types of people.
+     * chances for each political system differ
      */
     private void setChanceEncounters() {
         switch (politicalSystem) {

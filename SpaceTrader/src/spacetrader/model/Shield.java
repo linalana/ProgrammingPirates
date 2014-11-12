@@ -18,16 +18,16 @@ public enum Shield {
      */
     REFLECTIVE(4, 4, 7, 1000, 100, 10, 50);
 
-    private final int MTLP;
+    private final int mtlp;
     // Minimum Tech Level to Produce this resource
     //(You can't buy on planets below this level)
-    private final int MTLU;
+    private final int mtlu;
     // Minimum Tech Level to Use this resource
     //(You can't sell on planets below this level)
-    private final int TTP;
+    private final int ttp;
     // Tech Level which produces the most of this item
     private final int basePrice;
-    private final int IPL;
+    private final int ilp;
     // Price increase per tech level
     private final int var;
     // variance is the maximum percentage
@@ -51,11 +51,11 @@ public enum Shield {
     Shield(final int aMTLP, final int aMTLU, final int aTTP,
             final int aBasePrice, final int aIPL, final int aVar,
             final int aStrength) {
-        this.MTLP = aMTLP;
-        this.MTLU = aMTLU;
-        this.TTP = aTTP;
+        this.mtlp = aMTLP;
+        this.mtlu = aMTLU;
+        this.ttp = aTTP;
         this.basePrice = aBasePrice;
-        this.IPL = aIPL;
+        this.ilp = aIPL;
         this.var = aVar;
         this.strength = aStrength;
     }
@@ -67,7 +67,7 @@ public enum Shield {
      * @return the price
      */
     public int calculatePrice(final Port port) {
-        int price = basePrice + IPL * (port.getTechLevel() - MTLP);
+        int price = basePrice + ilp * (port.getTechLevel() - mtlp);
         if (price < 0) {
             return 0;
         }
@@ -85,22 +85,22 @@ public enum Shield {
         int random = rand.nextInt(QUANTITY_VARIANCE)
                 - rand.nextInt(QUANTITY_VARIANCE);
         int q;
-        if (techLevel < MTLP) {
+        if (techLevel < mtlp) {
             q = 0;
-        } else if (techLevel == TTP) {
+        } else if (techLevel == ttp) {
             q = MAXIMUM_QUANTITY + random;
         } else {
-            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - MTLP)
+            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - mtlp)
                     + random;
         }
         return q;
     }
 
     /**
-     * @return the MTLU
+     * @return the mtlu
      */
     public int getMTLU() {
-        return MTLU;
+        return mtlu;
     }
 
     /**

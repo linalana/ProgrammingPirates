@@ -10,6 +10,7 @@ public class Encounter implements Serializable {
 
     private Player p;
     private Encounterer e;
+    private final static int TOTAL_STATS = 6;
     /**
      * Encounter constructor.
      * @param newP a player
@@ -92,15 +93,15 @@ public class Encounter implements Serializable {
      * @return the int array containing all the stats required for fight screen
      */
     public final int[] getInfo() {
-        //12 is the number of stats needed - only used once
-        int[] info = new int[12];
+
+        int[] info = new int[TOTAL_STATS * 2];
         int[] pInfo = p.getPlayerInfo();
         int[] otherInfo = e.getEncountererInfo();
-        for (int i = 0; i < 12; i++) {
-            if (i < 6) {
+        for (int i = 0; i < TOTAL_STATS * 2; i++) {
+            if (i < TOTAL_STATS) {
                 info[i] = pInfo[i];
             } else {
-                info[i] = otherInfo[i - 6];
+                info[i] = otherInfo[i - TOTAL_STATS];
             }
         }
         return info;

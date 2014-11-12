@@ -221,11 +221,11 @@ public class Player implements Serializable {
      */
     public final int failInspection() {
         policeRecord.decrementInspectionHistory();
-        //fine - halfs
-        int fine = (int) (money * .05);
+        double finePercentage = .05;
+        int fine = (int) (money * finePercentage);
         if (policeRecord.getInspectionHistory() < 0) {
-            //fine divides by 10
-            fine = (int) (money * .1);
+            double highFinePercentage = .1; //increase for bad history
+            fine = (int) (money * finePercentage);
         }
         setMoney(getMoney() - fine);
         //confiscate

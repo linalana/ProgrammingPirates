@@ -42,6 +42,7 @@ public class Ship implements Serializable {
 
     /**
      * Creates a new ship.
+     * Numbers come from game requirements for Space Trader
      *
      * @param typeind the type of ship
      */
