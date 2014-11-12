@@ -13,7 +13,14 @@ public class RandomEvent {
 
     private Event[] events;
     private Event event;
-
+    
+    private static final int MIN_MONEY_CHANGE = -100;
+    private static final int MIN_FUEL_CHANGE = -200;
+    private static final int MIN_SHIELD_CHANGE = -10;
+    private static final int MAX_SHIELD_CHANGE = -5;
+    private static final int MAX_FUEL_CHANGE = 1000;
+    private static final int MED_FUEL_CHANGE = -100;
+    private static final int MED_MONEY_CHANGE = -10;
     /**
      * Creates event.
      */
@@ -27,14 +34,15 @@ public class RandomEvent {
     public final void initialize() {
         events = new Event[]{new Event("Kraken Attackin'!",
             "Your ship was attacked by a Kraken! Your fuel and shields are "
-                + "severly depleted", 0, -100, -5),
+                + "severly depleted", 0, MIN_MONEY_CHANGE, MAX_SHIELD_CHANGE),
             new Event("A Storm!", "You encountered a wicked storm! You lost a "
-                    + "little of everything in the struggle", -100, -10, -5),
+                    + "little of everything in the struggle", MED_FUEL_CHANGE,
+                    MED_MONEY_CHANGE, MAX_SHIELD_CHANGE),
             new Event("Sirens", "Beautiful sirens lured you off course! They "
-                    + "stole your money and badly damaged your ship!", -200 ,
-                    -10, -10),
+                    + "stole your money and badly damaged your ship!",
+                    MIN_FUEL_CHANGE , MED_MONEY_CHANGE, MIN_SHIELD_CHANGE),
             new Event("Buried Treasure!", "You found burried treasure! Have "
-                    + "some money!", 1000, 0, 0)};
+                    + "some money!", MAX_FUEL_CHANGE, 0, 0)};
         Random rand = new Random();
         event = events[rand.nextInt(events.length)];
         Game.getPlayer().setMoney(Game.getPlayer().getMoney()
