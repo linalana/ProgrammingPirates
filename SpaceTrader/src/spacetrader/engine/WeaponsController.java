@@ -44,7 +44,7 @@ public class WeaponsController implements Initializable {
      * @param rb is the resource bundle
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         updateMoneyLabel();
         slotsAvailable = Game.getPlayer().getShip().getWeaponHold()
                 .getEmptySlots();
@@ -99,7 +99,7 @@ public class WeaponsController implements Initializable {
      * @param event the event
      */
     @FXML
-    public void buyButtonPressed(final ActionEvent event) {
+    public final void buyButtonPressed(final ActionEvent event) {
         String longString = marketWeaponsList.getSelectionModel()
                 .getSelectedItem();
         if (longString == null) {
@@ -135,7 +135,7 @@ public class WeaponsController implements Initializable {
      * @param event the event that is passed in
      */
     @FXML
-    public void sellButtonPressed(final ActionEvent event) {
+    public final void sellButtonPressed(final ActionEvent event) {
         String longString = shipWeaponsList.getSelectionModel()
                 .getSelectedItem();
         if (longString == null) {

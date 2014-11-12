@@ -134,14 +134,14 @@ public class PoliceForce extends Encounterer {
     /**
      * @return the strength
      */
-    public int getStrength() {
+    public final int getStrength() {
         return strength;
     }
 
     /**
      * @return the bribe
      */
-    public int getBribe() {
+    public final int getBribe() {
         return bribe;
     }
 }

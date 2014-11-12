@@ -32,7 +32,7 @@ public class PlayerTabPageController implements Initializable {
      * @param rb the resource bundle
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
         nameLabel.setText("Name: " + Game.getPlayer().getName());
         fighter.setText("Fighter: " + Game.getPlayer().getFighter());

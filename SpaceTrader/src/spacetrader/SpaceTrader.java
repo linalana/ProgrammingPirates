@@ -24,7 +24,7 @@ public class SpaceTrader extends Application {
     private AnchorPane rootLayout;
 
     @Override
-    public void start(Stage primaryStage) {
+    public final void start(Stage primaryStage) {
         SpaceTrader.primaryStage = primaryStage;
         SpaceTrader.primaryStage.setTitle("Call of Booty: Black Ships");
 
@@ -35,7 +35,7 @@ public class SpaceTrader extends Application {
     /**
      * Initializes the root layout.
      */
-    public void initRootLayout() {
+    public final void initRootLayout() {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();

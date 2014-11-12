@@ -1,7 +1,7 @@
 package spacetrader.model;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 /**
  * Test of addGadget method, of class GadgetHold.
  *
@@ -13,7 +13,7 @@ public class AddGadgetTest {
      * Test of addGadget method, where no gadgets have been added yet.
      */
     @Test
-    public void testNoGadgets() {
+    public final void testNoGadgets() {
         GadgetHold hold = new GadgetHold(5);
         int expResult = 0;
         int result = hold.getTotalGadgets();
@@ -24,7 +24,7 @@ public class AddGadgetTest {
      * Test of addGadget method, where one gadget has been added.
      */
     @Test
-    public void testOneGadget() {
+    public final void testOneGadget() {
         GadgetHold hold = new GadgetHold(5);
         Gadget gadget = Gadget.valueOf("EXTRACARGO");
         hold.addGadget(gadget, 1);
@@ -37,7 +37,7 @@ public class AddGadgetTest {
      * Test of addGadget method, where too many gadgets have been added.
      */
     @Test
-    public void testTooManyGadgets() {
+    public final void testTooManyGadgets() {
         GadgetHold hold = new GadgetHold(5);
         Gadget gadget = Gadget.valueOf("EXTRACARGO");
         hold.addGadget(gadget, 6);
@@ -50,7 +50,7 @@ public class AddGadgetTest {
      * Test of addGadget method, where different gadgets have been added.
      */
     @Test
-    public void testDifferentGadgets() {
+    public final void testDifferentGadgets() {
         GadgetHold hold = new GadgetHold(5);
         Gadget gadget = Gadget.valueOf("EXTRACARGO");
         Gadget gadget2 = Gadget.valueOf("NAVSYSTEM");
@@ -69,11 +69,11 @@ public class AddGadgetTest {
      * should return True.
      */
     @Test
-    public void testTrue() {
+    public final void testTrue() {
         GadgetHold hold = new GadgetHold(5);
         Gadget gadget = Gadget.valueOf("EXTRACARGO");
         boolean expResult = true;
-        boolean result = hold.addGadget(gadget, 1);;
+        boolean result = hold.addGadget(gadget, 1);
         assertEquals(expResult, result);
     }
 
@@ -82,11 +82,11 @@ public class AddGadgetTest {
      * the method should return False.
      */
     @Test
-    public void testFalse() {
+    public final void testFalse() {
         GadgetHold hold = new GadgetHold(5);
         Gadget gadget = Gadget.valueOf("EXTRACARGO");
         boolean expResult = false;
-        boolean result = hold.addGadget(gadget, 6);;
+        boolean result = hold.addGadget(gadget, 6);
         assertEquals(expResult, result);
     }
 }

@@ -22,7 +22,7 @@ public class Trader extends Encounterer {
      * @param playerIsPirate, whether or not player is pirate
      * @return true if trader will NOT flee
      */
-    public boolean willEncounter(boolean playerIsPirate) {
+    public final boolean willEncounter(boolean playerIsPirate) {
         return !playerIsPirate;
     }
 
@@ -38,7 +38,7 @@ public class Trader extends Encounterer {
      * @return the traderPoints
      */
     @Override
-    public int getTraderPoints() {
+    public final int getTraderPoints() {
         return traderPoints;
     }
 
@@ -48,7 +48,7 @@ public class Trader extends Encounterer {
      * @return int array of stats for fight
      */
     @Override
-    public int[] getEncountererInfo() {
+    public final int[] getEncountererInfo() {
         return person.getInfo();
     }
 

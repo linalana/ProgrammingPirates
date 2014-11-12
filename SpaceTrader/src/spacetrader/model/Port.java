@@ -47,47 +47,47 @@ public class Port implements Serializable {
      *
      * @return name
      */
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return getName();
     }
 
     /**
      * @return the bazaar
      */
-    public Bazaar getBazaar() {
+    public final Bazaar getBazaar() {
         return bazaar;
     }
 
     /**
      * @return the techLevel
      */
-    public int getTechLevel() {
+    public final int getTechLevel() {
         return techLevel;
     }
 
     /**
      * @return the resources
      */
-    public String getResources() {
+    public final String getResources() {
         return resources;
     }
 
     /**
      * @return the resources
      */
-    public ShipYard getShipyard() {
+    public final ShipYard getShipyard() {
         return shipYard;
     }
 
     /**
      * @return the event
      */
-    public String getEvent() {
+    public final String getEvent() {
         if (event == -1) {
             return null;
         }
@@ -97,42 +97,42 @@ public class Port implements Serializable {
     /**
      * @param event the event to set
      */
-    public void setEvent(final int event) {
+    public final void setEvent(final int event) {
         this.event = event;
     }
 
     /**
      * @return the continent the port is in
      */
-    public Continent getContinent() {
+    public final Continent getContinent() {
         return continent;
     }
 
     /**
      * @return the policeForce
      */
-    public PoliceForce getPoliceForce() {
+    public final PoliceForce getPoliceForce() {
         return policeForce;
     }
 
     /**
      * @param policeForce the policeForce to set
      */
-    public void setPoliceForce(final PoliceForce policeForce) {
+    public final void setPoliceForce(final PoliceForce policeForce) {
         this.policeForce = policeForce;
     }
 
     /**
      * @param techLevel the techLevel to set
      */
-    public void setTechLevel(final int techLevel) {
+    public final void setTechLevel(final int techLevel) {
         this.techLevel = techLevel;
     }
 
     /**
      * @param shipYard the shipYard to set
      */
-    public void setShipYard(ShipYard shipYard) {
+    public final void setShipYard(ShipYard shipYard) {
         this.shipYard = shipYard;
     }
 }

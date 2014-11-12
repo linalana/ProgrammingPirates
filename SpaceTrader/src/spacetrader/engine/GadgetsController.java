@@ -44,7 +44,7 @@ public class GadgetsController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         // TODO
         updateMoneyLabel();
         Port port = Game.getCurrentPort();
@@ -59,7 +59,7 @@ public class GadgetsController implements Initializable {
      * @param event buy button pressed
      */
     @FXML
-    public void buyButtonPressed(final ActionEvent event) {
+    public final void buyButtonPressed(final ActionEvent event) {
         String longString =
                 yardGadgetList.getSelectionModel().getSelectedItem();
         if (longString == null) {
@@ -101,7 +101,7 @@ public class GadgetsController implements Initializable {
      * @param event sell button clicked
      */
     @FXML
-    public void sellButtonPressed(final ActionEvent event) {
+    public final void sellButtonPressed(final ActionEvent event) {
         String longString =
                 playerGadgetList.getSelectionModel().getSelectedItem();
         if (longString == null) {

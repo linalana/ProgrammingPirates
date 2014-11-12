@@ -144,119 +144,119 @@ public class Ship implements Serializable {
     /**
      * @return the cargo hold
      */
-    public CargoHold getCargoHold() {
+    public final CargoHold getCargoHold() {
         return cargoHold;
     }
 
     /**
      * @return the weapon hold
      */
-    public WeaponHold getWeaponHold() {
+    public final WeaponHold getWeaponHold() {
         return weaponHold;
     }
 
     /**
      * @return the shield hold
      */
-    public ShieldHold getShieldHold() {
+    public final ShieldHold getShieldHold() {
         return shieldHold;
     }
 
     /**
      * @return the weapon hold
      */
-    public int getPrice() {
+    public final int getPrice() {
         return price;
     }
 
     /**
      * @return the gadget hold
      */
-    public GadgetHold getGadgetHold() {
+    public final GadgetHold getGadgetHold() {
         return gadgetHold;
     }
 
     /**
      * @return the type
      */
-    public String getType() {
+    public final String getType() {
         return type;
     }
 
     /**
      * @return the cargoBays
      */
-    public int getCargoBays() {
+    public final int getCargoBays() {
         return cargoBays;
     }
 
     /**
      * @return the hullStrength
      */
-    public int getHullStrength() {
+    public final int getHullStrength() {
         return hullStrength;
     }
 
     /**
      * @return the weaponSlots
      */
-    public int getWeaponSlots() {
+    public final int getWeaponSlots() {
         return weaponSlots;
     }
 
     /**
      * @param weaponSlots the weaponSlots to set
      */
-    public void setWeaponSlots(int weaponSlots) {
+    public final void setWeaponSlots(int weaponSlots) {
         this.weaponSlots = weaponSlots;
     }
 
     /**
      * @return the shieldSlots
      */
-    public int getShieldSlots() {
+    public final int getShieldSlots() {
         return shieldSlots;
     }
 
     /**
      * @param shieldSlots the shieldSlots to set
      */
-    public void setShieldSlots(int shieldSlots) {
+    public final void setShieldSlots(int shieldSlots) {
         this.shieldSlots = shieldSlots;
     }
 
     /**
      * @return the gadgetSlots
      */
-    public int getGadgetSlots() {
+    public final int getGadgetSlots() {
         return gadgetSlots;
     }
 
     /**
      * @param gadgetSlots the gadgetSlots to set
      */
-    public void setGadgetSlots(int gadgetSlots) {
+    public final void setGadgetSlots(int gadgetSlots) {
         this.gadgetSlots = gadgetSlots;
     }
 
     /**
      * @return the quarters
      */
-    public int getQuarters() {
+    public final int getQuarters() {
         return quarters;
     }
 
     /**
      * @return the maxRange
      */
-    public int getMaxRange() {
+    public final int getMaxRange() {
         return maxRange;
     }
 
     /**
      * fill fuel to max.
      */
-    public void fillTank() {
+    public final void fillTank() {
         fuel = maxRange;
     }
 
@@ -265,7 +265,7 @@ public class Ship implements Serializable {
      *
      * @param change in fuel
      */
-    public void addFuel(int change) {
+    public final void addFuel(int change) {
         fuel = fuel + change;
         if (fuel > maxRange) {
             fuel = maxRange;
@@ -278,7 +278,7 @@ public class Ship implements Serializable {
     /**
      * @return amount of fuel
      */
-    public int getFuel() {
+    public final int getFuel() {
         return fuel;
     }
 
@@ -287,7 +287,7 @@ public class Ship implements Serializable {
      *
      * @return int damage
      */
-    public int getDamage() {
+    public final int getDamage() {
         return getWeaponHold().calcTotalDamage();
     }
 
@@ -297,7 +297,7 @@ public class Ship implements Serializable {
      * @param totalDamage, damage to be allocated to parts of ship
      * @return true if ship lives
      */
-    boolean distributeDamage(int totalDamage) {
+    final boolean distributeDamage(int totalDamage) {
         int remainingDamage = getShieldHold().decreaseStrength(totalDamage);
         if (remainingDamage != 0) {
             hullStrength -= remainingDamage;
@@ -312,21 +312,21 @@ public class Ship implements Serializable {
     /**
      * @return if has a lifeBoat
      */
-    public boolean hasLifeBoat() {
+    public final boolean hasLifeBoat() {
         return lifeBoat;
     }
 
     /**
      * @param lifeBoat the lifeBoat to set
      */
-    public void setLifeBoat(boolean lifeBoat) {
+    public final void setLifeBoat(boolean lifeBoat) {
         this.lifeBoat = lifeBoat;
     }
 
     /**
      * @return total strength of shields
      */
-    public int getShieldStrength() {
+    public final int getShieldStrength() {
         return getShieldHold().getEnergyStrength() +
                getShieldHold().getReflectiveStrength();
     }
@@ -334,7 +334,7 @@ public class Ship implements Serializable {
     /**
      * @return total possible damage of weapons
      */
-    public int getWeaponStrength() {
+    public final int getWeaponStrength() {
         return getWeaponHold().calcTotalDamage();
     }
 
@@ -343,14 +343,14 @@ public class Ship implements Serializable {
      *
      * @return true if cargohold contains those items
      */
-    public boolean checkHoldForIllegal() {
+    public final boolean checkHoldForIllegal() {
         return getCargoHold().findIllegal();
     }
 
     /**
      * removes illegal goods from cargohold.
      */
-    void removeIllegalGoods() {
+    final void removeIllegalGoods() {
         getCargoHold().removeIllegal();
     }
 
@@ -359,7 +359,7 @@ public class Ship implements Serializable {
      *
      * @return total value of ship and contents
      */
-    public int calculateValue() {
+    public final int calculateValue() {
         int v = price;
         for (TradeGood g : getCargoHold().getGoods().keySet()) {
             int goodQuantity = getCargoHold().getGoods().get(g);
@@ -394,42 +394,42 @@ public class Ship implements Serializable {
     /**
      * @param cargoHold the cargoHold to set
      */
-    public void setCargoHold(CargoHold cargoHold) {
+    public final void setCargoHold(CargoHold cargoHold) {
         this.cargoHold = cargoHold;
     }
 
     /**
      * @param weaponHold the weaponHold to set
      */
-    public void setWeaponHold(WeaponHold weaponHold) {
+    public final void setWeaponHold(WeaponHold weaponHold) {
         this.weaponHold = weaponHold;
     }
 
     /**
      * @param shieldHold the shieldHold to set
      */
-    public void setShieldHold(ShieldHold shieldHold) {
+    public final void setShieldHold(ShieldHold shieldHold) {
         this.shieldHold = shieldHold;
     }
 
     /**
      * @param gadgetHold the gadgetHold to set
      */
-    public void setGadgetHold(GadgetHold gadgetHold) {
+    public final void setGadgetHold(GadgetHold gadgetHold) {
         this.gadgetHold = gadgetHold;
     }
 
     /**
      * @param maxRange the maxRange to set
      */
-    public void setMaxRange(int maxRange) {
+    public final void setMaxRange(int maxRange) {
         this.maxRange = maxRange;
     }
 
     /**
      * @return the names
      */
-    public String[] getNames() {
+    public final String[] getNames() {
         return names;
     }
 

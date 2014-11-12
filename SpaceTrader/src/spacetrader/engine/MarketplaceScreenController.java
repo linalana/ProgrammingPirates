@@ -46,7 +46,7 @@ public class MarketplaceScreenController implements Initializable {
      * @param rb the resource bundle
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         // TODO
         updateMoneyLabel();
         Port port = Game.getCurrentPort();
@@ -62,7 +62,7 @@ public class MarketplaceScreenController implements Initializable {
      * @param event buy button pressed
      */
     @FXML
-    public void buyButtonPressed(final ActionEvent event) {
+    public final void buyButtonPressed(final ActionEvent event) {
         String longString = marketGoodsList.getSelectionModel()
                 .getSelectedItem();
         if (longString == null) {
@@ -100,7 +100,7 @@ public class MarketplaceScreenController implements Initializable {
     }
 
     @FXML
-    public void sellButtonPressed(ActionEvent event) {
+    public final void sellButtonPressed(ActionEvent event) {
         String longString =
                cargoGoodsList.getSelectionModel().getSelectedItem();
         if (longString == null) {
@@ -135,15 +135,15 @@ public class MarketplaceScreenController implements Initializable {
     }
 
     @FXML
-    public void backButtonPressed(ActionEvent event) {
+    public final void backButtonPressed(ActionEvent event) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
 
-    public void updateMoneyLabel() {
+    public final void updateMoneyLabel() {
         moneyLabel.setText("Money: " + Game.getPlayer().getMoney());
     }
 
-    public void updateLists() {
+    public final void updateLists() {
         cargo = cargoGoodsList.getItems();
         market = marketGoodsList.getItems();
         goodsForSale = bazaar.getGoodsForSale();

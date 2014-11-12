@@ -2,7 +2,7 @@ package spacetrader.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class PlayerTest {
     private Player player;
     @Before
-    public void setUp() {
+    public final void setUp() {
         player = new Player("Test", 5, 5, 3, 2);
         player.setShip(2); //upgrade to ship with shield hold
         player.getShieldHold().addShield(Shield.ENERGY, 1); //25 strength
@@ -22,7 +22,7 @@ public class PlayerTest {
      * damaged
      */
     @Test
-    public void testDistributeDamageShieldOnly() {
+    public final void testDistributeDamageShieldOnly() {
         System.out.println("Shield Only");
         int totalDamage = 10;
         int result = player.distributeDamage(totalDamage);
@@ -42,7 +42,7 @@ public class PlayerTest {
      * When the Damage goes through to the hull
      */
     @Test
-    public void testDistributeDamageShieldAndHull() {
+    public final void testDistributeDamageShieldAndHull() {
         System.out.println("Shield and Hull");
         int totalDamage = 26;
         int result = player.distributeDamage(totalDamage);
@@ -63,7 +63,7 @@ public class PlayerTest {
      * When no shield
      */
     @Test
-    public void testDistributeDamageNoShield() {
+    public final void testDistributeDamageNoShield() {
         System.out.println("No shield");
         //remove shield
         player.getShieldHold().decreaseStrength(25);
@@ -85,7 +85,7 @@ public class PlayerTest {
      * When destroyed but life boat
      */
     @Test
-    public void testDistributeDamageLifeBoat() {
+    public final void testDistributeDamageLifeBoat() {
         System.out.println("LifeBoat");
         player.getShip().setLifeBoat(true);
         int totalDamage = 35;
@@ -99,7 +99,7 @@ public class PlayerTest {
      * When destroyed but no life boat
      */
     @Test
-    public void testDistributeDamageDestroyed() {
+    public final void testDistributeDamageDestroyed() {
         System.out.println("Death");
         int totalDamage = 35;
         int expResult = 0; //dead

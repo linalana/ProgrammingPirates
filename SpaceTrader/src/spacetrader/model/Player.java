@@ -36,7 +36,7 @@ public class Player implements Serializable {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return "Player name: " + name + " " + p;
     }
 
@@ -45,7 +45,7 @@ public class Player implements Serializable {
      *
      * @param e the encounterer
      */
-    public void attack(final Encounterer e) {
+    public final void attack(final Encounterer e) {
         if (e.getClass().equals(Pirate.class)) {
             //it's a pirate!
             //cast is safe because if statement checks it
@@ -69,7 +69,7 @@ public class Player implements Serializable {
      *
      * @param newName the players new name
      */
-    public void setName(final String newName) {
+    public final void setName(final String newName) {
         name = newName;
     }
 
@@ -79,7 +79,7 @@ public class Player implements Serializable {
      *
      * @return String name
      */
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
@@ -89,7 +89,7 @@ public class Player implements Serializable {
      *
      * @return int fighter
      */
-    public int getFighter() {
+    public final int getFighter() {
         return p.getFighter();
     }
 
@@ -99,7 +99,7 @@ public class Player implements Serializable {
      *
      * @return int trader
      */
-    public int getTrader() {
+    public final int getTrader() {
         return p.getTrader();
     }
 
@@ -109,7 +109,7 @@ public class Player implements Serializable {
      *
      * @return int engineer
      */
-    public int getEngineer() {
+    public final int getEngineer() {
         return p.getEngineer();
     }
 
@@ -119,56 +119,56 @@ public class Player implements Serializable {
      *
      * @return int investor
      */
-    public int getInvestor() {
+    public final int getInvestor() {
         return p.getInvestor();
     }
 
     /**
      * @return the money
      */
-    public int getMoney() {
+    public final int getMoney() {
         return money;
     }
 
     /**
      * @param money the money to set
      */
-    public void setMoney(final int money) {
+    public final void setMoney(final int money) {
         this.money = money;
     }
 
     /**
      * @return the ship
      */
-    public Ship getShip() {
+    public final Ship getShip() {
         return p.getShip();
     }
 
     /**
      * @param type the ship to set
      */
-    public void setShip(final int type) {
+    public final void setShip(final int type) {
         p.updateShip(type);
     }
 
     /**
      * @return the reputation
      */
-    public int getReputation() {
+    public final int getReputation() {
         return p.getReputation();
     }
 
     /**
      * @param exp reputation to be added
      */
-    public void addExperience(final int exp) {
+    public final void addExperience(final int exp) {
         p.addReputation(exp);
     }
 
     /**
      * @return the policeRecord
      */
-    public PoliceRecord getPoliceRecord() {
+    public final PoliceRecord getPoliceRecord() {
         return policeRecord;
     }
 
@@ -177,14 +177,14 @@ public class Player implements Serializable {
      *
      * @return int array of stats for fight
      */
-    public int[] getPlayerInfo() {
+    public final int[] getPlayerInfo() {
         return p.getInfo();
     }
 
     /**
      * @return total damage player is capable of
      */
-    public int calcDamage() {
+    public final int calcDamage() {
         return p.calcDamage();
     }
 
@@ -194,7 +194,7 @@ public class Player implements Serializable {
      * @param totalDamage the damage done to the player
      * @return 0 if dead, 1 if survived on lifeboat, 2 if alive
      */
-    public int distributeDamage(final int totalDamage) {
+    public final int distributeDamage(final int totalDamage) {
         if (p.distributeDamage(totalDamage)) {
             return 2;
         }
@@ -209,7 +209,7 @@ public class Player implements Serializable {
      *
      * @return true if contains illegal goods
      */
-    public boolean checkCargo() {
+    public final boolean checkCargo() {
         return p.getShip().checkHoldForIllegal();
     }
 
@@ -218,7 +218,7 @@ public class Player implements Serializable {
      *
      * @return amount of fine based on inspection history
      */
-    public int failInspection() {
+    public final int failInspection() {
         policeRecord.decrementInspectionHistory();
         //fine - halfs
         int fine = (int) (money * .05);
@@ -236,7 +236,7 @@ public class Player implements Serializable {
     /**
      * @return player's shield hold
      */
-    public ShieldHold getShieldHold() {
+    public final ShieldHold getShieldHold() {
         return p.getShieldHold();
     }
 }

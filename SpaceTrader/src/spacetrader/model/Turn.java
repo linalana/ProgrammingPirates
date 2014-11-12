@@ -33,7 +33,7 @@ public class Turn implements Serializable {
      * @param fuelUsed to travel
      * @return the result (what happened)
      */
-    public String travel(int fuelUsed) {
+    public final String travel(int fuelUsed) {
         Random rand = new Random();
         String encounterType = null;
         int randInt = rand.nextInt(100);

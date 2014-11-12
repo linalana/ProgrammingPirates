@@ -131,7 +131,7 @@ public class Continent implements Serializable {
      *
      * @param techLevel
      */
-    protected void setTechLevel(int techLevel) {
+    protected final void setTechLevel(int techLevel) {
         this.techLevel = techLevel;
         mainPort.setTechLevel(techLevel);
         ports[0].setTechLevel(techLevel);
@@ -142,12 +142,12 @@ public class Continent implements Serializable {
     /**
      * @return the resource
      */
-    public String getResource() {
+    public final String getResource() {
         return resources[resource];
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         StringBuilder builder = new StringBuilder();
         int i = 0;
         while (i < MAX_PORTS && ports[i] != null) {
@@ -166,21 +166,21 @@ public class Continent implements Serializable {
     /**
      * @return the x
      */
-    public int getX() {
+    public final int getX() {
         return x;
     }
 
     /**
      * @return the y
      */
-    public int getY() {
+    public final int getY() {
         return y;
     }
 
     /**
      * @return the techLevel
      */
-    public int getTechLevel() {
+    public final int getTechLevel() {
         return techLevel;
     }
 
@@ -188,21 +188,21 @@ public class Continent implements Serializable {
      *
      * @return techLevel as a string
      */
-    public String getTechLevelString() {
+    public final String getTechLevelString() {
         return techLevels[techLevel].toLowerCase(Locale.ENGLISH);
     }
 
     /**
      * @return the mainPort
      */
-    public Port getMainPort() {
+    public final Port getMainPort() {
         return mainPort;
     }
 
     /**
      * @return the politicalSystem
      */
-    public String getPoliticalSystem() {
+    public final String getPoliticalSystem() {
         return politicalSystem;
     }
 
@@ -213,7 +213,7 @@ public class Continent implements Serializable {
      * @param eventY mouse y location
      * @return true if continent was clicked
      */
-    public boolean isClicked(final double eventX, final double eventY) {
+    public final boolean isClicked(final double eventX, final double eventY) {
         double dx = eventX - x - 7.5;
         double dy = eventY - y - 7.5;
         return (Math.sqrt(dx * dx + dy * dy) < 7.5);
@@ -222,7 +222,7 @@ public class Continent implements Serializable {
     /**
      * @return continent name
      */
-    public String getName() {
+    public final String getName() {
         return name;
     }
 }

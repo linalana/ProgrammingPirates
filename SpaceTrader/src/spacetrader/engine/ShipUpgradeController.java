@@ -37,7 +37,7 @@ public class ShipUpgradeController implements Initializable {
      * @param rb the resource bundle
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         // TODO
         player = Game.getPlayer();
         rumLabel.setText("Rum on ship: " + player.getShip().getFuel());
@@ -71,7 +71,7 @@ public class ShipUpgradeController implements Initializable {
     /**
      * updates the money and rum labels.
      */
-    public void updateLabels() {
+    public final void updateLabels() {
         rumLabel.setText("Rum on ship: " + player.getShip().getFuel());
         moneyLabel.setText("Money: " + player.getMoney());
     }

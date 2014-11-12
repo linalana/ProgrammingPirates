@@ -2,7 +2,7 @@ package spacetrader.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * a test class to test the calculateValue method in Ship.
@@ -16,7 +16,7 @@ public class CalculateValueTest {
      * and game to base the calculations on.
      */
     @Before
-    public void setUp() {
+    public final void setUp() {
         Player player = new Player("Michael", 0,
                     0, 0, 0);
         Game game = new Game(player);
@@ -27,7 +27,7 @@ public class CalculateValueTest {
      * in which the ship has no value other than its original price.
      */
     @Test
-    public void testPriceOnly() {
+    public final void testPriceOnly() {
         Ship instance = new Ship(5);
         int expResult = 30000;
         int result = instance.calculateValue();
@@ -39,7 +39,7 @@ public class CalculateValueTest {
      * in which the ship has value from its cargo hold.
      */
     @Test
-    public void testContainsGoods() {
+    public final void testContainsGoods() {
         Ship instance = new Ship(5);
         CargoHold cargo = new CargoHold(2);
         cargo.addCargo(TradeGood.ORE, 1);
@@ -61,7 +61,7 @@ public class CalculateValueTest {
      * a higher tech level.
      */
     @Test
-    public void testContainsGoodsOverTechLevel() {
+    public final void testContainsGoodsOverTechLevel() {
         Ship instance = new Ship(5);
         Game.setCurrentPort(new Port("Tester", 3, "RICH SOIL",
                 new Continent("Tester", "Theocracy", 200, 200)));
@@ -78,7 +78,7 @@ public class CalculateValueTest {
      * in which the ship has value from its gadget hold.
      */
     @Test
-    public void testContainsGadget() {
+    public final void testContainsGadget() {
         Ship instance = new Ship(5);
         GadgetHold gadget = new GadgetHold(2);
         gadget.addGadget(Gadget.CLOAK, 1);
@@ -100,7 +100,7 @@ public class CalculateValueTest {
      * in which the ship has value from its shield hold.
      */
     @Test
-    public void testContainsShield() {
+    public final void testContainsShield() {
         Ship instance = new Ship(5);
         ShieldHold shield = new ShieldHold(2);
         shield.addShield(Shield.ENERGY, 1);
@@ -120,7 +120,7 @@ public class CalculateValueTest {
      * in which the ship has value from its weapon hold.
      */
     @Test
-    public void testContainsWeapon() {
+    public final void testContainsWeapon() {
         Ship instance = new Ship(5);
         WeaponHold weapon = new WeaponHold(2);
         weapon.addWeapon(Weapon.BEAM, 1);
@@ -143,7 +143,7 @@ public class CalculateValueTest {
      * and gadget holds.
      */
     @Test
-    public void testContainsAll() {
+    public final void testContainsAll() {
         Ship instance = new Ship(5);
         CargoHold cargo = new CargoHold(2);
         cargo.addCargo(TradeGood.ORE, 1);

@@ -26,42 +26,42 @@ public class PoliceRecord implements Serializable {
     /**
      * @return the isPirate
      */
-    public boolean isIsPirate() {
+    public final boolean isIsPirate() {
         return isPirate;
     }
 
     /**
      * @param isPirate the isPirate to set
      */
-    public void setIsPirate(final boolean isPirate) {
+    public final void setIsPirate(final boolean isPirate) {
         this.isPirate = isPirate;
     }
 
     /**
      * @return the arrestCount
      */
-    public int getArrestCount() {
+    public final int getArrestCount() {
         return arrestCount;
     }
 
     /**
      * @return the inspectionHistory
      */
-    public int getInspectionHistory() {
+    public final int getInspectionHistory() {
         return inspectionHistory;
     }
 
     /**
      * Increment InspectionHistory (good job!).
      */
-    public void incrementInspectionHistory() {
+    public final void incrementInspectionHistory() {
         inspectionHistory++;
     }
 
     /**
      * Decrement InspectionHistory (good job!).
      */
-    public void decrementInspectionHistory() {
+    public final void decrementInspectionHistory() {
         if (inspectionHistory > 0) {
             inspectionHistory--;
         }

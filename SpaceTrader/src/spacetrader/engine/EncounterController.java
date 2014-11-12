@@ -62,7 +62,7 @@ public class EncounterController implements Initializable {
      * @param rb is the resource bundle
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         String type = Turn.getEncounter().getType();
         encounterLabel.setText("You encountered a " + type);
         thingLabel.setText(type);
@@ -113,6 +113,8 @@ public class EncounterController implements Initializable {
     private void handleOtherButtonAction(final ActionEvent event) {
         String type = Turn.getEncounter().getType();
         if (type.equals("Trader")) {
+            //this is a filler statement
+            int x = 0;
             //trading window
             //not finished
         } else if (type.equals("PoliceForce")) {

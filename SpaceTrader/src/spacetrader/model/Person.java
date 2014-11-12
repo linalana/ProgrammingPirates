@@ -35,7 +35,7 @@ public class Person implements Serializable {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return "Fighter: " + getFighter()
                 + ". Trader: " + getTrader() + ". Engineer: "
                 + getEngineer() + ". Investor: " + getInvestor();
@@ -44,91 +44,91 @@ public class Person implements Serializable {
     /**
      * @return the fighter
      */
-    public int getFighter() {
+    public final int getFighter() {
         return fighter;
     }
 
     /**
      * @return the trader
      */
-    public int getTrader() {
+    public final int getTrader() {
         return trader;
     }
 
     /**
      * @return the engineer
      */
-    public int getEngineer() {
+    public final int getEngineer() {
         return engineer;
     }
 
     /**
      * @return the investor
      */
-    public int getInvestor() {
+    public final int getInvestor() {
         return investor;
     }
 
     /**
      * @return the reputation
      */
-    public int getReputation() {
+    public final int getReputation() {
         return reputation;
     }
 
     /**
      * @param reputation the reputation to add
      */
-    public void addReputation(final int reputation) {
+    public final void addReputation(final int reputation) {
         this.setReputation(this.getReputation() + reputation);
     }
 
     /**
      * @param fighter the fighter to set
      */
-    public void setFighter(final int fighter) {
+    public final void setFighter(final int fighter) {
         this.fighter = fighter;
     }
 
     /**
      * @param trader the trader to set
      */
-    public void setTrader(final int trader) {
+    public final void setTrader(final int trader) {
         this.trader = trader;
     }
 
     /**
      * @param engineer the engineer to set
      */
-    public void setEngineer(final int engineer) {
+    public final void setEngineer(final int engineer) {
         this.engineer = engineer;
     }
 
     /**
      * @param investor the investor to set
      */
-    public void setInvestor(final int investor) {
+    public final void setInvestor(final int investor) {
         this.investor = investor;
     }
 
     /**
      * @param reputation the reputation to set
      */
-    public void setReputation(final int reputation) {
+    public final void setReputation(final int reputation) {
         this.reputation = reputation;
     }
 
     /**
      * @return the ship
      */
-    public Ship getShip() {
+    public final Ship getShip() {
         return ship;
     }
 
     /**
      * @param ship the ship to set
      */
-    public void setShip(final Ship ship) {
+    public final void setShip(final Ship ship) {
         this.ship = ship;
     }
 
@@ -137,7 +137,7 @@ public class Person implements Serializable {
      *
      * @param type the new type of ship
      */
-    public void updateShip(final int type) {
+    public final void updateShip(final int type) {
         ship = new Ship(type);
     }
 
@@ -146,7 +146,7 @@ public class Person implements Serializable {
      *
      * @return int array of stats for fight
      */
-    public int[] getInfo() {
+    public final int[] getInfo() {
         return new int[]{getTrader(), getFighter(),
             getReputation(), getShip().getHullStrength(), getShip()
                     .getShieldStrength(), getShip().getWeaponStrength()};
@@ -155,7 +155,7 @@ public class Person implements Serializable {
     /**
      * @return total damage person is capable of
      */
-    public int calcDamage() {
+    public final int calcDamage() {
         int damage = getShip().getDamage();
         //implement use of target system later
         Random rand = new Random();
@@ -177,7 +177,7 @@ public class Person implements Serializable {
      * @param totalDamage damage done (to distribute)
      * @return true if ship survives
      */
-    public boolean distributeDamage(final int totalDamage) {
+    public final boolean distributeDamage(final int totalDamage) {
         boolean lives = getShip().distributeDamage(totalDamage);
         return lives;
     }
@@ -186,7 +186,7 @@ public class Person implements Serializable {
      *
      * @return true if ship has life boat
      */
-    public boolean hasLifeBoat() {
+    public final boolean hasLifeBoat() {
         return getShip().hasLifeBoat();
     }
 
@@ -194,7 +194,7 @@ public class Person implements Serializable {
      *
      * @return shieldhold
      */
-    public ShieldHold getShieldHold() {
+    public final ShieldHold getShieldHold() {
         return ship.getShieldHold();
     }
 

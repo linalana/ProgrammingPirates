@@ -45,7 +45,7 @@ public class ShipTabPageController implements Initializable {
      * @param rb the resource bundle
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         type.setText("Ship Type: " + Game.getPlayer().getShip().getType());
         fuel.setText("Rum: " + Game.getPlayer().getShip().getFuel());
         cargo = cargoGoodsList.getItems();

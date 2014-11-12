@@ -29,7 +29,7 @@ protected final Person person; //encounterer delegates to Person
     /**
      * fills the cargo hold with random stuff.
      */
-    protected void fillCargo() {
+    protected final void fillCargo() {
         Random rand = new Random();
         for (TradeGood t : TradeGood.values()) {
             if (rand.nextBoolean()) {
@@ -46,14 +46,14 @@ protected final Person person; //encounterer delegates to Person
      * @param fightPoints the fighter skill points of the player
      * @return true if will fight
      */
-    public boolean willEncounter(int playerRep, int fightPoints) {
+    public final boolean willEncounter(int playerRep, int fightPoints) {
         return (playerRep <= getReputation());
         //take into account fighter skill points
         /* NOTE: we might have to move this method
           into the individual trader/pirate/police classes */
     }
 
-    public int attack() {
+    public final int attack() {
         Random rand = new Random();
         return rand.nextInt(10) * getReputation() / 100;
     }
@@ -61,21 +61,21 @@ protected final Person person; //encounterer delegates to Person
     /**
      * @return the reputation
      */
-    public int getReputation() {
+    public final int getReputation() {
         return person.getReputation();
     }
 
     /**
      * @return the ship
      */
-    public Ship getShip() {
+    public final Ship getShip() {
         return person.getShip();
     }
 
     /**
      * @return the fighterPoints
      */
-    public int getFighterPoints() {
+    public final int getFighterPoints() {
         return person.getFighter();
     }
 
@@ -98,7 +98,7 @@ protected final Person person; //encounterer delegates to Person
     /**
      * @return total damage encounterer is capable of
      */
-    public int calcDamage() {
+    public final int calcDamage() {
         return person.calcDamage();
     }
 
@@ -108,7 +108,7 @@ protected final Person person; //encounterer delegates to Person
      * @param totalDamage the damage done to the encounterer
      * @return true if encounterer survives
      */
-    boolean distributeDamage(int totalDamage) {
+    final boolean distributeDamage(int totalDamage) {
         return person.distributeDamage(totalDamage);
     }
 

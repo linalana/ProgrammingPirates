@@ -53,7 +53,7 @@ public class PlayerConfigurationController implements Initializable {
      * @param rb the resource bundle
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         //15 is how many points you can allocate.
         pointTotal = 15;
         fighterPoint = 0;

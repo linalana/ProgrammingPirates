@@ -61,7 +61,7 @@ public class CurrentPortTabPageController implements Initializable {
      * @param rb
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         Port currentPort = Game.getCurrentPort();
         portName.setText(currentPort.getName());
         location.setText("Location: " + "(" + currentPort.getContinent().getX()

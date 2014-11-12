@@ -29,11 +29,15 @@ public class Encounter implements Serializable {
     private void playerAttack() {
         int totalDamage = p.calcDamage();
         if (totalDamage == 0) {
+            //this is a filler statement
+            int filler = 0;
             //tell player they missed
         }
         //algorithm to decide where to do that damage on the encounterer's ship
         boolean result = e.distributeDamage(totalDamage);
         if (!result) {
+            //this is a filler statement
+            int filler = 0;
             //distributeBooty();
             //you won
         }
@@ -48,9 +52,15 @@ public class Encounter implements Serializable {
         int result = p.distributeDamage(totalDamage);
         if (result == 0) { //D.E.D dead
             //GAME OVER
+            //this is a filler statement
+            int filler = 0;
         } else if (result == 1) { //life boat escape
             //transfer to nearest port with no ship but a lifeboat
+            //this is a filler statement
+            int filler = 0;
         } else if (result == 2) {
+            //this is a filler statement
+            int filler = 0;
             //continue
         }
     }
@@ -60,7 +70,7 @@ public class Encounter implements Serializable {
      *
      * @return the string type of the encounterer
      */
-    public String getType() {
+    public final String getType() {
         String type;
         if (e.getClass().equals(Pirate.class)) {
             type = "Pirate";
@@ -77,7 +87,7 @@ public class Encounter implements Serializable {
      *
      * @return the int array containing all the stats required for fight screen
      */
-    public int[] getInfo() {
+    public final int[] getInfo() {
         int[] info = new int[12];
         int[] pInfo = p.getPlayerInfo();
         int[] otherInfo = e.getEncountererInfo();
@@ -96,7 +106,7 @@ public class Encounter implements Serializable {
      *
      * @return true if passes
      */
-    public boolean inspection() {
+    public final boolean inspection() {
         boolean illegalGoods = p.checkCargo();
         if (illegalGoods) {
             p.failInspection();

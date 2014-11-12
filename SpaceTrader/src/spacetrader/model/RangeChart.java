@@ -31,7 +31,7 @@ public class RangeChart implements Serializable {
     /**
      * This updates the list of continents that you can trave to.
      */
-    public void updateChart() {
+    public final void updateChart() {
         playerX = Game.getCurrentPort().getContinent().getX();
         playerY = Game.getCurrentPort().getContinent().getY();
         fuel = Game.getPlayer().getShip().getFuel();
@@ -56,7 +56,7 @@ public class RangeChart implements Serializable {
      *
      * @return an array of continents that you can travel to
      */
-    public Continent[] getChart() {
+    public final Continent[] getChart() {
         updateChart();
         for (int i = 0; i < continentsInRange.length; i++) {
             System.out.println(continentsInRange[i].toString());
@@ -67,7 +67,7 @@ public class RangeChart implements Serializable {
         return toReturn;
     }
 
-    public int getDists(final Continent cont) {
+    public final int getDists(final Continent cont) {
         return (int) (Math.sqrt((Math.pow(playerX - cont.getX(), 2))
                 + (Math.pow(playerY - cont.getY(), 2))) / conversionFactor);
     }

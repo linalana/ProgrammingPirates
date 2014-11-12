@@ -1,7 +1,8 @@
 package spacetrader.model;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -14,7 +15,7 @@ public class ShieldTest {
      * type of shield.
      */
     @Test
-    public void testLowTechLevel() {
+    public final void testLowTechLevel() {
         int result = Shield.REFLECTIVE.calculateSellQuantity(3);
         int expectedVal = 0;
         assertEquals(result, expectedVal);
@@ -28,7 +29,7 @@ public class ShieldTest {
      * shield.
      */
     @Test
-    public void testMaxTechLevel() {
+    public final void testMaxTechLevel() {
         int result = Shield.REFLECTIVE.calculateSellQuantity(7);
         assertTrue(result > 42 && result < 58);
         result = Shield.ENERGY.calculateSellQuantity(3);
@@ -41,7 +42,7 @@ public class ShieldTest {
      * but not equal to the tech level that produces the most of that shield.
      */
     @Test
-    public void testOtherTechLevel() {
+    public final void testOtherTechLevel() {
         int result = Shield.REFLECTIVE.calculateSellQuantity(4);
         assertTrue((20 - 8 <= result) && (20 + 8 >= result));
         result = Shield.ENERGY.calculateSellQuantity(4);

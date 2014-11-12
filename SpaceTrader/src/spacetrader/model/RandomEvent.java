@@ -24,7 +24,7 @@ public class RandomEvent {
     /**
      * Decides which event occurs.
      */
-    public void initialize() {
+    public final void initialize() {
         events = new Event[]{new Event("Kraken Attackin'!",
             "Your ship was attacked by a Kraken! Your fuel and shields are "
                 + "severly depleted", 0, -100, -5),
@@ -45,14 +45,14 @@ public class RandomEvent {
     /**
      * @return amount of money the event affects
      */
-    public int getMoney() {
+    public final int getMoney() {
         return event.getMoney();
     }
 
     /**
      * @return the amount of fuel the event affects
      */
-    public int getFuel() {
+    public final int getFuel() {
         return event.getFuel();
     }
 
@@ -60,7 +60,7 @@ public class RandomEvent {
      *
      * @return the amount of damage on the shield the event causes
      */
-    public int getShield() {
+    public final int getShield() {
         return event.getShield();
     }
 
@@ -68,7 +68,7 @@ public class RandomEvent {
      *
      * @return the title of the event
      */
-    public String getTitle() {
+    public final String getTitle() {
         return event.getTitle();
     }
 
@@ -76,7 +76,7 @@ public class RandomEvent {
      *
      * @return the description of the event
      */
-    public String getDescription() {
+    public final String getDescription() {
         return event.getDescription();
     }
 

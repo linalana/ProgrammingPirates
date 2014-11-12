@@ -28,7 +28,7 @@ public class RandomEventController implements Initializable {
      * @param rb the resource bundle
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         // TODO
         descriptionLabel.setText(Turn.getEventDescription());
         titleLabel.setText(Turn.getEventTitle());
@@ -40,7 +40,7 @@ public class RandomEventController implements Initializable {
      * @param e accept button pressed
      */
     @FXML
-    public void acceptButtonPressed(final ActionEvent e) {
+    public final void acceptButtonPressed(final ActionEvent e) {
         ApplicationController.changeScene("GUI/OpeningGameScreen.fxml");
     }
 

@@ -49,7 +49,7 @@ public class ShieldsController implements Initializable {
      * @param rb the resource bundle
      */
     @Override
-    public void initialize(final URL url, final ResourceBundle rb) {
+    public final void initialize(final URL url, final ResourceBundle rb) {
         shieldHold = Game.getShieldHold();
         player = Game.getPlayer();
         shields = shieldList.getItems();
@@ -125,6 +125,8 @@ public class ShieldsController implements Initializable {
             quanRef--;
         } else {
           //nothing
+            //this is a filler statement
+            int filler = 0;
         }
         updateHoldLabels();
         updateHoldList();
@@ -161,6 +163,8 @@ public class ShieldsController implements Initializable {
             shieldHold.subtractShield(Shield.REFLECTIVE, 1);
         } else {
             //nothing.
+            //this is a filler statement
+            int filler = 0;
         }
         updateHoldLabels();
         updateHoldList();
