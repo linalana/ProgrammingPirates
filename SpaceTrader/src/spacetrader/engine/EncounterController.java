@@ -78,8 +78,8 @@ public class EncounterController implements Initializable {
                 break;
             default:
                 otherButton.setText("Accept Inspection");
-                //210 and 349 are specific positions
                 otherButton.relocate(210, 349);
+                //(210, 249) is a specific position on the screen
                 break;
         }
     }

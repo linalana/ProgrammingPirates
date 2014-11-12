@@ -37,6 +37,9 @@ public enum Weapon {
     private final int var;
     private final int strength;   // strength of the weapon
     private static final int SELL_VARIANCE = 8;
+    private static final int MAXIMUM_QUANTITY = 50;
+    private static final int MINIMUM_QUANTITY = 20;
+    private static final int MINIMUM_VARIANCE = 5;
     /**
      * constructor for trade good.
      * @param aMTLP Minimum Tech Level to Use this resource
@@ -87,9 +90,10 @@ public enum Weapon {
         if (techLevel < mtlp) {
             q = 0;
         } else if (techLevel == ttp) {
-            q = 50 + random;
+            q = MAXIMUM_QUANTITY + random;
         } else {
-            q = 20 + 5 * (techLevel - mtlp) + random;
+            q = MINIMUM_QUANTITY + MINIMUM_VARIANCE * (techLevel - mtlp)
+                    + random;
         }
         return q;
     }

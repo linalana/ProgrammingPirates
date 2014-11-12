@@ -18,7 +18,8 @@ public class Player implements Serializable {
     private static final int STARTING_MONEY = 1000000;
     private int money = STARTING_MONEY;
     private PoliceRecord policeRecord;
-
+    private static final double FINE_PERCENTAGE = .05;
+    private static final double HIGH_FINE_PERCENTAGE = .1;
     /**
      * creates a new player.
      *
@@ -221,11 +222,10 @@ public class Player implements Serializable {
      */
     public final int failInspection() {
         policeRecord.decrementInspectionHistory();
-        double finePercentage = .05;
-        int fine = (int) (money * finePercentage);
+        int fine = (int) (money * FINE_PERCENTAGE);
         if (policeRecord.getInspectionHistory() < 0) {
-            double highFinePercentage = .1; //increase for bad history
-            fine = (int) (money * finePercentage);
+             //increase for bad history
+            fine = (int) (money * HIGH_FINE_PERCENTAGE);
         }
         setMoney(getMoney() - fine);
         //confiscate
